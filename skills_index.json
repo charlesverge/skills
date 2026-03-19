@@ -1,0 +1,12 @@
+[
+  {
+    "id": "single-read-decision-update",
+    "path": "skills/single-read-decision-update",
+    "category": "engineering",
+    "name": "single-read-decision-update",
+    "description": "Enforce a single-read decision update pattern for repository/service methods that read current entity state, compute outcomes from current state plus new input, persist one mutation, and return a DecisionResult used by callers without same-entity re-reads. Use when refactoring or reviewing update flows that currently do write-then-reload, multiple reads for one decision path, or caller-side follow-up fetches for outcomes that should come from apply_event-style methods.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-03-19"
+  }
+]

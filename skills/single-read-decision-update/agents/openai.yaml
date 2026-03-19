@@ -1,0 +1,4 @@
+interface:
+  display_name: "Single-Read Decision Update"
+  short_description: "One-read one-write decision updates"
+  default_prompt: "Apply the single-read decision update pattern: read entity state once, compute outcomes with new input, perform one write, return a DecisionResult with all caller-needed outcomes, and avoid same-entity re-reads in the same flow unless a different consistency boundary explicitly requires it."
