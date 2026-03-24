@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Cleanup Rules"
+  short_description: "Phased cleanup rules for invalid/orphan deletion flows"
+  default_prompt: "Use $code-cleanup-rules to enforce phased cleanup logic, strict boundary typing, linear validation flow, and thin trigger-script orchestration while editing or reviewing cleanup-style code."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Patterns"
+  short_description: "Avoid risky Python and Beanie code patterns"
+  default_prompt: "Use $code-patterns to enforce these Python and Beanie code patterns while editing or reviewing this code."

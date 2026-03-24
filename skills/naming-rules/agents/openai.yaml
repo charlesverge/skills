@@ -1,0 +1,4 @@
+interface:
+  display_name: "Naming Rules"
+  short_description: "Concise variable and explicit function naming"
+  default_prompt: "Use $naming-rules to enforce concise variable/property/field names and explicit 1-3 word function names while keeping existing names unchanged unless I ask to rename them."

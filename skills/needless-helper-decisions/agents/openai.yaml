@@ -1,0 +1,4 @@
+interface:
+  display_name: "Needless Helper Decisions"
+  short_description: "Decide when thin helpers should be inlined"
+  default_prompt: "Use $needless-helper-decisions to decide whether to keep, inline, or remove thin helper methods while preserving behavior and exception semantics."

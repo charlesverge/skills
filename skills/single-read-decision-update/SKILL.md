@@ -146,3 +146,23 @@ Event: `agent_task_completed` with `agent_id`.
 Caller behavior:
 - Emit `send_user_notification` from `DecisionResult.notification_message`.
 - Do not re-fetch the same agent record in this flow.
+
+### One Computation per Outcome
+
+In a single execution path, any business outcome must be computed exactly once and reused everywhere else.
+
+Definition of outcome:
+- Any derived decision or value (state transition, flag, counter, ratio, timestamp, status, message, side-effect trigger).
+
+Required:
+1. Choose one authority point where each outcome is computed.
+2. Return/pass that computed outcome forward as data.
+3. Downstream code may map, persist, or emit only; it must not recompute the same outcome.
+4. Callers/handlers must consume returned outcomes; no recovery reads or parallel re-derivation.
+
+Prohibited:
+- Recomputing the same business outcome in multiple methods, layers, or branches of the same path.
+- Re-reading state only to derive outcomes that should already be returned.
+
+Review gate:
+- If identical/equivalent decision logic appears in more than one location for the same path, the change is non-compliant.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Function Creation Rules"
+  short_description: "Create/reuse functions with strict duplication and signature rules"
+  default_prompt: "Use $function-creation-rules to apply strict rules for creating new functions, reusing existing utilities, avoiding duplicate/pass-through wrappers, and handling signature changes by updating call sites."

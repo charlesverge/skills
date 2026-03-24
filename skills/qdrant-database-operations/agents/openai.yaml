@@ -1,0 +1,4 @@
+interface:
+  display_name: "Qdrant Database Operations"
+  short_description: "Common Qdrant insert, upsert, delete, and retrieval patterns"
+  default_prompt: "Use $qdrant-database-operations for Qdrant Python client CRUD examples and payload type handling."
