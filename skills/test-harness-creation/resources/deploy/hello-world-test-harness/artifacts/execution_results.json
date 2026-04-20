@@ -1,0 +1,84 @@
+{
+  "add_results": [
+    {
+      "body": {
+        "result": 3
+      },
+      "expected": 3,
+      "input": {
+        "a": 1,
+        "b": 2
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "result": 4
+      },
+      "expected": 4,
+      "input": {
+        "a": -3,
+        "b": 7
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "result": 0
+      },
+      "expected": 0,
+      "input": {
+        "a": 0,
+        "b": 0
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "result": 120
+      },
+      "expected": 120,
+      "input": {
+        "a": 50,
+        "b": 70
+      },
+      "status": 200
+    }
+  ],
+  "executed_at_epoch": 1776475146,
+  "execution_completed": true,
+  "random_results": [
+    {
+      "body": {
+        "max": 1,
+        "value": 1
+      },
+      "n": 1,
+      "status": 200
+    },
+    {
+      "body": {
+        "max": 2,
+        "value": 2
+      },
+      "n": 2,
+      "status": 200
+    },
+    {
+      "body": {
+        "max": 10,
+        "value": 1
+      },
+      "n": 10,
+      "status": 200
+    },
+    {
+      "body": {
+        "max": 25,
+        "value": 23
+      },
+      "n": 25,
+      "status": 200
+    }
+  ]
+}

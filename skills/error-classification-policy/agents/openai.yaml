@@ -1,0 +1,4 @@
+interface:
+  display_name: "Error Classification Policy"
+  short_description: "Classify temporary vs permanent using contract-aware rules"
+  default_prompt: "Use $error-classification-policy to classify failures as temporary or permanent with explicit handling for connection, contract/schema, validation, and business-result errors."

@@ -1,5 +1,59 @@
 # Skills Catalog
 
+## test-harness-creation
+
+- `id`: `test-harness-creation`
+- `path`: `skills/test-harness-creation`
+- `category`: `engineering`
+- `name`: `test-harness-creation`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-04-10`
+
+### Description
+
+Create strict, production-like test harnesses with explicit setup, execution, and verification stages, using containerized dependencies for complex or external flows.
+
+### Skill File
+
+- [skills/test-harness-creation/SKILL.md](skills/test-harness-creation/SKILL.md)
+
+## error-classification-policy
+
+- `id`: `error-classification-policy`
+- `path`: `skills/error-classification-policy`
+- `category`: `engineering`
+- `name`: `error-classification-policy`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-26`
+
+### Description
+
+Classify failures into temporary versus permanent using a contract-aware policy that treats transport failures as retryable by default and shape/invariant mismatches as usually non-retryable unless policy says otherwise.
+
+### Skill File
+
+- [skills/error-classification-policy/SKILL.md](skills/error-classification-policy/SKILL.md)
+
+## aiohttp-usage-rules
+
+- `id`: `aiohttp-usage-rules`
+- `path`: `skills/aiohttp-usage-rules`
+- `category`: `engineering`
+- `name`: `aiohttp-usage-rules`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-26`
+
+### Description
+
+Enforce acceptable aiohttp usage patterns in Python async code. Use when adding or reviewing HTTP requests with aiohttp, especially for converting sync call paths to async, constructing ClientSession with timeout and headers, handling redirects with allow_redirects=False, and writing safe GET/POST request flows.
+
+### Skill File
+
+- [skills/aiohttp-usage-rules/SKILL.md](skills/aiohttp-usage-rules/SKILL.md)
+
 ## function-creation-rules
 
 - `id`: `function-creation-rules`

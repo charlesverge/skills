@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aiohttp Usage Rules"
+  short_description: "Safe async aiohttp GET/POST and session patterns"
+  default_prompt: "Use $aiohttp-usage-rules to enforce acceptable aiohttp patterns, including async conversion, ClientSession timeout/headers setup, and allow_redirects=False request handling."

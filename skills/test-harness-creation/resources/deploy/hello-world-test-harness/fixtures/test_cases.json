@@ -1,0 +1,9 @@
+{
+  "random_variations": [1, 2, 10, 25],
+  "add_variations": [
+    {"a": 1, "b": 2, "expected": 3},
+    {"a": -3, "b": 7, "expected": 4},
+    {"a": 0, "b": 0, "expected": 0},
+    {"a": 50, "b": 70, "expected": 120}
+  ]
+}

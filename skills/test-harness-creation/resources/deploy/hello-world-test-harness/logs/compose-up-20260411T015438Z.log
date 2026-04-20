@@ -1,0 +1,55 @@
+ Image hello-world-test-harness-server-example Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 696B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 273B done
+#2 DONE 0.0s
+
+#3 [auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/python:3.12-slim
+#4 DONE 0.7s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 39B done
+#6 DONE 0.0s
+
+#7 [1/4] FROM docker.io/library/python:3.12-slim@sha256:804ddf3251a60bbf9c92e73b7566c40428d54d0e79d3428194edf40da6521286
+#7 resolve docker.io/library/python:3.12-slim@sha256:804ddf3251a60bbf9c92e73b7566c40428d54d0e79d3428194edf40da6521286 done
+#7 DONE 0.0s
+
+#8 [3/4] RUN pip install --no-cache-dir fastapi "uvicorn[standard]"
+#8 CACHED
+
+#9 [2/4] WORKDIR /app
+#9 CACHED
+
+#10 [4/4] COPY server_example.py /app/server_example.py
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:27073b3d8d27f53c8bb1735c97849961da4031332f4b512a9b6c3593238af3c7 done
+#11 exporting config sha256:b8dfb4cae2013960b8ef73f8ce47263157f0ec8e00e1ba31a4d20896ddde5677 done
+#11 exporting attestation manifest sha256:ff5d31f2c7d5ff2a43f53df94a6ce891c1d90963662bf11eb5e08473b5ec82e4 0.0s done
+#11 exporting manifest list sha256:ce2374e303e568c2e89a3c212051672b7bcb9f1d1ae87762e4010e0571cc729b done
+#11 naming to docker.io/library/hello-world-test-harness-server-example:latest done
+#11 unpacking to docker.io/library/hello-world-test-harness-server-example:latest done
+#11 DONE 0.0s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image hello-world-test-harness-server-example Built 
+ Network hello-world-test-harness_default Creating 
+ Network hello-world-test-harness_default Created 
+ Container hello-world-test-harness-server-example-1 Creating 
+ Container hello-world-test-harness-server-example-1 Created 
+ Container hello-world-test-harness-server-example-1 Starting 
+ Container hello-world-test-harness-server-example-1 Started 

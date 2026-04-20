@@ -1,0 +1,601 @@
+ Image mongo:7 Pulling 
+ 6edbc812af48 Pulling fs layer 0B
+ d0123bfff295 Pulling fs layer 0B
+ 15dae6ff7d32 Pulling fs layer 0B
+ ca13ad2146b3 Pulling fs layer 0B
+ 4adcec7aaa0c Pulling fs layer 0B
+ 3d5cce2c804d Pulling fs layer 0B
+ 1b33c3d3c1aa Pulling fs layer 0B
+ 12dd0b88be93 Pulling fs layer 0B
+ 0df091f2c6fc Downloading 28.09kB
+ 0df091f2c6fc Download complete 0B
+ 45c0a71ad819 Downloading 1.049MB
+ 45c0a71ad819 Downloading 2.097MB
+ 45c0a71ad819 Download complete 0B
+ 1b33c3d3c1aa Download complete 0B
+ 15dae6ff7d32 Download complete 0B
+ 6edbc812af48 Downloading 1.049MB
+ 4adcec7aaa0c Downloading 1.049MB
+ 12dd0b88be93 Downloading 264B
+ 6edbc812af48 Downloading 1.049MB
+ 12dd0b88be93 Download complete 0B
+ ca13ad2146b3 Download complete 0B
+ 6edbc812af48 Downloading 1.049MB
+ 4adcec7aaa0c Downloading 1.049MB
+ 6edbc812af48 Downloading 2.097MB
+ 4adcec7aaa0c Download complete 0B
+ 6edbc812af48 Downloading 2.097MB
+ d0123bfff295 Downloading 1.049MB
+ 6edbc812af48 Downloading 2.097MB
+ d0123bfff295 Downloading 1.049MB
+ 6edbc812af48 Downloading 3.146MB
+ d0123bfff295 Downloading 1.049MB
+ 6edbc812af48 Downloading 3.146MB
+ d0123bfff295 Downloading 1.049MB
+ 6edbc812af48 Downloading 4.194MB
+ 3d5cce2c804d Download complete 0B
+ d0123bfff295 Downloading 1.049MB
+ d0123bfff295 Downloading 1.049MB
+ 6edbc812af48 Downloading 5.243MB
+ 6edbc812af48 Downloading 6.291MB
+ d0123bfff295 Downloading 1.049MB
+ d0123bfff295 Downloading 1.049MB
+ 6edbc812af48 Downloading 6.291MB
+ 6edbc812af48 Downloading 7.34MB
+ d0123bfff295 Downloading 2.097MB
+ 6edbc812af48 Downloading 7.34MB
+ d0123bfff295 Downloading 2.097MB
+ 6edbc812af48 Downloading 8.389MB
+ d0123bfff295 Downloading 3.146MB
+ 6edbc812af48 Downloading 8.389MB
+ d0123bfff295 Downloading 3.146MB
+ 6edbc812af48 Downloading 9.437MB
+ d0123bfff295 Downloading 3.146MB
+ 6edbc812af48 Downloading 10.49MB
+ d0123bfff295 Downloading 4.194MB
+ 6edbc812af48 Downloading 10.49MB
+ d0123bfff295 Downloading 4.194MB
+ 6edbc812af48 Downloading 11.53MB
+ d0123bfff295 Downloading 5.243MB
+ 6edbc812af48 Downloading 11.53MB
+ d0123bfff295 Downloading 5.243MB
+ 6edbc812af48 Downloading 12.58MB
+ d0123bfff295 Downloading 6.291MB
+ 6edbc812af48 Downloading 13.63MB
+ d0123bfff295 Downloading 6.291MB
+ d0123bfff295 Downloading 6.291MB
+ 6edbc812af48 Downloading 13.63MB
+ d0123bfff295 Downloading 7.34MB
+ 6edbc812af48 Downloading 14.68MB
+ d0123bfff295 Downloading 7.34MB
+ 6edbc812af48 Downloading 15.73MB
+ d0123bfff295 Downloading 7.34MB
+ 6edbc812af48 Downloading 15.73MB
+ 6edbc812af48 Downloading 16.78MB
+ d0123bfff295 Downloading 8.389MB
+ 6edbc812af48 Downloading 16.78MB
+ d0123bfff295 Downloading 8.389MB
+ d0123bfff295 Downloading 8.389MB
+ 6edbc812af48 Downloading 17.83MB
+ 6edbc812af48 Downloading 17.83MB
+ d0123bfff295 Downloading 8.389MB
+ 6edbc812af48 Downloading 17.83MB
+ d0123bfff295 Downloading 9.437MB
+ d0123bfff295 Downloading 10.49MB
+ 6edbc812af48 Downloading 18.87MB
+ 6edbc812af48 Downloading 19.92MB
+ d0123bfff295 Downloading 10.49MB
+ 6edbc812af48 Downloading 19.92MB
+ d0123bfff295 Downloading 10.49MB
+ d0123bfff295 Downloading 11.53MB
+ 6edbc812af48 Downloading 20.97MB
+ 6edbc812af48 Downloading 20.97MB
+ d0123bfff295 Downloading 11.53MB
+ 6edbc812af48 Downloading 22.02MB
+ d0123bfff295 Downloading 12.58MB
+ 6edbc812af48 Downloading 22.02MB
+ d0123bfff295 Downloading 12.58MB
+ d0123bfff295 Downloading 13.63MB
+ 6edbc812af48 Downloading 23.07MB
+ 6edbc812af48 Downloading 23.07MB
+ d0123bfff295 Downloading 13.63MB
+ 6edbc812af48 Downloading 24.12MB
+ d0123bfff295 Downloading 13.63MB
+ 6edbc812af48 Downloading 24.12MB
+ d0123bfff295 Downloading 14.68MB
+ 6edbc812af48 Downloading 25.17MB
+ d0123bfff295 Downloading 14.68MB
+ 6edbc812af48 Downloading 26.21MB
+ d0123bfff295 Downloading 15.73MB
+ 6edbc812af48 Downloading 26.21MB
+ d0123bfff295 Downloading 15.73MB
+ 6edbc812af48 Downloading 26.21MB
+ d0123bfff295 Downloading 16.78MB
+ 6edbc812af48 Download complete 0B
+ d0123bfff295 Downloading 17.83MB
+ 6edbc812af48 Extracting 1B
+ d0123bfff295 Downloading 17.83MB
+ 6edbc812af48 Extracting 1B
+ d0123bfff295 Downloading 18.87MB
+ 6edbc812af48 Extracting 1B
+ d0123bfff295 Downloading 19.92MB
+ 6edbc812af48 Extracting 1B
+ d0123bfff295 Downloading 20.97MB
+ 6edbc812af48 Extracting 1B
+ d0123bfff295 Downloading 22.02MB
+ 6edbc812af48 Pull complete 0B
+ d0123bfff295 Downloading 23.07MB
+ ca13ad2146b3 Pull complete 0B
+ 4adcec7aaa0c Pull complete 0B
+ 3d5cce2c804d Pull complete 0B
+ d0123bfff295 Downloading 24.12MB
+ 1b33c3d3c1aa Pull complete 0B
+ 12dd0b88be93 Pull complete 0B
+ d0123bfff295 Downloading 25.17MB
+ d0123bfff295 Downloading 26.21MB
+ d0123bfff295 Downloading 27.26MB
+ d0123bfff295 Downloading 28.31MB
+ d0123bfff295 Downloading 28.31MB
+ d0123bfff295 Downloading 29.36MB
+ d0123bfff295 Downloading 30.41MB
+ d0123bfff295 Downloading 31.46MB
+ d0123bfff295 Downloading 31.46MB
+ d0123bfff295 Downloading 32.51MB
+ d0123bfff295 Downloading 33.55MB
+ d0123bfff295 Downloading 34.6MB
+ d0123bfff295 Downloading 35.65MB
+ d0123bfff295 Downloading 36.7MB
+ d0123bfff295 Downloading 36.7MB
+ d0123bfff295 Downloading 38.8MB
+ d0123bfff295 Downloading 39.85MB
+ d0123bfff295 Downloading 39.85MB
+ d0123bfff295 Downloading 40.89MB
+ d0123bfff295 Downloading 42.6MB
+ d0123bfff295 Downloading 42.99MB
+ d0123bfff295 Downloading 44.04MB
+ d0123bfff295 Downloading 45.09MB
+ d0123bfff295 Downloading 46.14MB
+ d0123bfff295 Downloading 47.19MB
+ d0123bfff295 Downloading 48.23MB
+ d0123bfff295 Downloading 49.28MB
+ d0123bfff295 Downloading 51.38MB
+ d0123bfff295 Downloading 52.43MB
+ d0123bfff295 Downloading 53.48MB
+ d0123bfff295 Downloading 54.53MB
+ d0123bfff295 Downloading 55.57MB
+ d0123bfff295 Downloading 56.62MB
+ d0123bfff295 Downloading 57.67MB
+ d0123bfff295 Downloading 58.72MB
+ d0123bfff295 Downloading 59.77MB
+ d0123bfff295 Downloading 60.82MB
+ d0123bfff295 Downloading 61.87MB
+ d0123bfff295 Downloading 62.91MB
+ d0123bfff295 Downloading 63.96MB
+ d0123bfff295 Downloading 65.01MB
+ d0123bfff295 Downloading 66.06MB
+ d0123bfff295 Downloading 66.06MB
+ d0123bfff295 Downloading 67.11MB
+ d0123bfff295 Downloading 68.16MB
+ d0123bfff295 Downloading 69.21MB
+ d0123bfff295 Downloading 70.25MB
+ d0123bfff295 Downloading 70.25MB
+ d0123bfff295 Downloading 72.35MB
+ d0123bfff295 Downloading 72.35MB
+ d0123bfff295 Downloading 73.4MB
+ d0123bfff295 Downloading 74.45MB
+ d0123bfff295 Downloading 75.5MB
+ d0123bfff295 Downloading 76.55MB
+ d0123bfff295 Downloading 76.55MB
+ d0123bfff295 Downloading 77.59MB
+ d0123bfff295 Downloading 78.64MB
+ d0123bfff295 Downloading 79.69MB
+ d0123bfff295 Downloading 80.74MB
+ d0123bfff295 Downloading 81.79MB
+ d0123bfff295 Downloading 82.84MB
+ d0123bfff295 Downloading 83.89MB
+ d0123bfff295 Downloading 84.93MB
+ d0123bfff295 Downloading 85.98MB
+ d0123bfff295 Downloading 87.03MB
+ d0123bfff295 Downloading 88.08MB
+ d0123bfff295 Downloading 89.13MB
+ d0123bfff295 Downloading 90.18MB
+ d0123bfff295 Downloading 90.18MB
+ d0123bfff295 Downloading 92.27MB
+ d0123bfff295 Downloading 93.32MB
+ d0123bfff295 Downloading 94.37MB
+ d0123bfff295 Downloading 96.47MB
+ d0123bfff295 Downloading 96.47MB
+ d0123bfff295 Downloading 97.52MB
+ d0123bfff295 Downloading 98.57MB
+ d0123bfff295 Downloading 99.61MB
+ d0123bfff295 Downloading 100.7MB
+ d0123bfff295 Downloading 100.7MB
+ d0123bfff295 Downloading 100.8MB
+ d0123bfff295 Downloading 102.8MB
+ d0123bfff295 Downloading 102.8MB
+ d0123bfff295 Downloading 103.8MB
+ d0123bfff295 Downloading 104.9MB
+ d0123bfff295 Downloading 105.9MB
+ d0123bfff295 Downloading 107MB
+ d0123bfff295 Downloading 107MB
+ d0123bfff295 Downloading 109.1MB
+ d0123bfff295 Downloading 109.3MB
+ d0123bfff295 Downloading 110.1MB
+ d0123bfff295 Downloading 111.1MB
+ d0123bfff295 Downloading 112.2MB
+ d0123bfff295 Downloading 113.2MB
+ d0123bfff295 Downloading 114.3MB
+ d0123bfff295 Downloading 115.3MB
+ d0123bfff295 Downloading 116.4MB
+ d0123bfff295 Downloading 117.4MB
+ d0123bfff295 Downloading 118.5MB
+ d0123bfff295 Downloading 119.5MB
+ d0123bfff295 Downloading 120.6MB
+ d0123bfff295 Downloading 121.6MB
+ d0123bfff295 Downloading 122.7MB
+ d0123bfff295 Downloading 123.7MB
+ d0123bfff295 Downloading 124.8MB
+ d0123bfff295 Downloading 124.8MB
+ d0123bfff295 Downloading 125.8MB
+ d0123bfff295 Downloading 126.9MB
+ d0123bfff295 Downloading 127.9MB
+ d0123bfff295 Downloading 129MB
+ d0123bfff295 Downloading 130MB
+ d0123bfff295 Downloading 131.1MB
+ d0123bfff295 Downloading 132.1MB
+ d0123bfff295 Downloading 133.2MB
+ d0123bfff295 Downloading 134.2MB
+ d0123bfff295 Downloading 135.3MB
+ d0123bfff295 Downloading 136.3MB
+ d0123bfff295 Downloading 137.4MB
+ d0123bfff295 Downloading 138.4MB
+ d0123bfff295 Downloading 139.5MB
+ d0123bfff295 Downloading 140.5MB
+ d0123bfff295 Downloading 141.6MB
+ d0123bfff295 Downloading 142.6MB
+ d0123bfff295 Downloading 143.7MB
+ d0123bfff295 Downloading 143.7MB
+ d0123bfff295 Downloading 144.7MB
+ d0123bfff295 Downloading 144.7MB
+ d0123bfff295 Downloading 145.8MB
+ d0123bfff295 Downloading 145.8MB
+ d0123bfff295 Downloading 146.8MB
+ d0123bfff295 Downloading 147.8MB
+ d0123bfff295 Downloading 149.9MB
+ d0123bfff295 Downloading 149.9MB
+ d0123bfff295 Downloading 151MB
+ d0123bfff295 Downloading 152MB
+ d0123bfff295 Downloading 153.1MB
+ d0123bfff295 Downloading 154.1MB
+ d0123bfff295 Downloading 155.2MB
+ d0123bfff295 Downloading 156.2MB
+ d0123bfff295 Downloading 157.3MB
+ d0123bfff295 Downloading 158.3MB
+ d0123bfff295 Downloading 159.4MB
+ d0123bfff295 Downloading 160.4MB
+ d0123bfff295 Downloading 161.5MB
+ d0123bfff295 Downloading 162.5MB
+ d0123bfff295 Downloading 163.6MB
+ d0123bfff295 Downloading 164.6MB
+ d0123bfff295 Downloading 164.6MB
+ d0123bfff295 Downloading 165.7MB
+ d0123bfff295 Downloading 166.7MB
+ d0123bfff295 Downloading 166.7MB
+ d0123bfff295 Downloading 167.8MB
+ d0123bfff295 Downloading 167.8MB
+ d0123bfff295 Downloading 167.8MB
+ d0123bfff295 Downloading 168.8MB
+ d0123bfff295 Downloading 169.9MB
+ d0123bfff295 Downloading 169.9MB
+ d0123bfff295 Downloading 170.9MB
+ d0123bfff295 Downloading 172MB
+ d0123bfff295 Downloading 172MB
+ d0123bfff295 Downloading 173MB
+ d0123bfff295 Downloading 174.1MB
+ d0123bfff295 Downloading 175.1MB
+ d0123bfff295 Downloading 176.2MB
+ d0123bfff295 Downloading 177.2MB
+ d0123bfff295 Downloading 178.3MB
+ d0123bfff295 Downloading 179.3MB
+ d0123bfff295 Downloading 180.4MB
+ d0123bfff295 Downloading 181.4MB
+ d0123bfff295 Downloading 181.4MB
+ d0123bfff295 Downloading 183.5MB
+ d0123bfff295 Downloading 183.5MB
+ d0123bfff295 Downloading 184.5MB
+ d0123bfff295 Downloading 185.6MB
+ d0123bfff295 Downloading 185.6MB
+ d0123bfff295 Downloading 186.6MB
+ d0123bfff295 Downloading 187.7MB
+ d0123bfff295 Downloading 188.7MB
+ d0123bfff295 Downloading 188.9MB
+ d0123bfff295 Downloading 189.8MB
+ d0123bfff295 Downloading 190.8MB
+ d0123bfff295 Downloading 191.9MB
+ d0123bfff295 Downloading 192.9MB
+ d0123bfff295 Downloading 194MB
+ d0123bfff295 Downloading 194MB
+ d0123bfff295 Downloading 196.1MB
+ d0123bfff295 Downloading 196.1MB
+ d0123bfff295 Downloading 197.1MB
+ d0123bfff295 Downloading 198.2MB
+ d0123bfff295 Downloading 199.2MB
+ d0123bfff295 Downloading 200.3MB
+ d0123bfff295 Downloading 201.3MB
+ d0123bfff295 Downloading 202.4MB
+ d0123bfff295 Downloading 203.4MB
+ d0123bfff295 Downloading 204.5MB
+ d0123bfff295 Downloading 205.5MB
+ d0123bfff295 Downloading 206.6MB
+ d0123bfff295 Downloading 207.6MB
+ d0123bfff295 Downloading 208.7MB
+ d0123bfff295 Downloading 208.7MB
+ d0123bfff295 Downloading 209.7MB
+ d0123bfff295 Downloading 210.8MB
+ d0123bfff295 Downloading 212.9MB
+ d0123bfff295 Downloading 212.9MB
+ d0123bfff295 Downloading 213.9MB
+ d0123bfff295 Downloading 216MB
+ d0123bfff295 Downloading 216MB
+ d0123bfff295 Downloading 217.1MB
+ d0123bfff295 Downloading 218.1MB
+ d0123bfff295 Downloading 219.2MB
+ d0123bfff295 Downloading 220.2MB
+ d0123bfff295 Downloading 221.2MB
+ d0123bfff295 Downloading 222.3MB
+ d0123bfff295 Downloading 222.3MB
+ d0123bfff295 Downloading 223.3MB
+ d0123bfff295 Downloading 224.4MB
+ d0123bfff295 Downloading 225.4MB
+ d0123bfff295 Downloading 226.5MB
+ d0123bfff295 Downloading 227.5MB
+ d0123bfff295 Downloading 228.6MB
+ d0123bfff295 Downloading 229.6MB
+ d0123bfff295 Downloading 230.7MB
+ d0123bfff295 Downloading 230.7MB
+ d0123bfff295 Downloading 231.7MB
+ d0123bfff295 Downloading 232.8MB
+ d0123bfff295 Downloading 233.8MB
+ d0123bfff295 Downloading 234.9MB
+ d0123bfff295 Downloading 235.9MB
+ d0123bfff295 Downloading 237MB
+ d0123bfff295 Downloading 238MB
+ d0123bfff295 Downloading 239.1MB
+ d0123bfff295 Downloading 240.1MB
+ d0123bfff295 Downloading 240.1MB
+ d0123bfff295 Downloading 241.2MB
+ d0123bfff295 Downloading 242.2MB
+ d0123bfff295 Downloading 243.3MB
+ d0123bfff295 Downloading 244.3MB
+ d0123bfff295 Downloading 244.3MB
+ d0123bfff295 Downloading 245.1MB
+ d0123bfff295 Downloading 246.4MB
+ d0123bfff295 Downloading 247.5MB
+ d0123bfff295 Downloading 248MB
+ d0123bfff295 Downloading 248.6MB
+ d0123bfff295 Downloading 249.6MB
+ d0123bfff295 Downloading 250.2MB
+ d0123bfff295 Downloading 250.2MB
+ d0123bfff295 Downloading 250.2MB
+ d0123bfff295 Download complete 0B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 1B
+ d0123bfff295 Extracting 2B
+ d0123bfff295 Extracting 2B
+ d0123bfff295 Extracting 2B
+ d0123bfff295 Extracting 2B
+ d0123bfff295 Extracting 2B
+ d0123bfff295 Extracting 2B
+ d0123bfff295 Extracting 2B
+ d0123bfff295 Extracting 2B
+ d0123bfff295 Extracting 2B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 3B
+ d0123bfff295 Extracting 4B
+ d0123bfff295 Extracting 4B
+ d0123bfff295 Extracting 4B
+ d0123bfff295 Extracting 4B
+ d0123bfff295 Extracting 4B
+ d0123bfff295 Extracting 4B
+ d0123bfff295 Extracting 4B
+ d0123bfff295 Extracting 4B
+ d0123bfff295 Extracting 4B
+ d0123bfff295 Extracting 5B
+ d0123bfff295 Extracting 5B
+ d0123bfff295 Extracting 5B
+ d0123bfff295 Extracting 5B
+ d0123bfff295 Extracting 5B
+ d0123bfff295 Extracting 5B
+ d0123bfff295 Extracting 5B
+ d0123bfff295 Extracting 6B
+ d0123bfff295 Extracting 6B
+ d0123bfff295 Extracting 6B
+ d0123bfff295 Extracting 6B
+ d0123bfff295 Extracting 6B
+ d0123bfff295 Extracting 6B
+ d0123bfff295 Extracting 6B
+ d0123bfff295 Extracting 6B
+ d0123bfff295 Extracting 6B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 7B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 8B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 9B
+ d0123bfff295 Extracting 10B
+ d0123bfff295 Extracting 10B
+ d0123bfff295 Extracting 10B
+ d0123bfff295 Extracting 10B
+ d0123bfff295 Extracting 10B
+ d0123bfff295 Extracting 10B
+ d0123bfff295 Extracting 10B
+ d0123bfff295 Extracting 10B
+ d0123bfff295 Extracting 10B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 11B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 12B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 13B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 14B
+ d0123bfff295 Extracting 15B
+ d0123bfff295 Extracting 15B
+ d0123bfff295 Extracting 15B
+ d0123bfff295 Extracting 16B
+ d0123bfff295 Extracting 16B
+ d0123bfff295 Extracting 16B
+ d0123bfff295 Extracting 16B
+ d0123bfff295 Extracting 16B
+ d0123bfff295 Extracting 16B
+ d0123bfff295 Extracting 16B
+ d0123bfff295 Extracting 16B
+ 15dae6ff7d32 Pull complete 0B
+ d0123bfff295 Pull complete 0B
+ Image mongo:7 Pulled 
+ Image hello-world-test-harness-server-example Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 696B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 335B done
+#2 DONE 0.0s
+
+#3 [auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/python:3.12-slim
+#4 DONE 0.8s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.12-slim@sha256:804ddf3251a60bbf9c92e73b7566c40428d54d0e79d3428194edf40da6521286
+#6 resolve docker.io/library/python:3.12-slim@sha256:804ddf3251a60bbf9c92e73b7566c40428d54d0e79d3428194edf40da6521286 done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 1.17kB done
+#7 DONE 0.0s
+
+#8 [2/5] WORKDIR /app
+#8 CACHED
+
+#9 [3/5] RUN pip install --no-cache-dir fastapi "uvicorn[standard]"
+#9 CACHED
+
+#10 [4/5] COPY server_example.py /app/server_example.py
+#10 CACHED
+
+#11 [5/5] COPY health_container_check.py /app/health_container_check.py
+#11 DONE 1.8s
+
+#12 exporting to image
+#12 exporting layers 0.0s done
+#12 exporting manifest sha256:4c0486ce2239cfdfd748a3558488a60329c191875f715350f3758288ca277f58 done
+#12 exporting config sha256:77d00fa3a53b6ec4ffc802a147754b8fe8c60a63a3d99bbc8fb63fe78e904328 done
+#12 exporting attestation manifest sha256:2ee41712805e397047ec43c2caa66c1734f250a43ae49fbc37ccfb6acbb0eb74 done
+#12 exporting manifest list sha256:c53bba3207221338c46674ce37a2aee406da9cc64ab20646c5cb4f217a56a000 done
+#12 naming to docker.io/library/hello-world-test-harness-server-example:latest done
+#12 unpacking to docker.io/library/hello-world-test-harness-server-example:latest 0.0s done
+#12 DONE 0.1s
+
+#13 resolving provenance for metadata file
+#13 DONE 0.0s
+ Image hello-world-test-harness-server-example Built 
+ Network hello-world-test-harness_default Creating 
+ Network hello-world-test-harness_default Created 
+ Container hello-world-test-harness-mongodb-1 Creating 
+ Container hello-world-test-harness-redis-1 Creating 
+ Container hello-world-test-harness-mongodb-1 Created 
+ Container hello-world-test-harness-redis-1 Created 
+ Container hello-world-test-harness-server-example-1 Creating 
+ Container hello-world-test-harness-server-example-1 Created 
+ Container hello-world-test-harness-mongodb-1 Starting 
+ Container hello-world-test-harness-redis-1 Starting 
+ Container hello-world-test-harness-mongodb-1 Started 
+ Container hello-world-test-harness-redis-1 Started 
+ Container hello-world-test-harness-mongodb-1 Waiting 
+ Container hello-world-test-harness-redis-1 Waiting 
+ Container hello-world-test-harness-redis-1 Healthy 
+ Container hello-world-test-harness-mongodb-1 Healthy 
+ Container hello-world-test-harness-server-example-1 Starting 
+ Container hello-world-test-harness-server-example-1 Started 

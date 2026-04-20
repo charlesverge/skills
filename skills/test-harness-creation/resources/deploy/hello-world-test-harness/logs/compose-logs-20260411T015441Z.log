@@ -1,0 +1,13 @@
+server-example-1  | INFO:     Started server process [1]
+server-example-1  | INFO:     Waiting for application startup.
+server-example-1  | INFO:     Application startup complete.
+server-example-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+server-example-1  | INFO:     192.168.65.1:32969 - "GET /health HTTP/1.1" 200 OK
+server-example-1  | INFO:     192.168.65.1:27485 - "GET /random?n=1 HTTP/1.1" 200 OK
+server-example-1  | INFO:     192.168.65.1:52824 - "GET /random?n=2 HTTP/1.1" 200 OK
+server-example-1  | INFO:     192.168.65.1:30272 - "GET /random?n=10 HTTP/1.1" 200 OK
+server-example-1  | INFO:     192.168.65.1:34559 - "GET /random?n=25 HTTP/1.1" 200 OK
+server-example-1  | INFO:     192.168.65.1:41021 - "GET /add?a=1&b=2 HTTP/1.1" 200 OK
+server-example-1  | INFO:     192.168.65.1:63138 - "GET /add?a=-3&b=7 HTTP/1.1" 200 OK
+server-example-1  | INFO:     192.168.65.1:16574 - "GET /add?a=0&b=0 HTTP/1.1" 200 OK
+server-example-1  | INFO:     192.168.65.1:60129 - "GET /add?a=50&b=70 HTTP/1.1" 200 OK

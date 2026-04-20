@@ -45,3 +45,166 @@ description: Enforce function creation and reuse rules extracted from agents.md 
 ## Function parameter rules
 
 - Don't use compatibility signature tricks, stop and ask for guidance if an obvious solution is available. For example, if an function call adds a new parameter and you have it available then simply add the parameter to the function call and update all call sites instead of adding a compatibility shim that checks for the presence of the parameter and provides a fallback value. Update the unit tests to reflect the new parameter and its expected value instead of adding a guard for the new parameter in the code to satisfy existing unit tests.
+
+## Examples
+
+### Good function examples
+
+```python
+def update_task(job_id: str, status: str) -> None:
+  if not status:
+    raise ValueError("status is required")
+  task = task_repo.get(job_id)
+  task.status = status
+  task_repo.save(task)
+```
+
+Why this is good:
+- Parameters are all used.
+- Function name is concise and action-oriented.
+- Logic is direct with no compatibility shim.
+
+```python
+def batch(records: list[Record]) -> int:
+  total = 0
+  for record in records:
+    if not record.is_valid:
+      continue
+    total += 1
+  return total
+```
+
+Why this is good:
+- No unnecessary wrappers.
+- No unnecessary copying of `records`.
+- Clear and minimal flow.
+
+### Bad function examples and what to do instead
+
+```python
+def update_task(job_id: str, status: str, legacy_mode: bool) -> None:
+  del legacy_mode
+  task = task_repo.get(job_id)
+  task.status = status
+  task_repo.save(task)
+```
+
+What is wrong:
+- Has a parameter and deletes it immediately.
+- The parameter is unneeded.
+
+What to do:
+- Remove the unneeded parameter from the function signature.
+- Remove the same parameter from all calling sites and tests.
+
+```python
+def run(records: list[Record], trace_id: str) -> int:
+  total = 0
+  for record in records:
+    if record.is_valid:
+      total += 1
+  return total
+```
+
+What is wrong:
+- `trace_id` is never used.
+
+What to do:
+- Remove `trace_id` from the function signature.
+- Remove `trace_id` from all call sites instead of keeping a compatibility parameter.
+
+```python
+def process(records: list[Record]) -> int:
+  return process_records(records)
+```
+
+What is wrong:
+- One-line pass-through helper.
+
+What to do:
+- Remove the helper.
+- Call `process_records` directly from existing callers.
+
+## Breaking large function bodies into pieces
+
+When a function body is large, break it into smaller pieces with clear responsibilities.
+
+Signals that a function should be split:
+1. An individual chunk is 5 to 30 lines and can be unit tested separately.
+2. Large bodies exist inside `if`, `while`, `for`, or other flow control blocks. Keep flow control in one place and move actions into focused functions.
+
+### Bad example
+
+```python
+def run(records: list[Record]) -> dict[str, int]:
+  total = 0
+  failed = 0
+  for record in records:
+    if not record.id:
+      failed += 1
+      continue
+    if record.status not in {"new", "retry"}:
+      failed += 1
+      continue
+    payload = {
+      "id": record.id,
+      "name": record.name.strip().lower(),
+      "score": normalize_score(record.score),
+      "tags": [tag.strip().lower() for tag in record.tags if tag.strip()],
+    }
+    result = api_client.submit(payload)
+    if result.ok:
+      total += 1
+    else:
+      failed += 1
+  return {"total": total, "failed": failed}
+```
+
+What is wrong:
+- Validation, payload building, submission, and counting are blended in one loop.
+- The loop body has testable chunks that should be split into separate functions.
+
+### Better example
+
+```python
+def run(records: list[Record]) -> dict[str, int]:
+  total = 0
+  failed = 0
+  for record in records:
+    if not is_valid_record(record):
+      failed += 1
+      continue
+    payload = build_payload(record)
+    if submit_payload(payload):
+      total += 1
+      continue
+    failed += 1
+  return {"total": total, "failed": failed}
+
+
+def is_valid_record(record: Record) -> bool:
+  if not record.id:
+    return False
+  if record.status not in {"new", "retry"}:
+    return False
+  return True
+
+
+def build_payload(record: Record) -> dict[str, object]:
+  return {
+    "id": record.id,
+    "name": record.name.strip().lower(),
+    "score": normalize_score(record.score),
+    "tags": [tag.strip().lower() for tag in record.tags if tag.strip()],
+  }
+
+
+def submit_payload(payload: dict[str, object]) -> bool:
+  result = api_client.submit(payload)
+  return result.ok
+```
+
+Why this is better:
+- Flow control remains in `run`.
+- Action chunks are separated and unit-testable.
+- Each function has a single responsibility.

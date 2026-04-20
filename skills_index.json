@@ -1,5 +1,35 @@
 [
   {
+    "id": "test-harness-creation",
+    "path": "skills/test-harness-creation",
+    "category": "engineering",
+    "name": "test-harness-creation",
+    "description": "Create strict, production-like test harnesses with explicit setup, execution, and verification stages, using containerized dependencies for complex or external flows.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-04-10"
+  },
+  {
+    "id": "error-classification-policy",
+    "path": "skills/error-classification-policy",
+    "category": "engineering",
+    "name": "error-classification-policy",
+    "description": "Classify failures into temporary versus permanent using a contract-aware policy that treats transport failures as retryable by default and shape/invariant mismatches as usually non-retryable unless policy says otherwise.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-03-26"
+  },
+  {
+    "id": "aiohttp-usage-rules",
+    "path": "skills/aiohttp-usage-rules",
+    "category": "engineering",
+    "name": "aiohttp-usage-rules",
+    "description": "Enforce acceptable aiohttp usage patterns in Python async code. Use when adding or reviewing HTTP requests with aiohttp, especially for converting sync call paths to async, constructing ClientSession with timeout and headers, handling redirects with allow_redirects=False, and writing safe GET/POST request flows.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-03-26"
+  },
+  {
     "id": "function-creation-rules",
     "path": "skills/function-creation-rules",
     "category": "engineering",
