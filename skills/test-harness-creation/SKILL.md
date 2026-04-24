@@ -97,3 +97,5 @@ Example required checks include Docker availability, MongoDB connectivity from i
 - Ensure Docker logs are streamed during run and preserved after run.
 - Return non-zero exit codes for failures.
 - Print concise failure diagnostics that identify the violated expectation.
+- Do not create scripts which run inline in bash, or python that will be executed locally or remotely. These scripts should be created in their own file and executed directly or copied into a container and executed there.
+

@@ -1,5 +1,41 @@
 # Skills Catalog
 
+## health-checks
+
+- `id`: `health-checks`
+- `path`: `skills/health-checks`
+- `category`: `engineering`
+- `name`: `health-checks`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-04-22`
+
+### Description
+
+Create or review health checks for services, containers, container-to-container dependencies, and external APIs. Use when verifying that a service is not only running but reachable from the right network boundary, returning expected data, and internally connected to required dependencies such as databases, Redis, queues, or downstream services.
+
+### Skill File
+
+- [skills/health-checks/SKILL.md](skills/health-checks/SKILL.md)
+
+## python-beanie-orm
+
+- `id`: `python-beanie-orm`
+- `path`: `skills/python-beanie-orm`
+- `category`: `engineering`
+- `name`: `python-beanie-orm`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-04-20`
+
+### Description
+
+Use Beanie ODM patterns for MongoDB async operations. Covers document models, queries, inserts, updates, deletions, indexing, and migrations with Pydantic integration.
+
+### Skill File
+
+- [skills/python-beanie-orm/SKILL.md](skills/python-beanie-orm/SKILL.md)
+
 ## test-harness-creation
 
 - `id`: `test-harness-creation`

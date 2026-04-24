@@ -1,5 +1,15 @@
 [
   {
+    "id": "python-beanie-orm",
+    "path": "skills/python-beanie-orm",
+    "category": "engineering",
+    "name": "python-beanie-orm",
+    "description": "Use Beanie ODM patterns for MongoDB async operations. Covers document models, queries, inserts, updates, deletions, indexing, and migrations with Pydantic integration.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-04-20"
+  },
+  {
     "id": "test-harness-creation",
     "path": "skills/test-harness-creation",
     "category": "engineering",

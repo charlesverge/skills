@@ -1,13 +1,199 @@
 ---
 name: code-patterns
-description: Enforce Python and Beanie code patterns that avoid unsafe defaults, inline imports, unnecessary comments/checks, manual model wiring, and non-streaming cursor usage. Use when writing or reviewing repository/service code for consistency and performance.
+description: Python coding patterns for preferred styles, use when making code changes or refactors to ensure code change is in line with preferred patterns.
 metadata:
   short-description: Enforce preferred code patterns
 ---
 
 # Code patterns
 
+## When to use this skill
+
+When making any code change, check that the change matches the preferred pattern. If not stop and ask for approval.
+
+
+## Preferred patterns
+
+# CODE PATTERNS
+
+This document captures accepted Python coding patterns for this repository. It is intentionally concise and practical: use classes for stage/repository logic, prefer strongly typed function signatures, and keep control flow explicit and readable.
+
+##  `if / else`
+
+- Use explicit condition checks.
+- Prefer early return to avoid deep nesting.
+- Keep each branch small and clear.
+
+Example:
+
+```python
+if task is None:
+    logger.debug("No pending task available")
+    return None
+
+if queue_name in ("page_fetch", "page_triage"):
+    sort_fields = [
+        ("next_retry_on", SortDirection.ASCENDING),
+        ("payload.url_score", SortDirection.ASCENDING),
+        ("created_on", SortDirection.ASCENDING),
+    ]
+else:
+    sort_fields = ["created_on"]
+```
+
+- Use `elif` when a second condition is mutually exclusive.
+- Use `else` only when there is a clear default.
+- Avoid complex boolean expressions in one line; split them into named intermediate variables when helpful.
+
+##  `for` loops
+
+- Use `for item in iterable:` for iteration.
+- Prefer list comprehensions for simple transforms.
+- Use explicit value checks inside loops when needed.
+
+Example:
+
+```python
+results: list[str] = []
+for url in candidate_urls:
+    if not is_denied_url(url):
+        results.append(url)
+```
+
+- Use `enumerate()` when the index is required.
+- Avoid iterating over indexes manually unless you need numeric control.
+
+##  `while` loops
+
+- Use `while` only when repeated execution depends on a changing condition rather than a fixed collection.
+- Keep the loop condition simple.
+- Update loop state clearly inside the body.
+- Avoid unbounded `while True` loops.
+
+Example:
+
+```python
+while len(frontier_task_ids) > 0:
+    child_task_ids: list[PydanticObjectId] = []
+    for task_id in frontier_task_ids:
+        child_task_ids.extend(await self._find_child_task_ids(task_id))
+    frontier_task_ids = child_task_ids
+```
+
+- Avoid infinite loops without an obvious break condition.
+- Prefer queue deques or generator-based iteration when possible.
+
+##  `BaseModel` class usage
+
+- Use `pydantic.BaseModel` for task payloads and structured inputs.
+- Define payload classes in `src/worker/integrations/company_research/types.py` or suitable shared modules.
+- When parsing agent output, accept both `BaseModel` values and raw data safely.
+
+Example:
+
+```python
+class EnqueueTaskRequest(BaseModel):
+    key: str
+    stage: DiscoveryStage
+    parent_trace_id: PydanticObjectId | None = None
+    payload: DiscoveryTaskPayload
+```
+
+- Keep model fields explicit with types.
+- Use `model_dump(mode="python")` to serialize models for storage or output.
+- Use `isinstance(result, BaseModel)` when you need to support both model and plain data inputs.
+
+##  Strong typing for function parameters and return values
+
+- Always annotate function parameters and return types.
+- Use Python 3.10-style unions: `str | None`, `list[str]`, `dict[str, object]`.
+- Prefer concrete, descriptive types over `Any`.
+
+Example:
+
+```python
+async def claim_task(self, stage: DiscoveryStage) -> dict[str, object] | None:
+    ...
+
+async def get_keys(
+    self,
+    queue_name: DiscoveryStage,
+    task_keys: list[str],
+) -> set[str]:
+    ...
+```
+
+- For `BaseModel` subclasses and domain objects, use the actual class name.
+- Use `PydanticObjectId` for MongoDB object ids, and `datetime` for timestamps.
+
+##  Using classes
+
+- Prefer classes for stage behavior, repository access, and reusable helpers.
+- Use `__init__` to inject dependencies and configuration.
+- Keep methods focused on a single responsibility.
+
+Example:
+
+```python
+class DiscoveryQueueRepository:
+    def __init__(
+        self,
+        now_provider: Callable[[], datetime] | None = None,
+        max_attempts: int = 3,
+    ) -> None:
+        self.now_provider = now_provider
+        self.max_attempts = max_attempts
+```
+
+- Use private helper methods for repeated logic, e.g. `_now()`, `_get_stage()`, `_apply_completed_fields()`.
+- Keep public methods stable and testable; use private methods to reduce duplication.
+- Prefer small, single-purpose classes over large procedural modules.
+
+## Array handling
+
+- Use extend to add multiple items to a list instead of append in a loop.
+
+Prefer this pattern
+```python
+           candidate.locations.extend(new_locations)
+```
+
+This should not be done
+```python
+            for location_source in new_locations:
+                candidate.locations.append(location_source)
+```
+
+##  Practical style reminders
+
+- Prefer clear variable names: `task`, `stage`, `task_id`, `candidate_urls`.
+- Use `logger` for runtime events, not `print()`.
+- Avoid deep nesting by returning early when invalid state is detected.
+- Use explicit `None` checks instead of relying on truthy/falsy semantics for optional values.
+
+Example:
+
+```python
+if task_document is not None:
+    key_value = task_document.get("key")
+    if isinstance(key_value, str):
+        existing_keys.add(key_value)
+```
+
+
 ## Patterns to avoid
+
+
+### Don't use tuples unless absolutely necessary
+
+Use a class with property names instead of a tuple. For example:
+
+```python
+class LocationSource(BaseModel):
+    source_type: str
+    source_id: str
+    location: Location
+```
 
 ### Don't use this pattern when class has a defined property.
 

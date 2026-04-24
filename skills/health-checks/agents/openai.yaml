@@ -1,0 +1,4 @@
+interface:
+  display_name: "Health Checks"
+  short_description: "Design real service health checks across runtime boundaries"
+  default_prompt: "Use $health-checks to define or review service health checks that prove the service is running, reachable from the correct boundary, internally connected to required dependencies, and returning expected data."
