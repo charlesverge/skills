@@ -68,10 +68,10 @@ A blocking failure should raise a structured exception type that describes the s
 When a function encounters a record state issue, evaluate the following in order:
 
 1. Is the field or invariant required for the current operation?
-2. If missing or invalid, would continuing produce an incorrect result?
-3. If the operation is skipped, would the record remain eligible for repeated future processing?
-4. Is repair explicitly allowed for this field or issue type?
-5. Is the issue non-blocking, or must execution stop now?
+1. If missing or invalid, would continuing produce an incorrect result?
+1. If the operation is skipped, would the record remain eligible for repeated future processing?
+1. Is repair explicitly allowed for this field or issue type?
+1. Is the issue non-blocking, or must execution stop now?
 
 From that evaluation, the function must choose one of the following outcomes.
 
@@ -284,11 +284,11 @@ Result:
 Before choosing to continue, skip, or fail, ask:
 
 1. Is this field required for the current operation?
-2. Can the operation still produce a correct result?
-3. Would skipping preserve stale retry-selection state?
-4. Am I about to hide a workflow-level liveness problem behind a local guard?
-5. Am I repairing something that has not been explicitly authorized?
-6. If I raise, will the caller receive a clear enough reason to decide what happens next?
+1. Can the operation still produce a correct result?
+1. Would skipping preserve stale retry-selection state?
+1. Am I about to hide a workflow-level liveness problem behind a local guard?
+1. Am I repairing something that has not been explicitly authorized?
+1. If I raise, will the caller receive a clear enough reason to decide what happens next?
 
 ## Minimal Rule Set
 

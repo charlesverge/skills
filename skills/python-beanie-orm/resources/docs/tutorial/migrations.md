@@ -1,6 +1,5 @@
 ## Attention!
 
-
 ## Create
 
 To create a new migration, run:
@@ -13,7 +12,7 @@ It will create a file named `YYYYMMDDHHMMSS_migration_name.py` in the directory 
 
 > **Note**: Migrations are executed in alphabetical order based on their filenames. While you can name migration files anything, it's recommended to keep the generated timestamp or use explicit ordering numbers (like `001_`, `002_`, etc.). Files starting with underscore (`_`) are ignored by the migration system (e.g. `__init__.py`).
 
-Migration file contains two classes: `Forward` and `Backward`. 
+Migration file contains two classes: `Forward` and `Backward`.
 Each one contains instructions to roll migration respectively forward and backward.
 
 ## Run
@@ -54,12 +53,12 @@ beanie migrate --help
 
 Migration class contains instructions - decorated async functions. There are two types of instructions:
 
-- Iterative migration - instruction that iterates over all the documents of the input_document collection and updates it. Most convenient to use, should be used in 99% cases.
-- Free fall migrations - instruction where user can write any logic. Most flexible, but verbose.
+* Iterative migration - instruction that iterates over all the documents of the input\_document collection and updates it. Most convenient to use, should be used in 99% cases.
+* Free fall migrations - instruction where user can write any logic. Most flexible, but verbose.
 
 ### Iterative migrations
 
-To mark a function as iterative migration, `@iterative_migration()` decorator must be used. 
+To mark a function as iterative migration, `@iterative_migration()` decorator must be used.
 The function itself must accept typed `input_document` and `output_document` arguments. Like here:
 
 ```python
@@ -172,17 +171,18 @@ class Backward:
     ):
         output_document.tag.name = input_document.tag.title
 ```
+
 All the examples of migrations can be found by [link](https://github.com/roman-right/beanie/tree/main/tests/migrations/migrations_for_test)
 
 ### Free fall migrations
 
-It is a much more flexible migration type, which allows the implementation of any migration logic. 
+It is a much more flexible migration type, which allows the implementation of any migration logic.
 But at the same time, it is more verbose.
 
-To mark function as a free fall migration, 
-`@free_fall_migration()` decorator with the list of Document classes must be used. 
-Function itself accepts `session` as an argument. 
-It is used in order to roll back the migration in case something has gone wrong. 
+To mark function as a free fall migration,
+`@free_fall_migration()` decorator with the list of Document classes must be used.
+Function itself accepts `session` as an argument.
+It is used in order to roll back the migration in case something has gone wrong.
 To be able to roll back, please pass session to the Documents methods. Like here:
 
 ```python
@@ -244,4 +244,5 @@ class Backward:
             await new_note.replace(session=session)
 
 ```
+
 All the examples of migrations can be found by [link](https://github.com/roman-right/beanie/tree/main/tests/migrations/migrations_for_test)

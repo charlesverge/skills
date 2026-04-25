@@ -9,7 +9,7 @@ metadata:
 
 Use this skill when implementing or reviewing Qdrant vector collection write/read logic with the Python client.
 
-Official docs: https://python-client.qdrant.tech/
+Official docs: <https://python-client.qdrant.tech/>
 
 ## Quick setup
 
@@ -44,9 +44,10 @@ client.insert(collection_name=collection_name, points=points)
 ```
 
 Types sent:
-- `id`: `int | str | UUID`
-- `vector`: `list[float]`
-- `payload`: JSON-like values (`str`, `int`, `float`, `bool`, `list`, `dict`, `None`)
+
+* `id`: `int | str | UUID`
+* `vector`: `list[float]`
+* `payload`: JSON-like values (`str`, `int`, `float`, `bool`, `list`, `dict`, `None`)
 
 ## 2) Upsert
 
@@ -71,9 +72,10 @@ client.upsert(
 ```
 
 Important payload typing note:
-- Sending `datetime` in payload is accepted by the Python client.
-- Retrieving that payload returns an RFC3339 timestamp `str`, not a Python `datetime`.
-- Example returned value: `'2026-03-24T12:21:10.136767Z'`
+
+* Sending `datetime` in payload is accepted by the Python client.
+* Retrieving that payload returns an RFC3339 timestamp `str`, not a Python `datetime`.
+* Example returned value: `'2026-03-24T12:21:10.136767Z'`
 
 ## 3) Delete
 
@@ -125,11 +127,12 @@ print(type(created_at_raw), created_at_raw)
 ```
 
 Types retrieved:
-- `records`: `list[models.Record]`
-- `record.id`: `int | str | UUID`
-- `record.vector`: `list[float] | dict[str, list[float]] | None` (depends on vector config and `with_vectors`)
-- `record.payload`: `dict[str, Any] | None`
-- Datetime payload values are returned as `str` (RFC3339), not `datetime`
+
+* `records`: `list[models.Record]`
+* `record.id`: `int | str | UUID`
+* `record.vector`: `list[float] | dict[str, list[float]] | None` (depends on vector config and `with_vectors`)
+* `record.payload`: `dict[str, Any] | None`
+* Datetime payload values are returned as `str` (RFC3339), not `datetime`
 
 ## Conversion pattern for datetime fields
 

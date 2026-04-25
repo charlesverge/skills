@@ -11,18 +11,17 @@ metadata:
 
 When making any code change, check that the change matches the preferred pattern. If not stop and ask for approval.
 
-
 ## Preferred patterns
 
 # CODE PATTERNS
 
 This document captures accepted Python coding patterns for this repository. It is intentionally concise and practical: use classes for stage/repository logic, prefer strongly typed function signatures, and keep control flow explicit and readable.
 
-##  `if / else`
+## `if / else`
 
-- Use explicit condition checks.
-- Prefer early return to avoid deep nesting.
-- Keep each branch small and clear.
+* Use explicit condition checks.
+* Prefer early return to avoid deep nesting.
+* Keep each branch small and clear.
 
 Example:
 
@@ -41,15 +40,15 @@ else:
     sort_fields = ["created_on"]
 ```
 
-- Use `elif` when a second condition is mutually exclusive.
-- Use `else` only when there is a clear default.
-- Avoid complex boolean expressions in one line; split them into named intermediate variables when helpful.
+* Use `elif` when a second condition is mutually exclusive.
+* Use `else` only when there is a clear default.
+* Avoid complex boolean expressions in one line; split them into named intermediate variables when helpful.
 
-##  `for` loops
+## `for` loops
 
-- Use `for item in iterable:` for iteration.
-- Prefer list comprehensions for simple transforms.
-- Use explicit value checks inside loops when needed.
+* Use `for item in iterable:` for iteration.
+* Prefer list comprehensions for simple transforms.
+* Use explicit value checks inside loops when needed.
 
 Example:
 
@@ -60,15 +59,15 @@ for url in candidate_urls:
         results.append(url)
 ```
 
-- Use `enumerate()` when the index is required.
-- Avoid iterating over indexes manually unless you need numeric control.
+* Use `enumerate()` when the index is required.
+* Avoid iterating over indexes manually unless you need numeric control.
 
-##  `while` loops
+## `while` loops
 
-- Use `while` only when repeated execution depends on a changing condition rather than a fixed collection.
-- Keep the loop condition simple.
-- Update loop state clearly inside the body.
-- Avoid unbounded `while True` loops.
+* Use `while` only when repeated execution depends on a changing condition rather than a fixed collection.
+* Keep the loop condition simple.
+* Update loop state clearly inside the body.
+* Avoid unbounded `while True` loops.
 
 Example:
 
@@ -80,14 +79,14 @@ while len(frontier_task_ids) > 0:
     frontier_task_ids = child_task_ids
 ```
 
-- Avoid infinite loops without an obvious break condition.
-- Prefer queue deques or generator-based iteration when possible.
+* Avoid infinite loops without an obvious break condition.
+* Prefer queue deques or generator-based iteration when possible.
 
-##  `BaseModel` class usage
+## `BaseModel` class usage
 
-- Use `pydantic.BaseModel` for task payloads and structured inputs.
-- Define payload classes in `src/worker/integrations/company_research/types.py` or suitable shared modules.
-- When parsing agent output, accept both `BaseModel` values and raw data safely.
+* Use `pydantic.BaseModel` for task payloads and structured inputs.
+* Define payload classes in `src/worker/integrations/company_research/types.py` or suitable shared modules.
+* When parsing agent output, accept both `BaseModel` values and raw data safely.
 
 Example:
 
@@ -99,15 +98,15 @@ class EnqueueTaskRequest(BaseModel):
     payload: DiscoveryTaskPayload
 ```
 
-- Keep model fields explicit with types.
-- Use `model_dump(mode="python")` to serialize models for storage or output.
-- Use `isinstance(result, BaseModel)` when you need to support both model and plain data inputs.
+* Keep model fields explicit with types.
+* Use `model_dump(mode="python")` to serialize models for storage or output.
+* Use `isinstance(result, BaseModel)` when you need to support both model and plain data inputs.
 
-##  Strong typing for function parameters and return values
+## Strong typing for function parameters and return values
 
-- Always annotate function parameters and return types.
-- Use Python 3.10-style unions: `str | None`, `list[str]`, `dict[str, object]`.
-- Prefer concrete, descriptive types over `Any`.
+* Always annotate function parameters and return types.
+* Use Python 3.10-style unions: `str | None`, `list[str]`, `dict[str, object]`.
+* Prefer concrete, descriptive types over `Any`.
 
 Example:
 
@@ -123,14 +122,14 @@ async def get_keys(
     ...
 ```
 
-- For `BaseModel` subclasses and domain objects, use the actual class name.
-- Use `PydanticObjectId` for MongoDB object ids, and `datetime` for timestamps.
+* For `BaseModel` subclasses and domain objects, use the actual class name.
+* Use `PydanticObjectId` for MongoDB object ids, and `datetime` for timestamps.
 
-##  Using classes
+## Using classes
 
-- Prefer classes for stage behavior, repository access, and reusable helpers.
-- Use `__init__` to inject dependencies and configuration.
-- Keep methods focused on a single responsibility.
+* Prefer classes for stage behavior, repository access, and reusable helpers.
+* Use `__init__` to inject dependencies and configuration.
+* Keep methods focused on a single responsibility.
 
 Example:
 
@@ -145,31 +144,33 @@ class DiscoveryQueueRepository:
         self.max_attempts = max_attempts
 ```
 
-- Use private helper methods for repeated logic, e.g. `_now()`, `_get_stage()`, `_apply_completed_fields()`.
-- Keep public methods stable and testable; use private methods to reduce duplication.
-- Prefer small, single-purpose classes over large procedural modules.
+* Use private helper methods for repeated logic, e.g. `_now()`, `_get_stage()`, `_apply_completed_fields()`.
+* Keep public methods stable and testable; use private methods to reduce duplication.
+* Prefer small, single-purpose classes over large procedural modules.
 
 ## Array handling
 
-- Use extend to add multiple items to a list instead of append in a loop.
+* Use extend to add multiple items to a list instead of append in a loop.
 
 Prefer this pattern
+
 ```python
            candidate.locations.extend(new_locations)
 ```
 
 This should not be done
+
 ```python
             for location_source in new_locations:
                 candidate.locations.append(location_source)
 ```
 
-##  Practical style reminders
+## Practical style reminders
 
-- Prefer clear variable names: `task`, `stage`, `task_id`, `candidate_urls`.
-- Use `logger` for runtime events, not `print()`.
-- Avoid deep nesting by returning early when invalid state is detected.
-- Use explicit `None` checks instead of relying on truthy/falsy semantics for optional values.
+* Prefer clear variable names: `task`, `stage`, `task_id`, `candidate_urls`.
+* Use `logger` for runtime events, not `print()`.
+* Avoid deep nesting by returning early when invalid state is detected.
+* Use explicit `None` checks instead of relying on truthy/falsy semantics for optional values.
 
 Example:
 
@@ -180,9 +181,7 @@ if task_document is not None:
         existing_keys.add(key_value)
 ```
 
-
 ## Patterns to avoid
-
 
 ### Don't use tuples unless absolutely necessary
 
@@ -205,7 +204,7 @@ This should not be done
     return 0
 ```
 
-Simplify to 
+Simplify to
 
 ```python
   if not random_class.property_name:
@@ -289,9 +288,9 @@ async for result in cursor:
 
 ## Function creation
 
-- Don't create a fall back unless explicitly asked for
-- Avoid the use of built in functions like attrib, hasattr for classes which can accessed like ClassName.property_name
-- If a reference is already a str don't add str() to it.
+* Don't create a fall back unless explicitly asked for
+* Avoid the use of built in functions like attrib, hasattr for classes which can accessed like ClassName.property\_name
+* If a reference is already a str don't add str() to it.
 
 ## Beanie classes
 
@@ -339,15 +338,16 @@ def do_foo_function(
 ```
 
 Simplify to
+
 ```python
     self.model = do_foo_function(
         param1=param1, param2=param2, param3=param3
     )
 ```
 
-## Prefer model_validate over manual model creation
+## Prefer model\_validate over manual model creation
 
-Instead of listing every field when creating a beanie model from a dict, use model_validate
+Instead of listing every field when creating a beanie model from a dict, use model\_validate
 
 ## Assert usage
 
@@ -397,38 +397,42 @@ async for company in cursor:
   company_id = company.id
 ```
 
-## Prefer model_validate over manual model creation
+## Prefer model\_validate over manual model creation
 
-Instead of listing every field when creating a beanie model from a dict, use model_validate
+Instead of listing every field when creating a beanie model from a dict, use model\_validate
 
 ## Assert usage
 
 assert usage should be kept for unit tests
 
-
 ## Batch key-indexed ID cache pattern.
 
 ### Use it when:
-- ID is discovered in one phase but applied in a later, separate phase.
-- Re-querying is expensive, flaky, or unavailable later.
-- There is no direct per-record channel to carry the ID forward.
-- The correlation key is stable and unique for that pipeline step.
+
+* ID is discovered in one phase but applied in a later, separate phase.
+* Re-querying is expensive, flaky, or unavailable later.
+* There is no direct per-record channel to carry the ID forward.
+* The correlation key is stable and unique for that pipeline step.
 
 ### Do not use it when:
-- ID is already available at the point of write/process.
-- ID can be passed directly in function args/event payload/result object.
-- A cache introduces avoidable state, staleness, or key-mismatch risk.
-- The phase boundary is weak (same call path, same scope) and no decoupling benefit exists.
+
+* ID is already available at the point of write/process.
+* ID can be passed directly in function args/event payload/result object.
+* A cache introduces avoidable state, staleness, or key-mismatch risk.
+* The phase boundary is weak (same call path, same scope) and no decoupling benefit exists.
 
 ### Rule of thumb:
-- Prefer direct propagation first.
-- Use key-indexed ID cache only to bridge a real phase boundary where direct propagation is not practical.
+
+* Prefer direct propagation first.
+* Use key-indexed ID cache only to bridge a real phase boundary where direct propagation is not practical.
 
 ### Generic description:
-- Build an in-memory dictionary keyed by batch artifact (file/job/message id), with value = all related IDs needed later.
-- Reuse that dictionary during downstream processing to avoid re-querying or recomputing IDs.
 
-###Generic example:
+* Build an in-memory dictionary keyed by batch artifact (file/job/message id), with value = all related IDs needed later.
+* Reuse that dictionary during downstream processing to avoid re-querying or recomputing IDs.
+
+\###Generic example:
+
 ```python
 ids_by_file = {
   "batch_a.jsonl": {"worker_id": "...", "org_id": "...", "run_id": "..."},
@@ -438,4 +442,5 @@ ctx = ids_by_file.get(file_name)
 ```
 
 ### Future phrasing:
-- “Use a key-indexed ID cache: store all IDs per file in a dict, then look them up during import/persist.”
+
+* “Use a key-indexed ID cache: store all IDs per file in a dict, then look them up during import/persist.”

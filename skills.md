@@ -2,13 +2,13 @@
 
 ## health-checks
 
-- `id`: `health-checks`
-- `path`: `skills/health-checks`
-- `category`: `engineering`
-- `name`: `health-checks`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-04-22`
+* `id`: `health-checks`
+* `path`: `skills/health-checks`
+* `category`: `engineering`
+* `name`: `health-checks`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-04-22`
 
 ### Description
 
@@ -16,17 +16,17 @@ Create or review health checks for services, containers, container-to-container 
 
 ### Skill File
 
-- [skills/health-checks/SKILL.md](skills/health-checks/SKILL.md)
+* [skills/health-checks/SKILL.md](skills/health-checks/SKILL.md)
 
 ## python-beanie-orm
 
-- `id`: `python-beanie-orm`
-- `path`: `skills/python-beanie-orm`
-- `category`: `engineering`
-- `name`: `python-beanie-orm`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-04-20`
+* `id`: `python-beanie-orm`
+* `path`: `skills/python-beanie-orm`
+* `category`: `engineering`
+* `name`: `python-beanie-orm`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-04-20`
 
 ### Description
 
@@ -34,17 +34,17 @@ Use Beanie ODM patterns for MongoDB async operations. Covers document models, qu
 
 ### Skill File
 
-- [skills/python-beanie-orm/SKILL.md](skills/python-beanie-orm/SKILL.md)
+* [skills/python-beanie-orm/SKILL.md](skills/python-beanie-orm/SKILL.md)
 
 ## test-harness-creation
 
-- `id`: `test-harness-creation`
-- `path`: `skills/test-harness-creation`
-- `category`: `engineering`
-- `name`: `test-harness-creation`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-04-10`
+* `id`: `test-harness-creation`
+* `path`: `skills/test-harness-creation`
+* `category`: `engineering`
+* `name`: `test-harness-creation`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-04-10`
 
 ### Description
 
@@ -52,17 +52,17 @@ Create strict, production-like test harnesses with explicit setup, execution, an
 
 ### Skill File
 
-- [skills/test-harness-creation/SKILL.md](skills/test-harness-creation/SKILL.md)
+* [skills/test-harness-creation/SKILL.md](skills/test-harness-creation/SKILL.md)
 
 ## error-classification-policy
 
-- `id`: `error-classification-policy`
-- `path`: `skills/error-classification-policy`
-- `category`: `engineering`
-- `name`: `error-classification-policy`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-26`
+* `id`: `error-classification-policy`
+* `path`: `skills/error-classification-policy`
+* `category`: `engineering`
+* `name`: `error-classification-policy`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-26`
 
 ### Description
 
@@ -70,35 +70,35 @@ Classify failures into temporary versus permanent using a contract-aware policy 
 
 ### Skill File
 
-- [skills/error-classification-policy/SKILL.md](skills/error-classification-policy/SKILL.md)
+* [skills/error-classification-policy/SKILL.md](skills/error-classification-policy/SKILL.md)
 
 ## aiohttp-usage-rules
 
-- `id`: `aiohttp-usage-rules`
-- `path`: `skills/aiohttp-usage-rules`
-- `category`: `engineering`
-- `name`: `aiohttp-usage-rules`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-26`
+* `id`: `aiohttp-usage-rules`
+* `path`: `skills/aiohttp-usage-rules`
+* `category`: `engineering`
+* `name`: `aiohttp-usage-rules`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-26`
 
 ### Description
 
-Enforce acceptable aiohttp usage patterns in Python async code. Use when adding or reviewing HTTP requests with aiohttp, especially for converting sync call paths to async, constructing ClientSession with timeout and headers, handling redirects with allow_redirects=False, and writing safe GET/POST request flows.
+Enforce acceptable aiohttp usage patterns in Python async code. Use when adding or reviewing HTTP requests with aiohttp, especially for converting sync call paths to async, constructing ClientSession with timeout and headers, handling redirects with allow\_redirects=False, and writing safe GET/POST request flows.
 
 ### Skill File
 
-- [skills/aiohttp-usage-rules/SKILL.md](skills/aiohttp-usage-rules/SKILL.md)
+* [skills/aiohttp-usage-rules/SKILL.md](skills/aiohttp-usage-rules/SKILL.md)
 
 ## function-creation-rules
 
-- `id`: `function-creation-rules`
-- `path`: `skills/function-creation-rules`
-- `category`: `engineering`
-- `name`: `function-creation-rules`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-24`
+* `id`: `function-creation-rules`
+* `path`: `skills/function-creation-rules`
+* `category`: `engineering`
+* `name`: `function-creation-rules`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-24`
 
 ### Description
 
@@ -106,17 +106,17 @@ Enforce function creation and reuse rules extracted from agents.md without line 
 
 ### Skill File
 
-- [skills/function-creation-rules/SKILL.md](skills/function-creation-rules/SKILL.md)
+* [skills/function-creation-rules/SKILL.md](skills/function-creation-rules/SKILL.md)
 
 ## qdrant-database-operations
 
-- `id`: `qdrant-database-operations`
-- `path`: `skills/qdrant-database-operations`
-- `category`: `engineering`
-- `name`: `qdrant-database-operations`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-24`
+* `id`: `qdrant-database-operations`
+* `path`: `skills/qdrant-database-operations`
+* `category`: `engineering`
+* `name`: `qdrant-database-operations`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-24`
 
 ### Description
 
@@ -124,17 +124,17 @@ Use Qdrant Python client patterns for common collection operations including ins
 
 ### Skill File
 
-- [skills/qdrant-database-operations/SKILL.md](skills/qdrant-database-operations/SKILL.md)
+* [skills/qdrant-database-operations/SKILL.md](skills/qdrant-database-operations/SKILL.md)
 
 ## code-cleanup-rules
 
-- `id`: `code-cleanup-rules`
-- `path`: `skills/code-cleanup-rules`
-- `category`: `engineering`
-- `name`: `code-cleanup-rules`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-20`
+* `id`: `code-cleanup-rules`
+* `path`: `skills/code-cleanup-rules`
+* `category`: `engineering`
+* `name`: `code-cleanup-rules`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-20`
 
 ### Description
 
@@ -142,17 +142,17 @@ Apply cleanup-focused refactor rules for phased invalid/orphan deletion logic, s
 
 ### Skill File
 
-- [skills/code-cleanup-rules/SKILL.md](skills/code-cleanup-rules/SKILL.md)
+* [skills/code-cleanup-rules/SKILL.md](skills/code-cleanup-rules/SKILL.md)
 
 ## needless-helper-decisions
 
-- `id`: `needless-helper-decisions`
-- `path`: `skills/needless-helper-decisions`
-- `category`: `engineering`
-- `name`: `needless-helper-decisions`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-19`
+* `id`: `needless-helper-decisions`
+* `path`: `skills/needless-helper-decisions`
+* `category`: `engineering`
+* `name`: `needless-helper-decisions`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-19`
 
 ### Description
 
@@ -160,17 +160,17 @@ Use this rubric and example set for future needless helper decisions. Use when r
 
 ### Skill File
 
-- [skills/needless-helper-decisions/SKILL.md](skills/needless-helper-decisions/SKILL.md)
+* [skills/needless-helper-decisions/SKILL.md](skills/needless-helper-decisions/SKILL.md)
 
 ## single-read-decision-update
 
-- `id`: `single-read-decision-update`
-- `path`: `skills/single-read-decision-update`
-- `category`: `engineering`
-- `name`: `single-read-decision-update`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-19`
+* `id`: `single-read-decision-update`
+* `path`: `skills/single-read-decision-update`
+* `category`: `engineering`
+* `name`: `single-read-decision-update`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-19`
 
 ### Description
 
@@ -178,17 +178,17 @@ Enforce a single-read decision update pattern for repository/service methods tha
 
 ### Skill File
 
-- [skills/single-read-decision-update/SKILL.md](skills/single-read-decision-update/SKILL.md)
+* [skills/single-read-decision-update/SKILL.md](skills/single-read-decision-update/SKILL.md)
 
 ## naming-rules
 
-- `id`: `naming-rules`
-- `path`: `skills/naming-rules`
-- `category`: `engineering`
-- `name`: `naming-rules`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-19`
+* `id`: `naming-rules`
+* `path`: `skills/naming-rules`
+* `category`: `engineering`
+* `name`: `naming-rules`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-19`
 
 ### Description
 
@@ -196,17 +196,17 @@ Apply concise naming rules for variables, properties, fields, and functions whil
 
 ### Skill File
 
-- [skills/naming-rules/SKILL.md](skills/naming-rules/SKILL.md)
+* [skills/naming-rules/SKILL.md](skills/naming-rules/SKILL.md)
 
 ## code-patterns
 
-- `id`: `code-patterns`
-- `path`: `skills/code-patterns`
-- `category`: `engineering`
-- `name`: `code-patterns`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-19`
+* `id`: `code-patterns`
+* `path`: `skills/code-patterns`
+* `category`: `engineering`
+* `name`: `code-patterns`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-19`
 
 ### Description
 
@@ -214,17 +214,17 @@ Enforce Python and Beanie code patterns that avoid unsafe defaults, inline impor
 
 ### Skill File
 
-- [skills/code-patterns/SKILL.md](skills/code-patterns/SKILL.md)
+* [skills/code-patterns/SKILL.md](skills/code-patterns/SKILL.md)
 
 ## record-state-handling
 
-- `id`: `record-state-handling`
-- `path`: `skills/record-state-handling`
-- `category`: `engineering`
-- `name`: `record-state-handling`
-- `risk`: `safe`
-- `source`: `personal`
-- `date_added`: `2026-03-24`
+* `id`: `record-state-handling`
+* `path`: `skills/record-state-handling`
+* `category`: `engineering`
+* `name`: `record-state-handling`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-03-24`
 
 ### Description
 

@@ -6,17 +6,17 @@ The document can contain links to other documents in their fields.
 
 The following field types are supported:
 
-- `Link[...]`
-- `Optional[Link[...]]`
-- `List[Link[...]]`
-- `Optional[List[Link[...]]]`
+* `Link[...]`
+* `Optional[Link[...]]`
+* `List[Link[...]]`
+* `Optional[List[Link[...]]]`
 
 Also, backward links are supported:
 
-- `BackLink[...]`
-- `Optional[BackLink[...]]`
-- `List[BackLink[...]]`
-- `Optional[List[BackLink[...]]]`
+* `BackLink[...]`
+* `Optional[BackLink[...]]`
+* `List[BackLink[...]]`
+* `Optional[List[BackLink[...]]]`
 
 Direct link to the document:
 
@@ -93,16 +93,16 @@ class House(Document):
     yards: Optional[List[Link[Yard]]]
 ```
 
-Other link patterns are not supported at this moment. If you need something more specific for your use-case, 
+Other link patterns are not supported at this moment. If you need something more specific for your use-case,
 please open an issue on the GitHub page - <https://github.com/roman-right/beanie>
 
 ## Write
 
 The following write methods support relations:
 
-- `insert(...)`
-- `replace(...)`
-- `save(...)`
+* `insert(...)`
+* `replace(...)`
+* `save(...)`
 
 To apply a write method to the linked documents, you should pass the respective `link_rule` argument
 
@@ -132,7 +132,7 @@ await house.replace(link_rule=WriteRules.DO_NOTHING)
 
 ### Prefetch
 
-You can fetch linked documents on the find query step using the `fetch_links` parameter 
+You can fetch linked documents on the find query step using the `fetch_links` parameter
 
 ```python
 houses = await House.find(
@@ -140,15 +140,17 @@ houses = await House.find(
     fetch_links=True
 ).to_list()
 ```
-Supported find methods:
-- `find`
-- `find_one`
-- `get`
 
-Beanie uses the single aggregation query under the hood to fetch all the linked documents. 
+Supported find methods:
+
+* `find`
+* `find_one`
+* `get`
+
+Beanie uses the single aggregation query under the hood to fetch all the linked documents.
 This operation is very effective.
 
-If a direct link is referred to a non-existent document, 
+If a direct link is referred to a non-existent document,
 after fetching it will remain the object of the `Link` class.
 
 Fetching will ignore non-existent documents for the list of links fields.
@@ -227,7 +229,7 @@ Also, you can set up the maximum nesting depth on the document definition level.
 
 ### On-demand fetch
 
-If you don't use prefetching, linked documents will be presented as objects of the `Link` class. 
+If you don't use prefetching, linked documents will be presented as objects of the `Link` class.
 
 You can fetch them manually afterwards.
 
@@ -251,7 +253,7 @@ This will fetch the Door object and put it into the `door` field of the `house` 
 
 Delete method works the same way as write operations, but it uses other rules.
 
-To delete all the links on the document deletion, 
+To delete all the links on the document deletion,
 you should use the `DeleteRules.DELETE_LINKS` value for the `link_rule` parameter:
 
 ```python
@@ -295,10 +297,10 @@ class Person(Document):
 ```
 
 The `original_field` parameter is required for the back link field.
-In Pydantic v2, it must be passed using the json_schema_extra argument in Field(...) to avoid deprecation warnings and ensure compatibility.
+In Pydantic v2, it must be passed using the json\_schema\_extra argument in Field(...) to avoid deprecation warnings and ensure compatibility.
 
 Back links support all the operations that normal links support, but are virtual. This means that when searching the database, you will need to include `fetch_links=True` (see [Finding documents](/tutorial/finding-documents).), or you will recieve an empty 'BackLink' virtual object. It is not possible to `fetch()` this virtual link after the initial search.
 
 ## Limitations
 
-- Find operations with the `fetch_links` parameter can not be used in the chaning with `delete` and `update` methods.
+* Find operations with the `fetch_links` parameter can not be used in the chaning with `delete` and `update` methods.

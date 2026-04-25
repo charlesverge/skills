@@ -39,7 +39,6 @@ await s.save_changes()
 
 The `save_changes()` method can only be used with already inserted documents.
 
-
 ## Interacting with changes
 
 Beanie exposes several methods that can be used to interact with the saved changes:
@@ -74,11 +73,10 @@ s.get_previous_changes() == {"num": 200}
 s.get_changes() == {}
 ```
 
-
 ## Options
 
-By default, state management will merge the changes made to nested objects, 
-which is fine for most cases as it is non-destructive and does not re-assign the whole object 
+By default, state management will merge the changes made to nested objects,
+which is fine for most cases as it is non-destructive and does not re-assign the whole object
 if only one of its attributes changed:
 
 ```python

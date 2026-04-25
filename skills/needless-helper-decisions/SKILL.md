@@ -6,11 +6,11 @@ description: Use this rubric and example set for future needless helper decision
 ## Rules
 
 1. Keep a helper when it represents a real phase with multiple steps, branching, or reusable domain logic.
-2. Remove a helper when it is single-use, same-file, and only does a pass-through dependency call (optionally plus logging).
-3. Remove or inline near-duplicate helpers that differ only by exception type or message text.
-4. Keep behavior identical when inlining: same side effects, return values, error semantics, and log levels/messages.
-5. Prefer readability at the call site for exception handling; inline thin exception-only wrappers.
-6. If tests fail due to harness/setup (fixtures/env), stop reshaping and report blocker.
+1. Remove a helper when it is single-use, same-file, and only does a pass-through dependency call (optionally plus logging).
+1. Remove or inline near-duplicate helpers that differ only by exception type or message text.
+1. Keep behavior identical when inlining: same side effects, return values, error semantics, and log levels/messages.
+1. Prefer readability at the call site for exception handling; inline thin exception-only wrappers.
+1. If tests fail due to harness/setup (fixtures/env), stop reshaping and report blocker.
 
 ## Generic Example: Helper to Remove
 
@@ -28,9 +28,10 @@ class Worker:
 ```
 
 Why remove:
-- Single call site.
-- Pass-through queue call + log.
-- No transformation or reusable phase logic.
+
+* Single call site.
+* Pass-through queue call + log.
+* No transformation or reusable phase logic.
 
 Inline target:
 
@@ -77,6 +78,7 @@ class Worker:
 ```
 
 Why keep:
-- Multi-step phase boundary (`collect/validate/decision/side effects`).
-- Contains branching and multiple outcomes.
-- Improves readability and reuse potential, not a pass-through wrapper.
+
+* Multi-step phase boundary (`collect/validate/decision/side effects`).
+* Contains branching and multiple outcomes.
+* Improves readability and reuse potential, not a pass-through wrapper.

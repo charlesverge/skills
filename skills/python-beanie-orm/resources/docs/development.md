@@ -10,9 +10,9 @@ We assume you are familiar with the general forking and pull request workflow fo
 
 All the dependencies and build configs are set in the `pyproject.toml` file. There are three main dependency sections there:
 
-- dependencies: for the dependencies required to run Beanie
-- test: for the dependencies required to run tests
-- doc: for the dependencies required to build the documentation
+* dependencies: for the dependencies required to run Beanie
+* test: for the dependencies required to run tests
+* doc: for the dependencies required to build the documentation
 
 And there are other extra dependency sections for Beanie batteries. For example, the `queue` section contains dependencies that extend features of Beanie with a queue.
 
@@ -36,8 +36,8 @@ To run tests and use Beanie in general, you will need an accessible MongoDB data
 
 Beanie uses [pytest](https://docs.pytest.org) for unit testing. To ensure the stability of Beanie, each added feature must be tested in a separate unit test, even if it looks like other tests are covering it now. This strategy guarantees that:
 
-- All the features will be covered and stay covered.
-- There is independence from other features and test cases.
+* All the features will be covered and stay covered.
+* There is independence from other features and test cases.
 
 To run the test suite, make sure that you have MongoDB running and run `pytest`.
 

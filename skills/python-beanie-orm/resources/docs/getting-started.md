@@ -76,9 +76,9 @@ pip install "beanie[gssapi,aws,ocsp,snappy,srv,zstd,encryption]"
 
 Getting Beanie setup in your code is really easy:
 
-1.  Write your database model as a Pydantic class but use `beanie.Document` instead of `pydantic.BaseModel`.
-2.  Initialize Async PyMongo, as Beanie uses this as an async database engine under the hood.
-3.  Call `beanie.init_beanie` with the PyMongo client and list of Beanie models
+1. Write your database model as a Pydantic class but use `beanie.Document` instead of `pydantic.BaseModel`.
+1. Initialize Async PyMongo, as Beanie uses this as an async database engine under the hood.
+1. Call `beanie.init_beanie` with the PyMongo client and list of Beanie models
 
 The code below should get you started and shows some of the field types that you can use with beanie.
 

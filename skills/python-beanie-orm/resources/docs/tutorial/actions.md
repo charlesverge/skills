@@ -4,28 +4,28 @@ You can register methods as pre- or post- actions for document events.
 
 Currently supported events:
 
-- Save
-- Insert
-- Replace
-- Update
-- SaveChanges
-- Delete
-- ValidateOnSave
+* Save
+* Insert
+* Replace
+* Update
+* SaveChanges
+* Delete
+* ValidateOnSave
 
 Currently supported directions:
 
-- `Before`
-- `After`
+* `Before`
+* `After`
 
 Current operations creating events:
 
-- `insert()` for Insert
-- `replace()` for Replace
-- `save()` for Save and triggers Insert if it is creating a new document, or triggers Replace if it replaces an existing document
-- `save_changes()` for SaveChanges
-- `insert()`, `replace()`, `save_changes()`, and `save()` for ValidateOnSave
-- `set()`, `update()` for Update
-- `delete()` for Delete
+* `insert()` for Insert
+* `replace()` for Replace
+* `save()` for Save and triggers Insert if it is creating a new document, or triggers Replace if it replaces an existing document
+* `save_changes()` for SaveChanges
+* `insert()`, `replace()`, `save_changes()`, and `save()` for ValidateOnSave
+* `set()`, `update()` for Update
+* `delete()` for Delete
 
 To register an action, you can use `@before_event` and `@after_event` decorators respectively:
 
@@ -116,7 +116,7 @@ await sample.replace(skip_actions[Before, 'num_change'])
 
 ## Update event and field modifications
 
-When using `@before_event(Update)`, you can modify document fields and those changes will 
+When using `@before_event(Update)`, you can modify document fields and those changes will
 be included in the update operation sent to MongoDB. This allows patterns like automatically
 setting an `updated_at` timestamp:
 
@@ -157,12 +157,12 @@ class Sample(Document):
 
 Available strategies:
 
-| Strategy | Description |
-|---|---|
-| `UPDATE_WINS` (default) | Explicit update arguments take precedence. Action changes are included only for fields not already targeted by the update. |
-| `ACTION_WINS` | Action changes take precedence. For conflicting fields, the before_event value replaces what the update expression would have set. |
-| `ACTION_OVERRIDE` | Action changes completely replace the entire update expression. The original update arguments are discarded. |
-| `RAISE` | Raises `MergeConflictError` if any field is modified by both the update and a before_event handler. |
+| Strategy                | Description                                                                                                                         |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `UPDATE_WINS` (default) | Explicit update arguments take precedence. Action changes are included only for fields not already targeted by the update.          |
+| `ACTION_WINS`           | Action changes take precedence. For conflicting fields, the before\_event value replaces what the update expression would have set. |
+| `ACTION_OVERRIDE`       | Action changes completely replace the entire update expression. The original update arguments are discarded.                        |
+| `RAISE`                 | Raises `MergeConflictError` if any field is modified by both the update and a before\_event handler.                                |
 
 Example with `RAISE`:
 

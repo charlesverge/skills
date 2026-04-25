@@ -37,16 +37,16 @@ class Product(Document):  # This is the model
 
 ## Fields
 
-As it was mentioned before, the `Document` class is inherited from the Pydantic `BaseModel` class. 
+As it was mentioned before, the `Document` class is inherited from the Pydantic `BaseModel` class.
 It uses all the same patterns of `BaseModel`. But also it has special types of fields:
 
-- id
-- Indexed
+* id
+* Indexed
 
 ### id
 
-`id` field of the `Document` class reflects the unique `_id` field of the MongoDB document. 
-Each object of the `Document` type has this field. 
+`id` field of the `Document` class reflects the unique `_id` field of the MongoDB document.
+Each object of the `Document` type has this field.
 The default type of this is [PydanticObjectId](../api-documentation/fields.md/#pydanticobjectid).
 
 ```python
@@ -95,8 +95,8 @@ class Sample(Document):
     description: Indexed(str, index_type=pymongo.TEXT)
 ```
 
-The `Indexed` function also supports pymongo `IndexModel` kwargs arguments ([PyMongo Documentation](https://pymongo.readthedocs.io/en/stable/api/pymongo/operations.html#pymongo.operations.IndexModel)). 
- 
+The `Indexed` function also supports pymongo `IndexModel` kwargs arguments ([PyMongo Documentation](https://pymongo.readthedocs.io/en/stable/api/pymongo/operations.html#pymongo.operations.IndexModel)).
+
 For example, to create a `unique` index:
 
 ```python
@@ -108,15 +108,15 @@ class Sample(Document):
 
 The inner class `Settings` is used to configure:
 
-- MongoDB collection name
-- Indexes
-- Encoders
-- Use of `revision_id`
-- Use of cache
-- Use of state management
-- Validation on save
-- Configure if nulls should be saved to the database
-- Configure nesting depth for linked documents on the fetch operation
+* MongoDB collection name
+* Indexes
+* Encoders
+* Use of `revision_id`
+* Use of cache
+* Use of state management
+* Validation on save
+* Configure if nulls should be saved to the database
+* Configure nesting depth for linked documents on the fetch operation
 
 ### Collection name
 
@@ -133,13 +133,13 @@ class Sample(Document):
 
 ### Indexes
 
-The `indexes` field of the inner `Settings` class is responsible for the indexes' setup. 
+The `indexes` field of the inner `Settings` class is responsible for the indexes' setup.
 It is a list where items can be:
 
-- Single key. Name of the document's field (this is equivalent to using the Indexed function described above)
-- List of (key, direction) pairs. Key - string, name of the document's field. Direction - pymongo direction (
+* Single key. Name of the document's field (this is equivalent to using the Indexed function described above)
+* List of (key, direction) pairs. Key - string, name of the document's field. Direction - pymongo direction (
   example: `pymongo.ASCENDING`)
-- `pymongo.IndexModel` instance - the most flexible
+* `pymongo.IndexModel` instance - the most flexible
   option. [PyMongo Documentation](https://pymongo.readthedocs.io/en/stable/api/pymongo/operations.html#pymongo.operations.IndexModel)
 
 ```python
@@ -164,7 +164,7 @@ class DocumentTestModelWithIndex(Document):
 
 ### Encoders
 
-The `bson_encoders` field of the inner `Settings` class defines how the Python types are going to be represented 
+The `bson_encoders` field of the inner `Settings` class defines how the Python types are going to be represented
 when saved in the database. The default conversions can be overridden with this.
 
 The `ip` field in the following example is converted to String by default:
@@ -176,9 +176,10 @@ from ipaddress import IPv4Address
 class Sample(Document):
     ip: IPv4Address
 ```
+
 > **Note:** Default conversions are defined in `beanie.odm.utils.bson.ENCODERS_BY_TYPE`.
 
-However, if you want the `ip` field to be represented as Integer in the database, 
+However, if you want the `ip` field to be represented as Integer in the database,
 you need to override the default encoders like this:
 
 ```python
@@ -233,10 +234,11 @@ It is possible to define nested linked documents with Beanie. Sometimes this can
 
 You can configure:
 
-- maximum depth for all linked documents
-- depth for a specific linked document
+* maximum depth for all linked documents
+* depth for a specific linked document
 
 Maximum:
+
 ```python
 class Sample(Document):
     num: int
@@ -248,6 +250,7 @@ class Sample(Document):
 ```
 
 Specific:
+
 ```python
 class Sample(Document):
     num: int

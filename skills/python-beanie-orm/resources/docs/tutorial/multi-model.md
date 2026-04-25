@@ -1,12 +1,12 @@
 # Multi-model pattern
 
-Documents with different schemas could be stored in a single collection and managed correctly. 
+Documents with different schemas could be stored in a single collection and managed correctly.
 `UnionDoc` class is used for this.
 
-It supports `find` and `aggregate` methods. 
+It supports `find` and `aggregate` methods.
 For `find`, it will fetch all the found documents into the respective `Document` classes.
 
-Documents with `union_doc` in their settings can still be used in `find` and other queries. 
+Documents with `union_doc` in their settings can still be used in `find` and other queries.
 Queries of one such class will not see the data of others.
 
 ## Example

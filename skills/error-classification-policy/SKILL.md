@@ -31,15 +31,15 @@ Connection errors are transport or environment failures such as timeout, DNS, co
 Apply the following defaults unless an explicit local policy overrides them:
 
 1. Connection errors: classify as temporary.
-2. Contract and schema errors: classify as permanent by default.
-3. Validation errors: classify according to explicit team policy for that flow.
+1. Contract and schema errors: classify as permanent by default.
+1. Validation errors: classify according to explicit team policy for that flow.
 
 ## LLM-Specific Rule In This Policy
 
 For this flow, classify data-contract outcomes as:
 
 1. Temporary: payload produced by an LLM that fails contract/shape requirements.
-2. Permanent: LLM response is structurally proper, but business-result data indicates failure (for example, explicit fail outcome in valid output).
+1. Permanent: LLM response is structurally proper, but business-result data indicates failure (for example, explicit fail outcome in valid output).
 
 Use this rule consistently across stage paths and script paths so retries and terminal handling behave the same.
 
@@ -64,9 +64,9 @@ When implementing logic, avoid hard-coding universal assumptions like `validatio
 Classify in this order:
 
 1. Determine error family: connection, contract/schema, validation, or business-result failure.
-2. Check whether local policy overrides the default.
-3. If no override exists, apply defaults in this skill.
-4. Emit classification with machine-usable metadata (family, temporary/permanent, reason, stage).
+1. Check whether local policy overrides the default.
+1. If no override exists, apply defaults in this skill.
+1. Emit classification with machine-usable metadata (family, temporary/permanent, reason, stage).
 
 ## Output Contract Recommendation
 

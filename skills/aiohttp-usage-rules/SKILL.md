@@ -7,9 +7,9 @@ description: Enforce acceptable aiohttp usage patterns in Python async code. Use
 
 ## Convert call paths to async
 
-- Make the function `async def` if it performs `aiohttp` I/O.
-- Add `await` at every call site up the stack until the async boundary is reached.
-- Do not call `aiohttp` request methods from synchronous functions.
+* Make the function `async def` if it performs `aiohttp` I/O.
+* Add `await` at every call site up the stack until the async boundary is reached.
+* Do not call `aiohttp` request methods from synchronous functions.
 
 ```python
 async def fetch_page(self, url: str) -> str:

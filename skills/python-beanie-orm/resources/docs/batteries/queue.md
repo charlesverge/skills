@@ -286,6 +286,7 @@ You can specify how frequently the queue will check for new tasks. The default v
 queue = ProcessTask.queue(sleep_time=60)  # 60 seconds
 await queue.start()
 ```
+
 ## Worker
 
 Queue can handle only one task model. To process multiple task models, you should use Worker. It will run multiple queues

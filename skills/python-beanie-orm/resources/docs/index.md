@@ -10,6 +10,7 @@ We are excited to announce that Beanie is transitioning from solo development to
 At this moment we are establishing a board of members that will decide all the future steps of the project. We are looking for contributors and maintainers to join the board.
 
 ### Join Us
+
 If you are interested in contributing or want to stay updated, please join our Discord channel. We're looking forward to your ideas and contributions!
 
 [Join our Discord](https://discord.gg/AwwTrbCASP)
@@ -45,6 +46,7 @@ pip install beanie
 ```shell
 poetry add beanie
 ```
+
 ## Example
 
 ```python
@@ -98,37 +100,38 @@ if __name__ == "__main__":
 
 ### Documentation
 
-- **[Doc](https://beanie-odm.dev/)** - Tutorial, API documentation, and development guidelines.
+* **[Doc](https://beanie-odm.dev/)** - Tutorial, API documentation, and development guidelines.
 
 ### Example Projects
 
-- **[Activity Log & Notification Service](https://github.com/documentdb/documentdb-samples-gallery/tree/main/activity-log-fastapi-py)** - Real-time event ingestion with FastAPI, Beanie ODM, and DocumentDB (MongoDB-compatible), an async backend for high-volume activity events with aggregation statistics and WebSocket alerts by [Khelan Modi](https://github.com/knowkhelan)
-- **[fastapi-beanie-jwt](https://github.com/flyinactor91/fastapi-beanie-jwt)** - 
+* **[Activity Log & Notification Service](https://github.com/documentdb/documentdb-samples-gallery/tree/main/activity-log-fastapi-py)** - Real-time event ingestion with FastAPI, Beanie ODM, and DocumentDB (MongoDB-compatible), an async backend for high-volume activity events with aggregation statistics and WebSocket alerts by [Khelan Modi](https://github.com/knowkhelan)
+* **[fastapi-beanie-jwt](https://github.com/flyinactor91/fastapi-beanie-jwt)** -
   Sample FastAPI server with JWT auth and Beanie ODM by [Michael duPont](https://github.com/flyinactor91)
-- **[fastapi-cosmos-beanie](https://github.com/tonybaloney/ants-azure-demos/tree/master/fastapi-cosmos-beanie)** - FastAPI + Beanie ODM + Azure Cosmos Demo Application by [Anthony Shaw](https://github.com/tonybaloney)
-- **[LCCN Predictor](https://github.com/baoliay2008/lccn_predictor)** - Leetcode contest rating predictor (FastAPI + Beanie ODM + React) by [L. Bao](https://github.com/baoliay2008)
-- **[Shortify](https://github.com/IHosseini083/Shortify)** - URL shortener RESTful API (FastAPI + Beanie ODM + JWT & OAuth2) by [
-Iliya Hosseini](https://github.com/IHosseini083)
+* **[fastapi-cosmos-beanie](https://github.com/tonybaloney/ants-azure-demos/tree/master/fastapi-cosmos-beanie)** - FastAPI + Beanie ODM + Azure Cosmos Demo Application by [Anthony Shaw](https://github.com/tonybaloney)
+* **[LCCN Predictor](https://github.com/baoliay2008/lccn_predictor)** - Leetcode contest rating predictor (FastAPI + Beanie ODM + React) by [L. Bao](https://github.com/baoliay2008)
+* **[Shortify](https://github.com/IHosseini083/Shortify)** - URL shortener RESTful API (FastAPI + Beanie ODM + JWT & OAuth2) by [
+  Iliya Hosseini](https://github.com/IHosseini083)
 
 ### Articles
 
-- **[Announcing Beanie - MongoDB ODM](https://dev.to/romanright/announcing-beanie-mongodb-odm-56e)**
-- **[Build a Cocktail API with Beanie and MongoDB](https://developer.mongodb.com/article/beanie-odm-fastapi-cocktails/)**
-- **[MongoDB indexes with Beanie](https://dev.to/romanright/mongodb-indexes-with-beanie-43e8)**
-- **[Beanie Projections. Reducing network and database load.](https://dev.to/romanright/beanie-projections-reducing-network-and-database-load-3bih)**
-- **[Beanie 1.0 - Query Builder](https://dev.to/romanright/announcing-beanie-1-0-mongodb-odm-with-query-builder-4mbl)**
-- **[Beanie 1.8 - Relations, Cache, Actions and more!](https://dev.to/romanright/announcing-beanie-odm-18-relations-cache-actions-and-more-24ef)**
+* **[Announcing Beanie - MongoDB ODM](https://dev.to/romanright/announcing-beanie-mongodb-odm-56e)**
+* **[Build a Cocktail API with Beanie and MongoDB](https://developer.mongodb.com/article/beanie-odm-fastapi-cocktails/)**
+* **[MongoDB indexes with Beanie](https://dev.to/romanright/mongodb-indexes-with-beanie-43e8)**
+* **[Beanie Projections. Reducing network and database load.](https://dev.to/romanright/beanie-projections-reducing-network-and-database-load-3bih)**
+* **[Beanie 1.0 - Query Builder](https://dev.to/romanright/announcing-beanie-1-0-mongodb-odm-with-query-builder-4mbl)**
+* **[Beanie 1.8 - Relations, Cache, Actions and more!](https://dev.to/romanright/announcing-beanie-odm-18-relations-cache-actions-and-more-24ef)**
 
 ### Resources
 
-- **[GitHub](https://github.com/roman-right/beanie)** - GitHub page of the
+* **[GitHub](https://github.com/roman-right/beanie)** - GitHub page of the
   project
-- **[Changelog](https://beanie-odm.dev/changelog)** - list of all
+* **[Changelog](https://beanie-odm.dev/changelog)** - list of all
   the valuable changes
-- **[Discord](https://discord.gg/AwwTrbCASP)** - ask your questions, share
+* **[Discord](https://discord.gg/AwwTrbCASP)** - ask your questions, share
   ideas or just say `Hello!!`
 
-----
+***
+
 Supported by [JetBrains](https://jb.gg/OpenSource)
 
 [![JetBrains](https://raw.githubusercontent.com/roman-right/beanie/main/assets/logo/jetbrains.svg)](https://jb.gg/OpenSource)

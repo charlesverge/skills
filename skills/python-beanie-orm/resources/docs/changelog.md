@@ -3,735 +3,983 @@
 Beanie project
 
 ## [2.1.0] - 2026-03-20
+
 ### Drop EOL Python 3.9, MongoDB 4.4/5.0/6.0, Pydantic v1
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/1287>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/1287>
+
 ### Speed up init by avoiding duplicate db commands
-- Author - [vvuk](https://github.com/vvuk)
-- PR <https://github.com/BeanieODM/beanie/pull/1276>
+
+* Author - [vvuk](https://github.com/vvuk)
+* PR <https://github.com/BeanieODM/beanie/pull/1276>
+
 ### Improve class filter and is/is not for enum comparison
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1275>
-### Fix OperationFailure when saving with keep_nulls=False and no None values
-- Author - [veeceey](https://github.com/veeceey)
-- PR <https://github.com/BeanieODM/beanie/pull/1271>
-### Fix FindQuery.count() ignoring pymongo_kwargs
-- Author - [veeceey](https://github.com/veeceey)
-- PR <https://github.com/BeanieODM/beanie/pull/1269>
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1275>
+
+### Fix OperationFailure when saving with keep\_nulls=False and no None values
+
+* Author - [veeceey](https://github.com/veeceey)
+* PR <https://github.com/BeanieODM/beanie/pull/1271>
+
+### Fix FindQuery.count() ignoring pymongo\_kwargs
+
+* Author - [veeceey](https://github.com/veeceey)
+* PR <https://github.com/BeanieODM/beanie/pull/1269>
+
 ### Add Beanie version to handshake metadata
-- Author - [NoahStapp](https://github.com/NoahStapp)
-- PR <https://github.com/BeanieODM/beanie/pull/1255>
+
+* Author - [NoahStapp](https://github.com/NoahStapp)
+* PR <https://github.com/BeanieODM/beanie/pull/1255>
+
 ### Docs: clarify state management description
-- Author - [smahn9123](https://github.com/smahn9123)
-- PR <https://github.com/BeanieODM/beanie/pull/1248>
+
+* Author - [smahn9123](https://github.com/smahn9123)
+* PR <https://github.com/BeanieODM/beanie/pull/1248>
+
 ### Add docstring to DocumentWithSoftDelete
-- Author - [gugu-py](https://github.com/gugu-py)
-- PR <https://github.com/BeanieODM/beanie/pull/1241>
+
+* Author - [gugu-py](https://github.com/gugu-py)
+* PR <https://github.com/BeanieODM/beanie/pull/1241>
+
 ### Fix: support frozen fields on save() and replace()
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/1282>
-### Fix: handle RootModel with custom __iter__ in save()
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/1284>
-### Fix: handle BackLink types in fetch_link and fetch_all_links
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/1286>
-### Fix: persist before_event changes to DB on save/update/replace
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/1279>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/1282>
+
+### Fix: handle RootModel with custom **iter** in save()
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/1284>
+
+### Fix: handle BackLink types in fetch\_link and fetch\_all\_links
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/1286>
+
+### Fix: persist before\_event changes to DB on save/update/replace
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/1279>
+
 ### Fix: resolve Pydantic field aliases in nested expression field queries
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/1278>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/1278>
+
 ### Do not ignore deprecation warnings in tests
-- Author - [Viicos](https://github.com/Viicos)
-- PR <https://github.com/BeanieODM/beanie/pull/1123>
+
+* Author - [Viicos](https://github.com/Viicos)
+* PR <https://github.com/BeanieODM/beanie/pull/1123>
 
 [2.1.0]: https://pypi.org/project/beanie/2.1.0
 
 ## [2.0.1] - 2025-11-17
+
 ### Fix: exclude pymongo 4.15.0 due to a known issue
-- Author - [staticxterm](https://github.com/staticxterm)
-- PR <https://github.com/BeanieODM/beanie/pull/1225>
+
+* Author - [staticxterm](https://github.com/staticxterm)
+* PR <https://github.com/BeanieODM/beanie/pull/1225>
+
 ### Bump lazy-model
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1218>
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1218>
+
 ### Fix: incomplete type hint for regex pattern
-- Author - [xcrong](https://github.com/xcrong)
-- PR <https://github.com/BeanieODM/beanie/pull/1209>
+
+* Author - [xcrong](https://github.com/xcrong)
+* PR <https://github.com/BeanieODM/beanie/pull/1209>
+
 ### Fix return types of min and max methods
-- Author - [kewldan](https://github.com/kewldan)
-- PR <https://github.com/BeanieODM/beanie/pull/1204>
+
+* Author - [kewldan](https://github.com/kewldan)
+* PR <https://github.com/BeanieODM/beanie/pull/1204>
+
 ### Handle aggregation method on the whole collection
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1203>
-### Fix: preserve fetch_links across chained find() and find_one()
-- Author - [scarlet2131](https://github.com/scarlet2131)
-- PR <https://github.com/BeanieODM/beanie/pull/1184>
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1203>
+
+### Fix: preserve fetch\_links across chained find() and find\_one()
+
+* Author - [scarlet2131](https://github.com/scarlet2131)
+* PR <https://github.com/BeanieODM/beanie/pull/1184>
+
 ### Fix: pydantic "exclude" option is not working #756
-- Author - [CatBraaain](https://github.com/CatBraaain)
-- PR <https://github.com/BeanieODM/beanie/pull/1154>
-### Fix pydanticdeprecatedsince211: accessing the 'model_fields' attribute on the instance is deprecated
-- Author - [gsakkis](https://github.com/gsakkis)
-- PR <https://github.com/BeanieODM/beanie/pull/1150>
+
+* Author - [CatBraaain](https://github.com/CatBraaain)
+* PR <https://github.com/BeanieODM/beanie/pull/1154>
+
+### Fix pydanticdeprecatedsince211: accessing the 'model\_fields' attribute on the instance is deprecated
+
+* Author - [gsakkis](https://github.com/gsakkis)
+* PR <https://github.com/BeanieODM/beanie/pull/1150>
 
 [2.0.1]: https://pypi.org/project/beanie/2.0.1
 
 ## [2.0.0] - 2025-07-09
-### Transform asyncdocmethod[doctype, p, r] into any to fix "incorrect call arguments" warning in pycharm
-- Author - [hRtWzFe](https://github.com/hRtWzFe)
-- PR <https://github.com/BeanieODM/beanie/pull/1166>
+
+### Transform asyncdocmethod\[doctype, p, r] into any to fix "incorrect call arguments" warning in pycharm
+
+* Author - [hRtWzFe](https://github.com/hRtWzFe)
+* PR <https://github.com/BeanieODM/beanie/pull/1166>
+
 ### Fix typos in migrations docs
-- Author - [Rishat-F](https://github.com/Rishat-F)
-- PR <https://github.com/BeanieODM/beanie/pull/1136>
+
+* Author - [Rishat-F](https://github.com/Rishat-F)
+* PR <https://github.com/BeanieODM/beanie/pull/1136>
+
 ### Motor -> async pymongo
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/1113>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/1113>
 
 [2.0.0]: https://pypi.org/project/beanie/2.0.0
 
 ## [1.30.0] - 2025-06-10
-### Docs: update backlink usage of original_field for pydantic v2
-- Author - [scarlet2131](https://github.com/scarlet2131)
-- PR <https://github.com/BeanieODM/beanie/pull/1183>
-### Fix: first_or_none no longer mutates findmany object (#1116)
-- Author - [egorzh01](https://github.com/egorzh01)
-- PR <https://github.com/BeanieODM/beanie/pull/1178>
+
+### Docs: update backlink usage of original\_field for pydantic v2
+
+* Author - [scarlet2131](https://github.com/scarlet2131)
+* PR <https://github.com/BeanieODM/beanie/pull/1183>
+
+### Fix: first\_or\_none no longer mutates findmany object (#1116)
+
+* Author - [egorzh01](https://github.com/egorzh01)
+* PR <https://github.com/BeanieODM/beanie/pull/1178>
+
 ### Migration finder skips modules starting with underscore
-- Author - [unexceptable](https://github.com/unexceptable)
-- PR <https://github.com/BeanieODM/beanie/pull/1177>
+
+* Author - [unexceptable](https://github.com/unexceptable)
+* PR <https://github.com/BeanieODM/beanie/pull/1177>
+
 ### Docs: update incorrect event-based actions docs
-- Author - [kaperont](https://github.com/kaperont)
-- PR <https://github.com/BeanieODM/beanie/pull/1163>
-### Fix: deprecate bucket_rounding_second in favor of bucket_rounding_seconds in timeseriesconfig
-- Author - [m00rex](https://github.com/m00rex)
-- PR <https://github.com/BeanieODM/beanie/pull/1162>
+
+* Author - [kaperont](https://github.com/kaperont)
+* PR <https://github.com/BeanieODM/beanie/pull/1163>
+
+### Fix: deprecate bucket\_rounding\_second in favor of bucket\_rounding\_seconds in timeseriesconfig
+
+* Author - [m00rex](https://github.com/m00rex)
+* PR <https://github.com/BeanieODM/beanie/pull/1162>
+
 ### Switch to precommit ci
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/1160>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/1160>
+
 ### Drop py3.8 support
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/1159>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/1159>
+
 ### Update toml dependency to use tomli instead of toml
-- Author - [Taaku18](https://github.com/Taaku18)
-- PR <https://github.com/BeanieODM/beanie/pull/1144>
+
+* Author - [Taaku18](https://github.com/Taaku18)
+* PR <https://github.com/BeanieODM/beanie/pull/1144>
+
 ### Fix failing tests in ci
-- Author - [staticxterm](https://github.com/staticxterm)
-- PR <https://github.com/BeanieODM/beanie/pull/1141>
+
+* Author - [staticxterm](https://github.com/staticxterm)
+* PR <https://github.com/BeanieODM/beanie/pull/1141>
+
 ### Fix find type hint for filter args
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1139>
-### Fixed attributeerror in merge_model when updating document
-- Author - [mattewid](https://github.com/mattewid)
-- PR <https://github.com/BeanieODM/beanie/pull/1126>
-### Fix bulkwriter.__init__ bug when it has object_class param input
-- Author - [hagd0520](https://github.com/hagd0520)
-- PR <https://github.com/BeanieODM/beanie/pull/1107>
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1139>
+
+### Fixed attributeerror in merge\_model when updating document
+
+* Author - [mattewid](https://github.com/mattewid)
+* PR <https://github.com/BeanieODM/beanie/pull/1126>
+
+### Fix bulkwriter.**init** bug when it has object\_class param input
+
+* Author - [hagd0520](https://github.com/hagd0520)
+* PR <https://github.com/BeanieODM/beanie/pull/1107>
+
 ### Change schema generation for pydanticobjectid
-- Author - [dantetemplar](https://github.com/dantetemplar)
-- PR <https://github.com/BeanieODM/beanie/pull/1099>
+
+* Author - [dantetemplar](https://github.com/dantetemplar)
+* PR <https://github.com/BeanieODM/beanie/pull/1099>
+
 ### Add deduplication of entries to changelog script
-- Author - [staticxterm](https://github.com/staticxterm)
-- PR <https://github.com/BeanieODM/beanie/pull/1081>
+
+* Author - [staticxterm](https://github.com/staticxterm)
+* PR <https://github.com/BeanieODM/beanie/pull/1081>
 
 [1.30.0]: https://pypi.org/project/beanie/1.30.0
 
 ## [1.29.0] - 2025-01-06
+
 ### Fix serialization of link/backlink and openapi schema generation
-- Author - [staticxterm](https://github.com/staticxterm)
-- PR <https://github.com/BeanieODM/beanie/pull/1080>
+
+* Author - [staticxterm](https://github.com/staticxterm)
+* PR <https://github.com/BeanieODM/beanie/pull/1080>
+
 ### Fix: `owner` model missing in `init_beanie` in inheritance documentation's inserts example
-- Author - [ksayer](https://github.com/ksayer)
-- PR <https://github.com/BeanieODM/beanie/pull/1090>
+
+* Author - [ksayer](https://github.com/ksayer)
+* PR <https://github.com/BeanieODM/beanie/pull/1090>
+
 ### Make `diacritic_sensitive` parameter optional to support $text operator on cosmos db
-- Author - [mykolaskrynnyk](https://github.com/mykolaskrynnyk)
-- PR <https://github.com/BeanieODM/beanie/pull/1089>
+
+* Author - [mykolaskrynnyk](https://github.com/mykolaskrynnyk)
+* PR <https://github.com/BeanieODM/beanie/pull/1089>
+
 ### Add tests with case of {id} in fastapi path
-- Author - [dantetemplar](https://github.com/dantetemplar)
-- PR <https://github.com/BeanieODM/beanie/pull/1100>
+
+* Author - [dantetemplar](https://github.com/dantetemplar)
+* PR <https://github.com/BeanieODM/beanie/pull/1100>
+
 ### Use strings to specify mongodb versions in ci
-- Author - [Viicos](https://github.com/Viicos)
-- PR <https://github.com/BeanieODM/beanie/pull/1094>
+
+* Author - [Viicos](https://github.com/Viicos)
+* PR <https://github.com/BeanieODM/beanie/pull/1094>
+
 ### fix: pydantic 2.10.x breaking change
-- Author - [mdaffad](https://github.com/mdaffad)
-- PR <https://github.com/BeanieODM/beanie/pull/1095>
-### Bulk writer improving & bulk_writer method for document and possibility to bypass mongo document validation + comment parameter
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1079>
+
+* Author - [mdaffad](https://github.com/mdaffad)
+* PR <https://github.com/BeanieODM/beanie/pull/1095>
+
+### Bulk writer improving & bulk\_writer method for document and possibility to bypass mongo document validation + comment parameter
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1079>
+
 ### Add coverage configuration to pyproject.toml
-- Author - [staticxterm](https://github.com/staticxterm)
-- PR <https://github.com/BeanieODM/beanie/pull/1091>
+
+* Author - [staticxterm](https://github.com/staticxterm)
+* PR <https://github.com/BeanieODM/beanie/pull/1091>
 
 [1.29.0]: https://pypi.org/project/beanie/1.29.0
 
 ## [1.28.0] - 2024-12-05
+
 ### Fix kwargs/args untyped
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1049>
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1049>
+
 ### Update pre-commit
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/1046>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/1046>
+
 ### Drop support for python 3.7
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/1044>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/1044>
+
 ### Add missing type hint to `find_many_in_all` method
-- Author - [vasuman](https://github.com/vasuman)
-- PR <https://github.com/BeanieODM/beanie/pull/1068>
-### Add documentdb compatibility to fetch_links
-- Author - [whitfin](https://github.com/whitfin)
-- PR <https://github.com/BeanieODM/beanie/pull/1042>
+
+* Author - [vasuman](https://github.com/vasuman)
+* PR <https://github.com/BeanieODM/beanie/pull/1068>
+
+### Add documentdb compatibility to fetch\_links
+
+* Author - [whitfin](https://github.com/whitfin)
+* PR <https://github.com/BeanieODM/beanie/pull/1042>
+
 ### Fix issues caused by #1044
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/1053>
-### Feat(skip_index): possibility added to skip index actions
-- Author - [jorma16](https://github.com/jorma16)
-- PR <https://github.com/BeanieODM/beanie/pull/942>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/1053>
+
+### Feat(skip\_index): possibility added to skip index actions
+
+* Author - [jorma16](https://github.com/jorma16)
+* PR <https://github.com/BeanieODM/beanie/pull/942>
+
 ### Fix pydanticobjectid fields being parsed into str
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/1060>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/1060>
+
 ### Modify tests to not raise deprecation warnings
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/1047>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/1047>
+
 ### Add python 3.13 and jit into testing
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/1051>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/1051>
+
 ### Handle limit and session in .count() method
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1040>
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1040>
 
 [1.28.0]: https://pypi.org/project/beanie/1.28.0
 
 ## [1.27.0] - 2024-10-06
+
 ### Add tests on all major mongo version
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/1034>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/1034>
+
 ### Fix return type from document update
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1030>
-### Fix expression type hint not allowing some type https://github.com/beanieodm/beanie/issues/1020
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1023>
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1030>
+
+### Fix expression type hint not allowing some type <https://github.com/beanieodm/beanie/issues/1020>
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1023>
+
 ### Fix type hint using pymongo client session instead of motor client session
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1022>
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1022>
+
 ### Fix logical operator typing #1000
-- Author - [janas-adam](https://github.com/janas-adam)
-- PR <https://github.com/BeanieODM/beanie/pull/1021>
+
+* Author - [janas-adam](https://github.com/janas-adam)
+* PR <https://github.com/BeanieODM/beanie/pull/1021>
+
 ### Use session in document insert
-- Author - [andraghetti](https://github.com/andraghetti)
-- PR <https://github.com/BeanieODM/beanie/pull/1018>
-### Use sequence instead of list in init_beanie
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/1015>
+
+* Author - [andraghetti](https://github.com/andraghetti)
+* PR <https://github.com/BeanieODM/beanie/pull/1018>
+
+### Use sequence instead of list in init\_beanie
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/1015>
+
 ### Replace deprecated datetime.utcnow with datetime.now
-- Author - [adeelsohailahmed](https://github.com/adeelsohailahmed)
-- PR <https://github.com/BeanieODM/beanie/pull/1014>
-### Fix uniondoc type hint missing in init_beanie and on findinterface
-- Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
-- PR <https://github.com/BeanieODM/beanie/pull/1007>
+
+* Author - [adeelsohailahmed](https://github.com/adeelsohailahmed)
+* PR <https://github.com/BeanieODM/beanie/pull/1014>
+
+### Fix uniondoc type hint missing in init\_beanie and on findinterface
+
+* Author - [CAPITAINMARVEL](https://github.com/CAPITAINMARVEL)
+* PR <https://github.com/BeanieODM/beanie/pull/1007>
+
 ### Add test to ensure dict with enum keys are encoded properly
-- Author - [adeelsohailahmed](https://github.com/adeelsohailahmed)
-- PR <https://github.com/BeanieODM/beanie/pull/1001>
+
+* Author - [adeelsohailahmed](https://github.com/adeelsohailahmed)
+* PR <https://github.com/BeanieODM/beanie/pull/1001>
+
 ### Project publishing instruction + changelog generation script
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/998>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/998>
+
 ### Revert project publishing gh action
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/996>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/996>
+
 ### Extend motor option to beanie
-- Author - [Dudesons](https://github.com/Dudesons)
-- PR <https://github.com/BeanieODM/beanie/pull/995>
+
+* Author - [Dudesons](https://github.com/Dudesons)
+* PR <https://github.com/BeanieODM/beanie/pull/995>
+
 ### Fix regex storing
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/989>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/989>
+
 ### Remove links to ko-fi from the project
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/986>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/986>
+
 ### Fix typo in source code comment in inheritance.md
-- Author - [fnogatz](https://github.com/fnogatz)
-- PR <https://github.com/BeanieODM/beanie/pull/984>
+
+* Author - [fnogatz](https://github.com/fnogatz)
+* PR <https://github.com/BeanieODM/beanie/pull/984>
+
 ### Fix gh action to grant permissions and use tags
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/972>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/972>
+
 ### Fix: example of find by id and link to finding-documents
-- Author - [fredowashere](https://github.com/fredowashere)
-- PR <https://github.com/BeanieODM/beanie/pull/970>
+
+* Author - [fredowashere](https://github.com/fredowashere)
+* PR <https://github.com/BeanieODM/beanie/pull/970>
+
 ### Fix incorrect type serialization when dumping to python
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/968>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/968>
+
 ### Use ruff format instead of black
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/962>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/962>
+
 ### Gh action: set new version and publish on push
-- Author - [roman-right](https://github.com/roman-right)
-- PR <https://github.com/BeanieODM/beanie/pull/961>
+
+* Author - [roman-right](https://github.com/roman-right)
+* PR <https://github.com/BeanieODM/beanie/pull/961>
+
 ### Feature / fix: allow settings to be inherited and extended (fixes #644)
-- Author - [dotKokott](https://github.com/dotKokott)
-- PR <https://github.com/BeanieODM/beanie/pull/960>
+
+* Author - [dotKokott](https://github.com/dotKokott)
+* PR <https://github.com/BeanieODM/beanie/pull/960>
+
 ### Fix: issue #951
-- Author - [IterableTrucks](https://github.com/IterableTrucks)
-- PR <https://github.com/BeanieODM/beanie/pull/952>
+
+* Author - [IterableTrucks](https://github.com/IterableTrucks)
+* PR <https://github.com/BeanieODM/beanie/pull/952>
+
 ### Allow unordered parameter on bulkwriter
-- Author - [thiagosalvatore](https://github.com/thiagosalvatore)
-- PR <https://github.com/BeanieODM/beanie/pull/948>
-### Fix: set default value in findinterface._inheritance_inited to avoid …
-- Author - [Robert-Nogueira](https://github.com/Robert-Nogueira)
-- PR <https://github.com/BeanieODM/beanie/pull/935>
+
+* Author - [thiagosalvatore](https://github.com/thiagosalvatore)
+* PR <https://github.com/BeanieODM/beanie/pull/948>
+
+### Fix: set default value in findinterface.\_inheritance\_inited to avoid …
+
+* Author - [Robert-Nogueira](https://github.com/Robert-Nogueira)
+* PR <https://github.com/BeanieODM/beanie/pull/935>
+
 ### Fix example in multi-model.md
-- Author - [gianpaj](https://github.com/gianpaj)
-- PR <https://github.com/BeanieODM/beanie/pull/932>
+
+* Author - [gianpaj](https://github.com/gianpaj)
+* PR <https://github.com/BeanieODM/beanie/pull/932>
+
 ### Add missing type signature to `basefindcomparisonoperator` constructor
-- Author - [aaronted009](https://github.com/aaronted009)
-- PR <https://github.com/BeanieODM/beanie/pull/925>
+
+* Author - [aaronted009](https://github.com/aaronted009)
+* PR <https://github.com/BeanieODM/beanie/pull/925>
+
 ### Removed calls to function causing deprecation warning where possible
-- Author - [07pepa](https://github.com/07pepa)
-- PR <https://github.com/BeanieODM/beanie/pull/917>
+
+* Author - [07pepa](https://github.com/07pepa)
+* PR <https://github.com/BeanieODM/beanie/pull/917>
+
 ### Update migrations.md
-- Author - [marwan-alloreview](https://github.com/marwan-alloreview)
-- PR <https://github.com/BeanieODM/beanie/pull/915>
+
+* Author - [marwan-alloreview](https://github.com/marwan-alloreview)
+* PR <https://github.com/BeanieODM/beanie/pull/915>
 
 [1.27.0]: https://pypi.org/project/beanie/1.27.0
 
 ## [1.26.0] - 2024-05-01
-        
+
 ### Feature: soft delete
-- Author - [Ali Moradi](https://github.com/alm0ra)
-- PR <https://github.com/roman-right/beanie/pull/901>
-            
-### Update deprecated call of general_plain_validator_function (#676)
-- Author - [dslemusp](https://github.com/dslemusp)
-- PR <https://github.com/roman-right/beanie/pull/897>
-            
+
+* Author - [Ali Moradi](https://github.com/alm0ra)
+* PR <https://github.com/roman-right/beanie/pull/901>
+
+### Update deprecated call of general\_plain\_validator\_function (#676)
+
+* Author - [dslemusp](https://github.com/dslemusp)
+* PR <https://github.com/roman-right/beanie/pull/897>
+
 ### Annotate decorators that wrap `document` methods (#679)
-- Author - [Maxim](https://github.com/bedlamzd)
-- PR <https://github.com/roman-right/beanie/pull/886>
-            
+
+* Author - [Maxim](https://github.com/bedlamzd)
+* PR <https://github.com/roman-right/beanie/pull/886>
+
 ### Update relations docs to indicate that backlinks are virtual.
-- Author - [Josh Borrow](https://github.com/JBorrow)
-- PR <https://github.com/roman-right/beanie/pull/904>
-            
+
+* Author - [Josh Borrow](https://github.com/JBorrow)
+* PR <https://github.com/roman-right/beanie/pull/904>
+
 ### Docs: fix typo (#869)
-- Author - [Valentin Oliver Loftsson](https://github.com/valentinoli)
-- PR <https://github.com/roman-right/beanie/pull/899>
-            
+
+* Author - [Valentin Oliver Loftsson](https://github.com/valentinoli)
+* PR <https://github.com/roman-right/beanie/pull/899>
+
 ### Add possibility of leveraging enum in find query
-- Author - [Danil](https://github.com/damikhai)
-- PR <https://github.com/roman-right/beanie/pull/868>
-            
+
+* Author - [Danil](https://github.com/damikhai)
+* PR <https://github.com/roman-right/beanie/pull/868>
+
 ### Handle typeerror in validator of pydanticobjectid
-- Author - [Christian Grotheer](https://github.com/grthr)
-- PR <https://github.com/roman-right/beanie/pull/861>
-            
+
+* Author - [Christian Grotheer](https://github.com/grthr)
+* PR <https://github.com/roman-right/beanie/pull/861>
+
 [1.26.0]: https://pypi.org/project/beanie/1.26.0
 
 ## [1.25.0] - 2024-01-24
-        
+
 ### Encode Date Objects
-- Author - [George Sakkis](https://github.com/gsakkis)
-- PR <https://github.com/roman-right/beanie/pull/816>
-            
+
+* Author - [George Sakkis](https://github.com/gsakkis)
+* PR <https://github.com/roman-right/beanie/pull/816>
+
 ### Fix: Findinterface Type-Hints Break On View Models
-- Author - [Guy Tsitsiashvili](https://github.com/GuyGooL5)
-- PR <https://github.com/roman-right/beanie/pull/819>
-            
+
+* Author - [Guy Tsitsiashvili](https://github.com/GuyGooL5)
+* PR <https://github.com/roman-right/beanie/pull/819>
+
 ### Fix: Count With Text Queries And Links
-- Author - [Benjamin Earle](https://github.com/MrEarle)
-- PR <https://github.com/roman-right/beanie/pull/826>
-            
+
+* Author - [Benjamin Earle](https://github.com/MrEarle)
+* PR <https://github.com/roman-right/beanie/pull/826>
+
 ### Update Migration Command To Enable/Disable Transactions
-- Author - [Mahmoud Mabrouk](https://github.com/mmabrouk)
-- PR <https://github.com/roman-right/beanie/pull/828>
-            
+
+* Author - [Mahmoud Mabrouk](https://github.com/mmabrouk)
+* PR <https://github.com/roman-right/beanie/pull/828>
+
 ### Sync Method
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/831>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/831>
+
 ### Limit Nesting Level Of Linked Documents
 
 *WARNING: This is a breaking change. Please, read [the docs](https://beanie-odm.dev/tutorial/defining-a-document/#nested-documents-depth) before updating.*
 
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/834>
-            
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/834>
+
 [1.25.0]: https://pypi.org/project/beanie/1.25.0
 
 ## [1.24.0] - 2023-12-24
-        
-### Exclude revision_id From The get_changes Method
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/759>
-            
+
+### Exclude revision\_id From The get\_changes Method
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/759>
+
 ### Add Support For Custom Bucket Fields In Time Series
-- Author - [Lucas Hardt](https://github.com/Luc1412)
-- PR <https://github.com/roman-right/beanie/pull/760>
-            
+
+* Author - [Lucas Hardt](https://github.com/Luc1412)
+* PR <https://github.com/roman-right/beanie/pull/760>
+
 ### Add Bson Maxkey And Minkey
-- Author - [Noah Witt](https://github.com/noah-witt)
-- PR <https://github.com/roman-right/beanie/pull/768>
-            
+
+* Author - [Noah Witt](https://github.com/noah-witt)
+* PR <https://github.com/roman-right/beanie/pull/768>
+
 ### Update Model During Save Validation
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/776>
-            
-### Fix init_beanie document_models Type Hint
-- Author - [Capi Etheriel](https://github.com/barraponto)
-- PR <https://github.com/roman-right/beanie/pull/784>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/776>
+
+### Fix init\_beanie document\_models Type Hint
+
+* Author - [Capi Etheriel](https://github.com/barraponto)
+* PR <https://github.com/roman-right/beanie/pull/784>
+
 ### Fix Encoding Keys In `Mapping` Branch Of `Encoder`
-- Author - [Rubikoid](https://github.com/Rubikoid)
-- PR <https://github.com/roman-right/beanie/pull/785>
-            
+
+* Author - [Rubikoid](https://github.com/Rubikoid)
+* PR <https://github.com/roman-right/beanie/pull/785>
+
 ### Improve Write Performances
-- Author - [Thibault Djaballah](https://github.com/tdjaballah)
-- PR <https://github.com/roman-right/beanie/pull/786>
-            
+
+* Author - [Thibault Djaballah](https://github.com/tdjaballah)
+* PR <https://github.com/roman-right/beanie/pull/786>
+
 ### Doc Update: Queue
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/794>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/794>
+
 ### Tests For Indexed Fields
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/795>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/795>
+
 ### Rework Revision
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/797>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/797>
+
 ### Add Missing Type Signature To `Document` Constructor
-- Author - [None](https://github.com/johnthagen)
-- PR <https://github.com/roman-right/beanie/pull/813>
-            
+
+* Author - [None](https://github.com/johnthagen)
+* PR <https://github.com/roman-right/beanie/pull/813>
+
 [1.24.0]: https://pypi.org/project/beanie/1.24.0
 
 ## [1.23.6] - 2023-11-12
-        
+
 ### Fix Multiprocessing Mode
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/782>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/782>
+
 [1.23.6]: https://pypi.org/project/beanie/1.23.6
 
 ## [1.23.5] - 2023-11-12
-        
+
 ### Multiprocessing Mode For Init
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/781>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/781>
+
 [1.23.5]: https://pypi.org/project/beanie/1.23.5
 
 ## [1.23.4] - 2023-11-12
-        
+
 ### Args For `get_model_dump`
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/780>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/780>
+
 [1.23.4]: https://pypi.org/project/beanie/1.23.4
 
 ## [1.23.3] - 2023-11-08
-        
+
 ### Fix Id Notation
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/772>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/772>
+
 [1.23.3]: https://pypi.org/project/beanie/1.23.3
 
 ## [1.23.2] - 2023-11-08
-        
+
 ### Fix Aggregations With Text Queries
-- Author - [Benjamin Earle](https://github.com/MrEarle)
-- PR <https://github.com/roman-right/beanie/pull/752>
-            
+
+* Author - [Benjamin Earle](https://github.com/MrEarle)
+* PR <https://github.com/roman-right/beanie/pull/752>
+
 ### Handle Annotated Indexes
-- Author - [Benjamin Earle](https://github.com/MrEarle)
-- PR <https://github.com/roman-right/beanie/pull/762>
-            
+
+* Author - [Benjamin Earle](https://github.com/MrEarle)
+* PR <https://github.com/roman-right/beanie/pull/762>
+
 ### Fix Docstring
-- Author - [Andrew Grinevich](https://github.com/Derfirm)
-- PR <https://github.com/roman-right/beanie/pull/766>
-            
+
+* Author - [Andrew Grinevich](https://github.com/Derfirm)
+* PR <https://github.com/roman-right/beanie/pull/766>
+
 ### Build Aggregation Pipeline From Find Query Without Fetch
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/770>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/770>
+
 [1.23.2]: https://pypi.org/project/beanie/1.23.2
 
 ## [1.23.1] - 2023-10-23
-        
+
 ### Fix: Issue #631
-- Author - [IterableTrucks](https://github.com/IterableTrucks)
-- PR <https://github.com/roman-right/beanie/pull/734>
-            
+
+* Author - [IterableTrucks](https://github.com/IterableTrucks)
+* PR <https://github.com/roman-right/beanie/pull/734>
+
 ### Replace Custom 'Hidden=True' Field Attribute With Builtin 'Exclude=True'
-- Author - [George Sakkis](https://github.com/gsakkis)
-- PR <https://github.com/roman-right/beanie/pull/741>
-            
+
+* Author - [George Sakkis](https://github.com/gsakkis)
+* PR <https://github.com/roman-right/beanie/pull/741>
+
 ### Add Support For Indexed Custom Pydantic Fields
-- Author - [Adam Asay](https://github.com/aasay)
-- PR <https://github.com/roman-right/beanie/pull/754>
-            
+
+* Author - [Adam Asay](https://github.com/aasay)
+* PR <https://github.com/roman-right/beanie/pull/754>
+
 [1.23.1]: https://pypi.org/project/beanie/1.23.0
 
 ## [1.23.0] - 2023-10-15
-        
+
 ### Refactor Encoder
-- Author - [George Sakkis](https://github.com/gsakkis)
-- PR <https://github.com/roman-right/beanie/pull/584>
-            
+
+* Author - [George Sakkis](https://github.com/gsakkis)
+* PR <https://github.com/roman-right/beanie/pull/584>
+
 ### Preserve Sort/Skip/Limit For Aggregations
-- Author - [George Sakkis](https://github.com/gsakkis)
-- PR <https://github.com/roman-right/beanie/pull/711>
-            
+
+* Author - [George Sakkis](https://github.com/gsakkis)
+* PR <https://github.com/roman-right/beanie/pull/711>
+
 ### Update Pre-Commit Hooks
-- Author - [SADIK KUZU](https://github.com/sadikkuzu)
-- PR <https://github.com/roman-right/beanie/pull/712>
-            
+
+* Author - [SADIK KUZU](https://github.com/sadikkuzu)
+* PR <https://github.com/roman-right/beanie/pull/712>
+
 ### Fixed Link Validation
-- Author - [Evgeniy Goncharuck](https://github.com/iterlace)
-- PR <https://github.com/roman-right/beanie/pull/714>
-            
-### Fix: pydantic_core._pydantic_core.Url object is not iterable
-- Author - [Tomohiro Hiratsuka](https://github.com/tomohirohiratsuka)
-- PR <https://github.com/roman-right/beanie/pull/730>
-            
+
+* Author - [Evgeniy Goncharuck](https://github.com/iterlace)
+* PR <https://github.com/roman-right/beanie/pull/714>
+
+### Fix: pydantic\_core.\_pydantic\_core.Url object is not iterable
+
+* Author - [Tomohiro Hiratsuka](https://github.com/tomohirohiratsuka)
+* PR <https://github.com/roman-right/beanie/pull/730>
+
 ### Simplify And Fix DecimalAnnotation
-- Author - [George Sakkis](https://github.com/gsakkis)
-- PR <https://github.com/roman-right/beanie/pull/738>
-            
-- Issues:
-                    
-    - [[BUG] Validation Error on parsing retrieved document's BSON Decimal128 field](https://github.com/roman-right/beanie/issues/691)
-                        
+
+* Author - [George Sakkis](https://github.com/gsakkis)
+
+* PR <https://github.com/roman-right/beanie/pull/738>
+
+* Issues:
+
+  * [\[BUG\] Validation Error on parsing retrieved document's BSON Decimal128 field](https://github.com/roman-right/beanie/issues/691)
+
 ### Simplify BsonBinary
-- Author - [George Sakkis](https://github.com/gsakkis)
-- PR <https://github.com/roman-right/beanie/pull/739>
-            
+
+* Author - [George Sakkis](https://github.com/gsakkis)
+* PR <https://github.com/roman-right/beanie/pull/739>
+
 ### Minor Fixes
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/745>
-            
-### Replace Encoder With get_dict In The replace_one Method
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/747>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/745>
+
+### Replace Encoder With get\_dict In The replace\_one Method
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/747>
+
 [1.23.0]: https://pypi.org/project/beanie/1.23.0
 
 ## [1.22.6] - 2023-09-16
-        
+
 ### Update Precommit Hooks & CI
-- Author - [George Sakkis](https://github.com/gsakkis)
-- PR <https://github.com/roman-right/beanie/pull/673>
-            
+
+* Author - [George Sakkis](https://github.com/gsakkis)
+* PR <https://github.com/roman-right/beanie/pull/673>
+
 [1.22.6]: https://pypi.org/project/beanie/1.22.6
 
 ## [1.22.5] - 2023-09-13
-        
+
 ### Fix: Unify Methods for Retrieving Field's Extra Parameters During Backlink Processing
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/703>
-            
-- Issues: 
-    - [[BUG] Optional[Backlink]](https://github.com/roman-right/beanie/issues/702)
-                        
+
+* Author - [Roman Right](https://github.com/roman-right)
+
+* PR <https://github.com/roman-right/beanie/pull/703>
+
+* Issues:
+  * [\[BUG\] Optional\[Backlink\]](https://github.com/roman-right/beanie/issues/702)
+
 [1.22.5]: https://pypi.org/project/beanie/1.22.5
 
 ## [1.22.4] - 2023-09-13
-        
+
 ### Fix Numpy Array Incompatability
-- Author - [Alex Lau](https://github.com/riven314)
-- PR <https://github.com/roman-right/beanie/pull/658>
-            
+
+* Author - [Alex Lau](https://github.com/riven314)
+* PR <https://github.com/roman-right/beanie/pull/658>
+
 [1.22.4]: https://pypi.org/project/beanie/1.22.4
 
 ## [1.22.3] - 2023-09-13
-        
-### Refactor: Simplify UpdateMany And UpdateOne __await__ Method
-- Author - [Muzaffer Cikay](https://github.com/cikay)
-- PR <https://github.com/roman-right/beanie/pull/687>
-            
+
+### Refactor: Simplify UpdateMany And UpdateOne **await** Method
+
+* Author - [Muzaffer Cikay](https://github.com/cikay)
+* PR <https://github.com/roman-right/beanie/pull/687>
+
 [1.22.3]: https://pypi.org/project/beanie/1.22.3
 
 ## [1.22.2] - 2023-09-13
-        
-### Fix get_field_type & Generalize extract_id_class
-- Author - [George Sakkis](https://github.com/gsakkis)
-- PR <https://github.com/roman-right/beanie/pull/657>
-            
+
+### Fix get\_field\_type & Generalize extract\_id\_class
+
+* Author - [George Sakkis](https://github.com/gsakkis)
+* PR <https://github.com/roman-right/beanie/pull/657>
+
 [1.22.2]: https://pypi.org/project/beanie/1.22.2
 
 ## [1.22.1] - 2023-09-13
-        
-### Fix | list_collection_names Requires Unnecessary Privileges
-- Author - [Marina](https://github.com/marinashe)
-- PR <https://github.com/roman-right/beanie/pull/681>
-- Issues:
-  - [[BUG] Can't use a View if the user doesn't have full read privileges to all collections](https://github.com/roman-right/beanie/issues/680)
-            
+
+### Fix | list\_collection\_names Requires Unnecessary Privileges
+
+* Author - [Marina](https://github.com/marinashe)
+* PR <https://github.com/roman-right/beanie/pull/681>
+* Issues:
+  * [\[BUG\] Can't use a View if the user doesn't have full read privileges to all collections](https://github.com/roman-right/beanie/issues/680)
+
 [1.22.1]: https://pypi.org/project/beanie/1.22.1
 
 ## [1.22.0] - 2023-09-13
-        
+
 ### Fix | August 2023
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/669>
-- Issues:
-                    
-  - [[BUG] Issue with `List[Link[Type]]` when `fetch_all_links` is called](https://github.com/roman-right/beanie/issues/576) 
-  - [Loosen type requirement for `insert_many()`?](https://github.com/roman-right/beanie/issues/591) 
-  - [[BUG] Updating documents with a frozen BaseModel as field raises TypeError](https://github.com/roman-right/beanie/issues/599) 
-  - [[BUG] Not operator cant be on top level](https://github.com/roman-right/beanie/issues/600)
-  - [[BUG] `Text` query doesn't work with `fetch_links=True`](https://github.com/roman-right/beanie/issues/606)
-  - [[BUG] List type fields in updated model record do not get update.](https://github.com/roman-right/beanie/issues/629)
-  - [[BUG] Undefined behavior when chaining update methods](https://github.com/roman-right/beanie/issues/646)
-  - [[BUG] Revision Id is in Responsemodel](https://github.com/roman-right/beanie/issues/648)
-  - [[BUG] Custom types like bson.Binary require `__get_pydantic_core_schema__`](https://github.com/roman-right/beanie/issues/651)
-  - [[BUG] `validate_on_save` doesn't work with `Document.save()`](https://github.com/roman-right/beanie/issues/664)
-  - [[BUG] Beanie persists `root` field](https://github.com/roman-right/beanie/issues/668)
-  - [Beanie 1.21 still triggers many deprecation warnings with Pydantic v2](https://github.com/roman-right/beanie/issues/676)
-  - [[BUG] TypeError: expected 1 argument, got 0 when beanie.Document has method wrapped in pydantic.validate_call](https://github.com/roman-right/beanie/issues/695)
-                        
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/669>
+* Issues:
+
+  * [\[BUG\] Issue with `List[Link[Type]]` when `fetch_all_links` is called](https://github.com/roman-right/beanie/issues/576)
+  * [Loosen type requirement for `insert_many()`?](https://github.com/roman-right/beanie/issues/591)
+  * [\[BUG\] Updating documents with a frozen BaseModel as field raises TypeError](https://github.com/roman-right/beanie/issues/599)
+  * [\[BUG\] Not operator cant be on top level](https://github.com/roman-right/beanie/issues/600)
+  * [\[BUG\] `Text` query doesn't work with `fetch_links=True`](https://github.com/roman-right/beanie/issues/606)
+  * [\[BUG\] List type fields in updated model record do not get update.](https://github.com/roman-right/beanie/issues/629)
+  * [\[BUG\] Undefined behavior when chaining update methods](https://github.com/roman-right/beanie/issues/646)
+  * [\[BUG\] Revision Id is in Responsemodel](https://github.com/roman-right/beanie/issues/648)
+  * [\[BUG\] Custom types like bson.Binary require `__get_pydantic_core_schema__`](https://github.com/roman-right/beanie/issues/651)
+  * [\[BUG\] `validate_on_save` doesn't work with `Document.save()`](https://github.com/roman-right/beanie/issues/664)
+  * [\[BUG\] Beanie persists `root` field](https://github.com/roman-right/beanie/issues/668)
+  * [Beanie 1.21 still triggers many deprecation warnings with Pydantic v2](https://github.com/roman-right/beanie/issues/676)
+  * [\[BUG\] TypeError: expected 1 argument, got 0 when beanie.Document has method wrapped in pydantic.validate\_call](https://github.com/roman-right/beanie/issues/695)
+
 [1.22.0]: https://pypi.org/project/beanie/1.22.0
 
 ## [1.21.0] - 2023-08-03
-        
+
 ### Pydantic bump | final
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/636>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/636>
+
 [1.21.0]: https://pypi.org/project/beanie/1.21.0
 
 ## [1.21.0b1] - 2023-07-21
-        
+
 ### Bump pydantic | beta 1
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/624>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/624>
+
 [1.21.0b1]: https://pypi.org/project/beanie/1.21.0b1
 
 ## [1.21.0b0] - 2023-07-19
-        
+
 ### Bump pydantic | beta 0
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/620>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/620>
+
 [1.21.0b0]: https://pypi.org/project/beanie/1.21.0b0
 
 ## [1.20.0] - 2023-06-30
-        
+
 ### Docs: queue battery
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/603>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/603>
+
 [1.20.0]: https://pypi.org/project/beanie/1.20.0
 
 ## [1.20.0b1] - 2023-06-09
-        
+
 ### Feature: custom init classmethod
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/590>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/590>
+
 [1.20.0b1]: https://pypi.org/project/beanie/1.20.0b1
 
 ## [1.20.0b0] - 2023-06-09
-        
+
 ### Feature: optional batteries
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/575>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/575>
+
 [1.20.0b0]: https://pypi.org/project/beanie/1.20.0b0
 
 ## [1.19.2] - 2023-05-25
-        
+
 ### Fix: issues opened before 2023.05
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/571>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/571>
+
 [1.19.2]: https://pypi.org/project/beanie/1.19.2
 
 ## [1.19.1] - 2023-05-22
-        
+
 ### Fix: update forward refs during nested links check
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/566>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/566>
+
 ### Fix: session in iterative transactions
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/567>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/567>
+
 [1.19.1]: https://pypi.org/project/beanie/1.19.1
 
 ## [1.19.0] - 2023-05-05
-        
+
 ### Feat/back refs
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/557>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/557>
+
 ### Feat: add box operator
-- Author - [Anton Kriese](https://github.com/akriese)
-- PR <https://github.com/roman-right/beanie/pull/552>
-            
+
+* Author - [Anton Kriese](https://github.com/akriese)
+* PR <https://github.com/roman-right/beanie/pull/552>
+
 ### Fix table of contents not showing all classes
-- Author - [Kai Schniedergers](https://github.com/kschniedergers)
-- PR <https://github.com/roman-right/beanie/pull/546>
-            
+
+* Author - [Kai Schniedergers](https://github.com/kschniedergers)
+* PR <https://github.com/roman-right/beanie/pull/546>
+
 ### Return bulkwriteresult response from motor
-- Author - [divyam234](https://github.com/divyam234)
-- PR <https://github.com/roman-right/beanie/pull/542>
-            
+
+* Author - [divyam234](https://github.com/divyam234)
+* PR <https://github.com/roman-right/beanie/pull/542>
+
 ### Fix typing in 'document.get(...)'
-- Author - [Yallxe](https://github.com/yallxe)
-- PR <https://github.com/roman-right/beanie/pull/526>
-            
+
+* Author - [Yallxe](https://github.com/yallxe)
+* PR <https://github.com/roman-right/beanie/pull/526>
+
 ### Init view's cache
-- Author - [Antonio Eugenio Burriel](https://github.com/aeburriel)
-- PR <https://github.com/roman-right/beanie/pull/521>
-            
+
+* Author - [Antonio Eugenio Burriel](https://github.com/aeburriel)
+* PR <https://github.com/roman-right/beanie/pull/521>
+
 ### Kwargs arguments for elemmatch operator
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/517>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/517>
+
 [1.19.0]: https://pypi.org/project/beanie/1.19.0
 
 ## [1.18.1] - 2023-05-04
-        
+
 ### Keep nulls config
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/555>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/555>
+
 [1.18.1]: https://pypi.org/project/beanie/1.18.1
 
 ## [1.18.0] - 2023-03-31
-        
-### Prevent the models returned from find_all to be modified in the middle of modifying
-- Author - [Harris Tsim](https://github.com/harris)
-- PR <https://github.com/roman-right/beanie/pull/502>
-            
-### Allow change class_id and use name settings in uniondoc
-- Author - [설원준(Wonjoon Seol)/Dispatch squad](https://github.com/wonjoonSeol-WS)
-- PR <https://github.com/roman-right/beanie/pull/466>
-            
+
+### Prevent the models returned from find\_all to be modified in the middle of modifying
+
+* Author - [Harris Tsim](https://github.com/harris)
+* PR <https://github.com/roman-right/beanie/pull/502>
+
+### Allow change class\_id and use name settings in uniondoc
+
+* Author - [설원준(Wonjoon Seol)/Dispatch squad](https://github.com/wonjoonSeol-WS)
+* PR <https://github.com/roman-right/beanie/pull/466>
+
 ### Fix: make `revision_id` not show in schema
-- Author - [Ivan GJ](https://github.com/ivan-gj)
-- PR <https://github.com/roman-right/beanie/pull/478>
-            
+
+* Author - [Ivan GJ](https://github.com/ivan-gj)
+* PR <https://github.com/roman-right/beanie/pull/478>
+
 ### Fix: added re.pattern support to common encoder suite
-- Author - [Ilia](https://github.com/Abashinos)
-- PR <https://github.com/roman-right/beanie/pull/511>
-            
+
+* Author - [Ilia](https://github.com/Abashinos)
+* PR <https://github.com/roman-right/beanie/pull/511>
+
 ### Fix other issues
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/518>
-            
+
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/518>
+
 [1.18.0]: https://pypi.org/project/beanie/1.18.0
 
 ## [1.18.0b1] - 2023-02-09
 
 ### Fix
 
-- Don't create state on init for docs with custom id types
+* Don't create state on init for docs with custom id types
 
 ### Implementation
 
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/486>
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/486>
 
 [1.18.0b1]: https://pypi.org/project/beanie/1.18.0b1
 
@@ -739,12 +987,12 @@ Beanie project
 
 ### Feature
 
-- feat: convert updates to be atomic operations
+* feat: convert updates to be atomic operations
 
 ### Implementation
 
-- Author - [Roman Right](https://github.com/roman-right)
-- PR <https://github.com/roman-right/beanie/pull/481>
+* Author - [Roman Right](https://github.com/roman-right)
+* PR <https://github.com/roman-right/beanie/pull/481>
 
 [1.18.0b0]: https://pypi.org/project/beanie/1.18.0b0
 
@@ -752,12 +1000,12 @@ Beanie project
 
 ### Feature
 
-- Add links to views
+* Add links to views
 
 ### Implementation
 
-- Author - [Sebastian Battle](https://github.com/sabattle)
-- PR <https://github.com/roman-right/beanie/pull/472>
+* Author - [Sebastian Battle](https://github.com/sabattle)
+* PR <https://github.com/roman-right/beanie/pull/472>
 
 [1.17.0]: https://pypi.org/project/beanie/1.17.0
 
@@ -765,1032 +1013,1030 @@ Beanie project
 
 ### Fix
 
-- Already inserted Links will throw DuplicateKeyError on insert of wrapping doc
+* Already inserted Links will throw DuplicateKeyError on insert of wrapping doc
 
 ### Implementation
 
-- Author - [noaHson86](https://github.com/noaHson86)
-- PR <https://github.com/roman-right/beanie/pull/469>
+* Author - [noaHson86](https://github.com/noaHson86)
+* PR <https://github.com/roman-right/beanie/pull/469>
 
 ## [1.16.7] - 2023-01-03
 
 ### Fix
 
-- sort many args
+* sort many args
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/468>
+* PR <https://github.com/roman-right/beanie/pull/468>
 
 ## [1.16.6] - 2022-12-27
 
 ### Feature
 
-- Previous saved state
+* Previous saved state
 
 ### Implementation
 
-- Author - [Paul Renvoisé](https://github.com/paul-finary)
-- PR <https://github.com/roman-right/beanie/pull/305>
+* Author - [Paul Renvoisé](https://github.com/paul-finary)
+* PR <https://github.com/roman-right/beanie/pull/305>
 
 ## [1.16.5] - 2022-12-27
 
 ### Deprecation
 
-- Raises exception if `Collection` inner class was used as it is not supported more
+* Raises exception if `Collection` inner class was used as it is not supported more
 
 ### Backported to
 
-- [1.15.5]
-- [1.14.1]
+* [1.15.5]
+* [1.14.1]
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/460>
+* PR <https://github.com/roman-right/beanie/pull/460>
 
 ## [1.16.4] - 2022-12-20
 
 ### Fix
 
-- [[BUG] Initiating self-referencing documents with nested links breaks due to uncaught request loop](https://github.com/roman-right/beanie/issues/449)
-- Nested lookups for direct links
+* [\[BUG\] Initiating self-referencing documents with nested links breaks due to uncaught request loop](https://github.com/roman-right/beanie/issues/449)
+* Nested lookups for direct links
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/455>
+* PR <https://github.com/roman-right/beanie/pull/455>
 
 ## [1.16.3] - 2022-12-19
 
 ### Fix
 
-- [[BUG] revision_id field saved in MongoDB using save()/replace() on an existing document even if use_revision is False](https://github.com/roman-right/beanie/issues/420)
+* [\[BUG\] revision\_id field saved in MongoDB using save()/replace() on an existing document even if use\_revision is False](https://github.com/roman-right/beanie/issues/420)
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/452>
+* PR <https://github.com/roman-right/beanie/pull/452>
 
 ## [1.16.2] - 2022-12-19
 
 ### Fix
 
-- [[BUG] find_one projection link](https://github.com/roman-right/beanie/issues/383)
-- [[BUG]: Link fields interference/contamination](https://github.com/roman-right/beanie/issues/433)
-- [[BUG]: ElemMatch on Document property of Type List[Link] fails with IndexError in relations.py convert_ids()](https://github.com/roman-right/beanie/issues/439)
+* [\[BUG\] find\_one projection link](https://github.com/roman-right/beanie/issues/383)
+* [\[BUG\]: Link fields interference/contamination](https://github.com/roman-right/beanie/issues/433)
+* [\[BUG\]: ElemMatch on Document property of Type List\[Link\] fails with IndexError in relations.py convert\_ids()](https://github.com/roman-right/beanie/issues/439)
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/448>
+* PR <https://github.com/roman-right/beanie/pull/448>
 
 ## [1.16.1] - 2022-12-17
 
 ### Feature
 
-- Remove yarl dependency
+* Remove yarl dependency
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/448>
+* PR <https://github.com/roman-right/beanie/pull/448>
 
 ## [1.16.0] - 2022-12-17
 
 ### Feature
 
-- Support for fetching deep-nested Links
+* Support for fetching deep-nested Links
 
 ### Implementation
 
-- Author - [Courtney Sanders](https://github.com/csanders-rga)
-- PR <https://github.com/roman-right/beanie/pull/419>
+* Author - [Courtney Sanders](https://github.com/csanders-rga)
+* PR <https://github.com/roman-right/beanie/pull/419>
 
 ## [1.16.0b3] - 2022-11-28
 
 ### Feature
 
-- Lazy parsing for find many
+* Lazy parsing for find many
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/436>
+* PR <https://github.com/roman-right/beanie/pull/436>
 
 ## [1.15.4] - 2022-11-18
 
 ### Fix
 
-- Wrong inheritance behavior with non-rooted documents
+* Wrong inheritance behavior with non-rooted documents
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/422>
+* ISSUE <https://github.com/roman-right/beanie/issues/422>
 
 ## [1.15.3] - 2022-11-10
 
 ### Fix
 
-- Deepcopy dict before encode it to save the original
+* Deepcopy dict before encode it to save the original
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/412>
+* ISSUE <https://github.com/roman-right/beanie/issues/412>
 
 ## [1.15.2] - 2022-11-09
 
 ### Fix
 
-- Use Settings inner class in migrations internals
-- Fix inheritance: mark root docs with `_inheritance_inited = True`
+* Use Settings inner class in migrations internals
+* Fix inheritance: mark root docs with `_inheritance_inited = True`
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/409>
+* PR <https://github.com/roman-right/beanie/pull/409>
 
 ## [1.15.1] - 2022-11-07
 
 ### Fix
 
-- Pass pymongo kwargs to the bulk writer
+* Pass pymongo kwargs to the bulk writer
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/406>
+* PR <https://github.com/roman-right/beanie/pull/406>
 
 ## [1.15.0] - 2022-11-05
 
 ### Feature
 
-- The sync version was moved to a separate project
+* The sync version was moved to a separate project
 
 ### Breaking change
 
-- There is no sync version here more. Please use [Bunnet](https://github.com/roman-right/bunnet) instead
+* There is no sync version here more. Please use [Bunnet](https://github.com/roman-right/bunnet) instead
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/395>
+* PR <https://github.com/roman-right/beanie/pull/395>
 
 ## [1.14.0] - 2022-11-04
 
 ### Feature
 
-- Multi-model behavior for inherited documents
+* Multi-model behavior for inherited documents
 
 ### Breaking change
 
-- The inner class `Collection` is not supported more. Please, use `Settings` instead.
+* The inner class `Collection` is not supported more. Please, use `Settings` instead.
 
 ### Implementation
 
-- Author - [Vitaliy Ivanov](https://github.com/Vitalium)
-- PR <https://github.com/roman-right/beanie/pull/395>
+* Author - [Vitaliy Ivanov](https://github.com/Vitalium)
+* PR <https://github.com/roman-right/beanie/pull/395>
 
 ## [1.13.1] - 2022-10-26
 
 ### Fix
 
-- Remove redundant async things from sync interface
+* Remove redundant async things from sync interface
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/390>
+* ISSUE <https://github.com/roman-right/beanie/issues/390>
 
 ## [1.13.0] - 2022-10-22
 
 ### Improvement
 
-- Sync interface
+* Sync interface
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/386>
+* PR <https://github.com/roman-right/beanie/pull/386>
 
 ## [1.12.1] - 2022-10-17
 
 ### Improvement
 
-- Clone interface for query objects
+* Clone interface for query objects
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/378>
+* PR <https://github.com/roman-right/beanie/pull/378>
 
 ## [1.12.0] - 2022-10-06
 
 ### Improvement
 
-- Optional list of links field
+* Optional list of links field
 
 ### Implementation
 
-- Author - [Alex Deng](https://github.com/rga-alex-deng)
-- PR <https://github.com/roman-right/beanie/pull/358>
+* Author - [Alex Deng](https://github.com/rga-alex-deng)
+* PR <https://github.com/roman-right/beanie/pull/358>
 
 ## [1.11.12] - 2022-09-28
 
 ### Improvement
 
-- Change before_event, after_event signature to be more pythonic
+* Change before\_event, after\_event signature to be more pythonic
 
 ### Implementation
 
-- DISCUSSION <https://github.com/roman-right/beanie/discussions/354>
+* DISCUSSION <https://github.com/roman-right/beanie/discussions/354>
 
 ## [1.11.11] - 2022-09-26
 
 ### Fix
 
-- Remove prints
+* Remove prints
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/355/>
+* ISSUE <https://github.com/roman-right/beanie/issues/355/>
 
 ## [1.11.10] - 2022-09-20
 
 ### Improvement
 
-- Adding Update Action
+* Adding Update Action
 
 ### Implementation
 
-- Author - [schwannden](https://github.com/schwannden)
-- PR <https://github.com/roman-right/beanie/pull/291/>
+* Author - [schwannden](https://github.com/schwannden)
+* PR <https://github.com/roman-right/beanie/pull/291/>
 
 ## [1.11.9] - 2022-08-19
 
 ### Fix
 
-- Move set state and swap revision to init to avoid problems with subdocs
-- Issue <https://github.com/roman-right/beanie/issues/294>
-- Issue <https://github.com/roman-right/beanie/issues/310>
+* Move set state and swap revision to init to avoid problems with subdocs
+* Issue <https://github.com/roman-right/beanie/issues/294>
+* Issue <https://github.com/roman-right/beanie/issues/310>
 
 ## [1.11.8] - 2022-08-17
 
 ### Improvement
 
-- Skip sync parameter for instance updates
+* Skip sync parameter for instance updates
 
 ## [1.11.7] - 2022-08-02
 
 ### Improvement
 
-- Decimal128 encoding
+* Decimal128 encoding
 
 ### Implementation
 
-- Author - [Teslim Olunlade](https://github.com/ogtega)
-- PR <https://github.com/roman-right/beanie/pull/321>
+* Author - [Teslim Olunlade](https://github.com/ogtega)
+* PR <https://github.com/roman-right/beanie/pull/321>
 
 ## [1.11.6] - 2022-06-24
 
 ### Fix
 
-- Roll back projections fix, as it was valid
+* Roll back projections fix, as it was valid
 
 ## [1.11.5] - 2022-06-24
 
 ### Fix
 
-- Projection fix for aggregations
+* Projection fix for aggregations
 
 ## [1.11.4] - 2022-06-13
 
 ### Improvement
 
-- Link as FastAPI output
+* Link as FastAPI output
 
 ## [1.11.3] - 2022-06-10
 
 ### Improvement
 
-- Motor3 support
+* Motor3 support
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/262>
+* ISSUE <https://github.com/roman-right/beanie/issues/262>
 
 ## [1.11.2] - 2022-06-06
 
 ### Fix
 
-- Dnt inherit excludes
+* Dnt inherit excludes
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/279>
+* PR <https://github.com/roman-right/beanie/pull/279>
 
 ## [1.11.1] - 2022-05-31
 
 ### Features
 
-- Allow extra
-- Distinct
+* Allow extra
+* Distinct
 
 ### Implementation
 
-- Author - [Robert Rosca](https://github.com/RobertRosca)
-- PR <https://github.com/roman-right/beanie/pull/263>
-- Author - [Никита](https://github.com/gruianichita)
-- PR <https://github.com/roman-right/beanie/pull/268>
+* Author - [Robert Rosca](https://github.com/RobertRosca)
+* PR <https://github.com/roman-right/beanie/pull/263>
+* Author - [Никита](https://github.com/gruianichita)
+* PR <https://github.com/roman-right/beanie/pull/268>
 
 ## [1.11.0] - 2022-05-06
 
 ### Features
 
-- Multi-model mode
-- Views
+* Multi-model mode
+* Views
 
 ## [1.10.9] - 2022-05-06
 
 ### Improvement
 
-- pymongo_kwargs for insert many
+* pymongo\_kwargs for insert many
 
 ## [1.10.8] - 2022-04-13
 
 ### Fix
 
-- Match step after limit step
+* Match step after limit step
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/241>
+* ISSUE <https://github.com/roman-right/beanie/issues/241>
 
 ## [1.10.7] - 2022-04-12
 
 ### Fix
 
-- Empty update fails on revision id turned on
+* Empty update fails on revision id turned on
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/239>
+* ISSUE <https://github.com/roman-right/beanie/issues/239>
 
 ## [1.10.6] - 2022-04-12
 
 ### Improvement
 
-- Single syntax for find by id
+* Single syntax for find by id
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/238>
+* PR <https://github.com/roman-right/beanie/pull/238>
 
 ## [1.10.5] - 2022-04-11
 
 ### Improvement
 
-- Avoid creating redundant query object
+* Avoid creating redundant query object
 
 ### Implementation
 
-- Author - [amos402](https://github.com/amos402)
-- PR <https://github.com/roman-right/beanie/pull/235>
+* Author - [amos402](https://github.com/amos402)
+* PR <https://github.com/roman-right/beanie/pull/235>
 
 ## [1.10.4] - 2022-03-24
 
 ### Improvement
 
-- Allow custom MigrationNode for build
+* Allow custom MigrationNode for build
 
 ### Implementation
 
-- Author - [amos402](https://github.com/amos402)
-- PR <https://github.com/roman-right/beanie/pull/234>
+* Author - [amos402](https://github.com/amos402)
+* PR <https://github.com/roman-right/beanie/pull/234>
 
 ## [1.10.3] - 2022-02-29
 
 ### Improvement
 
-- Delete action
+* Delete action
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/225>
+* ISSUE <https://github.com/roman-right/beanie/issues/225>
 
 ## [1.10.2] - 2022-02-28
 
 ### Improvement
 
-- Bulk writer for upsert
+* Bulk writer for upsert
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/224>
+* ISSUE <https://github.com/roman-right/beanie/issues/224>
 
 ## [1.10.1] - 2022-02-24
 
 ### Improvement
 
-- Skip actions
+* Skip actions
 
 ### Implementation
 
-- Author - [Paul Renvoisé](https://github.com/paul-finary)
-- PR <https://github.com/roman-right/beanie/pull/218>
+* Author - [Paul Renvoisé](https://github.com/paul-finary)
+* PR <https://github.com/roman-right/beanie/pull/218>
 
 ## [1.10.0] - 2022-02-24
 
 ### Improvement
 
-- Timeseries collections support
-- Pymongo kwargs for find, aggregate, update and delete operations
+* Timeseries collections support
+* Pymongo kwargs for find, aggregate, update and delete operations
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/214>
+* PR <https://github.com/roman-right/beanie/pull/214>
 
 ## [1.9.2] - 2022-02-22
 
 ### Improvement
 
-- First or None for find queries
+* First or None for find queries
 
 ### Implementation
 
-- ISSUE - <https://github.com/roman-right/beanie/issues/207>
+* ISSUE - <https://github.com/roman-right/beanie/issues/207>
 
 ## [1.9.1] - 2022-02-11
 
 ### Improvement
 
-- Add support for py.typed file
+* Add support for py.typed file
 
 ### Implementation
 
-- Author - [Nicholas Smith](https://github.com/nzsmith1)
-- PR - <https://github.com/roman-right/beanie/pull/201>
+* Author - [Nicholas Smith](https://github.com/nzsmith1)
+* PR - <https://github.com/roman-right/beanie/pull/201>
 
 ## [1.9.0] - 2022-02-11
 
 ### Breaking Change
 
-- Property allow_index_dropping to be default False. Indexes will not be deleted by default
+* Property allow\_index\_dropping to be default False. Indexes will not be deleted by default
 
 ### Implementation
 
-- Author - [Nicholas Smith](https://github.com/nzsmith1)
-- PR - <https://github.com/roman-right/beanie/pull/196>
+* Author - [Nicholas Smith](https://github.com/nzsmith1)
+* PR - <https://github.com/roman-right/beanie/pull/196>
 
 ## [1.8.13] - 2022-02-10
 
 ### Improvement
 
-- Add state_management_replace_objects setting
+* Add state\_management\_replace\_objects setting
 
 ### Implementation
 
-- Author - [Paul Renvoisé](https://github.com/paul-finary)
-- PR - <https://github.com/roman-right/beanie/pull/197>
+* Author - [Paul Renvoisé](https://github.com/paul-finary)
+* PR - <https://github.com/roman-right/beanie/pull/197>
 
 ## [1.8.12] - 2022-01-06
 
 ### Improvement
 
-- Add exclude_hidden to dict() to be able to keep hidden fields hidden when the exclude parameter set
+* Add exclude\_hidden to dict() to be able to keep hidden fields hidden when the exclude parameter set
 
 ### Implementation
 
-- Author - [Yallxe](https://github.com/yallxe)
-- PR - <https://github.com/roman-right/beanie/pull/178>
-
+* Author - [Yallxe](https://github.com/yallxe)
+* PR - <https://github.com/roman-right/beanie/pull/178>
 
 ## [1.8.11] - 2021-12-30
 
 ### Improvement
 
-- Only safe pydantic version are allowed. https://github.com/samuelcolvin/pydantic/security/advisories/GHSA-5jqp-qgf6-3pvh
+* Only safe pydantic version are allowed. <https://github.com/samuelcolvin/pydantic/security/advisories/GHSA-5jqp-qgf6-3pvh>
 
 ## [1.8.10] - 2021-12-29
 
 ### Fix
 
-- Revision didn't swap previous revision id and the current one on getting objects from db
+* Revision didn't swap previous revision id and the current one on getting objects from db
 
 ## [1.8.9] - 2021-12-23
 
 ### Improvement
 
-- Deep search of updates for the `save_changes()` method
+* Deep search of updates for the `save_changes()` method
 
 ### Kudos
 
-- Thanks, [Tigran Khazhakyan](https://github.com/tigrankh) for the deep search algo here
+* Thanks, [Tigran Khazhakyan](https://github.com/tigrankh) for the deep search algo here
 
 ## [1.8.8] - 2021-12-17
 
 ### Added
 
-- Search by linked documents fields (for pre-fetching search only)
+* Search by linked documents fields (for pre-fetching search only)
 
 ## [1.8.7] - 2021-12-12
 
 ### Fixed
 
-- Binary encoder issue
+* Binary encoder issue
 
 ## [1.8.6] - 2021-12-14
 
 ### Improved
 
-- Encoder
+* Encoder
 
 ## [1.8.5] - 2021-12-09
 
 ### Added
 
-- `Optional[Link[Sample]]` is allowed field type syntax now
-
+* `Optional[Link[Sample]]` is allowed field type syntax now
 
 ## [1.8.4] - 2021-12-12
 
 ### Fixed
 
-- DateTime bson type
+* DateTime bson type
 
 ## [1.8.3] - 2021-12-07
 
 ### Added
 
-- Subclasses inherit event-based actions
+* Subclasses inherit event-based actions
 
 ## [1.8.2] - 2021-12-04
 
 ### Fixed
 
-- Encoder priority
+* Encoder priority
 
 ## [1.8.1] - 2021-11-30
 
 ### Added
 
-- Key-based call of subfields in the query builders
+* Key-based call of subfields in the query builders
 
 ## [1.8.0] - 2021-11-30
 
 ### Added
 
-- Relations
+* Relations
 
 ### Implementation
 
-- PR <https://github.com/roman-right/beanie/pull/149>
+* PR <https://github.com/roman-right/beanie/pull/149>
 
 ## [1.7.2] - 2021-11-03
 
 ### Fixed
 
-- `revision_id` is hidden in the api schema
+* `revision_id` is hidden in the api schema
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/136>
+* ISSUE <https://github.com/roman-right/beanie/issues/136>
 
 ## [1.7.1] - 2021-11-02
 
 ### Fixed
 
-- `revision_id` is hidden in the outputs
+* `revision_id` is hidden in the outputs
 
 ### Implementation
 
-- ISSUE <https://github.com/roman-right/beanie/issues/136>
+* ISSUE <https://github.com/roman-right/beanie/issues/136>
 
 ## [1.7.0] - 2021-10-12
 
 ### Added
 
-- Cache
-- Bulk write
-- `exists` - find query's method
+* Cache
+* Bulk write
+* `exists` - find query's method
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/123>
-- PR - <https://github.com/roman-right/beanie/pull/122>
-- PR - <https://github.com/roman-right/beanie/pull/129>
+* PR - <https://github.com/roman-right/beanie/pull/123>
+* PR - <https://github.com/roman-right/beanie/pull/122>
+* PR - <https://github.com/roman-right/beanie/pull/129>
 
 ## [1.6.1] - 2021-10-06
 
 ### Update
 
-- Customization support. It is possible to change query builder classes, 
-used in the classes, which are inherited from the Document class
+* Customization support. It is possible to change query builder classes,
+  used in the classes, which are inherited from the Document class
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/125>
+* PR - <https://github.com/roman-right/beanie/pull/125>
 
 ## [1.6.0] - 2021-09-30
 
 ### Update
 
-- Validate on save
+* Validate on save
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/118>
+* PR - <https://github.com/roman-right/beanie/pull/118>
 
 ## [1.5.1] - 2021-09-27
 
 ### Update
 
-- Simplification for init_beanie function
+* Simplification for init\_beanie function
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/104>
+* PR - <https://github.com/roman-right/beanie/pull/104>
 
 ## [1.5.0] - 2021-09-27
 
 ### Update
 
-- Custom encoders to be able to configure, 
-how specific type should be presented in the database
+* Custom encoders to be able to configure,
+  how specific type should be presented in the database
 
 ### Implementation
 
-- Author - [Nazar Vovk](https://github.com/Vovcharaa)
-- PR - <https://github.com/roman-right/beanie/pull/91>
+* Author - [Nazar Vovk](https://github.com/Vovcharaa)
+* PR - <https://github.com/roman-right/beanie/pull/91>
 
 ## [1.4.0] - 2021-09-13
 
 ### Added
 
-- Document state management
+* Document state management
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/114>
+* PR - <https://github.com/roman-right/beanie/pull/114>
 
 ## [1.3.0] - 2021-09-08
 
 ### Added
 
-- Active record pattern
+* Active record pattern
 
 ### Implementation
 
-- Issue - <https://github.com/roman-right/beanie/issues/110>
+* Issue - <https://github.com/roman-right/beanie/issues/110>
 
 ## [1.2.8] - 2021-09-01
 
 ### Fix
 
-- Delete's return annotation
+* Delete's return annotation
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/109>
+* PR - <https://github.com/roman-right/beanie/pull/109>
 
 ## [1.2.7] - 2021-09-01
 
 ### Update
 
-- Annotations for update and delete
+* Annotations for update and delete
 
 ### Implementation
 
-- Author - [Anthony Shaw](https://github.com/tonybaloney)
-- PR - <https://github.com/roman-right/beanie/pull/106>
+* Author - [Anthony Shaw](https://github.com/tonybaloney)
+* PR - <https://github.com/roman-right/beanie/pull/106>
 
 ## [1.2.6] - 2021-08-25
 
 ### Fixed
 
-- MongoDB 5.0 in GH actions
+* MongoDB 5.0 in GH actions
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/100>
+* PR - <https://github.com/roman-right/beanie/pull/100>
 
 ## [1.2.5] - 2021-07-21
 
 ### Fixed
 
-- Indexed fields work with aliases now
+* Indexed fields work with aliases now
 
 ### Implementation
 
-- Author - [Kira](https://github.com/KiraPC)
-- Issue - <https://github.com/roman-right/beanie/issues/96>
+* Author - [Kira](https://github.com/KiraPC)
+* Issue - <https://github.com/roman-right/beanie/issues/96>
 
 ## [1.2.4] - 2021-07-13
 
 ### Fixed
 
-- Aggregation preset method outputs
+* Aggregation preset method outputs
 
 ### Implementation
 
-- Issue - <https://github.com/roman-right/beanie/issues/91>
+* Issue - <https://github.com/roman-right/beanie/issues/91>
 
 ## [1.2.3] - 2021-07-08
 
 ### Fixed
 
-- Pyright issues
+* Pyright issues
 
 ### Added
 
-- Doc publishing on merge to the main branch 
+* Doc publishing on merge to the main branch
 
 ### Implementation
 
-- Issue - <https://github.com/roman-right/beanie/issues/87>
-- Issue - <https://github.com/roman-right/beanie/issues/70>
+* Issue - <https://github.com/roman-right/beanie/issues/87>
+* Issue - <https://github.com/roman-right/beanie/issues/70>
 
 ## [1.2.2] - 2021-07-06
 
 ### Fixed
 
-- Bool types in search criteria
+* Bool types in search criteria
 
 ### Implementation
 
-- Issue - <https://github.com/roman-right/beanie/issues/85>
+* Issue - <https://github.com/roman-right/beanie/issues/85>
 
 ## [1.2.1] - 2021-07-06
 
 ### Fixed
 
-- Document, FindQuery, Aggregation typings
+* Document, FindQuery, Aggregation typings
 
 ### Implementation
 
-- Author - [Kira](https://github.com/KiraPC)
-- Issue - <https://github.com/roman-right/beanie/issues/69>
+* Author - [Kira](https://github.com/KiraPC)
+* Issue - <https://github.com/roman-right/beanie/issues/69>
 
 ## [1.2.0] - 2021-06-25
 
 ### Added
 
-- Upsert
+* Upsert
 
 ### Implementation
 
-- Issue - <https://github.com/roman-right/beanie/issues/64>
+* Issue - <https://github.com/roman-right/beanie/issues/64>
 
 ## [1.1.6] - 2021-06-21
 
 ### Fix
 
-- Pydantic dependency version ^1.5
+* Pydantic dependency version ^1.5
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/71>
+* PR - <https://github.com/roman-right/beanie/pull/71>
 
 ## [1.1.5] - 2021-06-17
 
 ### Fix
 
-- Convert document id to the right type in the `get()` method
+* Convert document id to the right type in the `get()` method
 
 ### Implementation
 
-- ISSUE - <https://github.com/roman-right/beanie/issues/65>
+* ISSUE - <https://github.com/roman-right/beanie/issues/65>
 
 ## [1.1.4] - 2021-06-15
 
 ### Changed
 
-- Stricter flake8 and fixing resulting errors
+* Stricter flake8 and fixing resulting errors
 
 ### Implementation
 
-- Author - [Joran van Apeldoorn](https://github.com/jorants)
-- PR - <https://github.com/roman-right/beanie/pull/62>
+* Author - [Joran van Apeldoorn](https://github.com/jorants)
+* PR - <https://github.com/roman-right/beanie/pull/62>
 
 ## [1.1.3] - 2021-06-15
 
 ### Added
 
-- MyPy to pre-commit
+* MyPy to pre-commit
 
 ### Fixed
 
-- Typing errors
+* Typing errors
 
 ### Implementation
 
-- Author - [Joran van Apeldoorn](https://github.com/jorants)
-- PR - <https://github.com/roman-right/beanie/pull/54>
+* Author - [Joran van Apeldoorn](https://github.com/jorants)
+* PR - <https://github.com/roman-right/beanie/pull/54>
 
 ## [1.1.2] - 2021-06-14
 
 ### Changed
 
-- Skip migration test when transactions not available
+* Skip migration test when transactions not available
 
 ### Implementation
 
-- Author - [Joran van Apeldoorn](https://github.com/jorants)
-- PR - <https://github.com/roman-right/beanie/pull/50>
+* Author - [Joran van Apeldoorn](https://github.com/jorants)
+* PR - <https://github.com/roman-right/beanie/pull/50>
 
 ## [1.1.1] - 2021-06-14
 
 ### Added
 
-- Save method
+* Save method
 
 ### Implementation
 
-- Author - [Joran van Apeldoorn](https://github.com/jorants)
-- PR - <https://github.com/roman-right/beanie/pull/47>
+* Author - [Joran van Apeldoorn](https://github.com/jorants)
+* PR - <https://github.com/roman-right/beanie/pull/47>
 
 ## [1.1.0] - 2021-06-02
 
 ### Added
 
-- Custom id types.
+* Custom id types.
 
 ### Implementation
 
-- Issue - <https://github.com/roman-right/beanie/issues/12>
+* Issue - <https://github.com/roman-right/beanie/issues/12>
 
 ## [1.0.6] - 2021-06-01
 
 ### Fixed
 
-- Typo in the module name.
+* Typo in the module name.
 
 ### Implementation
 
-- Author - [Joran van Apeldoorn](https://github.com/jorants)
-- PR - <https://github.com/roman-right/beanie/pull/44>
+* Author - [Joran van Apeldoorn](https://github.com/jorants)
+* PR - <https://github.com/roman-right/beanie/pull/44>
 
 ## [1.0.5] - 2021-05-25
 
 ### Fixed
 
-- Typing.
+* Typing.
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/40>
+* PR - <https://github.com/roman-right/beanie/pull/40>
 
 ## [1.0.4] - 2021-05-18
 
 ### Fixed
 
-- `aggregation_model` -> `projection_model`
+* `aggregation_model` -> `projection_model`
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/39>
+* PR - <https://github.com/roman-right/beanie/pull/39>
 
 ## [1.0.3] - 2021-05-16
 
 ### Added
 
-- Index kwargs in the Indexed field
+* Index kwargs in the Indexed field
 
 ### Implementation
 
-- Author - [Michael duPont](https://github.com/flyinactor91)
-- PR - <https://github.com/roman-right/beanie/pull/32>
+* Author - [Michael duPont](https://github.com/flyinactor91)
+* PR - <https://github.com/roman-right/beanie/pull/32>
 
 ## [1.0.2] - 2021-05-16
 
 ### Fixed
 
-- Deprecated import
+* Deprecated import
 
 ### Implementation
 
-- Author - [Oliver Andrich](https://github.com/oliverandrich)
-- PR - <https://github.com/roman-right/beanie/pull/33>
+* Author - [Oliver Andrich](https://github.com/oliverandrich)
+* PR - <https://github.com/roman-right/beanie/pull/33>
 
 ## [1.0.1] - 2021-05-14
 
 ### Fixed
 
-- `Document` self annotation
+* `Document` self annotation
 
 ### Implementation
 
-- Issue - <https://github.com/roman-right/beanie/issues/29>
+* Issue - <https://github.com/roman-right/beanie/issues/29>
 
 ## [1.0.0] - 2021-05-10
 
 ### Added
 
-- QueryBuilder
+* QueryBuilder
 
 ### Changed
 
-- Document class was
+* Document class was
   reworked. [Documentation](https://roman-right.github.io/beanie/api/document/)
 
 ### Implementation
 
-- PR - <https://github.com/roman-right/beanie/pull/27>
+* PR - <https://github.com/roman-right/beanie/pull/27>
 
 ## [0.4.3] - 2021-04-25
 
 ### Fixed
 
-- PydanticObjectId openapi generation
+* PydanticObjectId openapi generation
 
 ## [0.4.2] - 2021-04-20
 
 ### Added
 
-- Python ^3.6.1 support.
+* Python ^3.6.1 support.
 
 ### Fixed
 
-- Documents init order in migrations
+* Documents init order in migrations
 
 ## [0.4.1] - 2021-04-19
 
 ### Added
 
-- Projections support to reduce database load
+* Projections support to reduce database load
 
 ### Implementation
 
-- Author - [Nicholas Smith](https://github.com/nzsmith1)
-- Issue - <https://github.com/roman-right/beanie/issues/16>
+* Author - [Nicholas Smith](https://github.com/nzsmith1)
+* Issue - <https://github.com/roman-right/beanie/issues/16>
 
 ## [0.4.0] - 2021-04-18
 
 ### Added
 
-- [ODM Documentation](https://roman-right.github.io/beanie/documentation/odm/)
+* [ODM Documentation](https://roman-right.github.io/beanie/documentation/odm/)
 
 ### Changed
 
-- [Documentation](https://roman-right.github.io/beanie/)
+* [Documentation](https://roman-right.github.io/beanie/)
 
 ## [0.4.0b1] - 2021-04-14
 
 ### Added
 
-- Migrations
-- `inspect_collection` Document method
-- `count_documents` Document method
+* Migrations
+* `inspect_collection` Document method
+* `count_documents` Document method
 
 ### Changed
 
-- Session can be provided to the most of the Document methods
+* Session can be provided to the most of the Document methods
 
 ### Removed
 
-- Internal `DocumentMeta` class.
+* Internal `DocumentMeta` class.
 
 ## [0.3.4] - 2021-04-09
 
 ### Changed
 
-- `Indexed(...)` field supports index types.
+* `Indexed(...)` field supports index types.
 
 ### Implementation
 
-- Author - [Joran van Apeldoorn](https://github.com/jorants)
+* Author - [Joran van Apeldoorn](https://github.com/jorants)
 
 ## [0.3.3] - 2021-04-09
 
 ### Added
 
-- Simple indexes via type hints.
+* Simple indexes via type hints.
 
 ### Implementation
 
-- Author - [Joran van Apeldoorn](https://github.com/jorants)
+* Author - [Joran van Apeldoorn](https://github.com/jorants)
 
 ## [0.3.2] - 2021-03-25
 
 ### Added
 
-- `init_beanie` supports also lists of strings with model paths as
+* `init_beanie` supports also lists of strings with model paths as
   the` document_models` parameter.
 
 ### Implementation
 
-- Author - [Mohamed Nesredin](https://github.com/Mohamed-Kaizen)
+* Author - [Mohamed Nesredin](https://github.com/Mohamed-Kaizen)
 
 ## [0.3.1] - 2021-03-21
 
 ### Added
 
-- `skip`, `limit` and `sort` parameters in the `find_many` and `find_all`
+* `skip`, `limit` and `sort` parameters in the `find_many` and `find_all`
   methods. [Documentation](https://roman-right.github.io/beanie/#find-many-documents)
 
 ## [0.3.0] - 2021-03-19
 
 ### Added
 
-- `Collection` - internal class of the `Document` to set up additional
+* `Collection` - internal class of the `Document` to set up additional
   properties.
-- Indexes support.
+* Indexes support.
 
 ### Changed
 
-- **Breaking change:** `init_beanie` is async function now.
+* **Breaking change:** `init_beanie` is async function now.
 
 ### Deprecated
 
-- Internal `DocumentMeta` class. Will be removed in **0.4.0**.
+* Internal `DocumentMeta` class. Will be removed in **0.4.0**.
 
 [0.3.0]: https://pypi.org/project/beanie/0.3.0
 
