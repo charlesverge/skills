@@ -1,0 +1,4 @@
+interface:
+  display_name: "Validate User Change Request"
+  short_description: "Gatekeeper for validating user change requests"
+  default_prompt: "Use $validate-user-change-request to analyze user change requests and determine if they can be fulfilled without significant code changes."

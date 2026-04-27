@@ -1,5 +1,23 @@
 # Skills Catalog
 
+## pytest-unit-test-generation
+
+* `id`: `pytest-unit-test-generation`
+* `path`: `skills/pytest-unit-test-generation`
+* `category`: `engineering`
+* `name`: `pytest-unit-test-generation`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-04-25`
+
+### Description
+
+Generate comprehensive unit tests for Python source code with pytest. Covers test structure, fixtures, mocking, parametrization, and coverage patterns.
+
+### Skill File
+
+* [skills/pytest-unit-test-generation/SKILL.md](skills/pytest-unit-test-generation/SKILL.md)
+
 ## health-checks
 
 * `id`: `health-checks`
@@ -233,3 +251,21 @@ Enforce record-state handling patterns that separate non-blocking invalid state 
 ### Skill File
 
 * [skills/record-state-handling/SKILL.md](skills/record-state-handling/SKILL.md)
+
+## validate-user-change-request
+
+* `id`: `validate-user-change-request`
+* `path`: `skills/validate-user-change-request`
+* `category`: `engineering`
+* `name`: `validate-user-change-request`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-04-27`
+
+### Description
+
+Validate user change requests and provide guidance on whether they can be fulfilled without significant code changes.
+
+### Skill File
+
+* [skills/validate-user-change-request/SKILL.md](skills/validate-user-change-request/SKILL.md)

@@ -107,6 +107,35 @@ class EnqueueTaskRequest(BaseModel):
 * Always annotate function parameters and return types.
 * Use Python 3.10-style unions: `str | None`, `list[str]`, `dict[str, object]`.
 * Prefer concrete, descriptive types over `Any`.
+* Avoid `**kwargs` or `**fields` in public async methods unless absolutely necessary. Prefer strict, explicit parameters for clarity, discoverability, and validation.
+
+Reject this pattern:
+
+```python
+async def update_status(
+    self,
+    request_id: str,
+    to_status: LlmBatchRequestStatus,
+    **fields,
+) -> DiscoveryLlmBatchRequest:
+    ...
+```
+
+Prefer a strongly typed signature:
+
+```python
+class UpdateStatusPayload(BaseModel):
+    description: str | None = None
+    processed_at: datetime | None = None
+
+async def update_status(
+    self,
+    request_id: str,
+    to_status: LlmBatchRequestStatus,
+    payload: UpdateStatusPayload,
+) -> DiscoveryLlmBatchRequest:
+    ...
+```
 
 Example:
 
@@ -405,6 +434,61 @@ Instead of listing every field when creating a beanie model from a dict, use mod
 
 assert usage should be kept for unit tests
 
+## ContextVar usage
+
+Do not import or use `from contextvars import ContextVar` directly. Context variables should be passed explicitly as function parameters to maintain testability and clarity.
+
+### Rejected pattern (do NOT use):
+```python
+from contextvars import ContextVar
+
+prompt_context: ContextVar[str] = ContextVar("prompt_context")
+
+def some_function():
+    current_prompt = prompt_context.get()
+    # ... rest of function
+```
+
+### Preferred pattern:
+Pass prompts explicitly as parameters:
+```python
+def some_function(prompt: str):
+    # Use prompt directly
+    # ... rest of function
+```
+
+## Prompt passing
+
+Always pass prompts explicitly as function parameters rather than relying on global state or context variables. This makes functions more testable, predictable, and easier to reason about.
+
+### Rejected pattern (do NOT use):
+```python
+# Global or class-level prompt storage
+CURRENT_PROMPT = ""
+
+def process_data():
+    prompt = CURRENT_PROMPT  # Hidden dependency
+    # ... process using prompt
+```
+
+### Preferred pattern:
+```python
+def process_data(prompt: str):
+    # Use prompt directly as parameter
+    # ... process using prompt
+    
+    return result
+```
+
+### Example with default value:
+```python
+def process_data(prompt: str = "default prompt"):
+    # Use prompt parameter
+    # ... process using prompt
+    
+    return result
+```
+
 ## Batch key-indexed ID cache pattern.
 
 ### Use it when:
@@ -444,3 +528,182 @@ ctx = ids_by_file.get(file_name)
 ### Future phrasing:
 
 * “Use a key-indexed ID cache: store all IDs per file in a dict, then look them up during import/persist.”
+
+## Rejected: Use $in with empty list/subquery inside another query
+
+Do not use `$in` operator with a subquery inside another query. This pattern causes performance issues and is difficult to read.
+
+Rejected example (do NOT use):
+
+```python
+retry_filter = {
+    "batch_owner": {"$in": self._claimable_batch_owner_values()},
+    "status": LlmBatchRequestStatus.FAILED_TEMPORARY.value,
+    "task_id": {
+        "$in": await DiscoveryTask.distinct(
+            "_id",
+            {
+                "status": DiscoveryTaskStatus.FAILED_TEMPORARY.value,
+                "$or": [
+                    {"next_retry_on": None},
+                    {"next_retry_on": {"$lte": now}},
+                ],
+                "manual_retry_required": {"$ne": True},
+            },
+        )
+    },
+}
+```
+
+Instead, fetch the matching task IDs first, then apply the filter:
+
+```python
+task_ids = await DiscoveryTask.distinct(
+    "_id",
+    {
+        "status": DiscoveryTaskStatus.FAILED_TEMPORARY.value,
+        "$or": [
+            {"next_retry_on": None},
+            {"next_retry_on": {"$lte": now}},
+        ],
+        "manual_retry_required": {"$ne": True},
+    },
+)
+retry_filter = {
+    "batch_owner": {"$in": self._claimable_batch_owner_values()},
+    "status": LlmBatchRequestStatus.FAILED_TEMPORARY.value,
+    "task_id": {"$in": task_ids},
+}
+```
+
+## Rejected: Double loops when single pass suffices
+
+Separating items into lists then iterating again can be done in one pass.
+
+Rejected example (do NOT use):
+
+```python
+pending: list[DiscoveryLlmBatchRequest] = []
+retryable: list[DiscoveryLlmBatchRequest] = []
+for request in requests:
+    if request.status.value == LlmBatchRequestStatus.PENDING.value:
+        pending.append(request)
+    else:
+        retryable.append(request)
+for request in retryable:
+    request.status = LlmBatchRequestStatus.PENDING
+    request.retry_count = request.retry_count + 1
+    request.next_retry_on = None
+    request.updated_on = now
+    await request.save()
+results = pending + retryable
+```
+
+Instead, update during iteration:
+
+```python
+pending: list[DiscoveryLlmBatchRequest] = []
+retryable: list[DiscoveryLlmBatchRequest] = []
+for request in requests:
+    if request.status.value == LlmBatchRequestStatus.PENDING.value:
+        pending.append(request)
+    else:
+        request.status = LlmBatchRequestStatus.PENDING
+        request.retry_count = request.retry_count + 1
+        request.next_retry_on = None
+        request.updated_on = now
+        retryable.append(request)
+for request in retryable:
+    await request.save()
+results = pending + retryable
+```
+
+## Rejected: Duplicate conditional logic for status handling
+
+Avoid duplicating similar conditional logic for different status values. This creates maintenance burdens and increases the risk of inconsistencies when changes need to be made.
+
+Rejected pattern (do NOT use):
+
+```python
+if request.status in (
+      LlmBatchRequestStatus.BATCHED,
+      LlmBatchRequestStatus.FAILED_TEMPORARY,
+    ):
+      await request_to_pending.send_async(
+        requests_orchestrator(),
+        to_status=LlmBatchRequestStatus.PENDING,
+        request=request,
+        request_id=request.request_id,
+        batch_job_id=None,
+        result_status=None,
+        output_payload_file_name=None,
+        output_payload=None,
+        error_code=None,
+        error_message=None,
+        completed_on=None,
+      )
+elif request.status != LlmBatchRequestStatus.PENDING:
+  raise ValueError(
+    f"{prefix}: request_id={request.request_id} status={request.status} cannot be requeued to batched"
+  )
+await request_to_batched.send_async(
+  requests_orchestrator(),
+  to_status=LlmBatchRequestStatus.BATCHED,
+  request_id=request.request_id,
+  batch_job_id=job_id,
+  result_status=None,
+  output_payload_file_name=None,
+  output_payload=None,
+  llm_metrics=None,
+  error_code=None,
+  error_message=None,
+  completed_on=None,
+)
+```
+
+Preferred approach - extract common logic and reduce duplication:
+
+```python
+# Define statuses that should be requeued to pending
+REQUEUABLE_TO_PENDING_STATUSES = {
+    LlmBatchRequestStatus.BATCHED,
+    LlmBatchRequestStatus.FAILED_TEMPORARY,
+}
+
+if request.status in REQUEUABLE_TO_PENDING_STATUSES:
+    await request_to_pending.send_async(
+        requests_orchestrator(),
+        to_status=LlmBatchRequestStatus.PENDING,
+        request=request,
+        request_id=request.request_id,
+        batch_job_id=None,
+        result_status=None,
+        output_payload_file_name=None,
+        output_payload=None,
+        error_code=None,
+        error_message=None,
+        completed_on=None,
+    )
+elif request.status != LlmBatchRequestStatus.PENDING:
+    raise ValueError(
+        f"{prefix}: request_id={request.request_id} status={request.status} cannot be requeued to batched"
+    )
+    
+# Common logic for sending to batched
+await request_to_batched.send_async(
+    requests_orchestrator(),
+    to_status=LlmBatchRequestStatus.BATCHED,
+    request_id=request.request_id,
+    batch_job_id=job_id,
+    result_status=None,
+    output_payload_file_name=None,
+    output_payload=None,
+    llm_metrics=None,
+    error_code=None,
+    error_message=None,
+    completed_on=None,
+)
+```
+
+Even better - consider using a mapping or strategy pattern for handling different status transitions when the logic becomes complex.
+

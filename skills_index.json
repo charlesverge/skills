@@ -1,5 +1,25 @@
 [
   {
+    "id": "pytest-unit-test-generation",
+    "path": "skills/pytest-unit-test-generation",
+    "category": "engineering",
+    "name": "pytest-unit-test-generation",
+    "description": "Generate comprehensive unit tests for Python source code with pytest. Covers test structure, fixtures, mocking, parametrization, and coverage patterns.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-04-25"
+  },
+  {
+    "id": "health-checks",
+    "path": "skills/health-checks",
+    "category": "engineering",
+    "name": "health-checks",
+    "description": "Create or review health checks for services, containers, container-to-container dependencies, and external APIs.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-04-22"
+  },
+  {
     "id": "python-beanie-orm",
     "path": "skills/python-beanie-orm",
     "category": "engineering",
@@ -118,5 +138,15 @@
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-03-24"
+  },
+  {
+    "id": "validate-user-change-request",
+    "path": "skills/validate-user-change-request",
+    "category": "engineering",
+    "name": "validate-user-change-request",
+    "description": "Validate user change requests and provide guidance on whether they can be fulfilled without significant code changes.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-04-27"
   }
 ]
