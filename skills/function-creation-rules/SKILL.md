@@ -1,6 +1,6 @@
 ---
 name: function-creation-rules
-description: Enforce function creation and reuse rules extracted from agents.md without line modifications.
+description: Rules for creating functions, modifying existing ones, including when to create new functions, how to structure them, and how to handle parameters and backward compatibility.
 ---
 
 # Function Creation Rules
@@ -26,6 +26,27 @@ description: Enforce function creation and reuse rules extracted from agents.md 
 * Prefer passing existing domain models or standard built-in containers across phase boundaries. If stricter typing is needed, update function signatures/call sites directly instead of creating a carrier type.
 * Prefer streaming data from databases/cursors and process records incrementally; avoid materializing full result sets in memory unless required by correctness or an explicit API contract.
 * Do not repeat validation/error checks for invariants already guaranteed by an earlier phase in the same execution flow. Downstream phases should rely on established contracts and only validate new assumptions introduced at that phase.
+* Avoid the use of built in functions like attrib, hasattr for classes which can accessed like ClassName.property_name
+* Functions in classes that don't use self should be staticmethod or moved to a helpers module. If the function is only used in one class, staticmethod is preferred. If the function is used in multiple classes, move it to a helpers module.
+
+
+## Function parameters
+
+* Prefer creating functions that accept a single type and avoid multiple types or a None parameter.
+* If the function requires the parameter, then it cannot accept a type of None
+* Any caller of a function must pass a valid value for all parameters that are required.
+* Use the skill python-type-rules to ensure that parameters have strict types and avoid the use of Any, object, or other escape hatches that allow any type.
+
+## No Pass-Through Helpers
+
+* Do not create one-line wrapper/helper functions that only forward arguments and return another function call.
+* If a signature changes, update all call sites and tests directly instead of adding compatibility wrappers.
+* Allowed exception: explicit user request for backward compatibility (must be documented in the change note with the dependent caller).
+
+## No Read-Time Repairs
+
+* Do not mutate persisted records, payloads, config, files, or schema fields during read/fetch paths to repair missing or legacy data.
+* Read paths may interpret documented defaults for returned objects, but they must not save those defaults back to storage.
 
 ## No Pass-Through Helpers
 
@@ -45,6 +66,21 @@ description: Enforce function creation and reuse rules extracted from agents.md 
 ## Function parameter rules
 
 * Don't use compatibility signature tricks, stop and ask for guidance if an obvious solution is available. For example, if an function call adds a new parameter and you have it available then simply add the parameter to the function call and update all call sites instead of adding a compatibility shim that checks for the presence of the parameter and provides a fallback value. Update the unit tests to reflect the new parameter and its expected value instead of adding a guard for the new parameter in the code to satisfy existing unit tests.
+
+## Handling failures and errors
+
+### Exceptions
+
+- Exceptions should be properly handled and logged. If an exception is not expected then it should be logged and raised to lead to the end of execution or handled by the parent caller
+- Add specific exception handling for expected error cases (e.g., validation errors, known failure modes) with clear logging and recovery steps if applicable.
+- There should be no silent failures. If an error occurs, it should be logged with sufficient context and either handled or raised to prevent unnoticed issues.
+- Do not use # noqa: BLE001 to ignore exception handling issues. Address them directly by adding appropriate try/except blocks or ensuring exceptions are properly propagated.
+- If a critical error occurs, throw an exception. If it is specific to the application create a custom exception to allow identification to allow it to be handled by the proper caller in the tree. For example, if a dependency requires reading a file. But that is read several calls deep into the exception, rather then passing a True / False value or another value up the call stack. raise an error.
+
+### Fail backs
+
+- Only create fail backs if explicitly asked for. For example if a module is missing and the user asks to create a fallback implementation or type for it, then create it. Otherwise report the missing module and let the user decide how to proceed.
+- Only create fail backs if explicitly asked for is any case.
 
 ## Examples
 
@@ -219,3 +255,35 @@ Why this is better:
 * Flow control remains in `run`.
 * Action chunks are separated and unit-testable.
 * Each function has a single responsibility.
+
+## When to create a new file for a function
+
+Inline small utilities; only create a new file when more than one module needs it. Never name a file after a single micro-feature — name modules by category, and let the second real consumer trigger extraction.
+
+## Rule: No External State Mirroring or Logic Duplication
+
+Do not recreate, mirror, or duplicate a class's internal state, data structures, or formatting logic outside of the class itself. If global or cross-instance aggregation is needed, use one of these approved patterns:
+
+1. **Class-level state**: Add the shared state as a class attribute with its own methods.
+2. **Composition**: Create a wrapper or aggregator class that holds instances of the target class and delegates to their public API.
+3. **Shared instance**: Use a single shared instance that all callers reference.
+
+### Forbidden
+
+- Module-level dicts or variables that replicate a class's internal structure.
+- Functions that reach into another class's returned data and manually reimplement its behavior.
+- Parallel implementations of formatting, reporting, or serialization that duplicate a class's existing methods.
+- Any code that would silently break if the target class renamed a key, changed a value type, or altered its internal structure.
+
+### What to Consider as Alternatives
+
+When cross-instance or global aggregation is needed, evaluate these patterns before writing code:
+
+- **Does the class already provide a public API for aggregation?** If so, use it. Pass results from `get_stats()` or similar methods back into the class's own `report()` method. Do not reimplement formatting or structure traversal.
+- **Can a factory function return a shared instance?** A single function that returns a cached or module-scoped instance ensures all callers use the same object without exposing internals.
+- **Is the aggregation concern better owned by the class itself?** If every caller needs the same aggregated view, the class should expose it as a class method or property.
+- **Would composition be cleaner than patching?** An aggregator class that holds references to target instances and delegates to their public methods keeps coordination logic separate from internal structure.
+
+### Rationale
+
+External mirroring creates tight coupling to internal implementation details. Changes to the source class will silently corrupt or break the mirrored code, producing bugs that are difficult to trace and test.

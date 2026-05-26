@@ -126,14 +126,24 @@ class TestClassNameEdgeCases:
 ## Best Practices
 
 1. **Test behavior, not implementation** - Focus on public interfaces
-2. **Use descriptive test names** - `test_should_do_x` format
-3. **Keep tests independent** - Each test can run in isolation
-4. **Follow AAA pattern** - Arrange, Act, Assert
-5. **Mock external dependencies** - Database, HTTP calls, file I/O
-6. **Use fixtures** - Reusable test data via `@pytest.fixture`
-7. **Parametrize when appropriate** - Multiple inputs with `@pytest.mark.parametrize`
-8. **Aim for high branch coverage** - Test all code paths
-9. **Use project ORM patterns** - For projects using an Object-Relational Mapping (ORM) library (Beanie, SQLAlchemy, Prisma, Hibernate, GORM, Sequelize, TypeORM, etc.), use ORM document/model classes and queries in tests to match project coding style
+1. **Use descriptive test names** - `test_should_do_x` format
+1. **Keep tests independent** - Each test can run in isolation
+1. **Follow AAA pattern** - Arrange, Act, Assert
+1. **Mock external dependencies** - Database, HTTP calls, file I/O
+1. **Use fixtures** - Reusable test data via `@pytest.fixture`
+1. **Parametrize when appropriate** - Multiple inputs with `@pytest.mark.parametrize`
+1. **Aim for high branch coverage** - Test all code paths
+1. **Use project ORM patterns** - For projects using an Object-Relational Mapping (ORM) library (Beanie, SQLAlchemy, Prisma, Hibernate, GORM, Sequelize, TypeORM, etc.), use ORM document/model classes and queries in tests to match project coding style
+1. **Use pytest temporary files** - Use tmp_path directly in test arguments for single-test isolation. Use tmp_path_factory.mktemp() inside a session-scoped fixture for shared test assets.
+
+# Unit test setup
+
+1. Identify unit tests which have repeating setup requirements and create fixtures for them. Use `@pytest.fixture` to create reusable test data or objects or pre defined functions
+
+## Resolving test failures
+
+1. Examine if the application code has changed since the tests where generated. Verify if the failure is a unit test failure that is not in line with the application code or the application code is not meeting the expected behavior.
+1. When modifying a test, ensure that it remains as strong as it was before the test. If an attribute has been renamed, don't simply delete the assertion. Update the unit test.
 
 ## Test Organization
 
@@ -167,4 +177,24 @@ def client(app):
 @pytest.fixture
 def sample_data():
     return {"key": "value"}
+```
+
+## Temporary file fixtures
+
+```python
+def test_isolated_file(tmp_path):
+    file_path = tmp_path / "data.txt"
+    file_path.write_text("hello")
+    assert file_path.read_text() == "hello"
+
+@pytest.fixture(scope="session")
+def shared_dataset(tmp_path_factory):
+    # Base directory lasts for the whole test session
+    base_dir = tmp_path_factory.mktemp("data_folder")
+    data_file = base_dir / "large_dataset.csv"
+    data_file.write_text("id,value\n1,100")
+    return data_file
+
+def test_use_case_one(shared_dataset):
+    assert shared_dataset.exists()
 ```

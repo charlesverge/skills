@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docker Containers"
+  short_description: "Compose-first Docker rules for reusable builds and dev/prod parity"
+  default_prompt: "Use $docker-containers to create or review Dockerfiles and docker-compose files with Compose-first workflows, reusable build layers, uv plus pyproject.toml for Python, pnpm for Node, mounted development caches, development profiles, and a separate production Compose file that reuses the same Dockerfile."

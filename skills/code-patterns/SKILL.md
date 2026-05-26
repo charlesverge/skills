@@ -707,3 +707,78 @@ await request_to_batched.send_async(
 
 Even better - consider using a mapping or strategy pattern for handling different status transitions when the logic becomes complex.
 
+## Rejected: Manual object creation with `object.__new__` and `object.__setattr__`
+
+Avoid manually creating objects using `object.__new__` and setting attributes with `object.__setattr__`. This bypasses normal class initialization and can lead to maintenance issues, lack of validation, and confusion for future developers.
+
+  task = object.__new__(Task)
+  object.__setattr__(task, "id", task_id)
+  object.__setattr__(task, "key", "company_summarize_prep:acme")
+  object.__setattr__(task, "payload", task_payload)
+
+Use the class constructor or a factory method instead:
+
+```python
+task = Task(
+    id=task_id,
+    key="company_summarize_prep:acme",
+    payload=task_payload,
+)
+```
+
+## Rejected: Checking not containing many values when a simpler check would suffice
+
+For example:
+```python
+if task is not None and task.status in (
+  TaskStatus.BUILDING,
+  TaskStatus.PENDING_CLAIM,
+  TaskStatus.DISPATCHED,
+  TaskStatus.PROCESSING,
+  TaskStatus.PROCESSED,
+  TaskStatus.FAILED_TEMPORARY,
+  TaskStatus.SKIPPED,
+):
+```
+
+Could be simplified to:
+
+```python
+if task is not None and task.status not in [TaskStatus.COMPLETED, TaskStatus.FAILED_PERMANENT]:
+```
+
+## Do not hide failures, exceptions, fatal errors or other unexpected conditions.
+
+For example
+```python
+task = await Task.find_one({"_id": request.task_id})
+token = None
+if task is not None:
+  do_something(task)
+```
+
+This should be
+
+```python
+task = await Task.find_one({"_id": request.task_id})
+if task is None:
+  logger.error(f"Task with id {request.task_id} not found")
+  raise ValueError(f"Task with id {request.task_id} not found")
+do_something(task)
+```
+
+
+## Do not import only to export unless it is __init__.py
+
+This should not be done
+
+```python
+from .module_name import ClassName
+```
+
+Instead in `__init__.py` you can import and export or import directly from the source.
+
+```python
+from .module_name import ClassName
+__all__ = ["ClassName"]
+```

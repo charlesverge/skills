@@ -1,5 +1,23 @@
 # Skills Catalog
 
+## docker-containers
+
+* `id`: `docker-containers`
+* `path`: `skills/docker-containers`
+* `category`: `engineering`
+* `name`: `docker-containers`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-05-25`
+
+### Description
+
+Manage Docker container workflows and Docker Compose configuration. Use when creating or modifying Dockerfiles, `docker-compose.yml` files, Compose profiles, container services, build settings, volume mounts, or translating `docker run` usage into Docker Compose-based workflows.
+
+### Skill File
+
+* [skills/docker-containers/SKILL.md](skills/docker-containers/SKILL.md)
+
 ## pytest-unit-test-generation
 
 * `id`: `pytest-unit-test-generation`

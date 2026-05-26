@@ -1,0 +1,4 @@
+interface:
+  display_name: "Python Type Rules"
+  short_description: "Use strict Python typing without suppressions"
+  default_prompt: "Use $python-type-rules whenever creating or modifying Python variable, function, class, or return-value types."
