@@ -158,5 +158,15 @@
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-04-27"
+  },
+  {
+    "id": "plan-completion-review",
+    "path": "skills/plan-completion-review",
+    "category": "engineering",
+    "name": "plan-completion-review",
+    "description": "Review a completed plan against the original goal, validate code and tests, and identify missing or incomplete work.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-05-28"
   }
 ]

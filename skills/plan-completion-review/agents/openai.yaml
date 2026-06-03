@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Completion Review"
+  short_description: "Review completed plans and code against the original goal and identify gaps."
+  default_prompt: "Use $plan-completion-review to validate code and plan completion against the original goal, checking tests, side effects, feature coverage, missing work, and execution risks."

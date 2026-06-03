@@ -36,6 +36,24 @@ Generate comprehensive unit tests for Python source code with pytest. Covers tes
 
 * [skills/pytest-unit-test-generation/SKILL.md](skills/pytest-unit-test-generation/SKILL.md)
 
+## plan-completion-review
+
+* `id`: `plan-completion-review`
+* `path`: `skills/plan-completion-review`
+* `category`: `engineering`
+* `name`: `plan-completion-review`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-05-28`
+
+### Description
+
+Review a completed plan against the original goal, validate code and tests, and identify missing or incomplete work.
+
+### Skill File
+
+* [skills/plan-completion-review/SKILL.md](skills/plan-completion-review/SKILL.md)
+
 ## health-checks
 
 * `id`: `health-checks`
