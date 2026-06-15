@@ -89,8 +89,14 @@ Validate that an existing plan is complete, the implementation meets the origina
 
 ### 14. Changes required
 
-- Provide a list of files, classes, functions that require changes along with description of what change needs to be made to ensure the plan is complete.
-- Be specific, assume the developer is a junior developer.
+- Create a list of files which need changes and describe what needs to change
+- Create a list of classes and describe what changes need to be made to those classes to ensure the plan is complete
+- Create a list of types and describe specifically what needs to change, is it a field rename? New type? Remove property? Be specific about the change needed.
+- Create a list of functions that require changes along with description of what change needs to be made to ensure the plan is complete.
+- Be specific, assume the developer is a junior developer and provide specific references and line numbers.
+- If it is not in the plan, favor asking for it to be removed.
+- Do not get optional fixes, do this or that. Only give one option and the option that is the most likely to be the best. The secondary option should be recorded in the Assumptions or Suggested Improvements section, not here in the required changes.
+- Outline specific changes, don't report something like  add the five tests listed in the plan, list each test individually with the specific location and description of the test to be added.
 
 ### 15. Summary
 
@@ -103,3 +109,4 @@ Validate that an existing plan is complete, the implementation meets the origina
 - Verify logic and type correctness before suggesting fixes.
 - Keep recommendations precise and grounded in the current implementation.
 - If there is a missing package, then recommend adding it to the project dependencies and include the necessary import statement in the code.
+- Put extra effort on creating the Changes required section

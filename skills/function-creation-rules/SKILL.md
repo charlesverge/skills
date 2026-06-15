@@ -35,7 +35,9 @@ description: Rules for creating functions, modifying existing ones, including wh
 * Prefer creating functions that accept a single type and avoid multiple types or a None parameter.
 * If the function requires the parameter, then it cannot accept a type of None
 * Any caller of a function must pass a valid value for all parameters that are required.
+* Avoid adding parameters with a default value or a type or None. This causes bugs to occur as it hides type check errors. Is a very strong case to use parameter_name: type | None = None then stop and request permission.
 * Use the skill python-type-rules to ensure that parameters have strict types and avoid the use of Any, object, or other escape hatches that allow any type.
+* Use of type | None, ie int | None = None requires approval
 
 ## No Pass-Through Helpers
 

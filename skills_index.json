@@ -168,5 +168,15 @@
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-05-28"
+  },
+  {
+    "id": "plan-validator",
+    "path": "skills/plan-validator",
+    "category": "engineering",
+    "name": "plan-validator",
+    "description": "Validate draft plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, rule compliance, and required unit-test details.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-06-13"
   }
 ]

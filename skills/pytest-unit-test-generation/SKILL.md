@@ -198,3 +198,102 @@ def shared_dataset(tmp_path_factory):
 def test_use_case_one(shared_dataset):
     assert shared_dataset.exists()
 ```
+
+## Manual unit tests
+
+To handle multiple features at once and run all manual tests if no specific feature is passed, you can change the logic to split comma-separated strings into a list.
+Here is how to update your setup to support commands like pytest --run-manual (runs all manual tests) or pytest --run-manual login,checkout (runs only those specific manual tests).
+## 📑 1. Update your conftest.py
+This updated code parses your input into a list of features. It also changes the logic so that regular automated tests are only skipped if you are explicitly focusing on manual tests.
+
+import pytest
+def pytest_addoption(parser):
+    # This can now be used as a flag on its own, OR with text
+    parser.addoption(
+        "--run-manual",
+        action="store",
+        nargs="?",
+        const="all",
+        default=None,
+        help="Run manual tests. Provide features split by commas (e.g., --run-manual login,checkout)",
+    )
+def pytest_configure(config):
+    # Register the manual marker
+    config.addinivalue_line(
+        "markers", "manual(feature): mark test as manual for a specific feature"
+    )
+def pytest_collection_modifyitems(config, items):
+    # Get the raw option input
+    raw_option = config.getoption("--run-manual")
+
+    # Case 1: The user did NOT provide the --run-manual flag at all.
+    # Skip all manual tests, keep automated tests.
+    if raw_option is None:
+        skip_manual = pytest.mark.skip(reason="Manual test. Use --run-manual to run.")
+        for item in items:
+            if "manual" in item.keywords:
+                item.add_marker(skip_manual)
+        return
+
+    # Case 2: The user provided the flag.
+    # Create a list of target features. If it's "all", the list stays empty.
+    target_features = []
+    if raw_option != "all":
+        # Split "login,checkout" into ["login", "checkout"] and strip extra spaces
+        target_features = [f.strip() for f in raw_option.split(",")]
+
+    for item in items:
+        manual_marker = item.get_closest_marker("manual")
+
+        if manual_marker:
+            # Get the feature assigned to the test mark
+            marker_feature = manual_marker.args[0] if manual_marker.args else None
+
+            # If targeting specific features, skip this test if it doesn't match
+            if target_features and marker_feature not in target_features:
+                item.add_marker(pytest.mark.skip(
+                    reason=f"Manual test for '{marker_feature}' skipped. Targets: {target_features}"
+                ))
+        else:
+            # Since we are running manual tests, skip the normal automated tests
+            item.add_marker(pytest.mark.skip(reason="Running manual test mode only"))
+
+## 📑 2. Your Test Code Example
+You can mark your tests with single feature names. You can also leave a manual test blank if it does not belong to a specific feature.
+
+import pytest
+# Regular automated testdef test_automated_billing():
+    assert True
+# Manual test for login
+@pytest.mark.manual("login")def test_manual_login():
+    print("Verify login captcha")
+    assert True
+# Manual test for checkout
+@pytest.mark.manual("checkout")def test_manual_checkout():
+    print("Swipe physical test card")
+    assert True
+# Manual test for claude
+@pytest.mark.manual("claude")def test_manual_claude_integration():
+    print("Check Claude API response streaming")
+    assert True
+# General manual test with no specific feature
+@pytest.mark.manualdef test_general_manual_check():
+    print("General visual check of the landing page")
+    assert True
+
+## 📑 3. Run the Tests via CLI
+
+* To run regular automated tests only (skips all manual tests):
+
+pytest
+
+* To run ALL manual tests (and skip normal automated ones):
+
+pytest --run-manual
+
+* To run specific manual features (e.g., login and claude):
+
+pytest --run-manual login,claude
+
+(This will run test_manual_login and test_manual_claude_integration, but will skip everything else). [1, 2] 
+

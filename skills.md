@@ -54,6 +54,24 @@ Review a completed plan against the original goal, validate code and tests, and 
 
 * [skills/plan-completion-review/SKILL.md](skills/plan-completion-review/SKILL.md)
 
+## plan-validator
+
+* `id`: `plan-validator`
+* `path`: `skills/plan-validator`
+* `category`: `engineering`
+* `name`: `plan-validator`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-06-13`
+
+### Description
+
+Validate draft plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, rule compliance, and required unit-test details.
+
+### Skill File
+
+* [skills/plan-validator/SKILL.md](skills/plan-validator/SKILL.md)
+
 ## health-checks
 
 * `id`: `health-checks`

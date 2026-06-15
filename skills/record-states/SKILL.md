@@ -1,3 +1,8 @@
+---
+name: record-states
+description: Provide a consistent way to handle invalid or incomplete record state during processing while preserving workflow convergence and keeping responsibility boundaries clear between the processing function and its caller.
+---
+
 # Record State Handling Skill
 
 ## Purpose
