@@ -208,4 +208,4 @@ Before saving or finalizing, include these confirmations in the plan review gate
 - unit tests are listed with exact file paths, test names, and descriptions, or a concrete reason is given for no tests
 - Database operations have complete contracts, integrations which ensure persistence of data
 - every error code in the `Error codes` table has a corresponding test entry or a concrete documented reason
-
+- Verify the plan does not use vague language, it should not have language like "it could be implemented like this", "possibly is", "might", "maybe", etc other vague descriptions. Concrete details are needed. if something is vague locate supporting details to make it certain or add a question clarify.

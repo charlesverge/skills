@@ -1,11 +1,43 @@
 ---
 name: plan-validator-frontend
-description: Validate draft plans for frontend features before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete files-and-updates details, rule compliance, and required unit-test details.
+description: Validate draft plans for frontend user-facing features (UI components, pages, screens, interactions) before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete files-and-updates details, defined UI states (loading, success, error, empty, disabled), accessibility coverage, mockup reconciliation, API-consumption details, rule compliance, and required interaction/component test details.
 ---
 
 # Frontend plan Validator for features that are user facing
 
 Use this skill before saving or finalizing a plan for a frontend user facing feature like a UI component, page, or interaction. Treat validation as a gate: if the plan fails any hard-stop check, revise the plan before proceeding.
+
+## Single-Action Scope
+
+A plan addresses a single action or a single rendered screen state, not a whole feature with all of its states.
+
+Each distinct rendered state the user sees is its own plan. For example, a plan to load and render a previously saved favorites list (the user clicks a company in the favorites list and the loaded list view renders) is one plan. The loading screen, the load-error screen, and the empty/no-results screen are each separate plans:
+
+- `plans/features/favorites-load.md` — the happy-path loaded view and the API call that populates it
+- `plans/features/favorites-loading.md` — the loading screen
+- `plans/features/favorites-load-error.md` — the error screen
+- `plans/features/favorites-no-results.md` — the empty screen
+
+The plan under review defines only the one state or action it is responsible for. It must reference the sibling plans where the other states are implemented (in `Depends on` when there is an ordering dependency, otherwise under `Technical references` → `Related features`). If a related state plan does not exist yet, list it in `Questions`. Do not inline multiple states or actions into one plan, and do not claim every state is defined inside a single plan.
+
+### Example: splitting one request into sibling plans
+
+A request like "show the user's saved favorite companies when they open the favorites tab" is not one plan. Split it by rendered state, one plan per rendering, and let each plan own only its files and tests:
+
+- `plans/features/favorites-loading.md`
+  - Owns: the loading/skeleton screen shown while the list request is in flight.
+  - Key files: `FavoritesList.tsx` loading branch, `FavoritesSkeleton.tsx`.
+- `plans/features/favorites-load.md`
+  - Owns: the loaded list view rendered from a successful response.
+  - Key files: `FavoritesList.tsx` loaded branch, `FavoriteCard.tsx`.
+- `plans/features/favorites-load-error.md`
+  - Owns: the error screen shown when the request fails.
+  - Key files: `FavoritesList.tsx` error branch, `FavoritesError.tsx`.
+- `plans/features/favorites-no-results.md`
+  - Owns: the empty screen shown when the user has no favorites.
+  - Key files: `FavoritesList.tsx` empty branch, `FavoritesEmpty.tsx`.
+
+Each plan references the others under `Related features`. The `favorites-load.md` plan owns the GET call and the loaded view; it links the loading, error, and empty siblings rather than defining their screens.
 
 ## Validation Workflow
 
@@ -14,9 +46,13 @@ Use this skill before saving or finalizing a plan for a frontend user facing fea
 1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of implementation steps unless the user explicitly asked for them into the Suggested Improvements section or Questions.
 1. Run the hard-stop fallback checklist.
 1. Check the plan format and required sections.
-1. Verify the `Files and Updates` section names exact files and covers the classes, functions, methods, variables, settings, and resources to add or modify inside each file.
+1. Verify the `Files and Updates` section names exact files and covers the components, hooks, stores, styles, types, and resources to add or modify inside each file.
+1. Verify the plan covers exactly one action or rendered state, and that the other related states (loading, error, empty, etc.) are referenced as sibling plans rather than inlined.
+1. Verify the single state this plan implements is fully specified and its accessibility is addressed.
+1. Verify each consumed API is named and linked to its `plans/api/{endpoint}.md` plan.
+1. Verify the plan is reconciled against the referenced mockup.
 1. Check rule compliance against any active repo, user, developer, or skill instructions.
-1. Verify the unit-test section is specific enough to execute.
+1. Verify the test-coverage section is specific enough to execute.
 1. Finalize only after all required confirmations are true.
 
 ## Hard-Stop Fallback Checklist
@@ -53,20 +89,20 @@ When a user says `feature flag`, use only `enabled path` and `disabled path`. Ne
 
 ## Required Plan Format
 
-Use the plan structure in references/PLAN_API_TEMPLATE.md
+Use the plan structure in references/PLAN_FRONTEND_TEMPLATE.md
 
 ### How to use the template
 
-1. Create an API short code.
-   - **API short code:** [API area-action or route-purpose. For example, `auth-session`, `questions-area-suggestions`, or `coaching-resume-review-session`]
+1. Create a feature short code.
+   - **Feature short code:** [Feature category-subcategory-action or feature name. For example, `auth-signin-email` or `favorites-company-add`]
 1. Fill out every section. If a section does not apply, write `N/A` or `None`.
-1. Save the API plan as `plans/api/{api-short-code}.md`.
-1. Keep the plan backend, api and contract-first. Document the request and response structures the client depends on before internal implementation notes.
-1. If the endpoint is generic and serves multiple internal purposes, document:
-   - how callers select the internal behavior
-   - which request field or route segment controls the behavior
-   - which internal handler, class, or function is responsible for each behavior
-   - any constraints that keep the endpoint consistent across those behaviors
+1. Save the feature plan as `plans/features/{feature-short-code}.md`.
+1. Keep the plan screen and interaction-first, and scoped to a single action or rendered state. Document the visible elements, user triggers, and the one state this plan owns before internal implementation notes; reference the sibling plans that own the other states (loading, error, empty). Consume APIs by linking to `plans/api/{endpoint}.md`; do not define database writes here.
+1. If the component or screen is generic and reused across multiple screens or purposes, document:
+   - how callers select the rendered behavior or variant
+   - which prop, route segment, or selector controls the behavior
+   - which component, hook, or function is responsible for each behavior
+   - any constraints that keep the component consistent across those uses (shared state, styling, accessibility)
 
 ## Plan Review Gate
 
@@ -75,7 +111,9 @@ Use the plan structure in references/PLAN_API_TEMPLATE.md
 - Feature flags are described only as enabled and disabled paths.
 - The plan follows the original intent.
 - Unasked features are placed in `Suggested Improvements` or `Questions`.
-- Files and updates list exact files, classes, functions, variables, settings, and reasons.
+- Files and updates list exact files, components, hooks, stores, variables, styles, and reasons.
+- The plan covers a single action or rendered state; related states are referenced as sibling plans, not inlined.
+- The one state this plan implements is fully specified, accessibility is addressed, and the plan is reconciled against the referenced mockup.
 
 ## Plan Checks
 
@@ -93,11 +131,14 @@ Use the plan structure in references/PLAN_API_TEMPLATE.md
 
 Reject plan items that introduce:
 
-- new user-facing features the user did not ask for
-- generalized frameworks for a narrow change
+- more than one action or rendered state in a single plan (each state belongs in its own plan; reference siblings instead)
+- extra screens, components, or views the user did not ask for
+- unrequested UI states, animations, transitions, theming, or responsive breakpoints
+- accessibility work beyond the baseline the request implies (where it expands scope rather than meeting it)
+- generalized component frameworks or design-system abstractions for a narrow change
 - unrelated cleanup or refactors
 - compatibility layers not required by the request
-- migrations, feature flags, background jobs, telemetry, retries, or operational flows not requested or required
+- feature flags, client-side telemetry, analytics events, retries, or operational flows not requested or required
 
 When a rejected item may still be useful later, relocate it to `Suggested Improvements`. When an item depends on missing user intent or unclear requirements, relocate it to `Questions`. Do not leave rejected or out-of-scope items in `Implementation Steps`.
 
@@ -108,7 +149,11 @@ Check the plan against all active instructions and project rules. Call out viola
 - banned fallback behavior or language
 - tests described vaguely instead of by file and test name
 - implementation steps without target files or components
-- files-and-updates entries without exact files, covered classes, functions, variables, settings, or reasons
+- files-and-updates entries without exact files, covered components, hooks, stores, variables, styles, or reasons
+- multiple actions or rendered states bundled into one plan instead of split into single-action plans
+- related states (loading, error, empty) neither referenced as sibling plans nor raised in `Questions`
+- missing accessibility coverage (keyboard, focus, labels, screen reader) for the state this plan implements
+- consumed APIs that are not linked to a `plans/api/{endpoint}.md` plan
 - optional alternatives where the user asked for a concrete path
 - changes that contradict existing codebase patterns
 - skipped validation without stating why it cannot run
@@ -117,40 +162,45 @@ Check the plan against all active instructions and project rules. Call out viola
 
 The plan must include one `Files and Updates` section. Use this section as the canonical place for concrete file-level implementation details.
 
-Each entry must start with the exact file path and then list the concrete updates inside that file. Cover every relevant class, function, method, variable, setting, and resource in the file entry instead of using those as separate top-level subsections.
+Each entry must start with the exact file path and then list the concrete updates inside that file. Cover every relevant component, hook, store, function, variable, style, and resource in the file entry instead of using those as separate top-level subsections.
 
 For each file entry, include:
 
 - add, modify, or delete plus the exact file path
-- exact class, function, method, variable, setting, or resource name being added or modified
+- exact component, hook, store, function, prop, variable, style, or resource name being added or modified
 - reason for the file modification
 
-When adding configuration or feature flags, name the exact variable or setting. For example, do not write "add a config flag to settings". Write the concrete target, such as `src/module_name/settings.py::FEATURE_NAME_ENABLED`, and explain why it is needed.
+When adding configuration or feature flags, name the exact variable or setting. For example, do not write "add a config flag to settings". Write the concrete target, such as `src/config/features.ts::FEATURE_NAME_ENABLED`, and explain why it is needed.
 
 Use this format:
+
+This example is the `Files and Updates` for the single sibling plan `plans/features/favorites-load.md` (the loaded list view only); the loading, error, and empty renderings are owned by their own sibling plans.
 
 ```markdown
 ## Files and Updates
 
-- Modify `src/module_name/feature_name/state.py`
-  - Add `FeatureState.feature_name_enabled: bool = True`.
-  - Reason: stores the requested default-enabled feature flag in feature state.
-- Modify `src/module_name/feature_name/settings.py`
-  - Add `FeatureSettings.feature_name_enabled: bool = True`.
-  - Set it from `feature_state.feature_name_enabled` in `load_feature_settings`.
-  - Reason: passes the feature flag to the feature implementation without reading state from lower-level helper code.
+- Modify `src/features/favorites/components/FavoritesList.tsx`
+  - Add the loaded branch that renders `FavoriteCard` items from a successful `useFavorites` response.
+  - Reason: renders the happy-path loaded view this plan owns.
+- Add `src/features/favorites/components/FavoriteCard.tsx`
+  - Add `FavoriteCard` component with a `company: FavoriteCompany` prop showing the company name and logo; expose an accessible label.
+  - Reason: the list item rendered for each loaded favorite.
+- Modify `src/features/favorites/hooks/useFavorites.ts`
+  - Add `useFavorites` hook issuing the GET from `plans/api/favorites-list.md` and exposing `data`.
+  - Reason: supplies the loaded data for this view. Loading and error rendering are owned by the sibling plans `plans/features/favorites-loading.md` and `plans/features/favorites-load-error.md`.
 ```
 
-If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into subfeatures or helpers using `src/{module name}/{feature name}/{sub feature}` organization, with separate files for types, helpers, models, and a supporting resources directory for static data files. If the plan still modifies the large file directly, it must explain why that is the best direct path.
+If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into subfeatures using `src/features/{feature name}/{sub feature}` organization, with separate files for components, hooks, stores, types, styles, and a supporting resources directory for static assets. If the plan still modifies the large file directly, it must explain why that is the best direct path.
 
 ## Test coverage Section Requirements
 
 The plan must include a Test coverage section even when no tests are added.
 
-- Tests must cover the happy path, validation and error paths, edge cases, and regression cases.
-- Tests must include both unit tests and integrations using a real database or API when persistence is involved. For real apis specifically ones that have a cost or side effects, use a sandbox or staging environment.
-- If not sandbox is possible, then they must be only triggered with a manual flag. see "Manual unit tests" in skill pytest-unit-test-generation for details on how to implement this.
-- Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry (added or existing) that asserts that status/code, or an explicit concrete reason it cannot be tested. Error-path tests must not be relocated to `Suggested Improvements`.
+- Tests must cover the single state or action this plan implements: its render, the user interactions that belong to it, its edge cases, and regression cases.
+- Tests must include component/render tests for the rendered state this plan owns and interaction tests for every user trigger it handles (click, submit, toggle, keyboard).
+- Tests must include accessibility assertions (roles, labels, focus order, keyboard operability) for the interactive elements in this plan.
+- When the plan consumes an API, the API must be mocked at the network boundary so the state this plan owns is exercised against the relevant response (the success response for a load plan, a failure response for an error-state plan, an empty response for an empty-state plan). End-to-end flows that hit a real backend must use a staging or sandbox environment.
+- Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry (added or existing) that asserts the user-facing error state for that code, or an explicit concrete reason it cannot be tested. Error-state tests must not be relocated to `Suggested Improvements`.
 
 For each test added or modified, list:
 
@@ -159,7 +209,7 @@ For each test added or modified, list:
 - added or modified
 - short description of what it ensures
 
-Do not accept wildcard, glob, placeholder, or guessed paths. A unit-test entry is invalid if the path contains `*`, `**`, `<...>`, `[...]`, `tests/path/`, `some/path/`, or any placeholder instead of the concrete file where the test will be placed.
+Do not accept wildcard, glob, placeholder, or guessed paths. A test entry is invalid if the path contains `*`, `**`, `<...>`, `[...]`, `tests/path/`, `some/path/`, or any placeholder instead of the concrete file where the test will be placed.
 
 Invalid format:
 
@@ -167,33 +217,52 @@ Invalid format:
 ## Test coverage
 
 - Added:
-  - `src/**/tests/**::test_feature_uses_enabled_path_when_flag_enabled`
-    Ensures the feature uses the enabled path when the feature flag is enabled.
+  - `src/**/__tests__/**::renders favorite cards`
+    Ensures the loaded list view renders a card per favorite.
 ```
 
-Valid format:
+Valid format (tests for the single `plans/features/favorites-load.md` plan; the loading, error, and empty renderings are tested in their own sibling plans):
 
 ```markdown
 ## Test coverage
 - Added:
-  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py::test_feature_uses_enabled_path_when_flag_enabled`
-    Ensures the feature uses the enabled path when the feature flag is enabled.
+  - `src/features/favorites/components/FavoritesList.test.tsx::renders a card per favorite from a loaded response`
+    Ensures the loaded list view renders one `FavoriteCard` per favorite from a successful response.
+  - `src/features/favorites/components/FavoriteCard.test.tsx::renders the company name and logo`
+    Ensures each card shows the company name and logo.
+  - `src/features/favorites/components/FavoriteCard.test.tsx::card is keyboard reachable and labeled`
+    Ensures the card is keyboard reachable and exposes an accessible label.
 - Modified:
-  - `src/module_name/feature_name/tests/test_existing_feature_behavior.py::test_existing_behavior`
-    Updates the assertion for the changed contract.
+  - `src/features/favorites/components/FavoritesTab.test.tsx::shows the favorites list when loaded`
+    Updates the assertion for the added loaded list view.
 - Not added:
-  No unit tests added because this is a documentation-only plan.
+  No tests added because this is a copy-only text change with no behavior.
 ```
 
-If the exact test file is not known, inspect the repository before finalizing the plan. If the repository cannot be inspected, put the test-location uncertainty in `Questions` and do not claim that unit tests are planned with exact locations. If tests are not added, explain the concrete reason. Do not leave the section empty.
+If the exact test file is not known, inspect the repository before finalizing the plan. If the repository cannot be inspected, put the test-location uncertainty in `Questions` and do not claim that tests are planned with exact locations. If tests are not added, explain the concrete reason. Do not leave the section empty.
 
-## Data base and api persistence operations
+## API consumption and client state
 
-When a plan involves database or API persistence, check for the following:
+When a plan consumes an API or manages client state, check for the following:
 
-1. Plans must name every DB field written (state changes/output contract), and document where cross-route data (like a job snapshot) originates and how it flows to the persisting route.
-1. Every write route needs a real-DB integration test that re-reads the record to confirm the write; read-only routes need an integration test against seeded known records.
-1. Every write route needs a real-DB integration test that re-reads the record to confirm the write, plus a test for each documented 4xx failure path (auth, validation, missing-resource); read-only routes need an integration test against seeded known records.
+1. Plans must name every API call this action makes and link each to its `plans/api/{endpoint}.md` plan (or flag it as not-yet-planned in `Questions`).
+1. Plans must define the rendered state this plan owns and the API response that produces it, and reference the sibling plans that own the other response outcomes (loading, error, empty) rather than defining them inline.
+1. Plans must specify how server data maps to displayed fields, and whether updates are optimistic or wait for the server response.
+1. Client-side validation rules must match the consumed API's request contract so the UI rejects the same inputs the API would.
+1. Each consumed API must have component/interaction tests that mock it at the network boundary and exercise the state this plan owns against its corresponding response.
+
+## Frontend Section Requirements
+
+The plan must fill these template sections with concrete, screen-level detail, not placeholders:
+
+- **Success definition** — what must be seen and happen on the screen for this single action or state to be considered successful.
+- **Use cases** — describes what the user does to reach this state and the expected on-screen outcome for it.
+- **Input state before action** and **Output state after action** — concrete required states, not "logged in" or "has access". For example, "user must have at least one company added to see the favorites tab".
+- **UI details** — visible elements (buttons, links, fields, cards, menus, labels) for this state, the state itself, and accessibility notes (keyboard behavior, labels, focus, screen reader). Reference the sibling plans that own the other states (loading, error, empty) instead of defining them here.
+- **Mockups** — the mockup file is referenced and the plan is reconciled against it, with any mismatch or ambiguity called out.
+- **Api routes** — every API this action calls is listed and linked to its `plans/api/{endpoint}.md` plan, or flagged in `Questions` if not yet planned.
+
+If any of these sections is missing, vague, or left as a template placeholder, revise the plan before finalizing.
 
 ## Final Confirmation
 
@@ -204,8 +273,12 @@ Before saving or finalizing, include these confirmations in the plan review gate
 - feature flags are described only as enabled and disabled paths
 - the original user intent is followed
 - unasked features are placed in `Suggested Improvements` or `Questions`
-- files and updates list exact files, classes, functions, variables, settings, and reasons
-- unit tests are listed with exact file paths, test names, and descriptions, or a concrete reason is given for no tests
-- Database operations have complete contracts, integrations which ensure persistence of data
-- every error code in the `Error codes` table has a corresponding test entry or a concrete documented reason
-
+- files and updates list exact files, components, hooks, stores, variables, styles, and reasons
+- the plan covers a single action or rendered state, with the other related states referenced as sibling plans (or raised in `Questions`)
+- the one state this plan implements is fully specified with the element that renders it
+- accessibility is addressed (keyboard, focus, labels, screen reader) for the interactive elements in this plan
+- the plan is reconciled against the referenced mockup
+- every consumed API is named and linked to its `plans/api/{endpoint}.md` plan
+- tests are listed with exact file paths, test names, and descriptions covering this plan's state, its interactions, and accessibility, or a concrete reason is given for no tests
+- every error code in the `Error codes` table has a corresponding user-facing error-state test entry or a concrete documented reason
+- Verify the plan does not use vague language, it should not have language like "it could be implemented like this", "possibly is", "might", "maybe", etc other vague descriptions. Concrete details are needed. if something is vague locate supporting details to make it certain or add a question clarify.
