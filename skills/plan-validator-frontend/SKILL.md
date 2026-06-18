@@ -5,7 +5,11 @@ description: Validate draft plans for frontend user-facing features (UI componen
 
 # Frontend plan Validator for features that are user facing
 
-Use this skill before saving or finalizing a plan for a frontend user facing feature like a UI component, page, or interaction. Treat validation as a gate: if the plan fails any hard-stop check, revise the plan before proceeding.
+1. Use this skill before saving or finalizing a plan for a frontend user facing feature like a UI component, page, or interaction. Treat validation as a gate: if the plan fails any hard-stop check, revise the plan before proceeding.
+1. Feature plans must follow the structure in `references/PLAN_FRONTEND_TEMPLATE.md` and cover exactly one user-facing action or rendered state (loading, success, error, empty, disabled). Related states must be implemented in sibling plans and referenced, not inlined.
+1. Only the sections outlined in `references/PLAN_FRONTEND_TEMPLATE.md` are allowed.
+1. If there is an extra section merge it into the closest relevant section or move it to `Suggested Improvements` if it is a useful but unrequested addition. Do not leave extra sections in the plan.
+1. Generate any missing required section content or details before finalizing. Do not leave template placeholders or vague language in the plan.
 
 ## Single-Action Scope
 
@@ -111,7 +115,7 @@ Use the plan structure in references/PLAN_FRONTEND_TEMPLATE.md
 - Feature flags are described only as enabled and disabled paths.
 - The plan follows the original intent.
 - Unasked features are placed in `Suggested Improvements` or `Questions`.
-- Files and updates list exact files, components, hooks, stores, variables, styles, and reasons.
+- Implementation plan list exact files, components, hooks, stores, variables, styles, and reasons.
 - The plan covers a single action or rendered state; related states are referenced as sibling plans, not inlined.
 - The one state this plan implements is fully specified, accessibility is addressed, and the plan is reconciled against the referenced mockup.
 
@@ -158,36 +162,37 @@ Check the plan against all active instructions and project rules. Call out viola
 - changes that contradict existing codebase patterns
 - skipped validation without stating why it cannot run
 
-## Files and Updates Section Requirements
+## Implementation plan Section Requirements
 
-The plan must include one `Files and Updates` section. Use this section as the canonical place for concrete file-level implementation details.
+The plan must include one `Implementation plan` section. Use this section as the canonical place for concrete file-level implementation details.
 
 Each entry must start with the exact file path and then list the concrete updates inside that file. Cover every relevant component, hook, store, function, variable, style, and resource in the file entry instead of using those as separate top-level subsections.
 
 For each file entry, include:
 
-- add, modify, or delete plus the exact file path
-- exact component, hook, store, function, prop, variable, style, or resource name being added or modified
-- reason for the file modification
+- The exact file path
+- exact component, hook, store, function, prop, variable, style, or resource name
+- Short description of the component, hook, store, function, prop, variable, style, or resource
 
-When adding configuration or feature flags, name the exact variable or setting. For example, do not write "add a config flag to settings". Write the concrete target, such as `src/config/features.ts::FEATURE_NAME_ENABLED`, and explain why it is needed.
+Configuration or feature flags should have a exact variable or setting. For example, do not write "add a config flag to settings". Write the concrete target, such as `src/config/features.ts::FEATURE_NAME_ENABLED`, and explain why it is needed.
 
 Use this format:
 
-This example is the `Files and Updates` for the single sibling plan `plans/features/favorites-load.md` (the loaded list view only); the loading, error, and empty renderings are owned by their own sibling plans.
+This example is the `Implementation plan` for the single sibling plan `plans/features/favorites-load.md` (the loaded list view only); the loading, error, and empty renderings are owned by their own sibling plans.
 
 ```markdown
-## Files and Updates
+## Implementation plan
 
-- Modify `src/features/favorites/components/FavoritesList.tsx`
-  - Add the loaded branch that renders `FavoriteCard` items from a successful `useFavorites` response.
+- src/features/favorites/components/FavoritesList.tsx`
+  - `FavoriteCard` items from a successful `useFavorites` response.
   - Reason: renders the happy-path loaded view this plan owns.
-- Add `src/features/favorites/components/FavoriteCard.tsx`
-  - Add `FavoriteCard` component with a `company: FavoriteCompany` prop showing the company name and logo; expose an accessible label.
-  - Reason: the list item rendered for each loaded favorite.
-- Modify `src/features/favorites/hooks/useFavorites.ts`
-  - Add `useFavorites` hook issuing the GET from `plans/api/favorites-list.md` and exposing `data`.
-  - Reason: supplies the loaded data for this view. Loading and error rendering are owned by the sibling plans `plans/features/favorites-loading.md` and `plans/features/favorites-load-error.md`.
+- src/config/config.yml 
+  - `FEATURE_FAVORITES_ENABLED = true`
+  - Reason: enables the favorites feature flag for this plan's loaded view.
+- src/features/favorites/constants.ts
+  - `FAVORITES_API_ENDPOINT = '/api/favorites'`
+  - Reason: centralizes the API endpoint this plan's `useFavorites` hook consumes.
+
 ```
 
 If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into subfeatures using `src/features/{feature name}/{sub feature}` organization, with separate files for components, hooks, stores, types, styles, and a supporting resources directory for static assets. If the plan still modifies the large file directly, it must explain why that is the best direct path.
@@ -200,9 +205,11 @@ The plan must include a Test coverage section even when no tests are added.
 - Tests must include component/render tests for the rendered state this plan owns and interaction tests for every user trigger it handles (click, submit, toggle, keyboard).
 - Tests must include accessibility assertions (roles, labels, focus order, keyboard operability) for the interactive elements in this plan.
 - When the plan consumes an API, the API must be mocked at the network boundary so the state this plan owns is exercised against the relevant response (the success response for a load plan, a failure response for an error-state plan, an empty response for an empty-state plan). End-to-end flows that hit a real backend must use a staging or sandbox environment.
+- End to end tests must be included for the user-facing behavior this plan implements, even when component and interaction tests are present.
 - Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry (added or existing) that asserts the user-facing error state for that code, or an explicit concrete reason it cannot be tested. Error-state tests must not be relocated to `Suggested Improvements`.
+- Include test coverage for happy path(s), error states, edge cases, regression cases.
 
-For each test added or modified, list:
+For each test list:
 
 - exact file path
 - test name
@@ -225,21 +232,17 @@ Valid format (tests for the single `plans/features/favorites-load.md` plan; the 
 
 ```markdown
 ## Test coverage
-- Added:
-  - `src/features/favorites/components/FavoritesList.test.tsx::renders a card per favorite from a loaded response`
-    Ensures the loaded list view renders one `FavoriteCard` per favorite from a successful response.
-  - `src/features/favorites/components/FavoriteCard.test.tsx::renders the company name and logo`
-    Ensures each card shows the company name and logo.
-  - `src/features/favorites/components/FavoriteCard.test.tsx::card is keyboard reachable and labeled`
-    Ensures the card is keyboard reachable and exposes an accessible label.
-- Modified:
-  - `src/features/favorites/components/FavoritesTab.test.tsx::shows the favorites list when loaded`
-    Updates the assertion for the added loaded list view.
+- `src/features/favorites/components/FavoritesList.test.tsx::renders a card per favorite from a loaded response`
+  Ensures the loaded list view renders one `FavoriteCard` per favorite from a successful response.
+- `src/features/favorites/components/FavoriteCard.test.tsx::renders the company name and logo`
+  Ensures each card shows the company name and logo.
+- `src/features/favorites/components/FavoriteCard.test.tsx::card is keyboard reachable and labeled`
+  Ensures the card is keyboard reachable and exposes an accessible label.
 - Not added:
   No tests added because this is a copy-only text change with no behavior.
 ```
 
-If the exact test file is not known, inspect the repository before finalizing the plan. If the repository cannot be inspected, put the test-location uncertainty in `Questions` and do not claim that tests are planned with exact locations. If tests are not added, explain the concrete reason. Do not leave the section empty.
+If tests are not added, explain the concrete reason. Do not leave the section empty.
 
 ## API consumption and client state
 
