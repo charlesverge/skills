@@ -2,7 +2,7 @@
 
 - One sentence restating the user's requested outcome.
 
-## API summary
+## Frontend summary
 
 - **Feature name:** [Feature name]
 - **Feature short code:** [Feature category or section-Sub category or sub section-action or feature name. For example, "auth-signin-email" or "favorites-company-add"]
@@ -84,9 +84,9 @@
 
 ## Mockups
 
-- **Mockup file name:** [mockups/file-name.html]
-- **Mockup section:** [Relevant screen, panel, modal, or component]
-- **Mockup notes:** [Any mismatch, ambiguity, or confirmed behavior from the mockup]
+- **Mockup file name:** [mockups/file-name.html[#section-id]](mockups/file-name.html#data-section)
+- **Mockup section:** [Mockup files often have more then one screen, each feature plan is intended to only have one screen. If a mockup has multiple screens in a single html files then each screen will have a <section> tag. For example <section class="screen active" data-screen="favorites" data-screen-label="Favorites"> in this case mockups/Tools.html has a section with data-screen set to favorites which would produce the Mockup file mockups/Tools.html#favorites with a section of favorites]
+- **Mockup notes:** [Any specific notes about the mockup and how it functions, for example animations, if it is full screen, specific customizations that don't follow existing patterns, etc.]
 
 ## Api routes
 
@@ -104,14 +104,19 @@
 
 - Commands or manual checks to run.
 
-## Current State
+## Implementation plan
 
-- Files, modules, or behavior inspected.
-- Relevant constraints or existing patterns.
+- Each feature which has a visible ui component should have one or more files which render it. For example if a screen is a single button then a single file like {project_dir}/components/FeatureButton.tsx contains the ui component is needed
+- If the screen is more complete then it should be broken into individual small components like {project_dir}/components/product/ProductView.tsx {project_dir}/components/product/ProductTitle.tsx {project_dir}/components/product/ProductDescription.tsx which would have rendering and styling for specific elements in the screen. 
+- Where routes are defined if for a specific screen and what the route is visible for the user for example: {project_dir}/routes.tsx - /product/{product_id}
+- tests {project_dir}/app/main-feature/feature-button.flow.test.tsx
+- e2e tests {project_dir}/e2e/feature-button.spec.ts
+- Files which link to the component for example: {project_dir}/components/product/ProductList.tsx 
 
 ## Questions
 
 - Clarifications needed before implementation, if any.
+- If the plan is covering more then one features then outline how the plan should be split into multiple plan files, include recommended file names and short descriptions of the feature, mockup file and section. One line per feature.
 
 ## Answered questions
 
@@ -128,9 +133,3 @@
 ## Suggested Improvements
 
 - Useful but unrequested follow-up ideas, if any.
-
-## Files and Updates
-
-- Modify `path/to/file.py`
-  - Add or modify the exact class, function, method, variable, setting, model, db, or resource.
-  - Reason: explain why this file must change.

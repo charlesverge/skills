@@ -95,10 +95,10 @@
 
 - Commands or manual checks to run.
 
-## Current State
+## Implementation plan
 
-- Files, modules, or behavior inspected.
-- Relevant constraints or existing patterns.
+- Files, Class names, function names, required for this api end point. For example: {project_dir}/src/{api}/{endpoint}.py - class EndpointHandler, function handle_request - main entry point for the api endpoint which takes the request, validates it, performs the necessary actions and returns the response.
+- Constants, settings or configuration options and where they are located. ie {project_dir}/settings.py - PLAN_VALIDATION_ENABLED = True
 
 ## Questions
 
@@ -119,9 +119,3 @@
 ## Suggested Improvements
 
 - Useful but unrequested follow-up ideas, if any.
-
-## Files and Updates
-
-- Modify `path/to/file.py`
-  - Add or modify the exact class, function, method, variable, setting, model, db, or resource.
-  - Reason: explain why this file must change.

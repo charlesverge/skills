@@ -97,6 +97,8 @@ Validate that an existing plan is complete, the implementation meets the origina
 - If it is not in the plan, favor asking for it to be removed.
 - Do not get optional fixes, do this or that. Only give one option and the option that is the most likely to be the best. The secondary option should be recorded in the Assumptions or Suggested Improvements section, not here in the required changes.
 - Outline specific changes, don't report something like  add the five tests listed in the plan, list each test individually with the specific location and description of the test to be added.
+- Do not give vague change requirements, be specific. For example, if a new function is needed, give the exact function signature and a brief description of the logic that should be implemented in the function. If a new class is needed, give the exact class name, its properties with types, and a brief description of its methods and their logic.
+- Do not require the coder to make a choice between options, select the best option.
 
 ### 15. Summary
 
