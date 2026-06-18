@@ -10,7 +10,9 @@
 - **Route:** [route to the screen location]
 - **Priority:** [High | Medium | Low]
 - **Caller or trigger:** [Screen or location the user navigates from or preforms to reach this feature or screen]
-- **Depends on**: list of plan files that this depends on that must be completed first. ie plans/api/job-create.md plans/features/auth-login.md
+- **Depends on API plan**: list of API plan files that this depends on that must be completed first. If there are truly  no dependencies then explain why here.
+- **Depends on feature plans**: list of feature plan files that this depends on that must be completed first. For example, if the screen is a report screen that is accessed from a dashboard page, then the home page must be completed first. ie plans/feature/dashboard-page.md. If the screen is directly navigated to then None can be used. If there are truly  no dependencies then explain why here.
+- **Depends on actions**: List of plans which are triggered by this screen or component. For if this was the dashboard plan, then it would link to the report screen plan. If there are truly  no dependencies then explain why here.
 
 ## Success definition
 
