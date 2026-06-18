@@ -1,6 +1,6 @@
 ---
 name: plan-validator-backend
-description: Validate draft plans for api, backend, job, non user facing plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete files-and-updates details, rule compliance, and required unit-test details.
+description: Validate draft plans for api, backend, job, non user facing plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete implementation-plan details, rule compliance, and required unit-test details.
 ---
 
 # API / backend plan Validator for features that are non user facing
@@ -11,10 +11,10 @@ Use this skill before saving or finalizing a plan for a backend non user facing 
 
 1. Restate the user's original intent in one sentence.
 1. Compare every planned task to that intent.
-1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of implementation steps unless the user explicitly asked for them into the Suggested Improvements section or Questions.
+1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of the `Implementation plan` unless the user explicitly asked for them into the Suggested Improvements section or Questions.
 1. Run the hard-stop fallback checklist.
 1. Check the plan format and required sections.
-1. Verify the `Files and Updates` section names exact files and covers the classes, functions, methods, variables, settings, and resources to add or modify inside each file.
+1. Verify the `Implementation plan` section names exact files and covers the classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons each file must contain for this backend/API feature.
 1. Check rule compliance against any active repo, user, developer, or skill instructions.
 1. Verify the unit-test section is specific enough to execute.
 1. Finalize only after all required confirmations are true.
@@ -75,15 +75,15 @@ Use the plan structure in references/PLAN_API_TEMPLATE.md
 - Feature flags are described only as enabled and disabled paths.
 - The plan follows the original intent.
 - Unasked features are placed in `Suggested Improvements` or `Questions`.
-- Files and updates list exact files, classes, functions, variables, settings, and reasons.
+- Implementation plan lists exact files, classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons.
 
 ## Plan Checks
 
 ### Intent Alignment
 
 - Confirm the plan solves the user's stated request, not a broader inferred project goal.
-- Mark each implementation step as `requested`, `required to satisfy request`, `suggested improvement`, `question`, or `remove`.
-- Keep only `requested` and `required to satisfy request` items in implementation steps.
+- Mark each `Implementation plan` item as `requested`, `required to satisfy request`, `suggested improvement`, `question`, or `remove`.
+- Keep only `requested` and `required to satisfy request` items in `Implementation plan`.
 - Move useful but unrequested ideas to `Suggested Improvements`.
 - Move uncertain scope or requirement decisions to `Questions`.
 - Remove items that are neither useful follow-ups nor valid questions.
@@ -99,7 +99,7 @@ Reject plan items that introduce:
 - compatibility layers not required by the request
 - migrations, feature flags, background jobs, telemetry, retries, or operational flows not requested or required
 
-When a rejected item may still be useful later, relocate it to `Suggested Improvements`. When an item depends on missing user intent or unclear requirements, relocate it to `Questions`. Do not leave rejected or out-of-scope items in `Implementation Steps`.
+When a rejected item may still be useful later, relocate it to `Suggested Improvements`. When an item depends on missing user intent or unclear requirements, relocate it to `Questions`. Do not leave rejected or out-of-scope items in `Implementation plan`.
 
 ### Rule Compliance
 
@@ -107,37 +107,38 @@ Check the plan against all active instructions and project rules. Call out viola
 
 - banned fallback behavior or language
 - tests described vaguely instead of by file and test name
-- implementation steps without target files or components
-- files-and-updates entries without exact files, covered classes, functions, variables, settings, or reasons
+- implementation-plan entries without target files or backend contract details
+- implementation-plan entries without exact files, covered classes, functions, variables, settings, resources, persistence operations, or reasons
 - optional alternatives where the user asked for a concrete path
 - changes that contradict existing codebase patterns
 - skipped validation without stating why it cannot run
 
-## Files and Updates Section Requirements
+## Implementation plan Section Requirements
 
-The plan must include one `Files and Updates` section. Use this section as the canonical place for concrete file-level implementation details.
+The plan must include one `Implementation plan` section. Use this section as the canonical place for concrete file-level implementation details.
 
-Each entry must start with the exact file path and then list the concrete updates inside that file. Cover every relevant class, function, method, variable, setting, and resource in the file entry instead of using those as separate top-level subsections.
+Each entry must start with the exact file path and then list the concrete backend updates inside that file. Cover every relevant class, function, method, variable, setting, resource, request and response contract, persistence operation, and error mapping in the file entry instead of using those as separate top-level subsections.
 
 For each file entry, include:
 
-- add, modify, or delete plus the exact file path
-- exact class, function, method, variable, setting, or resource name being added or modified
-- reason for the file modification
+- The exact file path
+- Exact class, function, method, variable, setting, resource, request and response contract, persistence operation, or error mapping being added or modified
+- Short description of the class, function, method, variable, setting, resource, request and response contract, persistence operation, or error mapping
+- Reason for the file modification
 
 When adding configuration or feature flags, name the exact variable or setting. For example, do not write "add a config flag to settings". Write the concrete target, such as `src/module_name/settings.py::FEATURE_NAME_ENABLED`, and explain why it is needed.
 
 Use this format:
 
 ```markdown
-## Files and Updates
+## Implementation plan
 
-- Modify `src/module_name/feature_name/state.py`
-  - Add `FeatureState.feature_name_enabled: bool = True`.
+- `src/module_name/feature_name/state.py`
+  - `FeatureState.feature_name_enabled: bool = True`.
   - Reason: stores the requested default-enabled feature flag in feature state.
-- Modify `src/module_name/feature_name/settings.py`
-  - Add `FeatureSettings.feature_name_enabled: bool = True`.
-  - Set it from `feature_state.feature_name_enabled` in `load_feature_settings`.
+- `src/module_name/feature_name/settings.py`
+  - `FeatureSettings.feature_name_enabled: bool = True`.
+  - `load_feature_settings` sets `FeatureSettings.feature_name_enabled` from `feature_state.feature_name_enabled`.
   - Reason: passes the feature flag to the feature implementation without reading state from lower-level helper code.
 ```
 
@@ -204,7 +205,7 @@ Before saving or finalizing, include these confirmations in the plan review gate
 - feature flags are described only as enabled and disabled paths
 - the original user intent is followed
 - unasked features are placed in `Suggested Improvements` or `Questions`
-- files and updates list exact files, classes, functions, variables, settings, and reasons
+- implementation plan lists exact files, classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons
 - unit tests are listed with exact file paths, test names, and descriptions, or a concrete reason is given for no tests
 - Database operations have complete contracts, integrations which ensure persistence of data
 - every error code in the `Error codes` table has a corresponding test entry or a concrete documented reason

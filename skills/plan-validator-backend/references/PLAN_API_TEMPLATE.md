@@ -97,8 +97,17 @@
 
 ## Implementation plan
 
-- Files, Class names, function names, required for this api end point. For example: {project_dir}/src/{api}/{endpoint}.py - class EndpointHandler, function handle_request - main entry point for the api endpoint which takes the request, validates it, performs the necessary actions and returns the response.
-- Constants, settings or configuration options and where they are located. ie {project_dir}/settings.py - PLAN_VALIDATION_ENABLED = True
+- `{project_dir}/src/{api}/{endpoint}.py`
+  - `EndpointHandler`
+  - `handle_request`
+  - Reason: main entry point for the API endpoint that accepts the request, validates it, performs the required action, and returns the response.
+- `{project_dir}/src/{api}/contracts.py`
+  - `FeatureRequest`
+  - `FeatureResponse`
+  - Reason: defines the request and response contracts callers depend on.
+- `{project_dir}/settings.py`
+  - `PLAN_VALIDATION_ENABLED = True`
+  - Reason: configures the enabled path for this API behavior.
 
 ## Questions
 
