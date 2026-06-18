@@ -1,6 +1,6 @@
 ---
 name: plan-validator-frontend
-description: Validate draft plans for frontend user-facing features (UI components, pages, screens, interactions) before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete files-and-updates details, defined UI states (loading, success, error, empty, disabled), accessibility coverage, mockup reconciliation, API-consumption details, rule compliance, and required interaction/component test details.
+description: Validate draft plans for frontend user-facing features (UI components, pages, screens, interactions) before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete feature build details, defined UI states (loading, success, error, empty, disabled), accessibility coverage, mockup reconciliation, API-consumption details, rule compliance, and required interaction/component test details.
 ---
 
 # Frontend plan Validator for features that are user facing
@@ -50,7 +50,7 @@ Each plan references the others under `Related features`. The `favorites-load.md
 1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of implementation steps unless the user explicitly asked for them into the Suggested Improvements section or Questions.
 1. Run the hard-stop fallback checklist.
 1. Check the plan format and required sections.
-1. Verify the `Files and Updates` section names exact files and covers the components, hooks, stores, styles, types, and resources to add or modify inside each file.
+1. Verify the `Implementation plan` section names exact files and covers the components, hooks, stores, styles, types, and resources each file must contain for this feature.
 1. Verify the plan covers exactly one action or rendered state, and that the other related states (loading, error, empty, etc.) are referenced as sibling plans rather than inlined.
 1. Verify the single state this plan implements is fully specified and its accessibility is addressed.
 1. Verify each consumed API is named and linked to its `plans/api/{endpoint}.md` plan.
@@ -115,7 +115,7 @@ Use the plan structure in references/PLAN_FRONTEND_TEMPLATE.md
 - Feature flags are described only as enabled and disabled paths.
 - The plan follows the original intent.
 - Unasked features are placed in `Suggested Improvements` or `Questions`.
-- Implementation plan list exact files, components, hooks, stores, variables, styles, and reasons.
+- Implementation plan lists exact files, components, hooks, stores, variables, styles, and reasons.
 - The plan covers a single action or rendered state; related states are referenced as sibling plans, not inlined.
 - The one state this plan implements is fully specified, accessibility is addressed, and the plan is reconciled against the referenced mockup.
 
@@ -139,12 +139,12 @@ Reject plan items that introduce:
 - extra screens, components, or views the user did not ask for
 - unrequested UI states, animations, transitions, theming, or responsive breakpoints
 - accessibility work beyond the baseline the request implies (where it expands scope rather than meeting it)
-- generalized component frameworks or design-system abstractions for a narrow change
+- generalized component frameworks or design-system abstractions for a narrow feature
 - unrelated cleanup or refactors
 - compatibility layers not required by the request
 - feature flags, client-side telemetry, analytics events, retries, or operational flows not requested or required
 
-When a rejected item may still be useful later, relocate it to `Suggested Improvements`. When an item depends on missing user intent or unclear requirements, relocate it to `Questions`. Do not leave rejected or out-of-scope items in `Implementation Steps`.
+When a rejected item may still be useful later, relocate it to `Suggested Improvements`. When an item depends on missing user intent or unclear requirements, relocate it to `Questions`. Do not leave rejected or out-of-scope items in `Implementation plan`.
 
 ### Rule Compliance
 
@@ -153,20 +153,20 @@ Check the plan against all active instructions and project rules. Call out viola
 - banned fallback behavior or language
 - tests described vaguely instead of by file and test name
 - implementation steps without target files or components
-- files-and-updates entries without exact files, covered components, hooks, stores, variables, styles, or reasons
+- implementation-plan entries without exact files, covered components, hooks, stores, variables, styles, or reasons
 - multiple actions or rendered states bundled into one plan instead of split into single-action plans
 - related states (loading, error, empty) neither referenced as sibling plans nor raised in `Questions`
 - missing accessibility coverage (keyboard, focus, labels, screen reader) for the state this plan implements
 - consumed APIs that are not linked to a `plans/api/{endpoint}.md` plan
 - optional alternatives where the user asked for a concrete path
-- changes that contradict existing codebase patterns
+- planned work that contradicts existing codebase patterns
 - skipped validation without stating why it cannot run
 
 ## Implementation plan Section Requirements
 
 The plan must include one `Implementation plan` section. Use this section as the canonical place for concrete file-level implementation details.
 
-Each entry must start with the exact file path and then list the concrete updates inside that file. Cover every relevant component, hook, store, function, variable, style, and resource in the file entry instead of using those as separate top-level subsections.
+Each entry must start with the exact file path and then list the concrete feature work inside that file. Cover every relevant component, hook, store, function, variable, style, and resource in the file entry instead of using those as separate top-level subsections.
 
 For each file entry, include:
 
@@ -195,7 +195,7 @@ This example is the `Implementation plan` for the single sibling plan `plans/fea
 
 ```
 
-If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into subfeatures using `src/features/{feature name}/{sub feature}` organization, with separate files for components, hooks, stores, types, styles, and a supporting resources directory for static assets. If the plan still modifies the large file directly, it must explain why that is the best direct path.
+If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into subfeatures using `src/features/{feature name}/{sub feature}` organization, with separate files for components, hooks, stores, types, styles, and a supporting resources directory for static assets. If the plan still places the feature in the large file directly, it must explain why that is the best direct path.
 
 ## Test coverage Section Requirements
 
@@ -213,7 +213,6 @@ For each test list:
 
 - exact file path
 - test name
-- added or modified
 - short description of what it ensures
 
 Do not accept wildcard, glob, placeholder, or guessed paths. A test entry is invalid if the path contains `*`, `**`, `<...>`, `[...]`, `tests/path/`, `some/path/`, or any placeholder instead of the concrete file where the test will be placed.
@@ -239,7 +238,7 @@ Valid format (tests for the single `plans/features/favorites-load.md` plan; the 
 - `src/features/favorites/components/FavoriteCard.test.tsx::card is keyboard reachable and labeled`
   Ensures the card is keyboard reachable and exposes an accessible label.
 - Not added:
-  No tests added because this is a copy-only text change with no behavior.
+  No tests added because this is a copy-only plan with no behavior.
 ```
 
 If tests are not added, explain the concrete reason. Do not leave the section empty.
@@ -276,7 +275,7 @@ Before saving or finalizing, include these confirmations in the plan review gate
 - feature flags are described only as enabled and disabled paths
 - the original user intent is followed
 - unasked features are placed in `Suggested Improvements` or `Questions`
-- files and updates list exact files, components, hooks, stores, variables, styles, and reasons
+- implementation plan lists exact files, components, hooks, stores, variables, styles, and reasons
 - the plan covers a single action or rendered state, with the other related states referenced as sibling plans (or raised in `Questions`)
 - the one state this plan implements is fully specified with the element that renders it
 - accessibility is addressed (keyboard, focus, labels, screen reader) for the interactive elements in this plan
