@@ -83,7 +83,9 @@ Use the model structure in references/PLAN_MODEL_TEMPLATE.md for any data models
    - which internal handler, class, or function is responsible for each behavior
    - any constraints that keep the endpoint consistent across those behaviors
 
-## Plan Review Gate
+## Internal Plan Review Gate
+
+Use this gate to validate the plan internally. Do not add a `Plan review gate` section to the plan unless the template includes one.
 
 - No fallback behavior was added.
 - No fallback language remains.
@@ -139,7 +141,7 @@ Each entry must start with the exact file path and then list the concrete backen
 For each file entry, include:
 
 - The exact file path
-- Exact class, function, method, variable, setting, resource, request and response contract, persistence operation, or error mapping being added or modified
+- Exact class, function, method, variable, setting, resource, request and response contract, persistence operation, or error mapping in the completed plan
 - Short description of the class, function, method, variable, setting, resource, request and response contract, persistence operation, or error mapping
 - Reason for the file modification
 
@@ -163,47 +165,39 @@ If any target file is already above 500 lines, or the plan would push it above 5
 
 ## Test coverage Section Requirements
 
-The plan must include a Test coverage section even when no tests are added.
+The plan must include a Test coverage section even when no tests are required.
 
 - Tests must cover the happy path, validation and error paths, edge cases, and regression cases.
 - Tests must include both unit tests and integrations using a real database or API when persistence is involved. For real apis specifically ones that have a cost or side effects, use a sandbox or staging environment.
 - If not sandbox is possible, then they must be only triggered with a manual flag. see "Manual unit tests" in skill pytest-unit-test-generation for details on how to implement this.
-- Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry (added or existing) that asserts that status/code, or an explicit concrete reason it cannot be tested. Error-path tests must not be relocated to `Suggested Improvements`.
+- Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry that asserts that status/code, or an explicit concrete reason it cannot be tested. Error-path tests must not be relocated to `Suggested Improvements`.
+- The `Test coverage` section must describe the tests that should exist for the completed plan. Do not use change-action buckets or change verbs.
+- Hard stop if `## Test coverage` does not contain exactly one `- **Test cases needed:**` list.
 
-For each test added or modified, list:
+For each test case, list in order:
 
 - exact file path
 - test name
-- added or modified
 - short description of what it ensures
+- one required coverage category: `Happy path`, `Validation / error path`, `Edge case`, or `Regression case`
 
 Do not accept wildcard, glob, placeholder, or guessed paths. A unit-test entry is invalid if the path contains `*`, `**`, `<...>`, `[...]`, `tests/path/`, `some/path/`, or any placeholder instead of the concrete file where the test will be placed.
 
-Invalid format:
-
-```markdown
-## Test coverage
-
-- Added:
-  - `src/**/tests/**::test_feature_uses_enabled_path_when_flag_enabled`
-    Ensures the feature uses the enabled path when the feature flag is enabled.
-```
+Invalid format: any `Test coverage` section using change-action buckets, wildcard paths, placeholder paths, or change verbs instead of the `- **Test cases needed:**` list.
 
 Valid format:
 
 ```markdown
 ## Test coverage
-- Added:
-  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py::test_feature_uses_enabled_path_when_flag_enabled`
-    Ensures the feature uses the enabled path when the feature flag is enabled.
-- Modified:
-  - `src/module_name/feature_name/tests/test_existing_feature_behavior.py::test_existing_behavior`
-    Updates the assertion for the changed contract.
-- Not added:
-  No unit tests added because this is a documentation-only plan.
+
+- **Test cases needed:**
+  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_uses_enabled_path_when_flag_enabled` Ensures the feature uses the enabled path when the feature flag is enabled - Happy path
+  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_rejects_invalid_input` Ensures the feature returns the documented validation error code for invalid input - Validation / error path
+  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_handles_empty_input` Ensures the feature returns the documented empty result for empty input - Edge case
+  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_preserves_existing_contract` Ensures the existing response contract remains unchanged - Regression case
 ```
 
-If the exact test file is not known, inspect the repository before finalizing the plan. If the repository cannot be inspected, put the test-location uncertainty in `Questions` and do not claim that unit tests are planned with exact locations. If tests are not added, explain the concrete reason. Do not leave the section empty.
+If the exact test file is not known, inspect the repository before finalizing the plan. If the repository cannot be inspected, put the test-location uncertainty in `Questions` and do not claim that unit tests are planned with exact locations. If tests are not required, explain the concrete reason under `- **Test cases needed:**`. Do not leave the section empty.
 
 ## Data base and api persistence operations
 
@@ -215,7 +209,7 @@ When a plan involves database or API persistence, check for the following:
 
 ## Final Confirmation
 
-Before saving or finalizing, include these confirmations in the plan review gate:
+Before saving or finalizing, verify these confirmations internally. Do not add these confirmations to the plan unless the template includes a section for them:
 
 - no fallback behavior was added
 - no fallback language remains

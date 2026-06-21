@@ -85,11 +85,12 @@
 
 ## Test coverage
 
+- Target-state tests that should exist for the completed plan. Do not use change-action buckets or change verbs.
 - **Test cases needed:**
-  - [file name] [test name] [description of what test is ensuring - Happy path]
-  - [file name] [test name] [description of what test is ensuring - Validation / error path]
-  - [file name] [test name] [description of what test is ensuring - Edge case]
-  - [file name] [test name] [description of what test is ensuring - Regression case]
+  - [exact file path] [exact test name] [description of what test is ensuring - Happy path]
+  - [exact file path] [exact test name] [description of what test is ensuring - Validation / error path]
+  - [exact file path] [exact test name] [description of what test is ensuring - Edge case]
+  - [exact file path] [exact test name] [description of what test is ensuring - Regression case]
 
 ## Verification
 
