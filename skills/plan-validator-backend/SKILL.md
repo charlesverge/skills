@@ -12,12 +12,20 @@ Use this skill before saving or finalizing a plan for a backend non user facing 
 1. Restate the user's original intent in one sentence.
 1. Compare every planned task to that intent.
 1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of the `Implementation plan` unless the user explicitly asked for them into the Suggested Improvements section or Questions.
+1. Create or reference any model documentation in `references/PLAN_MODEL_TEMPLATE.md` as needed for the plan's implementation. Model files should be named `{plan_dir}/models/{model_name}.md`.
 1. Run the hard-stop fallback checklist.
-1. Check the plan format and required sections.
+1. Check the plan format and required sections out lined in the template `references/PLAN_API_TEMPLATE.md`.
 1. Verify the `Implementation plan` section names exact files and covers the classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons each file must contain for this backend/API feature.
+1. Ensure there is no extra sections or fields in the plan that are not in the template.
 1. Check rule compliance against any active repo, user, developer, or skill instructions.
 1. Verify the unit-test section is specific enough to execute.
 1. Finalize only after all required confirmations are true.
+
+## Future additions vs Suggested Improvements vs Questions
+
+- Future additions are additions that the user has decided to be located in that section, they are not to be moved to suggested improvements or questions.
+- Suggested improvements are useful but unrequested ideas that may still be worth doing, but are not required to satisfy the user's original request. They should be moved to the `Suggested Improvements` section.
+- Questions are uncertain scope or requirement decisions that need to be clarified with the user before implementation.
 
 ## Hard-Stop Fallback Checklist
 
@@ -51,9 +59,16 @@ A feature flag must not define:
 
 When a user says `feature flag`, use only `enabled path` and `disabled path`. Never use `fallback` to describe either path.
 
+Hard stop if the plan does not follow the required template format `references/PLAN_API_TEMPLATE.md`.
+
+## Models and database operations
+
+For any storing of data, create or reference a model plan using the `references/PLAN_MODEL_TEMPLATE.md` as a template that documents the stored record structure, database and collection, fields, indexes, and validity rules, common queries. Link to the model plan in the API plan's `Data storage and operations` section.
+
 ## Required Plan Format
 
 Use the plan structure in references/PLAN_API_TEMPLATE.md
+Use the model structure in references/PLAN_MODEL_TEMPLATE.md for any data models used in the plan.
 
 ### How to use the template
 
@@ -76,6 +91,8 @@ Use the plan structure in references/PLAN_API_TEMPLATE.md
 - The plan follows the original intent.
 - Unasked features are placed in `Suggested Improvements` or `Questions`.
 - Implementation plan lists exact files, classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons.
+ - The template is a hard requirement (exhaustive section list, mandatory, fields/order)
+ - Plans are declarative target-state descriptions (no change-request verbs).
 
 ## Plan Checks
 

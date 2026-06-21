@@ -1,5 +1,23 @@
 # Skills Catalog
 
+## prompt-optimization
+
+* `id`: `prompt-optimization`
+* `path`: `skills/prompt-optimization`
+* `category`: `engineering`
+* `name`: `prompt-optimization`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-06-18`
+
+### Description
+
+Use prompt cache optimization patterns for LLM request design. Use when structuring system prompts, developer prompts, tool schemas, context bundles, chat history, retrieval snippets, dynamic variables, or telemetry so large repeated prompt prefixes remain stable for provider prompt caching.
+
+### Skill File
+
+* [skills/prompt-optimization/SKILL.md](skills/prompt-optimization/SKILL.md)
+
 ## docker-containers
 
 * `id`: `docker-containers`

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt Cache Optimization"
+  short_description: "Optimize prompt layout for provider cache hits"
+  default_prompt: "Use $prompt-optimization to review this LLM request layout for prompt cache efficiency."

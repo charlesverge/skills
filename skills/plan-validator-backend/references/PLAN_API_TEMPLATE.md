@@ -109,6 +109,30 @@
   - `PLAN_VALIDATION_ENABLED = True`
   - Reason: configures the enabled path for this API behavior.
 
+## Assumptions
+
+- Assumptions made about design choices, or other items that are not explicitly stated in the plan
+
+## Data storage and operations
+
+- **Data models:** [List of data models used this API, ie models/model.md]
+- **Persistence operations:** [Create, read, update, delete operations performed on the data models]
+
+### Queries
+
+- [Query name]: [Description of the query, its inputs, outputs, and purpose]
+  [Specification of query or exact query/update/insert made]
+
+## External interactions
+
+- **External services:** [List of external services this API interacts with]
+- **APIs:** [List of external APIs this API calls, with brief descriptions]
+- **Events:** [List of events emitted or consumed by this API, with brief descriptions]
+- **Other interactions:** [Any other external interactions, such as message queues, caches, etc.]
+
+### Documentation Sources
+- [Documentation name]: [Description of the documentation, its location, and what it's used for, this could be a url or an internal doc like api/opencode.md]
+
 ## Questions
 
 - Clarifications needed before implementation, if any.

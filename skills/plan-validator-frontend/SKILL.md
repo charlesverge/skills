@@ -49,15 +49,22 @@ Each plan references the others under `Related features`. The `favorites-load.md
 1. Compare every planned task to that intent.
 1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of implementation steps unless the user explicitly asked for them into the Suggested Improvements section or Questions.
 1. Run the hard-stop fallback checklist.
-1. Check the plan format and required sections.
+1. Check the plan format and required sections out lined in the template `references/PLAN_API_TEMPLATE.md`.
 1. Verify the `Implementation plan` section names exact files and covers the components, hooks, stores, styles, types, and resources each file must contain for this feature.
 1. Verify the plan covers exactly one action or rendered state, and that the other related states (loading, error, empty, etc.) are referenced as sibling plans rather than inlined.
 1. Verify the single state this plan implements is fully specified and its accessibility is addressed.
 1. Verify each consumed API is named and linked to its `plans/api/{endpoint}.md` plan.
+1. Ensure there is no extra sections or fields in the plan that are not in the template.
 1. Verify the plan is reconciled against the referenced mockup.
 1. Check rule compliance against any active repo, user, developer, or skill instructions.
 1. Verify the test-coverage section is specific enough to execute.
 1. Finalize only after all required confirmations are true.
+
+## Future additions vs Suggested Improvements vs Questions
+
+- Future additions are additions that the user has decided to be located in that section, they are not to be moved to suggested improvements or questions.
+- Suggested improvements are useful but unrequested ideas that may still be worth doing, but are not required to satisfy the user's original request. They should be moved to the `Suggested Improvements` section.
+- Questions are uncertain scope or requirement decisions that need to be clarified with the user before implementation.
 
 ## Hard-Stop Fallback Checklist
 
@@ -91,6 +98,8 @@ A feature flag must not define:
 
 When a user says `feature flag`, use only `enabled path` and `disabled path`. Never use `fallback` to describe either path.
 
+Hard stop if the plan does not follow the required template format `references/PLAN_FRONTEND_TEMPLATE.md`.
+
 ## Required Plan Format
 
 Use the plan structure in references/PLAN_FRONTEND_TEMPLATE.md
@@ -118,6 +127,8 @@ Use the plan structure in references/PLAN_FRONTEND_TEMPLATE.md
 - Implementation plan lists exact files, components, hooks, stores, variables, styles, and reasons.
 - The plan covers a single action or rendered state; related states are referenced as sibling plans, not inlined.
 - The one state this plan implements is fully specified, accessibility is addressed, and the plan is reconciled against the referenced mockup.
+ - The template is a hard requirement (exhaustive section list, mandatory, fields/order)
+ - Plans are declarative target-state descriptions (no change-request verbs).
 
 ## Plan Checks
 

@@ -115,6 +115,10 @@
 - e2e tests {project_dir}/e2e/feature-button.spec.ts
 - Files which link to the component for example: {project_dir}/components/product/ProductList.tsx 
 
+## Assumptions
+
+- Assumptions made about design choices, or other items that are not explicitly stated in the plan
+
 ## Questions
 
 - Clarifications needed before implementation, if any.

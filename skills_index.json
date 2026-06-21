@@ -1,5 +1,15 @@
 [
   {
+    "id": "prompt-optimization",
+    "path": "skills/prompt-optimization",
+    "category": "engineering",
+    "name": "prompt-optimization",
+    "description": "Use prompt cache optimization patterns for LLM request design. Use when structuring system prompts, developer prompts, tool schemas, context bundles, chat history, retrieval snippets, dynamic variables, or telemetry so large repeated prompt prefixes remain stable for provider prompt caching.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-06-18"
+  },
+  {
     "id": "docker-containers",
     "path": "skills/docker-containers",
     "category": "engineering",
