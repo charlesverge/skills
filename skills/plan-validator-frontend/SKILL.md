@@ -49,7 +49,7 @@ Each plan references the others under `Related features`. The `favorites-load.md
 1. Compare every planned task to that intent.
 1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of implementation steps unless the user explicitly asked for them into the Suggested Improvements section or Questions.
 1. Run the hard-stop fallback checklist.
-1. Check the plan format and required sections out lined in the template `references/PLAN_API_TEMPLATE.md`.
+1. Check the plan format and required sections out lined in the template `references/PLAN_FRONTEND_TEMPLATE.md`.
 1. Verify the `Implementation plan` section names exact files and covers the components, hooks, stores, styles, types, and resources each file must contain for this feature.
 1. Verify the plan covers exactly one action or rendered state, and that the other related states (loading, error, empty, etc.) are referenced as sibling plans rather than inlined.
 1. Verify the single state this plan implements is fully specified and its accessibility is addressed.
@@ -117,9 +117,11 @@ Use the plan structure in references/PLAN_FRONTEND_TEMPLATE.md
    - which component, hook, or function is responsible for each behavior
    - any constraints that keep the component consistent across those uses (shared state, styling, accessibility)
 
-## Plan Review Gate
+## Internal Plan Review Gate
 
-- No fallback behavior was added.
+Use this gate to validate the plan internally. Do not add a `Plan review gate` section to the plan unless the template includes one.
+
+- No fallback behavior is present.
 - No fallback language remains.
 - Feature flags are described only as enabled and disabled paths.
 - The plan follows the original intent.
@@ -210,49 +212,36 @@ If any target file is already above 500 lines, or the plan would push it above 5
 
 ## Test coverage Section Requirements
 
-The plan must include a Test coverage section even when no tests are added.
+The plan must include a Test coverage section even when no tests are required.
 
 - Tests must cover the single state or action this plan implements: its render, the user interactions that belong to it, its edge cases, and regression cases.
 - Tests must include component/render tests for the rendered state this plan owns and interaction tests for every user trigger it handles (click, submit, toggle, keyboard).
 - Tests must include accessibility assertions (roles, labels, focus order, keyboard operability) for the interactive elements in this plan.
 - When the plan consumes an API, the API must be mocked at the network boundary so the state this plan owns is exercised against the relevant response (the success response for a load plan, a failure response for an error-state plan, an empty response for an empty-state plan). End-to-end flows that hit a real backend must use a staging or sandbox environment.
 - End to end tests must be included for the user-facing behavior this plan implements, even when component and interaction tests are present.
-- Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry (added or existing) that asserts the user-facing error state for that code, or an explicit concrete reason it cannot be tested. Error-state tests must not be relocated to `Suggested Improvements`.
+- Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry that asserts the user-facing error state for that code, or an explicit concrete reason it cannot be tested. Error-state tests must not be relocated to `Suggested Improvements`.
+- The `Test coverage` section must describe the tests that should exist for the completed plan. Do not use change-action buckets or change verbs.
 - Include test coverage for happy path(s), error states, edge cases, regression cases.
 
-For each test list:
+For each test case, list in order:
 
 - exact file path
 - test name
 - short description of what it ensures
+- one required coverage category: `Happy path`, `Validation / error path`, `Edge case`, or `Regression case`
 
 Do not accept wildcard, glob, placeholder, or guessed paths. A test entry is invalid if the path contains `*`, `**`, `<...>`, `[...]`, `tests/path/`, `some/path/`, or any placeholder instead of the concrete file where the test will be placed.
-
-Invalid format:
-
-```markdown
-## Test coverage
-
-- Added:
-  - `src/**/__tests__/**::renders favorite cards`
-    Ensures the loaded list view renders a card per favorite.
-```
 
 Valid format (tests for the single `plans/features/favorites-load.md` plan; the loading, error, and empty renderings are tested in their own sibling plans):
 
 ```markdown
 ## Test coverage
-- `src/features/favorites/components/FavoritesList.test.tsx::renders a card per favorite from a loaded response`
-  Ensures the loaded list view renders one `FavoriteCard` per favorite from a successful response.
-- `src/features/favorites/components/FavoriteCard.test.tsx::renders the company name and logo`
-  Ensures each card shows the company name and logo.
-- `src/features/favorites/components/FavoriteCard.test.tsx::card is keyboard reachable and labeled`
-  Ensures the card is keyboard reachable and exposes an accessible label.
-- Not added:
-  No tests added because this is a copy-only plan with no behavior.
-```
 
-If tests are not added, explain the concrete reason. Do not leave the section empty.
+  - `src/features/favorites/components/FavoritesList.test.tsx` `renders a card per favorite from a loaded response` Ensures the loaded list view renders one `FavoriteCard` per favorite from a successful response - Happy path
+  - `src/features/favorites/components/FavoriteCard.test.tsx` `card is keyboard reachable and labeled` Ensures the card is keyboard reachable and exposes an accessible label - Validation / error path
+  - `src/features/favorites/components/FavoritesList.test.tsx` `renders an empty loaded list without crashing` Ensures the loaded state handles an empty response owned by this plan - Edge case
+  - `src/features/favorites/components/FavoriteCard.test.tsx` `renders the company name and logo` Ensures each card keeps the documented company name and logo rendering - Regression case
+```
 
 ## API consumption and client state
 
@@ -279,9 +268,9 @@ If any of these sections is missing, vague, or left as a template placeholder, r
 
 ## Final Confirmation
 
-Before saving or finalizing, include these confirmations in the plan review gate:
+Before saving or finalizing, verify these confirmations internally. Do not add these confirmations to the plan unless the template includes a section for them:
 
-- no fallback behavior was added
+- no fallback behavior is present
 - no fallback language remains
 - feature flags are described only as enabled and disabled paths
 - the original user intent is followed

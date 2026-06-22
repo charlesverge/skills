@@ -172,7 +172,7 @@ The plan must include a Test coverage section even when no tests are required.
 - If not sandbox is possible, then they must be only triggered with a manual flag. see "Manual unit tests" in skill pytest-unit-test-generation for details on how to implement this.
 - Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry that asserts that status/code, or an explicit concrete reason it cannot be tested. Error-path tests must not be relocated to `Suggested Improvements`.
 - The `Test coverage` section must describe the tests that should exist for the completed plan. Do not use change-action buckets or change verbs.
-- Hard stop if `## Test coverage` does not contain exactly one `- **Test cases needed:**` list.
+- Hard stop if `## Test coverage` does not contain list of test cases or a message indicating that no test cases are needed for the rare occasion that this plan is about a static file that does not execute.
 
 For each test case, list in order:
 
@@ -183,21 +183,20 @@ For each test case, list in order:
 
 Do not accept wildcard, glob, placeholder, or guessed paths. A unit-test entry is invalid if the path contains `*`, `**`, `<...>`, `[...]`, `tests/path/`, `some/path/`, or any placeholder instead of the concrete file where the test will be placed.
 
-Invalid format: any `Test coverage` section using change-action buckets, wildcard paths, placeholder paths, or change verbs instead of the `- **Test cases needed:**` list.
+Invalid format: any `Test coverage` section using change-action buckets, wildcard paths, placeholder paths.
 
 Valid format:
 
 ```markdown
 ## Test coverage
 
-- **Test cases needed:**
   - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_uses_enabled_path_when_flag_enabled` Ensures the feature uses the enabled path when the feature flag is enabled - Happy path
   - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_rejects_invalid_input` Ensures the feature returns the documented validation error code for invalid input - Validation / error path
   - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_handles_empty_input` Ensures the feature returns the documented empty result for empty input - Edge case
   - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_preserves_existing_contract` Ensures the existing response contract remains unchanged - Regression case
 ```
 
-If the exact test file is not known, inspect the repository before finalizing the plan. If the repository cannot be inspected, put the test-location uncertainty in `Questions` and do not claim that unit tests are planned with exact locations. If tests are not required, explain the concrete reason under `- **Test cases needed:**`. Do not leave the section empty.
+Test case names and files should remain from one plan update to the next, if a new test case is needed generate the name based on the component, module or function name being tested. Do not leave the section empty.
 
 ## Data base and api persistence operations
 

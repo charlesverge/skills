@@ -96,11 +96,10 @@
 
 ## Test coverage
 
-- **Test cases needed:**
-  - [file name] [test name] [description of what test is ensuring - Happy path]
-  - [file name] [test name] [description of what test is ensuring - Validation / error path]
-  - [file name] [test name] [description of what test is ensuring - Edge case]
-  - [file name] [test name] [description of what test is ensuring - Regression case]
+- `src/features/feature_name/components/FeatureView.test.tsx` `renders the completed feature state` Description - Happy path
+- `src/features/feature_name/components/FeatureView.test.tsx` `shows the documented validation message` Description - Validation / error path
+- `src/features/feature_name/components/FeatureView.test.tsx` `handles an empty response without layout breakage` Description - Edge case
+- `src/features/feature_name/components/FeatureView.test.tsx` `preserves the existing keyboard interaction` Description - Regression case
 
 ## Verification
 
