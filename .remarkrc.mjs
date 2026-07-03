@@ -1,12 +1,22 @@
+export default {
+  // npm install -g remark-cli $(awk -F"['\"]" '/from/ {print $2}' .remarkrc.mjs)
 
-//import mdast from "mdast-util-to-markdown";
-/** @type {import('remark-cli').Options} */
-const config = {
-  settings: {
-    bullet: '*',
-    incrementListMarker: false,
+  "settings": {
+    "emphasis": "*",
+    "strong": "*",
+    "bullet": "-",
+    "resourceLink": true,
+    "incrementListMarker": false,
+    join: [
+      // Example: Join two definitions with 0 blank lines (tightly)
+      function (left, right) {
+        if (left.type === 'definition' && right.type === 'definition') {
+          return 0 
+        }
+      }
+    ]
   },
-  plugins: [
+  "plugins": [
     "remark-frontmatter",
     "remark-lint",
     [
@@ -112,21 +122,13 @@ const config = {
       "*"
     ],
     [
-      "remark-lint-emphasis-marker",
-      "*"
-    ],
-    [
       "remark-lint-no-emphasis-as-heading",
       false
     ],
     "remark-gfm",
-/*    [mdast, {"extensions": {
-      "unsafe": {
-        
-      }
-    }}]*/
-  ],
-};
-
-export default config;
-
+    [
+      "remark-lint-emphasis-marker",
+      "*"
+    ]
+    ]
+}

@@ -7,14 +7,21 @@ description: Validate draft plans for api, backend, job, non user facing plans b
 
 Use this skill before saving or finalizing a plan for a backend non user facing feature like an api, backend task or job. Treat validation as a gate: if the plan fails any hard-stop check, revise the plan before proceeding.
 
+## Core rules
+
+1. This skill is the authoritative validator for backend non user-facing feature plans. Use it to validate that a plan meets the user's original request, follows all rules, and is ready for implementation.
+1. The template located in `.agents/skills/plan-validator-backend/references/PLAN_API_TEMPLATE.md` is the authoritative required plan format. Use it to check that the plan includes all required sections, and that each section is filled with concrete details rather than placeholders.
+1. Do not base the validation of the format on the existing plan content or surrounding plans or code.
+1. Plan generation is based on the plan content, not the code content. Code is generated from the plan not the other way around, so the plan must be complete and specific on its own.
+
 ## Validation Workflow
 
 1. Restate the user's original intent in one sentence.
 1. Compare every planned task to that intent.
 1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of the `Implementation plan` unless the user explicitly asked for them into the Suggested Improvements section or Questions.
-1. Create or reference any model documentation in `references/PLAN_MODEL_TEMPLATE.md` as needed for the plan's implementation. Model files should be named `{plan_dir}/models/{model_name}.md`.
+1. Create or reference any model documentation in `.agents/skills/plan-validator-backend/references/PLAN_MODEL_TEMPLATE.md` as needed for the plan's implementation. Model files should be named `{plan_dir}/models/{model_name}.md`.
 1. Run the hard-stop fallback checklist.
-1. Check the plan format and required sections out lined in the template `references/PLAN_API_TEMPLATE.md`.
+1. Check the plan format and required sections outlined in the template `.agents/skills/plan-validator-backend/references/PLAN_API_TEMPLATE.md`.
 1. Verify the `Implementation plan` section names exact files and covers the classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons each file must contain for this backend/API feature.
 1. Ensure there is no extra sections or fields in the plan that are not in the template.
 1. Check rule compliance against any active repo, user, developer, or skill instructions.
@@ -59,16 +66,16 @@ A feature flag must not define:
 
 When a user says `feature flag`, use only `enabled path` and `disabled path`. Never use `fallback` to describe either path.
 
-Hard stop if the plan does not follow the required template format `references/PLAN_API_TEMPLATE.md`.
+Hard stop if the plan does not follow the required template format `.agents/skills/plan-validator-backend/references/PLAN_API_TEMPLATE.md`.
 
 ## Models and database operations
 
-For any storing of data, create or reference a model plan using the `references/PLAN_MODEL_TEMPLATE.md` as a template that documents the stored record structure, database and collection, fields, indexes, and validity rules, common queries. Link to the model plan in the API plan's `Data storage and operations` section.
+For any storing of data, create or reference a model plan using the `.agents/skills/plan-validator-backend/references/PLAN_MODEL_TEMPLATE.md` as a template that documents the stored record structure, database and collection, fields, indexes, and validity rules, common queries. Link to the model plan in the API plan's `Data storage and operations` section.
 
 ## Required Plan Format
 
-Use the plan structure in references/PLAN_API_TEMPLATE.md
-Use the model structure in references/PLAN_MODEL_TEMPLATE.md for any data models used in the plan.
+Use the plan structure in `.agents/skills/plan-validator-backend/references/PLAN_API_TEMPLATE.md`.
+Use the model structure in `.agents/skills/plan-validator-backend/references/PLAN_MODEL_TEMPLATE.md` for any data models used in the plan.
 
 ### How to use the template
 
@@ -132,37 +139,6 @@ Check the plan against all active instructions and project rules. Call out viola
 - changes that contradict existing codebase patterns
 - skipped validation without stating why it cannot run
 
-## Implementation plan Section Requirements
-
-The plan must include one `Implementation plan` section. Use this section as the canonical place for concrete file-level implementation details.
-
-Each entry must start with the exact file path and then list the concrete backend updates inside that file. Cover every relevant class, function, method, variable, setting, resource, request and response contract, persistence operation, and error mapping in the file entry instead of using those as separate top-level subsections.
-
-For each file entry, include:
-
-- The exact file path
-- Exact class, function, method, variable, setting, resource, request and response contract, persistence operation, or error mapping in the completed plan
-- Short description of the class, function, method, variable, setting, resource, request and response contract, persistence operation, or error mapping
-- Reason for the file modification
-
-When adding configuration or feature flags, name the exact variable or setting. For example, do not write "add a config flag to settings". Write the concrete target, such as `src/module_name/settings.py::FEATURE_NAME_ENABLED`, and explain why it is needed.
-
-Use this format:
-
-```markdown
-## Implementation plan
-
-- `src/module_name/feature_name/state.py`
-  - `FeatureState.feature_name_enabled: bool = True`.
-  - Reason: stores the requested default-enabled feature flag in feature state.
-- `src/module_name/feature_name/settings.py`
-  - `FeatureSettings.feature_name_enabled: bool = True`.
-  - `load_feature_settings` sets `FeatureSettings.feature_name_enabled` from `feature_state.feature_name_enabled`.
-  - Reason: passes the feature flag to the feature implementation without reading state from lower-level helper code.
-```
-
-If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into subfeatures or helpers using `src/{module name}/{feature name}/{sub feature}` organization, with separate files for types, helpers, models, and a supporting resources directory for static data files. If the plan still modifies the large file directly, it must explain why that is the best direct path.
-
 ## Test coverage Section Requirements
 
 The plan must include a Test coverage section even when no tests are required.
@@ -198,6 +174,37 @@ Valid format:
 
 Test case names and files should remain from one plan update to the next, if a new test case is needed generate the name based on the component, module or function name being tested. Do not leave the section empty.
 
+## Implementation plan Section Requirements
+
+The plan must include one `Implementation plan` section. Use this section as the canonical place for concrete file-level implementation details.
+
+Each entry must start with the exact file path and then list the concrete backend updates inside that file. Cover every relevant class, function, method, variable, setting, resource, request and response contract, persistence operation, and error mapping in the file entry instead of using those as separate top-level subsections.
+
+For each file entry, include:
+
+- The exact file path
+- Exact class, function, method, variable, setting, resource, request and response contract, persistence operation, or error mapping in the completed plan
+- Short description of the class, function, method, variable, setting, resource, request and response contract, persistence operation, or error mapping
+- Reason for the file modification
+
+When adding configuration or feature flags, name the exact variable or setting. For example, do not write "add a config flag to settings". Write the concrete target, such as `src/module_name/settings.py::FEATURE_NAME_ENABLED`, and explain why it is needed.
+
+Use this format:
+
+```markdown
+## Implementation plan
+
+- `src/module_name/feature_name/state.py`
+  - `FeatureState.feature_name_enabled: bool = True`.
+  - Reason: stores the requested default-enabled feature flag in feature state.
+- `src/module_name/feature_name/settings.py`
+  - `FeatureSettings.feature_name_enabled: bool = True`.
+  - `load_feature_settings` sets `FeatureSettings.feature_name_enabled` from `feature_state.feature_name_enabled`.
+  - Reason: passes the feature flag to the feature implementation without reading state from lower-level helper code.
+```
+
+If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into subfeatures or helpers using `src/{module name}/{feature name}/{sub feature}` organization, with separate files for types, helpers, models, and a supporting resources directory for static data files. If the plan still modifies the large file directly, it must explain why that is the best direct path.
+
 ## Data base and api persistence operations
 
 When a plan involves database or API persistence, check for the following:
@@ -205,6 +212,13 @@ When a plan involves database or API persistence, check for the following:
 1. Plans must name every DB field written (state changes/output contract), and document where cross-route data (like a job snapshot) originates and how it flows to the persisting route.
 1. Every write route needs a real-DB integration test that re-reads the record to confirm the write; read-only routes need an integration test against seeded known records.
 1. Every write route needs a real-DB integration test that re-reads the record to confirm the write, plus a test for each documented 4xx failure path (auth, validation, missing-resource); read-only routes need an integration test against seeded known records.
+
+## Queries
+
+Use the following format to document every database query, update, or insert performed as part of the API behavior. For each operation, include:
+
+- \[Query name]: \[Description of the query, its inputs, outputs, and purpose]
+  \[Specification of query or exact query/update/insert made]
 
 ## Final Confirmation
 

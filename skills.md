@@ -1,5 +1,41 @@
 # Skills Catalog
 
+## plan-validator-functions
+
+* `id`: `plan-validator-functions`
+* `path`: `skills/plan-validator-functions`
+* `category`: `engineering`
+* `name`: `plan-validator-functions`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-06-30`
+
+### Description
+
+Validate draft plans for function-group work before they are saved, finalized, or handed to implementation. Use when checking a plan for a group of functions with one primary entry point, such as `check_health_status`, for original-intent alignment, unasked features, scope creep, owning module directory boundaries, helper-function scope, package metadata, implementation-plan details, rule compliance, and required unit-test details.
+
+### Skill File
+
+* [skills/plan-validator-functions/SKILL.md](skills/plan-validator-functions/SKILL.md)
+
+## plan-validator-module
+
+* `id`: `plan-validator-module`
+* `path`: `skills/plan-validator-module`
+* `category`: `engineering`
+* `name`: `plan-validator-module`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-06-30`
+
+### Description
+
+Validate draft plans for reusable module work before they are saved, finalized, or handed to implementation. Use when checking a module plan for original-intent alignment, unasked features, scope creep, module directory boundaries, package metadata, public exports and import contracts, implementation-plan details, rule compliance, and required unit-test details.
+
+### Skill File
+
+* [skills/plan-validator-module/SKILL.md](skills/plan-validator-module/SKILL.md)
+
 ## prompt-optimization
 
 * `id`: `prompt-optimization`

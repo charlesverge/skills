@@ -2,12 +2,37 @@
 name: plan-validator-frontend
 description: Validate draft plans for frontend user-facing features (UI components, pages, screens, interactions) before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete feature build details, defined UI states (loading, success, error, empty, disabled), accessibility coverage, mockup reconciliation, API-consumption details, rule compliance, and required interaction/component test details.
 ---
+  
+## Core rules
+
+1. This skill is the authoritative validator for frontend user-facing feature plans. Use it to validate that a plan meets the user's original request, follows all rules, and is ready for implementation.
+1. The authoritative template located in `.agents/skills/plan-validator-frontend/references/PLAN_FRONTEND_TEMPLATE.md` is the authoritative required plan format. Use it to check that the plan includes all required sections, and that each section is filled with concrete details rather than placeholders.
+1. Do not base the validation of the format on the existing plan content or surrounding plans or code. Do not add, remove, or rewrite a section, heading, or title to match other plans or code. Format conformance is judged 
+  only against the authoritative template, never against sibling files.
+1. Plan generation is based on the plan content, not the code content. Code is generated from the plan not the other way around, so the plan must be complete and specific on its own.
+
+## Validation Workflow
+
+1. Restate the user's original intent in one sentence.
+1. Compare every planned task to that intent.
+1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of implementation steps unless the user explicitly asked for them into the Suggested Improvements section or Questions.
+1. Run the hard-stop fallback checklist.
+1. Check the plan format and required sections out lined in the template `.agents/skills/plan-validator-frontend/references/PLAN_FRONTEND_TEMPLATE.md`.
+1. Verify the `Implementation plan` section names exact files and covers the components, hooks, stores, styles, types, and resources each file must contain for this feature.
+1. Verify the plan covers exactly one action or rendered state, and that the other related states (loading, error, empty, etc.) are referenced as sibling plans rather than inlined.
+1. Verify the single state this plan implements is fully specified and its accessibility is addressed.
+1. Verify each consumed API is named and linked to its `plans/api/{endpoint}.md` plan.
+1. Ensure there is no extra sections or fields in the plan that are not in the template.
+1. Verify the plan is reconciled against the referenced mockup.
+1. Check rule compliance against any active repo, user, developer, or skill instructions.
+1. Verify the test-coverage section is specific enough to execute.
+1. Finalize only after all required confirmations are true.
 
 # Frontend plan Validator for features that are user facing
 
 1. Use this skill before saving or finalizing a plan for a frontend user facing feature like a UI component, page, or interaction. Treat validation as a gate: if the plan fails any hard-stop check, revise the plan before proceeding.
-1. Feature plans must follow the structure in `references/PLAN_FRONTEND_TEMPLATE.md` and cover exactly one user-facing action or rendered state (loading, success, error, empty, disabled). Related states must be implemented in sibling plans and referenced, not inlined.
-1. Only the sections outlined in `references/PLAN_FRONTEND_TEMPLATE.md` are allowed.
+1. Feature plans must follow the structure in `.agents/skills/plan-validator-frontend/references/PLAN_FRONTEND_TEMPLATE.md` and cover exactly one user-facing action or rendered state (loading, success, error, empty, disabled). Related states must be implemented in sibling plans and referenced, not inlined.
+1. Only the sections outlined in `.agents/skills/plan-validator-frontend/references/PLAN_FRONTEND_TEMPLATE.md` are allowed.
 1. If there is an extra section merge it into the closest relevant section or move it to `Suggested Improvements` if it is a useful but unrequested addition. Do not leave extra sections in the plan.
 1. Generate any missing required section content or details before finalizing. Do not leave template placeholders or vague language in the plan.
 
@@ -42,23 +67,6 @@ A request like "show the user's saved favorite companies when they open the favo
   - Key files: `FavoritesList.tsx` empty branch, `FavoritesEmpty.tsx`.
 
 Each plan references the others under `Related features`. The `favorites-load.md` plan owns the GET call and the loaded view; it links the loading, error, and empty siblings rather than defining their screens.
-
-## Validation Workflow
-
-1. Restate the user's original intent in one sentence.
-1. Compare every planned task to that intent.
-1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of implementation steps unless the user explicitly asked for them into the Suggested Improvements section or Questions.
-1. Run the hard-stop fallback checklist.
-1. Check the plan format and required sections out lined in the template `references/PLAN_FRONTEND_TEMPLATE.md`.
-1. Verify the `Implementation plan` section names exact files and covers the components, hooks, stores, styles, types, and resources each file must contain for this feature.
-1. Verify the plan covers exactly one action or rendered state, and that the other related states (loading, error, empty, etc.) are referenced as sibling plans rather than inlined.
-1. Verify the single state this plan implements is fully specified and its accessibility is addressed.
-1. Verify each consumed API is named and linked to its `plans/api/{endpoint}.md` plan.
-1. Ensure there is no extra sections or fields in the plan that are not in the template.
-1. Verify the plan is reconciled against the referenced mockup.
-1. Check rule compliance against any active repo, user, developer, or skill instructions.
-1. Verify the test-coverage section is specific enough to execute.
-1. Finalize only after all required confirmations are true.
 
 ## Future additions vs Suggested Improvements vs Questions
 
@@ -98,11 +106,11 @@ A feature flag must not define:
 
 When a user says `feature flag`, use only `enabled path` and `disabled path`. Never use `fallback` to describe either path.
 
-Hard stop if the plan does not follow the required template format `references/PLAN_FRONTEND_TEMPLATE.md`.
+Hard stop if the plan does not follow the required template format `.agents/skills/plan-validator-frontend/references/PLAN_FRONTEND_TEMPLATE.md`.
 
 ## Required Plan Format
 
-Use the plan structure in references/PLAN_FRONTEND_TEMPLATE.md
+Use the plan structure in `.agents/skills/plan-validator-frontend/references/PLAN_FRONTEND_TEMPLATE.md`.
 
 ### How to use the template
 

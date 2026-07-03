@@ -119,8 +119,8 @@
 
 ### Queries
 
-* \[Query name]: \[Description of the query, its inputs, outputs, and purpose]
-  \[Specification of query or exact query/update/insert made]
+- Create session: insert a new document with `session_id`, `user_id`, `created_at`, `expires_at`, `last_seen_at`, `revoked_at: null`, `ip`, and `user_agent`.
+- Validate session: find document by `session_id`, check `revoked_at` is `null` and `expires_at` is in the future, update `last_seen_at` to now
 
 ## External interactions
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Functions Plan Validator"
+  short_description: "Validate single-entry function plans."
+  default_prompt: "Use $plan-validator-functions before saving or finalizing a single-entry function plan to check original intent, function boundaries, helper scope, implementation details, rule compliance, and unit-test coverage."

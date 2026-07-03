@@ -23,11 +23,6 @@ The session record is the authentication record. `verify` creates it, so this pl
 - **Index:** `{ session_id: 1 }` (unique) for cookie lookup, plus `{ user_id: 1 }` to revoke a user's sessions.
 - **Validity:** a session is valid when `revoked_at` is `null` and `now < expires_at`; logout sets `revoked_at` and clears the cookie (`plans/api/auth-logout.md`).
 
-## Common queries
-
-- Create session: insert a new document with `session_id`, `user_id`, `created_at`, `expires_at`, `last_seen_at`, `revoked_at: null`, `ip`, and `user_agent`.
-- Validate session: find document by `session_id`, check `revoked_at` is `null` and `expires_at` is in the future, update `last_seen_at` to now
-
 ## Related APIs
 
 - `plan-file.md` - Short description of the API use of the model. ie - `auth-session.md` - Read auth session state
