@@ -7,8 +7,8 @@ description: Validate draft plans for frontend user-facing features (UI componen
 
 1. This skill is the authoritative validator for frontend user-facing feature plans. Use it to validate that a plan meets the user's original request, follows all rules, and is ready for implementation.
 1. The authoritative template located in `.agents/skills/plan-validator-frontend/references/PLAN_FRONTEND_TEMPLATE.md` is the authoritative required plan format. Use it to check that the plan includes all required sections, and that each section is filled with concrete details rather than placeholders.
-1. Do not base the validation of the format on the existing plan content or surrounding plans or code. Do not add, remove, or rewrite a section, heading, or title to match other plans or code. Format conformance is judged 
-  only against the authoritative template, never against sibling files.
+1. Do not base the validation of the format on the existing plan content or surrounding plans or code. Do not add, remove, or rewrite a section, heading, or title to match other plans or code. Format conformance is judged
+   only against the authoritative template, never against sibling files.
 1. Plan generation is based on the plan content, not the code content. Code is generated from the plan not the other way around, so the plan must be complete and specific on its own.
 1. Apply the `test-conventions` skill to every test plan or rule group, test helper file, and test file split described by the plan. Treat `test-conventions` as authoritative for test organization.
 
@@ -116,7 +116,7 @@ Use the plan structure in `.agents/skills/plan-validator-frontend/references/PLA
 ### How to use the template
 
 1. Create a feature short code.
-   - **Feature short code:** [Feature category-subcategory-action or feature name. For example, `auth-signin-email` or `favorites-company-add`]
+   - **Feature short code:** \[Feature category-subcategory-action or feature name. For example, `auth-signin-email` or `favorites-company-add`]
 1. Fill out every section. If a section does not apply, write `N/A` or `None`.
 1. Save the feature plan as `plans/features/{feature-short-code}.md`.
 1. Keep the plan screen and interaction-first, and scoped to a single action or rendered state. Document the visible elements, user triggers, and the one state this plan owns before internal implementation notes; reference the sibling plans that own the other states (loading, error, empty). Consume APIs by linking to `plans/api/{endpoint}.md`; do not define database writes here.
@@ -139,8 +139,8 @@ Use this gate to validate the plan internally. Do not add a `Plan review gate` s
 - Every test path, filename, plan or rule comment, helper, and file split follows `test-conventions`.
 - The plan covers a single action or rendered state; related states are referenced as sibling plans, not inlined.
 - The one state this plan implements is fully specified, accessibility is addressed, and the plan is reconciled against the referenced mockup.
- - The template is a hard requirement (exhaustive section list, mandatory, fields/order)
- - Plans are declarative target-state descriptions (no change-request verbs).
+- The template is a hard requirement (exhaustive section list, mandatory, fields/order)
+- Plans are declarative target-state descriptions (no change-request verbs).
 
 ## Plan Checks
 
@@ -286,7 +286,7 @@ If any of these sections is missing, vague, or left as a template placeholder, r
 
 ## Plan Validator CLI Guard
 
-After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
+After writing every plan file created by the task and every plan file changed by the task, run `plan_validator <plan-path>`.
 Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
 Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
 

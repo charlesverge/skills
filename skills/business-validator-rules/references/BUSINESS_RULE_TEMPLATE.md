@@ -9,8 +9,8 @@
 
 ## Use cases
 
-- \[Specific use case where a caller invokes the entry point and receives the expected result.]
-- \[Another specific use case, or `None`]
+- \[When an action, input, value, event, or condition occurs, an observable outcome occurs.]
+- \[Another trigger and observable outcome, or `None`.]
 
 ## Scope
 
@@ -31,14 +31,14 @@ Repeat the following block for each of the 1 to 15 related individual rules in t
 - **Related to:** `[rule-label]` (`plans/rules/{rule-area}/{rule-group}.md`), or `None`
 - **Depends on:** `[rule-label]` (`plans/rules/{rule-area}/{rule-group}.md`), or `None`
 
-\[One-to-five-sentence description of the individual business rule.]
+\[One-to-five-sentence business rule stating that when an action, input, value, event, or condition occurs, the product must produce an observable outcome.]
 
 ### `[rule-area]-[rule-group]-[another-rule-label]`
 
 - **Related to:** `[rule-label]` (`plans/rules/{rule-area}/{rule-group}.md`), or `None`
 - **Depends on:** `[rule-label]` (`plans/rules/{rule-area}/{rule-group}.md`), or `None`
 
-\[One-to-five-sentence description of another related individual business rule.]
+\[One-to-five-sentence business rule stating that when an action, input, value, event, or condition occurs, the product must produce an observable outcome.]
 
 If the group would contain more than 15 individual rules, divide it into coherent rule groups and create a separate business-rule file from this template for each group.
 

@@ -232,7 +232,7 @@ If any target file is already above 500 lines, or the plan would push it above 5
 
 ## Plan Validator CLI Guard
 
-After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
+After writing every plan file created by the task and every plan file changed by the task, run `plan_validator <plan-path>`.
 Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
 Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
 

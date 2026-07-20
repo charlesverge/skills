@@ -14,6 +14,7 @@ Use this skill to create or validate the project's business-rule catalog. Treat 
 1. Use [AREAS\_TEMPLATE.md](references/AREAS_TEMPLATE.md) to create or validate `plans/rules/AREAS.md`.
 1. Base business rules on the user's requirements and authoritative documentation, not on incidental current-code behavior.
 1. Write declarative target-state rules. Do not write implementation instructions as business rules.
+1. Write use cases and business rules as a triggering action, input, value, event, or condition followed by an observable outcome. The trigger may come from a user, another system, or existing business data. Do not describe stored responses, applicability, completion state, sequence processing, identifiers, or implementation behavior unless those concepts are directly observable.
 1. Fill every required template field. Use `None` only where the template permits it.
 1. Write each business rule only for the exact condition, targets, and outcome defined by its source requirement.
 1. Do not add complementary rules for unaffected targets, implied inverse behavior, or implementation consequences unless the source independently requires them.
@@ -50,6 +51,21 @@ plans/
 - If a group would exceed 15 individual rules, divide it into coherent rule groups and create a separate business-rule file from the same template for each group.
 - Keep split rule-group files in the same flat rule-area directory unless they belong to different registered areas. Do not create nested directories for the split.
 - Preserve cross-file relationships by referencing exact rule labels and file paths after a rule group is split.
+
+## Use case quality checks
+
+- Write each use case as: “When [an action, input, value, event, or condition occurs], [the observable outcome occurs].”
+- Allow the trigger to come from a user, another system, or existing business data.
+- State the trigger precisely enough to preserve important boundary conditions.
+- Describe only observable outcomes.
+- Do not describe stored responses, applicability, completion state, sequence processing, identifiers, or implementation behavior unless directly observable.
+
+Example:
+
+- A user selects onsite as a work option and is asked both the relocation and search-radius questions.
+- A user selects remote as their only work option and is not asked either the relocation or search-radius question.
+
+Keep “as their only work option” when it is a required boundary: selecting remote together with hybrid must still trigger the questions.
 
 ## Rule identity
 
@@ -124,11 +140,16 @@ Example: `onboarding-locations-supported-city` in the `locations` rule group at 
 - Keep each individual rule to one to five sentences.
 - Cover one business constraint per individual rule. Split compound constraints into separately labeled rules.
 - State each business constraint with `must`, `must not`, `only`, or another testable normative phrase.
+- Write each business rule as: “When [an action, input, value, event, or condition occurs], the product must [produce the observable outcome].”
+- Allow the trigger to come from a user, another system, or existing business data.
+- Describe the outcome in observable terms. Do not describe stored responses, applicability, completion state, sequence processing, identifiers, or implementation behavior unless directly observable.
 - Identify the actor, trigger or condition, allowed or required outcome, and important boundary cases in the individual rule description.
 - Reject vague qualifiers such as `usually`, `where appropriate`, `might`, `possibly`, or `etc.` when they affect enforceability.
 - Keep technology choices out of the normative rule unless the technology itself is a business requirement.
 - Ensure assumptions do not silently weaken or contradict the rule.
 - Ensure out-of-scope statements do not exclude behavior required to satisfy the goal.
+
+Example: “When a user selects onsite or hybrid as a work option, the product must ask both the relocation and search-radius questions.”
 
 ## Implementation-plan references
 

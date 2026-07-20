@@ -81,7 +81,7 @@ Use the model structure in `.agents/skills/plan-validator-backend/references/PLA
 ### How to use the template
 
 1. Create an API short code.
-   - **API short code:** [API area-action or route-purpose. For example, `auth-session`, `questions-area-suggestions`, or `coaching-resume-review-session`]
+   - **API short code:** \[API area-action or route-purpose. For example, `auth-session`, `questions-area-suggestions`, or `coaching-resume-review-session`]
 1. Fill out every section. If a section does not apply, write `N/A` or `None`.
 1. Save the API plan as `plans/api/{api-short-code}.md`.
 1. Keep the plan backend, api and contract-first. Document the request and response structures the client depends on before internal implementation notes.
@@ -101,8 +101,8 @@ Use this gate to validate the plan internally. Do not add a `Plan review gate` s
 - The plan follows the original intent.
 - Unasked features are placed in `Suggested Improvements` or `Questions`.
 - Implementation plan lists exact files, classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons.
- - The template is a hard requirement (exhaustive section list, mandatory, fields/order)
- - Plans are declarative target-state descriptions (no change-request verbs).
+- The template is a hard requirement (exhaustive section list, mandatory, fields/order)
+- Plans are declarative target-state descriptions (no change-request verbs).
 
 ## Plan Checks
 
@@ -243,7 +243,7 @@ Use the following format to document every database query, update, or insert per
 
 ## Plan Validator CLI Guard
 
-After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
+After writing every plan file created by the task and every plan file changed by the task, run `plan_validator <plan-path>`.
 Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
 Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
 
