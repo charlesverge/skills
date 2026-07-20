@@ -4,7 +4,7 @@
     "path": "skills/business-validator-rules",
     "category": "engineering",
     "name": "business-validator-rules",
-    "description": "Create and validate project business-rule documentation before implementation plans are saved or finalized. Use when defining or reviewing canonical terms, flat human-focused rule areas, individual business rules, rule labels, rule relationships, dependencies, and implementation-plan references.",
+    "description": "Create and validate project business-rule documentation before implementation plans are saved or finalized. Use when defining or reviewing canonical terms, flat human-focused rule areas, related rule-group files, individually labeled rules, relationships, dependencies, group-size limits, and implementation-plan references.",
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-07-20"

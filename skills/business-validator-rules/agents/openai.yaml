@@ -1,4 +1,4 @@
 interface:
   display_name: "Business Rules Validator"
-  short_description: "Validate business rules and rule-plan structure."
-  default_prompt: "Use $business-validator-rules to validate and organize these business rules before implementation planning."
+  short_description: "Validate business-rule groups and references."
+  default_prompt: "Use $business-validator-rules to validate and organize these business-rule groups before implementation planning."
