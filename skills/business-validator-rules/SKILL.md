@@ -9,12 +9,14 @@ Use this skill to create or validate the project's business-rule catalog. Treat 
 
 ## Core rules
 
-1. Use [BUSINESS_RULE_TEMPLATE.md](references/BUSINESS_RULE_TEMPLATE.md) as the authoritative format for every business-rule group file.
-1. Use [TERMS_TEMPLATE.md](references/TERMS_TEMPLATE.md) to create or validate project-wide and area-specific `TERMS.md` files.
-1. Use [AREAS_TEMPLATE.md](references/AREAS_TEMPLATE.md) to create or validate `plans/rules/AREAS.md`.
+1. Use [BUSINESS\_RULE\_TEMPLATE.md](references/BUSINESS_RULE_TEMPLATE.md) as the authoritative format for every business-rule group file.
+1. Use [TERMS\_TEMPLATE.md](references/TERMS_TEMPLATE.md) to create or validate project-wide and area-specific `TERMS.md` files.
+1. Use [AREAS\_TEMPLATE.md](references/AREAS_TEMPLATE.md) to create or validate `plans/rules/AREAS.md`.
 1. Base business rules on the user's requirements and authoritative documentation, not on incidental current-code behavior.
 1. Write declarative target-state rules. Do not write implementation instructions as business rules.
 1. Fill every required template field. Use `None` only where the template permits it.
+1. Write each business rule only for the exact condition, targets, and outcome defined by its source requirement.
+1. Do not add complementary rules for unaffected targets, implied inverse behavior, or implementation consequences unless the source independently requires them.
 
 ## Required directory structure
 
@@ -97,7 +99,7 @@ Example: `onboarding-locations-supported-city` in the `locations` rule group at 
 - Do not redefine, narrow, broaden, or contradict a general term in an area `TERMS.md` file.
 - Move a term used by more than one area to `plans/rules/general/TERMS.md` and remove duplicate area definitions.
 - Reject `plans/rules/TERMS.md`; terms must be located in the general or applicable area directory.
-- Format each canonical term as a level-two heading with `Definition`, `Includes`, `Excludes`, and `Discouraged synonyms` level-three subsections, following [TERMS_TEMPLATE.md](references/TERMS_TEMPLATE.md).
+- Format each canonical term as a level-two heading with `Definition`, `Includes`, `Excludes`, and `Discouraged synonyms` level-three subsections, following [TERMS\_TEMPLATE.md](references/TERMS_TEMPLATE.md).
 - Define one canonical term for each distinct concept.
 - Distinguish often-confused concepts such as account versus profile and user versus administrator.
 - Document stakeholder roles as ordinary canonical terms rather than in a separate roles section, and distinguish them by permissions or responsibilities rather than vague audience labels.
@@ -107,7 +109,7 @@ Example: `onboarding-locations-supported-city` in the `locations` rule group at 
 
 ## Area checks
 
-- Format each area as a level-two heading with `Directory`, `Human-focused boundary`, and `Excludes` level-three subsections, following [AREAS_TEMPLATE.md](references/AREAS_TEMPLATE.md).
+- Format each area as a level-two heading with `Directory`, `Human-focused boundary`, and `Excludes` level-three subsections, following [AREAS\_TEMPLATE.md](references/AREAS_TEMPLATE.md).
 - Require a `general` area mapped to `plans/rules/general/` for rules that apply across the application.
 - Map every other area to exactly one direct child directory of `plans/rules/`.
 - Model areas around concepts people recognize in the product or business flow, such as `auth`, `onboarding`, `account`, `permissions`, or `admin-portal`.
