@@ -14,8 +14,9 @@ Validate that an existing plan is complete, the implementation meets the origina
 1. The plan file is the source of truth for required work. Source code is implementation evidence to verify against the plan.
 1. The review direction is strictly plan-to-code. Do not recommend, ask about, or require changing the plan file, plan ownership, requirements, acceptance criteria, or plan wording to match the current code.
 1. If source code conflicts with the plan, report the implementation mismatch and required code or test changes. Do not convert the mismatch into a plan-file change.
-1. Do not base the review on the source code alone. Compare source code to the plan file.
-1. Do not perform a completion review on the plan file itself unless the user explicitly asks to review the plan document.
+1. Do not base the review on the source code alone. Compare source code to the plan file, the plan is the source of truth.
+1. Do not perform a completion review on the plan file itself.
+1. Save the plan completion review report in `plans/reviews/{plan dir}/{plan file}`
 
 ## Required Output Contract
 
@@ -192,6 +193,7 @@ If any required header or subsection heading is missing, renamed, reordered, or 
 - Do not include required-change details in this section. Any correction needed for a failure, incorrect output, or blocking risk must be listed in `## 12. Changes required`.
 
 ### 8. Questions: Is there any thing you are unsure about
+
 - Use a flat list of questions.
 - If there are no questions, write `- None`.
 - Do not ask whether the plan file should be updated to match the implementation.
@@ -233,7 +235,7 @@ If any required header or subsection heading is missing, renamed, reordered, or 
 - `Required change` must name the exact behavior, call, field, test assertion, command, file content, or removal that must be added, modified, or removed.
 - **Single required change rule:** each `Required change` must be one concrete request. Do not write alternatives for the coder to choose between.
 - Do not use alternative phrasing in `Required change`, such as `do X, or do Y`, `either`, `one of`, `could`, `maybe`, `option`, or `choose`.
-- Before finalizing, scan every `Required change` for ` or ` used between possible implementations. Replace it with one selected action.
+- Before finalizing, scan every `Required change` for `or` used between possible implementations. Replace it with one selected action.
 - If two changes are both required, split them into separate required-change entries or state them as mandatory steps in the same request. Do not phrase mandatory work as an alternative.
 - If the reviewer cannot select the single best required change, move the uncertainty to `## 8. Questions: Is there any thing you are unsure about` and do not list the item as a required change.
 - Use `Files needing changes` for file-level required changes. Include the exact file path and line when known, and describe the required file-level outcome with enough detail for implementation.

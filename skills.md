@@ -1,5 +1,23 @@
 # Skills Catalog
 
+## business-validator-rules
+
+* `id`: `business-validator-rules`
+* `path`: `skills/business-validator-rules`
+* `category`: `engineering`
+* `name`: `business-validator-rules`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-07-20`
+
+### Description
+
+Create and validate project business-rule documentation before implementation plans are saved or finalized. Use when defining or reviewing canonical terms, flat human-focused rule areas, individual business rules, rule labels, rule relationships, dependencies, and implementation-plan references.
+
+### Skill File
+
+* [skills/business-validator-rules/SKILL.md](skills/business-validator-rules/SKILL.md)
+
 ## plan-validator-functions
 
 * `id`: `plan-validator-functions`
