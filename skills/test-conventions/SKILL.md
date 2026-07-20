@@ -7,77 +7,98 @@ description: Govern naming, file placement, directory structure, plan or rule tr
 
 Apply these conventions to every automated test type and framework.
 
-## Establish the governing file
+## Use consistent path terms
+
+- `{plan_dir}`: the directory directly beneath `plans/`, such as `api` or `e2e`.
+- `{plan_file}`: the plan filename without its `.md` extension.
+- `{rule_area}`: the directory beneath `plans/rules/` that owns a set of rules.
+- `{rule_group}`: the rule filename without its `.md` extension.
+
+Treat these as descriptive placeholders. Replace them with the exact values from the plan or rule; never use the placeholder text in a completed test path.
+
+## Establish the plan or rule file
 
 1. Identify the plan or rule file that requires or defines the tests.
-1. Use its repository-relative path as the canonical organizing path.
+1. Use its repository-relative path as the test organizing path.
 1. Require a canonical plan or rule file before adding tests. If none is identifiable, ask which file governs the tests.
 1. Record the exact repository-relative path in every test file.
 
-## Derive the test location and filename
+## Transform plan paths into test paths
 
-1. Put all automated tests beneath a dedicated top-level `tests/` directory. Never place tests inside `src/`, `app/`, `lib/`, or another application source tree.
-1. Transform `plans/<directories>/<governing-file>` into `tests/<directories>/<test-file>`.
-1. Replace the leading `plans/` directory with `tests/` and preserve every directory component that follows it. Treat `rules/`, `api/`, `unit/`, `integration/`, and similar directories as meaningful parts of the mirrored path.
-1. Convert the governing filename to the framework's test filename pattern:
-   - pytest: `test_<governing-stem>.py`
-   - Jest: `<governing-stem>.test.ts`, `<governing-stem>.test.tsx`, or the project's matching JavaScript extension
-   - Playwright: `<governing-stem>.spec.ts` or the project's matching JavaScript extension
-1. Normalize the filename stem for the target language: use snake case for Python and the repository's established JavaScript or TypeScript filename style for Jest and Playwright.
+Put every automated test beneath the top-level `tests/` directory. Never place tests inside `src/`, `app/`, `lib/`, or another application source tree.
 
-Apply the transformation as follows:
+For a plan at:
 
-- `plans/rules/onboarding/question-filter.md` becomes `tests/rules/onboarding/test_question_filter.py` for pytest.
-- `plans/api/onboarding/question-filter.md` becomes `tests/api/onboarding/test_question_filter.py` for pytest.
-- `plans/rules/onboarding/question-filter.md` becomes `tests/rules/onboarding/question-filter.test.ts` for Jest.
-- `plans/e2e/onboarding/question-filter.md` becomes `tests/e2e/onboarding/question-filter.spec.ts` for Playwright.
+```text
+plans/{plan_dir}/{plan_file}.md
+```
 
-Do not introduce a directory into the test path unless it exists after `plans/` in the governing path. For example, `tests/rules/` comes from `plans/rules/`, while `tests/api/` comes from `plans/api/`.
+discard the `.md` extension and transform it as follows:
+
+- pytest: `tests/{plan_dir}/test_{plan_file}.py`
+- Jest: `tests/{plan_dir}/{plan_file}.test.ts`, `{plan_file}.test.tsx`, or the project's matching JavaScript extension
+- Playwright: `tests/{plan_dir}/{plan_file}.spec.ts` or the project's matching JavaScript extension
+
+For a rule at:
+
+```text
+plans/rules/{rule_area}/{rule_group}.md
+```
+
+discard the `.md` extension and transform it as follows:
+
+- pytest: `tests/rules/{rule_area}/test_{rule_group}.py`
+- Jest: `tests/rules/{rule_area}/{rule_group}.test.ts`, `{rule_group}.test.tsx`, or the project's matching JavaScript extension
+- Playwright: `tests/rules/{rule_area}/{rule_group}.spec.ts` or the project's matching JavaScript extension
+
+Preserve `{plan_dir}` and `{rule_area}` exactly. Preserve the JavaScript or TypeScript stem style. Normalize hyphens in `{plan_file}` or `{rule_group}` to underscores for Python filenames.
+
+Do not introduce a directory into the test path that is absent from the plan or rule path. The `rules/` directory appears under `tests/` only when the rule file is under `plans/rules/`.
 
 ## Keep tests separate from source code
 
 Use this separation:
 
 ```text
-src/app/app_class.py
-tests/app/test_app_class.py
+src/{source_dir}/{source_file}.py
+tests/{plan_dir}/test_{plan_file}.py
 ```
 
 Do not use this intermixing:
 
 ```text
-src/app/app_class.py
-src/app/tests/test_app_class.py
+src/{source_dir}/{source_file}.py
+src/{source_dir}/tests/test_{plan_file}.py
 ```
 
-Configure the framework's discovery paths when necessary so the dedicated `tests/` tree is authoritative.
+Configure the framework's discovery path so the dedicated `tests/` tree is authoritative.
 
-## Reference the governing file at the head
+## Reference the plan or rule file at the head
 
-Place a comment before imports at the head of every test file. Use the exact repository-relative path and a stable label.
+Place a comment before imports at the head of every test file. Use the exact repository-relative path.
 
-Python:
+Python plan test:
 
 ```python
-# Governing plan: plans/app/app_class.md
+# Plan: plans/{plan_dir}/{plan_file}.md
 
 import pytest
 ```
 
-TypeScript or JavaScript:
+TypeScript or JavaScript rule test:
 
 ```typescript
-// Governing rule: plans/rules/app/app-class.md
+// Rule: plans/rules/{rule_area}/{rule_group}.md
 
 import { test, expect } from "@playwright/test";
 ```
 
-Keep a required shebang, encoding declaration, copyright notice, or license header first; place the governing-file comment immediately after it.
+Keep a required shebang, encoding declaration, copyright notice, or license header first; place the plan or rule comment immediately after it.
 
-When a test file covers a specific section, append a stable section identifier:
+When a test file covers a specific section, append its stable section identifier:
 
 ```python
-# Governing plan: plans/billing/invoice.md#overdue-invoices
+# Plan: plans/{plan_dir}/{plan_file}.md#section-identifier
 ```
 
 ## Name tests by observable behavior
@@ -85,37 +106,37 @@ When a test file covers a specific section, append a stable section identifier:
 - Name each test after the condition or action and its expected observable result.
 - Keep names specific enough that a failure identifies the broken contract without reading the test body.
 - Avoid names based only on issue numbers, plan step numbers, `works`, `success`, or `test1`.
-- Use the terminology from the governing plan or rule.
+- Use the terminology from the plan or rule.
 
-pytest examples:
+pytest:
 
 ```python
-def test_expired_token_rejects_login() -> None:
+def test_condition_returns_expected_result() -> None:
     ...
 
 
-def test_valid_token_returns_authenticated_user() -> None:
+def test_invalid_input_returns_validation_error() -> None:
     ...
 ```
 
-Jest examples:
+Jest:
 
 ```typescript
-describe("authenticateUser", () => {
-  test("rejects login when the token is expired", () => {
+describe("featureFunction", () => {
+  test("returns the expected result when the condition is met", () => {
     // ...
   });
 
-  test("returns the authenticated user when the token is valid", () => {
+  test("returns a validation error when the input is invalid", () => {
     // ...
   });
 });
 ```
 
-Playwright examples:
+Playwright:
 
 ```typescript
-test("shows an expiration message when the session has expired", async ({ page }) => {
+test("shows the expected result when the condition is met", async ({ page }) => {
   // ...
 });
 ```
@@ -125,102 +146,71 @@ test("shows an expiration message when the session has expired", async ({ page }
 1. Estimate the completed test file size before adding a large set of tests.
 1. Keep every test file at or below 600 lines.
 1. Split the tests before implementation when the planned cases would make a file exceed 600 lines.
-1. Split by coherent behavior, feature area, scenario, or plan section. Give each split file a descriptive suffix and retain the governing filename stem.
+1. Split by coherent behavior, feature area, scenario, or plan section. Retain `{plan_file}` or `{rule_group}` in every split filename.
 1. Extract repeated setup, builders, fixtures, and assertions into helper or fixture files when this makes each test file easier to navigate.
 1. Keep assertions that define a scenario's intent in the test file. Do not hide the behavior being verified behind a generic helper.
-1. Keep helper files alongside the related tests in the mirrored directory. Prefix Python support modules with `helpers_` and keep every support filename outside the framework's test discovery patterns.
-1. Apply the same governing-file comment to every split test file. Add a section anchor when it clarifies the split.
+1. Keep helper files alongside the related tests. Prefix Python support modules with `helpers_` and keep support filenames outside the framework's test discovery patterns.
+1. Apply the same plan or rule comment to every split test file. Add a section anchor when it clarifies the split.
 
-Example split for `plans/api/onboarding/question-filter.md`:
+Generic pytest split for `plans/{plan_dir}/{plan_file}.md`:
 
 ```text
-tests/api/onboarding/helpers_question_filter.py
-tests/api/onboarding/test_helpers_question_filter.py
-tests/api/onboarding/test_question_filter.py
-tests/api/onboarding/test_question_filter_location.py
-tests/api/onboarding/test_question_filter_selector.py
+tests/{plan_dir}/helpers_{plan_file}.py
+tests/{plan_dir}/test_helpers_{plan_file}.py
+tests/{plan_dir}/test_{plan_file}.py
+tests/{plan_dir}/test_{plan_file}_condition.py
+tests/{plan_dir}/test_{plan_file}_result.py
 ```
 
-Keep the primary cases in `test_question_filter.py`. Move cohesive location and selector cases into files that retain the `question_filter` governing stem. Put shared test support in `helpers_question_filter.py`, outside pytest's test discovery pattern, and test that support explicitly in `test_helpers_question_filter.py`. Begin every test file in the group with a reference to `plans/api/onboarding/question-filter.md`.
+Keep primary cases in `test_{plan_file}.py`. Put shared support in `helpers_{plan_file}.py`, and test that support in `test_helpers_{plan_file}.py`. Use behavior suffixes such as `_condition` and `_result` for coherent splits. Normalize `{plan_file}` to snake case in every Python filename.
 
-## Framework directory examples
+## Framework structure examples
 
 ### Python with pytest
 
 ```text
-plans/
-└── api/
-    └── app/
-        ├── app_class.md
-        └── authentication.md
-src/
-└── app/
-    ├── app_class.py
-    └── authentication.py
-tests/
-└── api/
-    └── app/
-        ├── test_app_class.py
-        ├── test_authentication_login.py
-        ├── test_authentication_tokens.py
-        ├── conftest.py
-        └── helpers_authentication.py
+plans/{plan_dir}/{plan_file}.md
+src/{source_dir}/{source_file}.py
+tests/{plan_dir}/helpers_{plan_file}.py
+tests/{plan_dir}/test_helpers_{plan_file}.py
+tests/{plan_dir}/test_{plan_file}.py
+tests/{plan_dir}/test_{plan_file}_condition.py
+tests/{plan_dir}/test_{plan_file}_result.py
 ```
-
-The two authentication files are a behavior-based split of `plans/api/app/authentication.md`; both begin with a reference to that plan.
 
 ### Node or TypeScript with Jest
 
 ```text
-plans/
-└── rules/
-    └── app/
-        ├── app-class.md
-        └── authentication.md
-src/
-└── app/
-    ├── app-class.ts
-    └── authentication.ts
-tests/
-└── rules/
-    └── app/
-        ├── app-class.test.ts
-        ├── authentication-login.test.ts
-        ├── authentication-tokens.test.ts
-        └── helpers-authentication.ts
+plans/rules/{rule_area}/{rule_group}.md
+src/{source_dir}/{source_file}.ts
+tests/rules/{rule_area}/helpers-{rule_group}.ts
+tests/rules/{rule_area}/{rule_group}.test.ts
+tests/rules/{rule_area}/{rule_group}-condition.test.ts
+tests/rules/{rule_area}/{rule_group}-result.test.ts
 ```
 
 ### Node or TypeScript with Playwright
 
 ```text
-plans/
-└── e2e/
-    └── checkout/
-        ├── payment.md
-        └── receipt.md
-src/
-└── checkout/
-    ├── payment.ts
-    └── receipt.ts
-tests/
-└── e2e/
-    └── checkout/
-        ├── payment-card.spec.ts
-        ├── payment-declined.spec.ts
-        ├── receipt.spec.ts
-        ├── fixtures-checkout.ts
-        └── helpers-checkout-page.ts
+plans/{plan_dir}/{plan_file}.md
+src/{source_dir}/{source_file}.ts
+tests/{plan_dir}/fixtures-{plan_file}.ts
+tests/{plan_dir}/helpers-{plan_file}-page.ts
+tests/{plan_dir}/{plan_file}.spec.ts
+tests/{plan_dir}/{plan_file}-condition.spec.ts
+tests/{plan_dir}/{plan_file}-result.spec.ts
 ```
 
-The Playwright configuration must point test discovery at `tests/e2e`.
+Configure Playwright test discovery to use the applicable `tests/{plan_dir}` directory.
 
 ## Review checklist
 
-- Confirm every test has a governing plan or rule file.
-- Confirm every test file begins with the governing-file comment.
-- Confirm the test path replaces leading `plans/` with `tests/` and preserves every following directory.
+- Confirm every test has a plan or rule file.
+- Confirm every test file begins with the exact plan or rule comment.
+- Confirm plan tests map `plans/{plan_dir}/{plan_file}.md` to the framework pattern beneath `tests/{plan_dir}/`.
+- Confirm rule tests map `plans/rules/{rule_area}/{rule_group}.md` to the framework pattern beneath `tests/rules/{rule_area}/`.
+- Confirm `.md` is discarded before the framework filename pattern is applied.
 - Confirm all tests live under the dedicated top-level `tests/` tree.
-- Confirm filenames match the framework's discovery pattern.
 - Confirm test names state observable behavior and outcome.
 - Confirm no test file exceeds 600 lines.
 - Confirm planned oversized files are split by behavior or reduced with focused helpers.

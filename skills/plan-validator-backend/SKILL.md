@@ -1,6 +1,6 @@
 ---
 name: plan-validator-backend
-description: Validate draft plans for api, backend, job, non user facing plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete implementation-plan details, rule compliance, and required unit-test details.
+description: Validate draft plans for api, backend, job, non user facing plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete implementation-plan details, rule compliance, required test-convention compliance, and unit-test details.
 ---
 
 # API / backend plan Validator for features that are non user facing
@@ -17,19 +17,20 @@ Installation note: `python3 -m pip install "git+https://github.com/charlesverge-
 1. The template located in `.agents/skills/plan-validator-backend/references/PLAN_API_TEMPLATE.md` is the authoritative required plan format. Use it to check that the plan includes all required sections, and that each section is filled with concrete details rather than placeholders.
 1. Do not base the validation of the format on the existing plan content or surrounding plans or code.
 1. Plan generation is based on the plan content, not the code content. Code is generated from the plan not the other way around, so the plan must be complete and specific on its own.
+1. Apply the `test-conventions` skill to every test path, filename, test name, plan or rule comment, helper file, and file split described by the plan. Treat `test-conventions` as authoritative for automated-test organization.
 
 ## Validation Workflow
 
 1. Restate the user's original intent in one sentence.
 1. Compare every planned task to that intent.
 1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of the `Implementation plan` unless the user explicitly asked for them into the Suggested Improvements section or Questions.
-1. Create or reference any model documentation in `.agents/skills/plan-validator-backend/references/PLAN_MODEL_TEMPLATE.md` as needed for the plan's implementation. Model files should be named `{plan_dir}/models/{model_name}.md`.
+1. Create or reference any model documentation in `.agents/skills/plan-validator-backend/references/PLAN_MODEL_TEMPLATE.md` as needed for the plan's implementation. Model files should be named `plans/{plan_dir}/models/{model_name}.md`.
 1. Run the hard-stop fallback checklist.
 1. Check the plan format and required sections outlined in the template `.agents/skills/plan-validator-backend/references/PLAN_API_TEMPLATE.md`.
 1. Verify the `Implementation plan` section names exact files and covers the classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons each file must contain for this backend/API feature.
 1. Ensure there is no extra sections or fields in the plan that are not in the template.
 1. Check rule compliance against any active repo, user, developer, or skill instructions.
-1. Verify the unit-test section is specific enough to execute.
+1. Apply `test-conventions` and verify the `Test coverage` section is specific enough to execute, uses paths derived from the plan file, and describes compliant file splitting when needed.
 1. Finalize only after all required confirmations are true.
 
 ## Future additions vs Suggested Improvements vs Questions
@@ -86,7 +87,7 @@ Use the model structure in `.agents/skills/plan-validator-backend/references/PLA
 1. Create an API short code.
    - **API short code:** [API area-action or route-purpose. For example, `auth-session`, `questions-area-suggestions`, or `coaching-resume-review-session`]
 1. Fill out every section. If a section does not apply, write `N/A` or `None`.
-1. Save the API plan as `plans/api/{api-short-code}.md`.
+1. Use `{plan_dir}` for the directory beneath `plans/` and `{plan_file}` for the filename without `.md`. For an API plan, `{plan_dir}` is `api` and `{plan_file}` is the API short code, producing `plans/api/{api-short-code}.md`.
 1. Keep the plan backend, api and contract-first. Document the request and response structures the client depends on before internal implementation notes.
 1. If the endpoint is generic and serves multiple internal purposes, document:
    - how callers select the internal behavior
@@ -147,12 +148,20 @@ Check the plan against all active instructions and project rules. Call out viola
 
 The plan must include a Test coverage section even when no tests are required.
 
+Load and apply the `test-conventions` skill before accepting this section. Hard stop when any planned test path, filename, test name, plan or rule comment, helper file, or split violates that skill.
+
 - Tests must cover the happy path, validation and error paths, edge cases, and regression cases.
 - Tests must include both unit tests and integrations using a real database or API when persistence is involved. For real apis specifically ones that have a cost or side effects, use a sandbox or staging environment.
 - If not sandbox is possible, then they must be only triggered with a manual flag. see "Manual unit tests" in skill pytest-unit-test-generation for details on how to implement this.
 - Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry that asserts that status/code, or an explicit concrete reason it cannot be tested. Error-path tests must not be relocated to `Suggested Improvements`.
 - The `Test coverage` section must describe the tests that should exist for the completed plan. Do not use change-action buckets or change verbs.
 - Hard stop if `## Test coverage` does not contain list of test cases or a message indicating that no test cases are needed for the rare occasion that this plan is about a static file that does not execute.
+- Derive every plan test path from `plans/{plan_dir}/{plan_file}.md`. Discard `.md`, preserve `{plan_dir}`, and apply the framework filename pattern: `tests/{plan_dir}/test_{plan_file}.py` for pytest, `tests/{plan_dir}/{plan_file}.test.ts` for Jest, or `tests/{plan_dir}/{plan_file}.spec.ts` for Playwright.
+- Derive every rule test path from `plans/rules/{rule_area}/{rule_group}.md`. Discard `.md`, preserve `{rule_area}`, and apply the framework filename pattern beneath `tests/rules/{rule_area}/`.
+- Normalize `{plan_file}` or `{rule_group}` to snake case for pytest filenames.
+- Require every planned test file to begin with `# Plan: plans/{plan_dir}/{plan_file}.md` or `# Rule: plans/rules/{rule_area}/{rule_group}.md` before its imports, using exact path values rather than placeholders.
+- Keep every test file at or below 600 lines. If the planned coverage would exceed 600 lines, require exact behavior-split file paths that retain `{plan_file}` or `{rule_group}` and exact colocated helper paths outside test discovery patterns.
+- Keep all test and test-support files under the top-level `tests/` tree, never inside the application source tree.
 
 For each test case, list in order:
 
@@ -170,11 +179,23 @@ Valid format:
 ```markdown
 ## Test coverage
 
-  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_uses_enabled_path_when_flag_enabled` Ensures the feature uses the enabled path when the feature flag is enabled - Happy path
-  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_rejects_invalid_input` Ensures the feature returns the documented validation error code for invalid input - Validation / error path
-  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_handles_empty_input` Ensures the feature returns the documented empty result for empty input - Edge case
-  - `src/module_name/feature_name/tests/test_feature_name_optional_subfeature.py` `test_feature_preserves_existing_contract` Ensures the existing response contract remains unchanged - Regression case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_uses_enabled_path_when_flag_enabled` Ensures the feature uses the enabled path when the feature flag is enabled - Happy path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_rejects_invalid_input` Ensures the feature returns the documented validation error code for invalid input - Validation / error path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_handles_empty_input` Ensures the feature returns the documented empty result for empty input - Edge case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_preserves_existing_contract` Ensures the existing response contract remains unchanged - Regression case
 ```
+
+Generic oversized-file organization for `plans/{plan_dir}/{plan_file}.md`:
+
+```text
+tests/{plan_dir}/helpers_{plan_file}.py
+tests/{plan_dir}/test_helpers_{plan_file}.py
+tests/{plan_dir}/test_{plan_file}.py
+tests/{plan_dir}/test_{plan_file}_condition.py
+tests/{plan_dir}/test_{plan_file}_result.py
+```
+
+Each split test file must retain `{plan_file}` and require the same plan comment. The helper module remains outside pytest discovery, while `test_helpers_{plan_file}.py` explicitly tests the helper behavior. Replace all placeholders with exact path values before accepting the plan.
 
 Test case names and files should remain from one plan update to the next, if a new test case is needed generate the name based on the component, module or function name being tested. Do not leave the section empty.
 
@@ -235,6 +256,7 @@ Before saving or finalizing, verify these confirmations internally. Do not add t
 - unasked features are placed in `Suggested Improvements` or `Questions`
 - implementation plan lists exact files, classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons
 - unit tests are listed with exact file paths, test names, and descriptions, or a concrete reason is given for no tests
+- every test path, filename, plan or rule comment, helper, and file split follows `test-conventions`
 - Database operations have complete contracts, integrations which ensure persistence of data
 - every error code in the `Error codes` table has a corresponding test entry or a concrete documented reason
 - Verify the plan does not use vague language, it should not have language like "it could be implemented like this", "possibly is", "might", "maybe", etc other vague descriptions. Concrete details are needed. if something is vague locate supporting details to make it certain or add a question clarify.

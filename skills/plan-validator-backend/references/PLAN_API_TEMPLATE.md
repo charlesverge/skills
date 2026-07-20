@@ -94,10 +94,10 @@
 
 ## Test coverage
 
-- `path/to/test_file.py` `test_name` Description - Happy path
-- `path/to/test_file.py` `test_name` Description - Validation / error path
-- `path/to/test_file.py` `test_name` Description - Edge case
-- `path/to/test_file.py` `test_name` Description - Regression case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_uses_enabled_path_when_flag_enabled` Ensures the feature uses the enabled path when the feature flag is enabled - Happy path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_rejects_invalid_input` Ensures the feature returns the documented validation error code for invalid input - Validation / error path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_handles_empty_input` Ensures the feature returns the documented empty result for empty input - Edge case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_preserves_existing_contract` Ensures the existing response contract remains unchanged - Regression case
 
 ## Verification
 
