@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test Conventions"
+  short_description: "Standardize automated test names and locations"
+  default_prompt: "Use $test-conventions to organize and name these automated tests consistently."
