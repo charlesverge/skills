@@ -10,20 +10,20 @@ Apply these conventions to every automated test type and framework.
 ## Establish the governing file
 
 1. Identify the plan or rule file that requires or defines the tests.
-2. Use its repository-relative path as the canonical organizing path.
-3. Require a canonical plan or rule file before adding tests. If none is identifiable, ask which file governs the tests.
-4. Record the exact repository-relative path in every test file.
+1. Use its repository-relative path as the canonical organizing path.
+1. Require a canonical plan or rule file before adding tests. If none is identifiable, ask which file governs the tests.
+1. Record the exact repository-relative path in every test file.
 
 ## Derive the test location and filename
 
 1. Put all automated tests beneath a dedicated top-level `tests/` directory. Never place tests inside `src/`, `app/`, `lib/`, or another application source tree.
-2. Transform `plans/<directories>/<governing-file>` into `tests/<directories>/<test-file>`.
-3. Replace the leading `plans/` directory with `tests/` and preserve every directory component that follows it. Treat `rules/`, `api/`, `unit/`, `integration/`, and similar directories as meaningful parts of the mirrored path.
-4. Convert the governing filename to the framework's test filename pattern:
+1. Transform `plans/<directories>/<governing-file>` into `tests/<directories>/<test-file>`.
+1. Replace the leading `plans/` directory with `tests/` and preserve every directory component that follows it. Treat `rules/`, `api/`, `unit/`, `integration/`, and similar directories as meaningful parts of the mirrored path.
+1. Convert the governing filename to the framework's test filename pattern:
    - pytest: `test_<governing-stem>.py`
    - Jest: `<governing-stem>.test.ts`, `<governing-stem>.test.tsx`, or the project's matching JavaScript extension
    - Playwright: `<governing-stem>.spec.ts` or the project's matching JavaScript extension
-5. Normalize the filename stem for the target language: use snake case for Python and the repository's established JavaScript or TypeScript filename style for Jest and Playwright.
+1. Normalize the filename stem for the target language: use snake case for Python and the repository's established JavaScript or TypeScript filename style for Jest and Playwright.
 
 Apply the transformation as follows:
 
@@ -123,13 +123,13 @@ test("shows an expiration message when the session has expired", async ({ page }
 ## Enforce the 600-line limit
 
 1. Estimate the completed test file size before adding a large set of tests.
-2. Keep every test file at or below 600 lines.
-3. Split the tests before implementation when the planned cases would make a file exceed 600 lines.
-4. Split by coherent behavior, feature area, scenario, or plan section. Give each split file a descriptive suffix and retain the governing filename stem.
-5. Extract repeated setup, builders, fixtures, and assertions into helper or fixture files when this makes each test file easier to navigate.
-6. Keep assertions that define a scenario's intent in the test file. Do not hide the behavior being verified behind a generic helper.
-7. Keep helper files alongside the related tests in the mirrored directory. Prefix Python support modules with `helpers_` and keep every support filename outside the framework's test discovery patterns.
-8. Apply the same governing-file comment to every split test file. Add a section anchor when it clarifies the split.
+1. Keep every test file at or below 600 lines.
+1. Split the tests before implementation when the planned cases would make a file exceed 600 lines.
+1. Split by coherent behavior, feature area, scenario, or plan section. Give each split file a descriptive suffix and retain the governing filename stem.
+1. Extract repeated setup, builders, fixtures, and assertions into helper or fixture files when this makes each test file easier to navigate.
+1. Keep assertions that define a scenario's intent in the test file. Do not hide the behavior being verified behind a generic helper.
+1. Keep helper files alongside the related tests in the mirrored directory. Prefix Python support modules with `helpers_` and keep every support filename outside the framework's test discovery patterns.
+1. Apply the same governing-file comment to every split test file. Add a section anchor when it clarifies the split.
 
 Example split for `plans/api/onboarding/question-filter.md`:
 
