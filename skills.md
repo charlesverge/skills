@@ -12,7 +12,7 @@
 
 ### Description
 
-Create and validate project business-rule documentation before implementation plans are saved or finalized. Use when defining or reviewing canonical terms, flat human-focused rule areas, related rule-group files, individually labeled rules, relationships, dependencies, group-size limits, and implementation-plan references.
+Create and validate structured business-rule documentation. Use when defining or reviewing business terminology, rule areas, rule groups, rule relationships, and implementation-plan references.
 
 ### Skill File
 

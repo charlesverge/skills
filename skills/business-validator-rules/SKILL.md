@@ -1,6 +1,6 @@
 ---
 name: business-validator-rules
-description: Create and validate project business-rule documentation before implementation plans are saved or finalized. Use when defining or reviewing plans/rules/TERMS.md, plans/rules/AREAS.md, files containing related groups of business rules, individual rule labels and descriptions, rule relationships, rule dependencies, rule-group size limits, and implementation-plan references to business rules.
+description: Create and validate structured business-rule documentation. Use when defining or reviewing business terminology, rule areas, rule groups, rule relationships, and implementation-plan references.
 ---
 
 # Business Rules Validator
@@ -10,7 +10,7 @@ Use this skill to create or validate the project's business-rule catalog. Treat 
 ## Core rules
 
 1. Use [BUSINESS_RULE_TEMPLATE.md](references/BUSINESS_RULE_TEMPLATE.md) as the authoritative format for every business-rule group file.
-1. Use [TERMS_TEMPLATE.md](references/TERMS_TEMPLATE.md) to create or validate `plans/rules/TERMS.md`.
+1. Use [TERMS_TEMPLATE.md](references/TERMS_TEMPLATE.md) to create or validate project-wide and area-specific `TERMS.md` files.
 1. Use [AREAS_TEMPLATE.md](references/AREAS_TEMPLATE.md) to create or validate `plans/rules/AREAS.md`.
 1. Base business rules on the user's requirements and authoritative documentation, not on incidental current-code behavior.
 1. Write declarative target-state rules. Do not write implementation instructions as business rules.
@@ -21,15 +21,17 @@ Use this skill to create or validate the project's business-rule catalog. Treat 
 ```text
 plans/
 └── rules/
-    ├── TERMS.md
     ├── AREAS.md
     ├── general/
+    │   ├── TERMS.md
     │   └── {rule-group}.md
     └── {rule-area}/
+        ├── TERMS.md
         └── {rule-group}.md
 ```
 
-- Store canonical domain vocabulary in `TERMS.md`.
+- Store project-wide canonical vocabulary in `plans/rules/general/TERMS.md`.
+- Store vocabulary that applies to only one area in `plans/rules/{rule-area}/TERMS.md`.
 - Store the complete flat taxonomy of rule areas in `AREAS.md`.
 - Store globally applicable rules in `general/`.
 - Store each group of related rules in the one area directory registered for it in `AREAS.md`.
@@ -72,8 +74,8 @@ Example: `onboarding-locations-supported-city` in the `locations` rule group at 
 ## Validation workflow
 
 1. Restate the requested business outcome in one sentence.
-1. Read `plans/rules/TERMS.md`, `plans/rules/AREAS.md`, all rule-group files referenced by the draft, and all implementation plans listed by the draft.
-1. Confirm every important domain word, actor, role, object, and lifecycle term uses the canonical vocabulary in `TERMS.md`.
+1. Read `plans/rules/general/TERMS.md`, `plans/rules/AREAS.md`, the relevant `plans/rules/{rule-area}/TERMS.md` when the area defines specific terms, all rule-group files referenced by the draft, and all implementation plans listed by the draft.
+1. Confirm every important domain word, actor, role, object, and lifecycle term uses the applicable canonical vocabulary from the general and relevant area term files.
 1. Confirm the group's rule area exists in `AREAS.md`, matches every rule label in the group, and matches the rule-group file's directory.
 1. Confirm `AREAS.md` is flat, exhaustive for the current rule catalog, human-focused, and free of overlapping area names.
 1. Count the individual rules. Require 1 to 15 rules; split a group with more than 15 rules into separate rule-group files before finalizing.
@@ -88,7 +90,13 @@ Example: `onboarding-locations-supported-city` in the `locations` rule group at 
 
 ## Terms checks
 
-- Treat `plans/rules/TERMS.md` as the authoritative vocabulary for every document under `plans/rules/` and every implementation plan that references a business rule.
+- Treat `plans/rules/general/TERMS.md` as the authoritative project-wide vocabulary for every document under `plans/rules/` and every implementation plan that references a business rule.
+- Place a term in `plans/rules/{rule-area}/TERMS.md` only when its meaning and use are limited to that registered area.
+- Require an area `TERMS.md` file when that area introduces vocabulary not defined in the general terms.
+- Apply the general terms and the current area's terms together when validating a rule-group file.
+- Do not redefine, narrow, broaden, or contradict a general term in an area `TERMS.md` file.
+- Move a term used by more than one area to `plans/rules/general/TERMS.md` and remove duplicate area definitions.
+- Reject `plans/rules/TERMS.md`; terms must be located in the general or applicable area directory.
 - Format each canonical term as a level-two heading with `Definition`, `Includes`, `Excludes`, and `Discouraged synonyms` level-three subsections, following [TERMS_TEMPLATE.md](references/TERMS_TEMPLATE.md).
 - Define one canonical term for each distinct concept.
 - Distinguish often-confused concepts such as account versus profile and user versus administrator.
@@ -140,7 +148,8 @@ Use this exact form in each rule-group file:
 Do not add this gate as a section in rule documents.
 
 - The directory structure matches the required structure.
-- `TERMS.md` contains unambiguous canonical vocabulary.
+- `plans/rules/general/TERMS.md` contains unambiguous project-wide vocabulary.
+- Every area-specific term is defined only in its area's `TERMS.md`, and no area term redefines a general term.
 - `AREAS.md` contains one flat, human-focused taxonomy.
 - Every rule-group file uses the required template and contains 1 to 15 closely related individual rules.
 - Every individual rule is one to five sentences and has a unique label built from the three required components.
