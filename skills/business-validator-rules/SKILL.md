@@ -7,10 +7,6 @@ description: Create and validate structured business-rule documentation. Use whe
 
 Use this skill to create or validate the project's business-rule catalog. Treat validation as a gate: revise invalid rule documentation before using it in implementation plans.
 
-**Plan Validator CLI Guard:** After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
-Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
-Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
-
 ## Core rules
 
 1. Use [BUSINESS_RULE_TEMPLATE.md](references/BUSINESS_RULE_TEMPLATE.md) as the authoritative format for every business-rule group file.
@@ -161,6 +157,12 @@ Do not add this gate as a section in rule documents.
 - Every implementation-plan reference is reciprocal and uses the exact rule label.
 - Every individual rule is declarative and testable, and the group is internally consistent and aligned with the user's request.
 - Unrequested work appears only in `Suggested Improvements`, `Questions`, or `Future features`, as appropriate.
+
+## Plan Validator CLI Guard
+
+After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
+Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
+Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
 
 ## Final confirmation
 

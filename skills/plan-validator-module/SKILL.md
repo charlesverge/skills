@@ -7,10 +7,6 @@ description: Validate draft plans for reusable module work before they are saved
 
 Use this skill before saving or finalizing a plan for a reusable module. A module is independently packaged code centered on a class, function, or set of functions, with its own tests and package metadata. Treat validation as a gate: if the plan fails a hard-stop check, revise the plan before proceeding.
 
-**Plan Validator CLI Guard:** After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
-Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
-Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
-
 ## Core Rules
 
 1. This skill is the authoritative validator for reusable module plans.
@@ -184,6 +180,12 @@ Use this format:
 ```
 
 If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into focused files for public types, implementation, validation, and tests. If the plan still modifies the large file directly, it must explain why that is the best direct path.
+
+## Plan Validator CLI Guard
+
+After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
+Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
+Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
 
 ## Final Confirmation
 

@@ -7,10 +7,6 @@ description: Validate draft plans for api, backend, job, non user facing plans b
 
 Use this skill before saving or finalizing a plan for a backend non user facing feature like an api, backend task or job. Treat validation as a gate: if the plan fails any hard-stop check, revise the plan before proceeding.
 
-**Plan Validator CLI Guard:** After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
-Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
-Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
-
 ## Core rules
 
 1. This skill is the authoritative validator for backend non user-facing feature plans. Use it to validate that a plan meets the user's original request, follows all rules, and is ready for implementation.
@@ -244,6 +240,12 @@ Use the following format to document every database query, update, or insert per
 
 - \[Query name]: \[Description of the query, its inputs, outputs, and purpose]
   \[Specification of query or exact query/update/insert made]
+
+## Plan Validator CLI Guard
+
+After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
+Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
+Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
 
 ## Final Confirmation
 

@@ -3,10 +3,6 @@ name: plan-validator-frontend
 description: Validate draft plans for frontend user-facing features (UI components, pages, screens, interactions) before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete feature build details, defined UI states (loading, success, error, empty, disabled), accessibility coverage, mockup reconciliation, API-consumption details, rule compliance, test-convention compliance, and required interaction/component test details.
 ---
 
-**Plan Validator CLI Guard:** After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
-Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
-Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
-
 ## Core rules
 
 1. This skill is the authoritative validator for frontend user-facing feature plans. Use it to validate that a plan meets the user's original request, follows all rules, and is ready for implementation.
@@ -287,6 +283,12 @@ The plan must fill these template sections with concrete, screen-level detail, n
 - **Api routes** — every API this action calls is listed and linked to its `plans/api/{endpoint}.md` plan, or flagged in `Questions` if not yet planned.
 
 If any of these sections is missing, vague, or left as a template placeholder, revise the plan before finalizing.
+
+## Plan Validator CLI Guard
+
+After writing every plan file created by the task and every plan file changed by the task, run `plan_validator --strict <plan-path>`.
+Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
+Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
 
 ## Final Confirmation
 
