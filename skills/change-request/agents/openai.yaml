@@ -1,0 +1,4 @@
+interface:
+  display_name: "Change Request"
+  short_description: "Define precise, implementation-ready change requests."
+  default_prompt: "Use $change-request to turn this larger change into a concrete, implementation-ready change request."
