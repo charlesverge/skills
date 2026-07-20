@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ask a Question"
+  short_description: "Ask and record plan clarification questions"
+  default_prompt: "Use $ask-a-question to document a decision needed by this implementation plan."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Classes Plan Validator"
+  short_description: "Validate class plans with function-plan links."
+  default_prompt: "Use $plan-validator-classes before saving or finalizing a class plan to check class boundaries, hierarchy, inheritance, properties, functions, linked function plans, implementation details, rule compliance, and unit-test coverage."
