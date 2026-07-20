@@ -88,19 +88,25 @@ Example: `onboarding-locations-supported-city` in the `locations` rule group at 
 
 ## Terms checks
 
+- Treat `plans/rules/TERMS.md` as the authoritative vocabulary for every document under `plans/rules/` and every implementation plan that references a business rule.
+- Format each canonical term as a level-two heading with `Definition`, `Includes`, `Excludes`, and `Discouraged synonyms` level-three subsections, following [TERMS_TEMPLATE.md](references/TERMS_TEMPLATE.md).
 - Define one canonical term for each distinct concept.
 - Distinguish often-confused concepts such as account versus profile and user versus administrator.
-- Define stakeholder roles by permissions or responsibilities, not by vague audience labels.
+- Document stakeholder roles as ordinary canonical terms rather than in a separate roles section, and distinguish them by permissions or responsibilities rather than vague audience labels.
 - List discouraged synonyms so rule authors do not introduce parallel vocabulary.
 - Detect two terms with materially identical meanings and require one canonical term.
 - Detect one term used for materially different meanings and require distinct canonical terms.
 
 ## Area checks
 
+- Format each area as a level-two heading with `Directory`, `Human-focused boundary`, and `Excludes` level-three subsections, following [AREAS_TEMPLATE.md](references/AREAS_TEMPLATE.md).
+- Require a `general` area mapped to `plans/rules/general/` for rules that apply across the application.
+- Map every other area to exactly one direct child directory of `plans/rules/`.
 - Model areas around concepts people recognize in the product or business flow, such as `auth`, `onboarding`, `account`, `permissions`, or `admin-portal`.
 - Keep areas at one consistent level of abstraction.
 - Reject area names that merely repeat a technical layer, code package, class, database collection, or endpoint unless that is also the human-recognized domain area.
 - Reject parent-child entries in the same taxonomy, such as both `settings` and `settings-notifications`.
+- If more than one taxonomy level is required, split the domain into separate projects and document their relationship outside `plans/rules/`.
 - Require every non-general rule directory to have exactly one matching `AREAS.md` entry.
 
 ## Rule quality checks
