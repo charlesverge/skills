@@ -1,4 +1,4 @@
 interface:
   display_name: "Frontend Plan Validator"
   short_description: "Validate frontend feature plans before they are saved."
-  default_prompt: "Use $plan-validator-frontend before saving or finalizing a frontend feature plan to check original intent, unasked features, fallback-rule violations, plan format, UI states, accessibility, mockup reconciliation, API consumption, rule compliance, and component/interaction test details."
+  default_prompt: "Use $plan-validator-frontend before saving or finalizing a frontend feature plan to check plan format, UI scope, accessibility, API consumption, rule compliance, and $test-conventions compliance."

@@ -32,8 +32,8 @@
 ## Function boundary
 
 - **Owning module directory:** \[Exact module directory]
-- **Files inside module directory:** \[List the allowed implementation, test, resource, and package metadata paths]
-- **Files outside module directory:** \[Must be `None` unless the user explicitly requested combined work]
+- **Files inside module directory:** \[List the allowed application implementation, resource, and package metadata paths]
+- **Files outside module directory:** \[List exact `test-conventions` paths, plus other exact files only when the user explicitly requested combined work; otherwise only the test paths]
 - **Primary entry point:** \[Function name and signature]
 - **Helper scope:** \[Helpers in entry point file, existing reused helpers, modified shared helpers, or `None`]
 - **Caller wiring:** \[Import/use instructions only, or separate plan required]
@@ -116,10 +116,10 @@
 
 ## Test coverage
 
-- `path/to/module/tests/test_file.py` `test_name` Description - Happy path
-- `path/to/module/tests/test_file.py` `test_name` Description - Validation / error path
-- `path/to/module/tests/test_file.py` `test_name` Description - Edge case
-- `path/to/module/tests/test_file.py` `test_name` Description - Regression case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_returns_expected_result` Description - Happy path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_returns_documented_error` Description - Validation / error path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_handles_boundary_input` Description - Edge case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_preserves_result_contract` Description - Regression case
 
 ## Verification
 
@@ -137,7 +137,7 @@
   - New private helper functions.
   - Existing reused helper imports.
   - Reason: contains the single entry point and helper orchestration for the function group.
-- `{module_dir}/tests/test_{function_group}.py` or `{module_dir}/src/{function_group}.test.ts`
+- `tests/{plan_dir}/test_{plan_file}.py` or `tests/{plan_dir}/{plan_file}.test.ts`
   - Unit tests named in `Test coverage`.
   - Reason: verifies the function group through the primary entry point.
 

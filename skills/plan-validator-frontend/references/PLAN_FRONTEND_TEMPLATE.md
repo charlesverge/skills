@@ -102,10 +102,11 @@
 
 ## Test coverage
 
-- `src/features/feature_name/components/FeatureView.test.tsx` `renders the completed feature state` Description - Happy path
-- `src/features/feature_name/components/FeatureView.test.tsx` `shows the documented validation message` Description - Validation / error path
-- `src/features/feature_name/components/FeatureView.test.tsx` `handles an empty response without layout breakage` Description - Edge case
-- `src/features/feature_name/components/FeatureView.test.tsx` `preserves the existing keyboard interaction` Description - Regression case
+- `tests/{plan_dir}/{plan_file}.test.tsx` `renders the completed feature state` Description - Happy path
+- `tests/{plan_dir}/{plan_file}.test.tsx` `shows the documented validation message` Description - Validation / error path
+- `tests/{plan_dir}/{plan_file}.test.tsx` `handles an empty response without layout breakage` Description - Edge case
+- `tests/{plan_dir}/{plan_file}.test.tsx` `preserves the existing keyboard interaction` Description - Regression case
+- `tests/{plan_dir}/{plan_file}.spec.ts` `completes the documented user flow` Description - Happy path
 
 ## Verification
 
@@ -116,8 +117,8 @@
 - Each feature which has a visible ui component should have one or more files which render it. For example if a screen is a single button then a single file like {project\_dir}/components/FeatureButton.tsx contains the ui component is needed
 - If the screen is more complete then it should be broken into individual small components like {project\_dir}/components/product/ProductView\.tsx {project\_dir}/components/product/ProductTitle.tsx {project\_dir}/components/product/ProductDescription.tsx which would have rendering and styling for specific elements in the screen.
 - Where routes are defined if for a specific screen and what the route is visible for the user for example: {project\_dir}/routes.tsx - /product/{product\_id}
-- tests {project\_dir}/app/main-feature/feature-button.flow\.test.tsx
-- e2e tests {project\_dir}/e2e/feature-button.spec.ts
+- tests `tests/{plan_dir}/{plan_file}.test.tsx`
+- e2e tests `tests/{plan_dir}/{plan_file}.spec.ts`
 - Files which link to the component for example: {project\_dir}/components/product/ProductList.tsx
 
 ## Assumptions

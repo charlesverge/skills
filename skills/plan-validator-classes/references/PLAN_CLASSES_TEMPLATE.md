@@ -41,11 +41,11 @@
 
 ## Module and class boundary
 
-- **Owning module directory:** \[Exact module directory that constrains implementation, tests, resources, package metadata, and function-plan files]
+- **Owning module directory:** \[Exact module directory that constrains application implementation, resources, package metadata, and function-plan files]
 - **Primary class or root/base class:** \[Class name]
 - **Class file:** \[Exact class file path under the owning module directory]
-- **Allowed plan files:** \[Exact implementation, test, resource, package metadata, and function-plan paths this plan may modify or reference under the owning module directory]
-- **External files explicitly in scope:** \[Exact files outside the owning module directory only when the user explicitly requested combined work; otherwise `None`]
+- **Allowed plan files:** \[Exact module-owned implementation, resource, package metadata, and function-plan paths plus exact `test-conventions` paths]
+- **External files explicitly in scope:** \[Other exact files outside the owning module directory only when the user explicitly requested combined work; convention-derived test files are excluded; otherwise `None`]
 - **Caller wiring:** \[Import/use instructions only, or separate plan required]
 
 ## Class hierarchy and object model
@@ -158,10 +158,10 @@
 
 ## Test coverage
 
-- `path/to/module/tests/test_file.py` `test_name` Description - Happy path
-- `path/to/module/tests/test_file.py` `test_name` Description - Validation / error path
-- `path/to/module/tests/test_file.py` `test_name` Description - Edge case
-- `path/to/module/tests/test_file.py` `test_name` Description - Regression case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_class_constructs_with_required_dependencies` Description - Happy path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_class_rejects_missing_required_dependency` Description - Validation / error path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_class_preserves_optional_default` Description - Edge case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_class_keeps_public_properties` Description - Regression case
 
 ## Verification
 
@@ -183,7 +183,7 @@
   - Required override functions named in `Class hierarchy and object model`.
   - Linked function plans for each class function.
   - Reason: contains the primary/root class, object-model relationships, state, and class function declarations for the requested class behavior.
-- `{module_dir}/tests/test_{class_name}.py` or `{module_dir}/src/{class_name}.test.ts`
+- `tests/{plan_dir}/test_{plan_file}.py` or `tests/{plan_dir}/{plan_file}.test.ts`
   - Unit tests named in `Test coverage`.
   - Reason: verifies construction, property contract, and class-level behavior.
 

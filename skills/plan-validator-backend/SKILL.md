@@ -17,14 +17,14 @@ Installation note: `python3 -m pip install "git+https://github.com/charlesverge-
 1. The template located in `.agents/skills/plan-validator-backend/references/PLAN_API_TEMPLATE.md` is the authoritative required plan format. Use it to check that the plan includes all required sections, and that each section is filled with concrete details rather than placeholders.
 1. Do not base the validation of the format on the existing plan content or surrounding plans or code.
 1. Plan generation is based on the plan content, not the code content. Code is generated from the plan not the other way around, so the plan must be complete and specific on its own.
-1. Apply the `test-conventions` skill to every test path, filename, test name, plan or rule comment, helper file, and file split described by the plan. Treat `test-conventions` as authoritative for automated-test organization.
+1. Apply the `test-conventions` skill to every test plan or rule group, test helper file, and test file split described by the plan. Treat `test-conventions` as authoritative for test organization.
 
 ## Validation Workflow
 
 1. Restate the user's original intent in one sentence.
 1. Compare every planned task to that intent.
 1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of the `Implementation plan` unless the user explicitly asked for them into the Suggested Improvements section or Questions.
-1. Create or reference any model documentation in `.agents/skills/plan-validator-backend/references/PLAN_MODEL_TEMPLATE.md` as needed for the plan's implementation. Model files should be named `plans/{plan_dir}/models/{model_name}.md`.
+1. Create or reference any model documentation in `.agents/skills/plan-validator-backend/references/PLAN_MODEL_TEMPLATE.md` as needed for the plan's implementation. Model files should be named `{plan_dir}/models/{model_name}.md`.
 1. Run the hard-stop fallback checklist.
 1. Check the plan format and required sections outlined in the template `.agents/skills/plan-validator-backend/references/PLAN_API_TEMPLATE.md`.
 1. Verify the `Implementation plan` section names exact files and covers the classes, functions, methods, variables, settings, resources, request and response contracts, persistence operations, and reasons each file must contain for this backend/API feature.
@@ -87,7 +87,7 @@ Use the model structure in `.agents/skills/plan-validator-backend/references/PLA
 1. Create an API short code.
    - **API short code:** [API area-action or route-purpose. For example, `auth-session`, `questions-area-suggestions`, or `coaching-resume-review-session`]
 1. Fill out every section. If a section does not apply, write `N/A` or `None`.
-1. Use `{plan_dir}` for the directory beneath `plans/` and `{plan_file}` for the filename without `.md`. For an API plan, `{plan_dir}` is `api` and `{plan_file}` is the API short code, producing `plans/api/{api-short-code}.md`.
+1. Save the API plan as `plans/api/{api-short-code}.md`.
 1. Keep the plan backend, api and contract-first. Document the request and response structures the client depends on before internal implementation notes.
 1. If the endpoint is generic and serves multiple internal purposes, document:
    - how callers select the internal behavior

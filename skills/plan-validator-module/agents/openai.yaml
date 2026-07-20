@@ -1,4 +1,4 @@
 interface:
   display_name: "Module Plan Validator"
   short_description: "Validate reusable module plans."
-  default_prompt: "Use $plan-validator-module before saving or finalizing a reusable module plan to check original intent, module boundaries, package metadata, exports/import contracts, implementation details, rule compliance, and unit-test coverage."
+  default_prompt: "Use $plan-validator-module before saving or finalizing a reusable module plan to check original intent, module boundaries, package metadata, exports/import contracts, implementation details, rule compliance, and $test-conventions compliance."

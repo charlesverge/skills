@@ -1,6 +1,6 @@
 ---
 name: plan-validator-functions
-description: Validate draft plans for function-group work before they are saved, finalized, or handed to implementation. Use when checking a plan for a group of functions with one primary entry point, such as `check_health_status`, for original-intent alignment, unasked features, scope creep, owning module directory boundaries, helper-function scope, package metadata, implementation-plan details, rule compliance, and required unit-test details. A functions plan covers a callable entry point plus helpers that can be tested as part of the owning module, backend API, or frontend component.
+description: Validate draft plans for function-group work before they are saved, finalized, or handed to implementation. Use when checking a plan for a group of functions with one primary entry point, such as `check_health_status`, for original-intent alignment, unasked features, scope creep, owning module directory boundaries, helper-function scope, package metadata, implementation-plan details, rule compliance, test-convention compliance, and required unit-test details. A functions plan covers a callable entry point plus helpers that can be tested as part of the owning module, backend API, or frontend component.
 ---
 
 # Functions Plan Validator
@@ -17,10 +17,11 @@ Installation note: `python3 -m pip install "git+https://github.com/charlesverge-
 1. The template in `references/PLAN_FUNCTIONS_TEMPLATE.md` is the required plan format. Use it to check that the plan includes all required sections in order, with concrete details rather than placeholders.
 1. Validate the plan from the user's original request and the plan content. Do not infer missing plan details from surrounding code.
 1. The plan must name exactly one primary entry point function.
-1. Code work for the function group must stay inside the owning module directory.
+1. Application code for the function group must stay inside the owning module directory. Test and test-support files must follow `test-conventions` under the top-level `tests/` directory.
 1. Python function plans must name the owning module's `pyproject.toml` and a unit-test command runnable from that module directory.
 1. Node or TypeScript function plans must name the owning module's `package.json` and a unit-test command runnable from that module directory.
 1. New helper functions should live in the entry point file unless the plan names an existing module-local helper file or the user explicitly requested a shared helper.
+1. Apply the `test-conventions` skill to every test plan or rule group, test helper file, and test file split described by the plan. Treat `test-conventions` as authoritative for test organization.
 
 ## Validation Workflow
 
@@ -29,10 +30,10 @@ Installation note: `python3 -m pip install "git+https://github.com/charlesverge-
 1. Move unrequested features, speculative improvements, broad refactors, parent-project edits, route wiring, UI wiring, and unrelated package work out of `Implementation plan` into `Suggested Improvements` or `Questions`.
 1. Run the hard-stop rule checklist.
 1. Check the plan format and required sections in `references/PLAN_FUNCTIONS_TEMPLATE.md`.
-1. Verify the `Implementation plan` names exact files inside the owning module directory and covers the entry point function, helper functions, variables, imports, types, resources, input contract, output contract, errors, side effects, and reasons each file must contain.
+1. Verify the `Implementation plan` names exact application files inside the owning module directory and exact test files under the top-level `tests/` directory, and covers the entry point function, helper functions, variables, imports, types, resources, input contract, output contract, errors, side effects, and reasons each file must contain.
 1. Ensure there are no extra sections or fields that are not in the template.
 1. Check rule compliance against active repo, user, developer, and skill instructions.
-1. Verify the unit-test section is specific enough to execute from the owning module directory.
+1. Apply `test-conventions` and verify the `Test coverage` section is specific enough to execute from the owning module directory.
 1. Finalize only after all required confirmations are true.
 
 ## Function Boundary Rules
@@ -55,7 +56,7 @@ Before writing, saving, or finalizing a functions plan:
 - Feature flags must not define automatic switching after an error.
 - Hard stop if the plan does not follow `references/PLAN_FUNCTIONS_TEMPLATE.md`.
 - Hard stop if the plan has zero or multiple primary entry point functions.
-- Hard stop if any `Implementation plan` file is outside the owning module directory.
+- Hard stop if any application `Implementation plan` file is outside the owning module directory or any test file violates `test-conventions`.
 - Hard stop if the owning package metadata file is missing from the plan.
 - Hard stop if tests cannot run from the owning module directory.
 - Hard stop if helper behavior is not covered through entry point tests or justified as directly tested shared helper behavior.
@@ -107,7 +108,7 @@ Check the plan against all active instructions and project rules. Call out viola
 
 - banned alternate-execution behavior or wording
 - tests described vaguely instead of by file and test name
-- implementation-plan entries outside the owning module directory
+- application implementation-plan entries outside the owning module directory or test entries outside the convention-derived top-level test path
 - implementation-plan entries without exact files, entry point, helpers, variables, imports, types, resources, contracts, side effects, or reasons
 - optional alternatives where the user asked for a concrete path
 - changes that contradict existing codebase patterns
@@ -116,6 +117,8 @@ Check the plan against all active instructions and project rules. Call out viola
 ## Test Coverage Section Requirements
 
 The plan must include a `Test coverage` section even when no tests are required.
+
+Load and apply the `test-conventions` skill before accepting this section.
 
 - Tests must cover the happy path, validation and error paths, edge cases, and regression cases.
 - Unit tests are required for function-group plans unless the plan is only documentation.
@@ -126,6 +129,10 @@ The plan must include a `Test coverage` section even when no tests are required.
 - Every row in the plan's `Error contract` table must have a corresponding `Test coverage` entry that asserts the exception, error result, validation result, or a concrete reason it cannot be tested.
 - The `Test coverage` section must describe the tests that should exist for the completed plan. Do not use change-action buckets or change verbs.
 - Hard stop if `## Test coverage` does not contain exact test cases or a concrete message explaining why no test cases are needed.
+- Derive plan tests from `plans/{plan_dir}/{plan_file}.md`: discard `.md` and use the framework pattern under `tests/{plan_dir}/`.
+- Derive rule tests from `plans/rules/{rule_area}/{rule_group}.md`: discard `.md` and use the framework pattern under `tests/rules/{rule_area}/`.
+- Require every test file to begin with the exact `# Plan:` or `# Rule:` comment required by `test-conventions`.
+- Keep every test file at or below 600 lines and require exact convention-compliant helper and split paths when planned coverage would exceed that limit.
 
 For each test case, list in order:
 
@@ -141,21 +148,21 @@ Valid format:
 ```markdown
 ## Test coverage
 
-- `modules/health-check/tests/test_health_status.py` `test_check_health_status_returns_ok_when_all_checks_pass` Ensures DNS, port, and HTTP checks produce the documented healthy result - Happy path
-- `modules/health-check/tests/test_health_status.py` `test_check_health_status_reports_dns_failure` Ensures DNS failure produces the documented unhealthy result - Validation / error path
-- `modules/health-check/tests/test_health_status.py` `test_check_health_status_handles_empty_host` Ensures empty host input produces the documented validation error - Edge case
-- `modules/health-check/tests/test_health_status.py` `test_check_health_status_preserves_result_contract` Ensures callers continue receiving the documented result fields - Regression case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_returns_expected_result` Ensures valid input produces the documented output contract - Happy path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_returns_documented_error` Ensures invalid input produces the documented error result - Validation / error path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_handles_boundary_input` Ensures boundary input produces the documented result - Edge case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_preserves_result_contract` Ensures callers continue receiving the documented result fields - Regression case
 ```
 
 ## Implementation Plan Section Requirements
 
 The plan must include one `Implementation plan` section. Use this section as the canonical place for concrete file-level implementation details.
 
-Each entry must start with the exact file path inside the owning module directory and then list the concrete function updates inside that file. Cover every relevant entry point, helper function, variable, import, type, resource, input contract, output contract, error contract, side effect, dependency boundary, package metadata reference, and test in the file entry instead of using those as separate top-level subsections.
+Each application entry must start with the exact file path inside the owning module directory. Each test entry must start with its exact convention-derived top-level test path. Cover every relevant entry point, helper function, variable, import, type, resource, input contract, output contract, error contract, side effect, dependency boundary, package metadata reference, and test in the file entry instead of using those as separate top-level subsections.
 
 For each file entry, include:
 
-- The exact file path inside the owning module directory
+- The exact application file path inside the owning module directory or exact test path under the top-level `tests/` directory
 - Exact entry point, helper function, variable, import, type, resource, input contract, output contract, error contract, side effect, dependency boundary, package metadata reference, or test in the completed plan
 - Short description of the item
 - Reason for the file modification or reference
@@ -176,9 +183,9 @@ Use this format:
   - `_check_port(host: str, port: int, timeout_seconds: float) -> PortCheckResult`.
   - `_check_http_ok(url: str, timeout_seconds: float) -> HttpCheckResult`.
   - Reason: contains the single entry point and private helpers for the requested health status calculation.
-- `modules/health-check/tests/test_health_status.py`
-  - `test_check_health_status_returns_ok_when_all_checks_pass`.
-  - `test_check_health_status_reports_dns_failure`.
+- `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_primary_entry_point_returns_expected_result`.
+  - `test_primary_entry_point_returns_documented_error`.
   - Reason: verifies the function group through its entry point.
 ```
 
@@ -197,6 +204,7 @@ Before saving or finalizing, verify these confirmations internally. Do not add t
 - helper functions are scoped to the entry point file or justified as existing module-local helpers
 - implementation plan lists exact module-directory files, entry point, helpers, variables, imports, types, resources, contracts, side effects, package metadata reference, tests, and reasons
 - unit tests are listed with exact file paths, test names, and descriptions, or a concrete reason is given for no tests
+- every test path, filename, plan or rule comment, helper, and file split follows `test-conventions`
 - package metadata and module-local verification commands are complete
 - every error contract row has a corresponding test entry or a concrete documented reason
 - vague language has been removed or converted into concrete target-state details

@@ -1,6 +1,6 @@
 ---
 name: plan-validator-classes
-description: Validate draft plans for class-based work before they are saved, finalized, or handed to implementation. Use when checking a plan for one primary class or class-family object model inside an owning module, including original-intent alignment, unasked features, scope creep, module directory boundaries, class hierarchy and inheritance, generic base-class use, subclass/adaptor overrides, class properties, class functions, linked function-plan markdown files generated with plan-validator-functions, package metadata, implementation-plan details, rule compliance, and required unit-test details. A class plan follows the hierarchy that modules contain functions or classes, and classes contain properties and functions.
+description: Validate draft plans for class-based work before they are saved, finalized, or handed to implementation. Use when checking a plan for one primary class or class-family object model inside an owning module, including original-intent alignment, unasked features, scope creep, module directory boundaries, class hierarchy and inheritance, generic base-class use, subclass/adaptor overrides, class properties, class functions, linked function-plan markdown files generated with plan-validator-functions, package metadata, implementation-plan details, rule compliance, test-convention compliance, and required unit-test details. A class plan follows the hierarchy that modules contain functions or classes, and classes contain properties and functions.
 ---
 
 # Classes Plan Validator
@@ -17,7 +17,7 @@ Installation note: `python3 -m pip install "git+https://github.com/charlesverge-
 1. The template in `references/PLAN_CLASSES_TEMPLATE.md` is the required plan format. Use it to check that the plan includes all required sections in order, with concrete details rather than placeholders.
 1. Validate the plan from the user's original request and the plan content. Do not infer missing plan details from surrounding code.
 1. The plan must name exactly one primary class or root/base class for a class-family object model.
-1. Code work for the class must stay inside the owning module directory.
+1. Application code for the class must stay inside the owning module directory. Test and test-support files must follow `test-conventions` under the top-level `tests/` directory.
 1. A module may contain standalone functions, classes, or both. A class contains properties and functions.
 1. The plan must include a `Class hierarchy and object model` section that explains inheritance, base classes, subclasses, generic use, and override responsibilities.
 1. Class properties must list `name`, `type`, and `description of use`.
@@ -25,6 +25,7 @@ Installation note: `python3 -m pip install "git+https://github.com/charlesverge-
 1. Each linked function-plan markdown file must be generated and validated using `plan-validator-functions`.
 1. Python class plans must name the owning module's `pyproject.toml` and a unit-test command runnable from that module directory.
 1. Node or TypeScript class plans must name the owning module's `package.json` and a unit-test command runnable from that module directory.
+1. Apply the `test-conventions` skill to every test plan or rule group, test helper file, and test file split described by the plan. Treat `test-conventions` as authoritative for test organization.
 
 ## Validation Workflow
 
@@ -34,20 +35,20 @@ Installation note: `python3 -m pip install "git+https://github.com/charlesverge-
 1. Run the hard-stop rule checklist.
 1. Check the plan format and required sections in `references/PLAN_CLASSES_TEMPLATE.md`.
 1. Verify the `Class hierarchy and object model` section names the root/base class or interface, generic use pattern, hierarchy, shared behavior, required overrides, and concrete subclasses/adaptors in scope.
-1. Verify the `Implementation plan` names exact files inside the owning module directory and covers the primary class or root/base class, hierarchy classes, class properties, class functions, override functions, variables, imports, types, resources, construction contract, input contract, output contract, errors, side effects, package metadata reference, tests, and reasons each file must contain.
+1. Verify the `Implementation plan` names exact application files inside the owning module directory and exact test files under the top-level `tests/` directory, and covers the primary class or root/base class, hierarchy classes, class properties, class functions, override functions, variables, imports, types, resources, construction contract, input contract, output contract, errors, side effects, package metadata reference, tests, and reasons each file must contain.
 1. Verify every `Class functions` row links to an exact `.md` function-plan file.
 1. Open each linked function-plan markdown file and validate it with `plan-validator-functions`; do not treat a link alone as sufficient.
 1. Ensure there are no extra sections or fields that are not in the template.
 1. Check rule compliance against active repo, user, developer, and skill instructions.
-1. Verify the unit-test section is specific enough to execute from the owning module directory.
+1. Apply `test-conventions` and verify the `Test coverage` section is specific enough to execute from the owning module directory.
 1. Finalize only after all required confirmations are true.
 
 ## Class Boundary Rules
 
 - The class plan must have one primary class or one root/base class for a class family, such as `HealthCheckRunner` or `HarnessBase`.
-- The owning module directory is the only implementation boundary for the plan.
-- Use `Allowed plan files` to list the exact module-owned files the plan may modify or reference.
-- Use `External files explicitly in scope` only to record outside-module files the user explicitly requested as combined work; otherwise it must be `None`.
+- The owning module directory is the application-code boundary for the plan. Test files are the required exception and must live under the top-level `tests/` directory derived from the plan path.
+- Use `Allowed plan files` to list the exact module-owned files and exact convention-derived test files the plan may modify or reference.
+- Use `External files explicitly in scope` only to record other outside-module files the user explicitly requested as combined work; convention-derived test files do not belong in this field.
 - Parent project imports belong in `Parent or caller integration contract`, not as parent project file edits.
 - API routes, job handlers, UI components, and parent projects may construct or call the class, but their wiring belongs in another plan unless the user explicitly requested combined work.
 - Related subclasses, concrete adaptors, abstract classes, protocols, or interfaces may be in the same class plan only when they are part of the requested object model and are listed in `Class hierarchy and object model`.
@@ -87,7 +88,7 @@ Before writing, saving, or finalizing a class plan:
 - Feature flags must not define automatic switching after an error.
 - Hard stop if the plan does not follow `references/PLAN_CLASSES_TEMPLATE.md`.
 - Hard stop if the plan has zero or multiple primary/root object models.
-- Hard stop if any `Implementation plan` file is outside the owning module directory.
+- Hard stop if any application `Implementation plan` file is outside the owning module directory or any test file violates `test-conventions`.
 - Hard stop if the owning package metadata file is missing from the plan.
 - Hard stop if tests cannot run from the owning module directory.
 - Hard stop if `Class hierarchy and object model` does not explain object model type, generic use pattern, root/base class or interface, hierarchy, shared behavior, required overrides, and concrete subclasses/adaptors in scope.
@@ -147,7 +148,7 @@ Check the plan against all active instructions and project rules. Call out viola
 
 - banned alternate-execution behavior or wording
 - tests described vaguely instead of by file and test name
-- implementation-plan entries outside the owning module directory
+- application implementation-plan entries outside the owning module directory or test entries outside the convention-derived top-level test path
 - implementation-plan entries without exact files, class hierarchy, classes, properties, functions, override methods, variables, imports, types, resources, contracts, side effects, function-plan links, package metadata, tests, or reasons
 - optional alternatives where the user asked for a concrete path
 - changes that contradict existing codebase patterns
@@ -156,6 +157,8 @@ Check the plan against all active instructions and project rules. Call out viola
 ## Test Coverage Section Requirements
 
 The plan must include a `Test coverage` section even when no tests are required.
+
+Load and apply the `test-conventions` skill before accepting this section.
 
 - Tests must cover the happy path, validation and error paths, edge cases, and regression cases.
 - Unit tests are required for class plans unless the plan is only documentation.
@@ -167,6 +170,10 @@ The plan must include a `Test coverage` section even when no tests are required.
 - Every row in the plan's `Error contract` table must have a corresponding `Test coverage` entry that asserts the exception, error result, validation result, or a concrete reason it cannot be tested.
 - The `Test coverage` section must describe the tests that should exist for the completed plan. Do not use change-action buckets or change verbs.
 - Hard stop if `## Test coverage` does not contain exact test cases or a concrete message explaining why no test cases are needed.
+- Derive plan tests from `plans/{plan_dir}/{plan_file}.md`: discard `.md` and use the framework pattern under `tests/{plan_dir}/`.
+- Derive rule tests from `plans/rules/{rule_area}/{rule_group}.md`: discard `.md` and use the framework pattern under `tests/rules/{rule_area}/`.
+- Require every test file to begin with the exact `# Plan:` or `# Rule:` comment required by `test-conventions`.
+- Keep every test file at or below 600 lines and require exact convention-compliant helper and split paths when planned coverage would exceed that limit.
 
 For each test case, list in order:
 
@@ -182,21 +189,21 @@ Valid format:
 ```markdown
 ## Test coverage
 
-- `modules/health-check/tests/test_health_check_runner.py` `test_health_check_runner_constructs_with_required_clients` Ensures construction stores the documented client dependencies - Happy path
-- `modules/health-check/tests/test_health_check_runner.py` `test_health_check_runner_rejects_missing_dns_client` Ensures missing required clients produce the documented validation error - Validation / error path
-- `modules/health-check/tests/test_health_check_runner.py` `test_health_check_runner_preserves_optional_timeout_default` Ensures omitted timeout configuration produces the documented default state - Edge case
-- `modules/health-check/tests/test_health_check_runner.py` `test_health_check_runner_keeps_public_properties` Ensures callers continue receiving the documented public property names and types - Regression case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_class_constructs_with_required_dependencies` Ensures construction stores the documented dependencies - Happy path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_class_rejects_missing_required_dependency` Ensures missing required dependencies produce the documented validation error - Validation / error path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_class_preserves_optional_default` Ensures omitted optional configuration produces the documented default state - Edge case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_class_keeps_public_properties` Ensures callers continue receiving the documented public property names and types - Regression case
 ```
 
 ## Implementation Plan Section Requirements
 
 The plan must include one `Implementation plan` section. Use this section as the canonical place for concrete file-level implementation details.
 
-Each entry must start with the exact file path inside the owning module directory and then list the concrete class updates inside that file. Cover every relevant object-model relationship, base class, subclass, adaptor, property, function, method, override method, variable, import, type, resource, construction contract, input contract, output contract, error contract, side effect, dependency boundary, function-plan link, package metadata reference, and test in the file entry instead of using those as separate top-level subsections.
+Each application entry must start with the exact file path inside the owning module directory. Each test entry must start with its exact convention-derived top-level test path. Cover every relevant object-model relationship, base class, subclass, adaptor, property, function, method, override method, variable, import, type, resource, construction contract, input contract, output contract, error contract, side effect, dependency boundary, function-plan link, package metadata reference, and test in the file entry instead of using those as separate top-level subsections.
 
 For each file entry, include:
 
-- The exact file path inside the owning module directory
+- The exact application file path inside the owning module directory or exact test path under the top-level `tests/` directory
 - Exact object-model relationship, base class, subclass, adaptor, property, function, method, override method, variable, import, type, resource, construction contract, input contract, output contract, error contract, side effect, dependency boundary, function-plan link, package metadata reference, or test in the completed plan
 - Short description of the item
 - Reason for the file modification or reference
@@ -219,9 +226,9 @@ Use this format:
   - `run_check(target: HealthCheckTarget) -> HealthStatus`.
   - Function plan: `[run check](plans/health-check-runner/run-check.md)`.
   - Reason: contains the primary class, state, and class functions for the requested health check runner.
-- `modules/health-check/tests/test_health_check_runner.py`
-  - `test_health_check_runner_constructs_with_required_clients`.
-  - `test_health_check_runner_rejects_missing_dns_client`.
+- `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_class_constructs_with_required_dependencies`.
+  - `test_class_rejects_missing_required_dependency`.
   - Reason: verifies construction, property contract, and class-level behavior.
 ```
 
@@ -244,6 +251,7 @@ Before saving or finalizing, verify these confirmations internally. Do not add t
 - each linked function-plan markdown file exists and validates with `plan-validator-functions`
 - implementation plan lists exact module-directory files, class hierarchy, classes, properties, functions, override methods, variables, imports, types, resources, contracts, side effects, package metadata reference, tests, function-plan links, and reasons
 - unit tests are listed with exact file paths, test names, and descriptions, or a concrete reason is given for no tests
+- every test path, filename, plan or rule comment, helper, and file split follows `test-conventions`
 - package metadata and module-local verification commands are complete
 - every error contract row has a corresponding test entry or a concrete documented reason
 - vague language has been removed or converted into concrete target-state details

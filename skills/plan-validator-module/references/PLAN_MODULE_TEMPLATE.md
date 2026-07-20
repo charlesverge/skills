@@ -40,8 +40,8 @@
 ## Module boundary
 
 - **Implementation directory:** \[Exact module directory]
-- **Files inside module directory:** \[List the allowed implementation, test, resource, and package metadata paths]
-- **Files outside module directory:** \[Must be `None` unless the user explicitly requested combined work]
+- **Files inside module directory:** \[List the allowed application implementation, resource, and package metadata paths]
+- **Files outside module directory:** \[List exact `test-conventions` paths, plus other exact files only when the user explicitly requested combined work; otherwise only the test paths]
 - **Parent project work:** \[Import/use instructions only, or separate plan required]
 
 ## Parent integration contract
@@ -88,10 +88,10 @@
 
 ## Test coverage
 
-- `path/to/module/tests/test_file.py` `test_name` Description - Happy path
-- `path/to/module/tests/test_file.py` `test_name` Description - Validation / error path
-- `path/to/module/tests/test_file.py` `test_name` Description - Edge case
-- `path/to/module/tests/test_file.py` `test_name` Description - Regression case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_module_returns_expected_result` Description - Happy path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_module_rejects_invalid_input` Description - Validation / error path
+- `tests/{plan_dir}/test_{plan_file}.py` `test_module_handles_boundary_input` Description - Edge case
+- `tests/{plan_dir}/test_{plan_file}.py` `test_module_preserves_public_contract` Description - Regression case
 
 ## Verification
 
@@ -110,7 +110,7 @@
   - `PrimaryClassOrFunction`
   - Supporting validation or transformation functions.
   - Reason: implements the reusable module behavior.
-- `{module_dir}/tests/test_{module_name}.py`
+- `tests/{plan_dir}/test_{plan_file}.py`
   - Unit tests named in `Test coverage`.
   - Reason: verifies the module independently from parent projects.
 
