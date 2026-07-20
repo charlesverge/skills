@@ -10,6 +10,7 @@ Generate comprehensive unit tests for Python source code with pytest.
 ## When to Use
 
 This skill activates when:
+
 - User asks for unit tests for a file or function
 - User asks to create or modify unit tests
 - Code needs test coverage
@@ -36,17 +37,20 @@ This skill activates when:
 ### Generate test cases
 
 **Happy path scenarios:**
+
 - Test normal operation with typical inputs
 - Test default parameter values
 - Test successful state transitions
 
 **Edge cases:**
+
 - Empty inputs (empty string, empty list, None)
 - Boundary values (max/min integers, empty collections)
 - Single element collections
 - Duplicate handling
 
 **Error handling:**
+
 - Invalid inputs raise appropriate exceptions
 - Missing required parameters
 - Type errors
@@ -134,7 +138,7 @@ class TestClassNameEdgeCases:
 1. **Parametrize when appropriate** - Multiple inputs with `@pytest.mark.parametrize`
 1. **Aim for high branch coverage** - Test all code paths
 1. **Use project ORM patterns** - For projects using an Object-Relational Mapping (ORM) library (Beanie, SQLAlchemy, Prisma, Hibernate, GORM, Sequelize, TypeORM, etc.), use ORM document/model classes and queries in tests to match project coding style
-1. **Use pytest temporary files** - Use tmp_path directly in test arguments for single-test isolation. Use tmp_path_factory.mktemp() inside a session-scoped fixture for shared test assets.
+1. **Use pytest temporary files** - Use tmp\_path directly in test arguments for single-test isolation. Use tmp\_path\_factory.mktemp() inside a session-scoped fixture for shared test assets.
 
 # Unit test setup
 
@@ -203,9 +207,12 @@ def test_use_case_one(shared_dataset):
 
 To handle multiple features at once and run all manual tests if no specific feature is passed, you can change the logic to split comma-separated strings into a list.
 Here is how to update your setup to support commands like pytest --run-manual (runs all manual tests) or pytest --run-manual login,checkout (runs only those specific manual tests).
+
 ## 📑 1. Update your conftest.py
+
 This updated code parses your input into a list of features. It also changes the logic so that regular automated tests are only skipped if you are explicitly focusing on manual tests.
 
+```python
 import pytest
 def pytest_addoption(parser):
     # This can now be used as a flag on its own, OR with text
@@ -282,18 +289,18 @@ import pytest
     assert True
 
 ## 📑 3. Run the Tests via CLI
+```
 
-* To run regular automated tests only (skips all manual tests):
+- To run regular automated tests only (skips all manual tests):
 
 pytest
 
-* To run ALL manual tests (and skip normal automated ones):
+- To run ALL manual tests (and skip normal automated ones):
 
 pytest --run-manual
 
-* To run specific manual features (e.g., login and claude):
+- To run specific manual features (e.g., login and claude):
 
 pytest --run-manual login,claude
 
-(This will run test_manual_login and test_manual_claude_integration, but will skip everything else). [1, 2] 
-
+(This will run `test_manual_login` and `test_manual_claude_integration`, but will skip everything else). \[1, 2]
