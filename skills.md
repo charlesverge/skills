@@ -395,3 +395,21 @@ Validate user change requests and provide guidance on whether they can be fulfil
 ### Skill File
 
 * [skills/validate-user-change-request/SKILL.md](skills/validate-user-change-request/SKILL.md)
+
+## github-operations
+
+* `id`: `github-operations`
+* `path`: `skills/github-operations`
+* `category`: `engineering`
+* `name`: `github-operations`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-07-23`
+
+### Description
+
+Use GitHub safely for repository inspection, branch management, commits, pushes, and ready-for-review pull requests without using GitHub Actions to modify repository files.
+
+### Skill File
+
+* [skills/github-operations/SKILL.md](skills/github-operations/SKILL.md)

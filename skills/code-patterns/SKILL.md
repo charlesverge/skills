@@ -19,9 +19,9 @@ This document captures accepted Python coding patterns for this repository. It i
 
 ## `if / else`
 
-* Use explicit condition checks.
-* Prefer early return to avoid deep nesting.
-* Keep each branch small and clear.
+- Use explicit condition checks.
+- Prefer early return to avoid deep nesting.
+- Keep each branch small and clear.
 
 Example:
 
@@ -40,15 +40,15 @@ else:
     sort_fields = ["created_on"]
 ```
 
-* Use `elif` when a second condition is mutually exclusive.
-* Use `else` only when there is a clear default.
-* Avoid complex boolean expressions in one line; split them into named intermediate variables when helpful.
+- Use `elif` when a second condition is mutually exclusive.
+- Use `else` only when there is a clear default.
+- Avoid complex boolean expressions in one line; split them into named intermediate variables when helpful.
 
 ## `for` loops
 
-* Use `for item in iterable:` for iteration.
-* Prefer list comprehensions for simple transforms.
-* Use explicit value checks inside loops when needed.
+- Use `for item in iterable:` for iteration.
+- Prefer list comprehensions for simple transforms.
+- Use explicit value checks inside loops when needed.
 
 Example:
 
@@ -59,15 +59,15 @@ for url in candidate_urls:
         results.append(url)
 ```
 
-* Use `enumerate()` when the index is required.
-* Avoid iterating over indexes manually unless you need numeric control.
+- Use `enumerate()` when the index is required.
+- Avoid iterating over indexes manually unless you need numeric control.
 
 ## `while` loops
 
-* Use `while` only when repeated execution depends on a changing condition rather than a fixed collection.
-* Keep the loop condition simple.
-* Update loop state clearly inside the body.
-* Avoid unbounded `while True` loops.
+- Use `while` only when repeated execution depends on a changing condition rather than a fixed collection.
+- Keep the loop condition simple.
+- Update loop state clearly inside the body.
+- Avoid unbounded `while True` loops.
 
 Example:
 
@@ -79,14 +79,14 @@ while len(frontier_task_ids) > 0:
     frontier_task_ids = child_task_ids
 ```
 
-* Avoid infinite loops without an obvious break condition.
-* Prefer queue deques or generator-based iteration when possible.
+- Avoid infinite loops without an obvious break condition.
+- Prefer queue deques or generator-based iteration when possible.
 
 ## `BaseModel` class usage
 
-* Use `pydantic.BaseModel` for task payloads and structured inputs.
-* Define payload classes in `src/worker/integrations/company_research/types.py` or suitable shared modules.
-* When parsing agent output, accept both `BaseModel` values and raw data safely.
+- Use `pydantic.BaseModel` for task payloads and structured inputs.
+- Define payload classes in `src/worker/integrations/company_research/types.py` or suitable shared modules.
+- When parsing agent output, accept both `BaseModel` values and raw data safely.
 
 Example:
 
@@ -98,16 +98,16 @@ class EnqueueTaskRequest(BaseModel):
     payload: DiscoveryTaskPayload
 ```
 
-* Keep model fields explicit with types.
-* Use `model_dump(mode="python")` to serialize models for storage or output.
-* Use `isinstance(result, BaseModel)` when you need to support both model and plain data inputs.
+- Keep model fields explicit with types.
+- Use `model_dump(mode="python")` to serialize models for storage or output.
+- Use `isinstance(result, BaseModel)` when you need to support both model and plain data inputs.
 
 ## Strong typing for function parameters and return values
 
-* Always annotate function parameters and return types.
-* Use Python 3.10-style unions: `str | None`, `list[str]`, `dict[str, object]`.
-* Prefer concrete, descriptive types over `Any`.
-* Avoid `**kwargs` or `**fields` in public async methods unless absolutely necessary. Prefer strict, explicit parameters for clarity, discoverability, and validation.
+- Always annotate function parameters and return types.
+- Use Python 3.10-style unions: `str | None`, `list[str]`, `dict[str, object]`.
+- Prefer concrete, descriptive types over `Any`.
+- Avoid `**kwargs` or `**fields` in public async methods unless absolutely necessary. Prefer strict, explicit parameters for clarity, discoverability, and validation.
 
 Reject this pattern:
 
@@ -151,14 +151,14 @@ async def get_keys(
     ...
 ```
 
-* For `BaseModel` subclasses and domain objects, use the actual class name.
-* Use `PydanticObjectId` for MongoDB object ids, and `datetime` for timestamps.
+- For `BaseModel` subclasses and domain objects, use the actual class name.
+- Use `PydanticObjectId` for MongoDB object ids, and `datetime` for timestamps.
 
 ## Using classes
 
-* Prefer classes for stage behavior, repository access, and reusable helpers.
-* Use `__init__` to inject dependencies and configuration.
-* Keep methods focused on a single responsibility.
+- Prefer classes for stage behavior, repository access, and reusable helpers.
+- Use `__init__` to inject dependencies and configuration.
+- Keep methods focused on a single responsibility.
 
 Example:
 
@@ -173,13 +173,13 @@ class DiscoveryQueueRepository:
         self.max_attempts = max_attempts
 ```
 
-* Use private helper methods for repeated logic, e.g. `_now()`, `_get_stage()`, `_apply_completed_fields()`.
-* Keep public methods stable and testable; use private methods to reduce duplication.
-* Prefer small, single-purpose classes over large procedural modules.
+- Use private helper methods for repeated logic, e.g. `_now()`, `_get_stage()`, `_apply_completed_fields()`.
+- Keep public methods stable and testable; use private methods to reduce duplication.
+- Prefer small, single-purpose classes over large procedural modules.
 
 ## Array handling
 
-* Use extend to add multiple items to a list instead of append in a loop.
+- Use extend to add multiple items to a list instead of append in a loop.
 
 Prefer this pattern
 
@@ -196,10 +196,10 @@ This should not be done
 
 ## Practical style reminders
 
-* Prefer clear variable names: `task`, `stage`, `task_id`, `candidate_urls`.
-* Use `logger` for runtime events, not `print()`.
-* Avoid deep nesting by returning early when invalid state is detected.
-* Use explicit `None` checks instead of relying on truthy/falsy semantics for optional values.
+- Prefer clear variable names: `task`, `stage`, `task_id`, `candidate_urls`.
+- Use `logger` for runtime events, not `print()`.
+- Avoid deep nesting by returning early when invalid state is detected.
+- Use explicit `None` checks instead of relying on truthy/falsy semantics for optional values.
 
 Example:
 
@@ -317,9 +317,9 @@ async for result in cursor:
 
 ## Function creation
 
-* Don't create a fall back unless explicitly asked for
-* Avoid the use of built in functions like attrib, hasattr for classes which can accessed like ClassName.property\_name
-* If a reference is already a str don't add str() to it.
+- Don't create a fall back unless explicitly asked for
+- Avoid the use of built in functions like attrib, hasattr for classes which can accessed like ClassName.property\_name
+- If a reference is already a str don't add str() to it.
 
 ## Beanie classes
 
@@ -439,6 +439,7 @@ assert usage should be kept for unit tests
 Do not import or use `from contextvars import ContextVar` directly. Context variables should be passed explicitly as function parameters to maintain testability and clarity.
 
 ### Rejected pattern (do NOT use):
+
 ```python
 from contextvars import ContextVar
 
@@ -450,7 +451,9 @@ def some_function():
 ```
 
 ### Preferred pattern:
+
 Pass prompts explicitly as parameters:
+
 ```python
 def some_function(prompt: str):
     # Use prompt directly
@@ -462,6 +465,7 @@ def some_function(prompt: str):
 Always pass prompts explicitly as function parameters rather than relying on global state or context variables. This makes functions more testable, predictable, and easier to reason about.
 
 ### Rejected pattern (do NOT use):
+
 ```python
 # Global or class-level prompt storage
 CURRENT_PROMPT = ""
@@ -472,6 +476,7 @@ def process_data():
 ```
 
 ### Preferred pattern:
+
 ```python
 def process_data(prompt: str):
     # Use prompt directly as parameter
@@ -481,6 +486,7 @@ def process_data(prompt: str):
 ```
 
 ### Example with default value:
+
 ```python
 def process_data(prompt: str = "default prompt"):
     # Use prompt parameter
@@ -493,27 +499,27 @@ def process_data(prompt: str = "default prompt"):
 
 ### Use it when:
 
-* ID is discovered in one phase but applied in a later, separate phase.
-* Re-querying is expensive, flaky, or unavailable later.
-* There is no direct per-record channel to carry the ID forward.
-* The correlation key is stable and unique for that pipeline step.
+- ID is discovered in one phase but applied in a later, separate phase.
+- Re-querying is expensive, flaky, or unavailable later.
+- There is no direct per-record channel to carry the ID forward.
+- The correlation key is stable and unique for that pipeline step.
 
 ### Do not use it when:
 
-* ID is already available at the point of write/process.
-* ID can be passed directly in function args/event payload/result object.
-* A cache introduces avoidable state, staleness, or key-mismatch risk.
-* The phase boundary is weak (same call path, same scope) and no decoupling benefit exists.
+- ID is already available at the point of write/process.
+- ID can be passed directly in function args/event payload/result object.
+- A cache introduces avoidable state, staleness, or key-mismatch risk.
+- The phase boundary is weak (same call path, same scope) and no decoupling benefit exists.
 
 ### Rule of thumb:
 
-* Prefer direct propagation first.
-* Use key-indexed ID cache only to bridge a real phase boundary where direct propagation is not practical.
+- Prefer direct propagation first.
+- Use key-indexed ID cache only to bridge a real phase boundary where direct propagation is not practical.
 
 ### Generic description:
 
-* Build an in-memory dictionary keyed by batch artifact (file/job/message id), with value = all related IDs needed later.
-* Reuse that dictionary during downstream processing to avoid re-querying or recomputing IDs.
+- Build an in-memory dictionary keyed by batch artifact (file/job/message id), with value = all related IDs needed later.
+- Reuse that dictionary during downstream processing to avoid re-querying or recomputing IDs.
 
 \###Generic example:
 
@@ -527,7 +533,7 @@ ctx = ids_by_file.get(file_name)
 
 ### Future phrasing:
 
-* “Use a key-indexed ID cache: store all IDs per file in a dict, then look them up during import/persist.”
+- “Use a key-indexed ID cache: store all IDs per file in a dict, then look them up during import/persist.”
 
 ## Rejected: Use $in with empty list/subquery inside another query
 
@@ -711,10 +717,10 @@ Even better - consider using a mapping or strategy pattern for handling differen
 
 Avoid manually creating objects using `object.__new__` and setting attributes with `object.__setattr__`. This bypasses normal class initialization and can lead to maintenance issues, lack of validation, and confusion for future developers.
 
-  task = object.__new__(Task)
-  object.__setattr__(task, "id", task_id)
-  object.__setattr__(task, "key", "company_summarize_prep:acme")
-  object.__setattr__(task, "payload", task_payload)
+task = object.**new**(Task)
+object.**setattr**(task, "id", task\_id)
+object.**setattr**(task, "key", "company\_summarize\_prep:acme")
+object.**setattr**(task, "payload", task\_payload)
 
 Use the class constructor or a factory method instead:
 
@@ -729,6 +735,7 @@ task = Task(
 ## Rejected: Checking not containing many values when a simpler check would suffice
 
 For example:
+
 ```python
 if task is not None and task.status in (
   TaskStatus.BUILDING,
@@ -750,6 +757,7 @@ if task is not None and task.status not in [TaskStatus.COMPLETED, TaskStatus.FAI
 ## Do not hide failures, exceptions, fatal errors or other unexpected conditions.
 
 For example
+
 ```python
 task = await Task.find_one({"_id": request.task_id})
 token = None
@@ -767,8 +775,7 @@ if task is None:
 do_something(task)
 ```
 
-
-## Do not import only to export unless it is __init__.py
+## Do not import only to export unless it is `__init__.py`
 
 This should not be done
 
@@ -781,4 +788,26 @@ Instead in `__init__.py` you can import and export or import directly from the s
 ```python
 from .module_name import ClassName
 __all__ = ["ClassName"]
+```
+
+## Do not make global variables unless it is a constant or a singleton.
+
+Global variables can lead to unexpected side effects and make the code harder to understand and maintain. Use class attributes, instance attributes, or function parameters instead.
+
+This should not be done
+
+```typescript
+let nextToken = 0;
+```
+
+```python
+counter = 0
+```
+
+This should be done
+
+```python
+class Counter:
+    def __init__(self):
+        self.next_token = 0
 ```
