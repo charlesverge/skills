@@ -54,7 +54,7 @@ plans/
 
 ## Use case quality checks
 
-- Write each use case as: “When [an action, input, value, event, or condition occurs], [the observable outcome occurs].”
+- Write each use case as: “When \[an action, input, value, event, or condition occurs], \[the observable outcome occurs].”
 - Allow the trigger to come from a user, another system, or existing business data.
 - State the trigger precisely enough to preserve important boundary conditions.
 - Describe only observable outcomes.
@@ -140,7 +140,7 @@ Example: `onboarding-locations-supported-city` in the `locations` rule group at 
 - Keep each individual rule to one to five sentences.
 - Cover one business constraint per individual rule. Split compound constraints into separately labeled rules.
 - State each business constraint with `must`, `must not`, `only`, or another testable normative phrase.
-- Write each business rule as: “When [an action, input, value, event, or condition occurs], the product must [produce the observable outcome].”
+- Write each business rule as: “When \[an action, input, value, event, or condition occurs], the product must \[produce the observable outcome].”
 - Allow the trigger to come from a user, another system, or existing business data.
 - Describe the outcome in observable terms. Do not describe stored responses, applicability, completion state, sequence processing, identifiers, or implementation behavior unless directly observable.
 - Identify the actor, trigger or condition, allowed or required outcome, and important boundary cases in the individual rule description.

@@ -3,7 +3,6 @@ name: python-type-rules
 description: Enforce strict Python typing when creating or modifying types for variables, function parameters, function return values, classes, dataclasses, Pydantic models, TypedDicts, protocols, aliases, and structured objects. Use whenever creating, changing, fixing, reviewing, or type-checking Python annotations or object shapes, especially when resolving typing errors without suppressions, fallbacks, Any, object, loose unions, casts, or runtime attribute workarounds.
 ---
 
-
 # When to use this skill
 
 When modifying or creating a new type for a variable or a function.
@@ -42,8 +41,8 @@ Do not attempt to fix the type problems fast, focus on fixing them right. If the
 - Do not use the type Any, object, if there is no other solution then stop and request user input on how to proceed.
 - Prefer strict typing, avoid creating parameters that can take multiple types.
 - Do not attempt to get around typing, ie for example if a value is required, don't use a fail back value which is also not allowed.
-- Do not use TYPE_CHECKING imports
-- Do not use fallback TypedDicts (no if TYPE_CHECKING: ... else: class X(TypedDict, ...) pattern).
+- Do not use TYPE\_CHECKING imports
+- Do not use fallback TypedDicts (no if TYPE\_CHECKING: ... else: class X(TypedDict, ...) pattern).
 - Do not use # type: ignore unless explicitly asked for.
 - Do not use # noqa:
 - Do not add or preserve # type: ignore lines when modifying code.
@@ -57,16 +56,16 @@ Do not attempt to fix the type problems fast, focus on fixing them right. If the
 - Do not add runtime guards or exception handling solely to satisfy typing. Fix types directly (or use narrow, accurate casts only when third-party stubs are incorrect).
 - Do not use typing.cast to resolve typing issues unless explicitly asked for. Fix the types directly instead.
 - Do not introduce local protocol/alias wrappers (e.g., COUNTRIES: CountriesLike) to mask third-party typing gaps. Fix types directly or update stubs when needed.
-- Do not use Any (including typing.Any, dict[str, Any], or similar) to bypass typing. Define concrete types instead.
+- Do not use Any (including typing.Any, dict\[str, Any], or similar) to bypass typing. Define concrete types instead.
 - Do not use assert isinstance(...) solely to satisfy typing outside of unit tests. In unit tests, assert isinstance(...) is allowed.
 - Do not use NoReturn/Never to silence typing issues in reachable code.
-- Do not use from typing import * or re-exports to hide typing gaps.
-- Do not use type checker suppression comments (e.g., # pyright: ignore, # pyright: report...=none, # type: ignore[code]).
+- Do not use from typing import \* or re-exports to hide typing gaps.
+- Do not use type checker suppression comments (e.g., # pyright: ignore, # pyright: report...=none, # type: ignore\[code]).
 - Do not re-export symbols; import from the correct module instead.
-- Never use the if TYPE_CHECKING: ... else: ... pattern for any module.
+- Never use the if TYPE\_CHECKING: ... else: ... pattern for any module.
 - Do not create pyi files unless asked for, report back the type errors and let the user decide if they can be resolved in the source module or a pyi file is needed.
-- Don't down grade types for example changing a specific set of types to a general type, if you think this should be done. Stop and explain why it is required. For example, don't change Command[Literal["__end__"]] | Command[Literal["search"]] | Command[Literal["logout"]] to Command
-- kwargs is denied and use of patterns like **fields: object,
-you are not allowed to use this conditional logic. agent_id=agent_id.value if isinstance(agent_id, LlmBatchAgentId) else agent_id, you should now what type it is and what type is needed. This parameter is also denied for a function parameter which triggers these usless if else conditions agent_id: LlmBatchAgentId | str,
+- Don't down grade types for example changing a specific set of types to a general type, if you think this should be done. Stop and explain why it is required. For example, don't change Command\[Literal\["**end**"]] | Command\[Literal\["search"]] | Command\[Literal\["logout"]] to Command
+- kwargs is denied and use of patterns like \*\*fields: object,
+  you are not allowed to use this conditional logic. agent\_id=agent\_id.value if isinstance(agent\_id, LlmBatchAgentId) else agent\_id, you should now what type it is and what type is needed. This parameter is also denied for a function parameter which triggers these usless if else conditions agent\_id: LlmBatchAgentId | str,
 - don't make typing weaker
 - when fixing typing issues, don't alter the existing logic or flow of the code, only make the necessary adjustments to satisfy the type checker without changing the behavior of the code.

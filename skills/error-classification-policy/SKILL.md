@@ -17,10 +17,10 @@ Contract errors are invariant or payload shape mismatches between producer and c
 
 Common contract errors:
 
-* missing required payload fields
-* wrong payload type (expected dict/string shape but got another type)
-* unsupported request type for a stage
-* schema validation mismatch where input format is wrong for the called stage or model
+- missing required payload fields
+- wrong payload type (expected dict/string shape but got another type)
+- unsupported request type for a stage
+- schema validation mismatch where input format is wrong for the called stage or model
 
 ### Connection errors
 
@@ -45,8 +45,8 @@ Use this rule consistently across stage paths and script paths so retries and te
 
 ## Why Contract Errors Differ From Connection Failures
 
-* connection failures often succeed on retry without input change
-* contract errors usually repeat until code mapping, schema expectations, or data production is corrected
+- connection failures often succeed on retry without input change
+- contract errors usually repeat until code mapping, schema expectations, or data production is corrected
 
 Do not treat these categories as interchangeable.
 
@@ -54,8 +54,8 @@ Do not treat these categories as interchangeable.
 
 Validation errors are not universally temporary or permanent.
 
-* In eventually consistent systems, they can be temporary.
-* In local deterministic payload/schema checks, they are often repeatable and therefore often non-temporary.
+- In eventually consistent systems, they can be temporary.
+- In local deterministic payload/schema checks, they are often repeatable and therefore often non-temporary.
 
 When implementing logic, avoid hard-coding universal assumptions like `validation == temporary`. Use explicit policy flags or clear per-flow rules.
 
@@ -72,10 +72,10 @@ Classify in this order:
 
 When returning classification from code paths, include:
 
-* `error_family`
-* `classification` (`temporary` or `permanent`)
-* `reason`
-* `stage`
-* `retry_recommended` (boolean)
+- `error_family`
+- `classification` (`temporary` or `permanent`)
+- `reason`
+- `stage`
+- `retry_recommended` (boolean)
 
 Keep naming and values stable across services so orchestration logic stays deterministic.

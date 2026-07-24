@@ -22,8 +22,8 @@ Rules owned by one specific area.
 
 ### Human-focused boundary
 
-[User flow, stakeholder activity, or business capability governed by this area.]
+\[User flow, stakeholder activity, or business capability governed by this area.]
 
 ### Excludes
 
-[Adjacent areas and their distinguishing boundary.]
+\[Adjacent areas and their distinguishing boundary.]

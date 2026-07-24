@@ -29,9 +29,9 @@ class Worker:
 
 Why remove:
 
-* Single call site.
-* Pass-through queue call + log.
-* No transformation or reusable phase logic.
+- Single call site.
+- Pass-through queue call + log.
+- No transformation or reusable phase logic.
 
 Inline target:
 
@@ -79,6 +79,6 @@ class Worker:
 
 Why keep:
 
-* Multi-step phase boundary (`collect/validate/decision/side effects`).
-* Contains branching and multiple outcomes.
-* Improves readability and reuse potential, not a pass-through wrapper.
+- Multi-step phase boundary (`collect/validate/decision/side effects`).
+- Contains branching and multiple outcomes.
+- Improves readability and reuse potential, not a pass-through wrapper.

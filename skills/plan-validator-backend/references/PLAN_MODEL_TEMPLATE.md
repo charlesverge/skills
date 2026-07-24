@@ -26,4 +26,3 @@ The session record is the authentication record. `verify` creates it, so this pl
 ## Related APIs
 
 - `plan-file.md` - Short description of the API use of the model. ie - `auth-session.md` - Read auth session state
-

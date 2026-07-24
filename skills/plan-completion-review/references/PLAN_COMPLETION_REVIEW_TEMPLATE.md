@@ -43,21 +43,21 @@
 
 ## 3. Create a list of features and ensure they are all completed
 
-| Feature or requirement | Plan source | Status |
-| --- | --- | --- |
+| Feature or requirement     | Plan source              | Status                    |
+| -------------------------- | ------------------------ | ------------------------- |
 | `[feature or requirement]` | `[plan section or line]` | Completed/Partial/Missing |
 
 ## 4. Verify the plan is valid. Ensure the original goal has been met with the plan
 
-| Goal description | In Plan | Short change description | Has tests |
-| --- | --- | --- | --- |
-| `[goal or requirement]` | Full/Partial/Missing | `[short description or None]` | Yes/No |
+| Goal description        | In Plan              | Short change description      | Has tests |
+| ----------------------- | -------------------- | ----------------------------- | --------- |
+| `[goal or requirement]` | Full/Partial/Missing | `[short description or None]` | Yes/No    |
 
 ## 5. Verify the code completes the original goal
 
-| Goal description | File name | In Code | Short change description | Has tests |
-| --- | --- | --- | --- | --- |
-| `[goal or requirement]` | `[file path]` | Full/Partial/Missing | `[short description or None]` | Yes/No |
+| Goal description        | File name     | In Code              | Short change description      | Has tests |
+| ----------------------- | ------------- | -------------------- | ----------------------------- | --------- |
+| `[goal or requirement]` | `[file path]` | Full/Partial/Missing | `[short description or None]` | Yes/No    |
 
 ## 6. What are the unrequested modifications made
 

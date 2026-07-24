@@ -15,11 +15,11 @@ Each database collection has a corresponding `Document` class that is used to in
 
 Beanie provides:
 
-* Async operations via PyMongo's async client
-* Pydantic-based schema validation
-* Built-in schema migrations
-* Query builder with Pythonic syntax
-* Index management
+- Async operations via PyMongo's async client
+- Pydantic-based schema validation
+- Built-in schema migrations
+- Query builder with Pythonic syntax
+- Index management
 
 ## Installation
 
@@ -31,13 +31,13 @@ poetry add beanie
 
 Optional dependencies:
 
-* `beanie[srv]` - mongodb+srv:// URI support
-* `beanie[aws]` - MONGODB-AWS authentication
-* `beanie[gssapi]` - GSSAPI authentication
-* `beanie[ocsp]` - OCSP support
-* `beanie[snappy]` - Snappy compression
-* `beanie[zstd]` - Zstandard compression
-* `beanie[encryption]` - Client-Side Field Level Encryption
+- `beanie[srv]` - mongodb+srv:// URI support
+- `beanie[aws]` - MONGODB-AWS authentication
+- `beanie[gssapi]` - GSSAPI authentication
+- `beanie[ocsp]` - OCSP support
+- `beanie[snappy]` - Snappy compression
+- `beanie[zstd]` - Zstandard compression
+- `beanie[encryption]` - Client-Side Field Level Encryption
 
 ## Basic Usage
 
@@ -98,8 +98,8 @@ Full documentation is available at: `skills/python-beanie-orm/resources/docs/`
 
 Key docs:
 
-* [index.md](resources/docs/index.md) - Overview and links
-* [getting-started.md](resources/docs/getting-started.md) - Installation and initialization
-* [development.md](resources/docs/development.md) - Contributing guidelines
+- [index.md](resources/docs/index.md) - Overview and links
+- [getting-started.md](resources/docs/getting-started.md) - Installation and initialization
+- [development.md](resources/docs/development.md) - Contributing guidelines
 
-Official docs: <https://beanie-odm.dev/>
+Official docs: [https://beanie-odm.dev/](https://beanie-odm.dev/)

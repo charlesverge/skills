@@ -18,8 +18,8 @@ await bar.save()
 
 Otherwise, use the `replace()` method, which throws:
 
-* a `ValueError` if the document does not have an `id` yet, or
-* a `beanie.exceptions.DocumentNotFound` if it does, but the `id` is not present in the collection
+- a `ValueError` if the document does not have an `id` yet, or
+- a `beanie.exceptions.DocumentNotFound` if it does, but the `id` is not present in the collection
 
 ```python
 bar.price = 10
@@ -88,6 +88,6 @@ For the object methods `update` and `upsert`, you can use the `response_type` pa
 
 The options are:
 
-* `UpdateResponse.UPDATE_RESULT` - returns the result of the update operation.
-* `UpdateResponse.NEW_DOCUMENT` - returns the newly updated document.
-* `UpdateResponse.OLD_DOCUMENT` - returns the document before the update.
+- `UpdateResponse.UPDATE_RESULT` - returns the result of the update operation.
+- `UpdateResponse.NEW_DOCUMENT` - returns the newly updated document.
+- `UpdateResponse.OLD_DOCUMENT` - returns the document before the update.

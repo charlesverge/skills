@@ -4,28 +4,28 @@ You can register methods as pre- or post- actions for document events.
 
 Currently supported events:
 
-* Save
-* Insert
-* Replace
-* Update
-* SaveChanges
-* Delete
-* ValidateOnSave
+- Save
+- Insert
+- Replace
+- Update
+- SaveChanges
+- Delete
+- ValidateOnSave
 
 Currently supported directions:
 
-* `Before`
-* `After`
+- `Before`
+- `After`
 
 Current operations creating events:
 
-* `insert()` for Insert
-* `replace()` for Replace
-* `save()` for Save and triggers Insert if it is creating a new document, or triggers Replace if it replaces an existing document
-* `save_changes()` for SaveChanges
-* `insert()`, `replace()`, `save_changes()`, and `save()` for ValidateOnSave
-* `set()`, `update()` for Update
-* `delete()` for Delete
+- `insert()` for Insert
+- `replace()` for Replace
+- `save()` for Save and triggers Insert if it is creating a new document, or triggers Replace if it replaces an existing document
+- `save_changes()` for SaveChanges
+- `insert()`, `replace()`, `save_changes()`, and `save()` for ValidateOnSave
+- `set()`, `update()` for Update
+- `delete()` for Delete
 
 To register an action, you can use `@before_event` and `@after_event` decorators respectively:
 

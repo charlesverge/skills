@@ -4,16 +4,16 @@
 
 ### Definition
 
-[One precise meaning.]
+\[One precise meaning.]
 
 ### Includes
 
-[Included actors, states, or concepts.]
+\[Included actors, states, or concepts.]
 
 ### Excludes
 
-[Similar concepts this term does not mean.]
+\[Similar concepts this term does not mean.]
 
 ### Discouraged synonyms
 
-[Noncanonical synonyms, or `None`.]
+\[Noncanonical synonyms, or `None`.]

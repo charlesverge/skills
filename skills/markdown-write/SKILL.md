@@ -18,6 +18,7 @@ remark . -o .
 ```
 
 **Note**: Auto-fix handles most formatting issues (table alignment, list markers, spacing, etc.) but cannot fix semantic issues like:
+
 - Heading content/structure
 - Missing link definitions
 - Shortcut reference links (must manually convert to collapsed references `[text][]`)
@@ -58,16 +59,17 @@ remark . -o .
 
 ### Code Blocks
 
-- Use fenced code blocks with backticks (```)
+- Use fenced code blocks with backticks (\`\`\`)
 - Specify language after opening fence
 - Empty language flag is allowed
 
-```markdown
+````markdown
 ```python
 def hello():
     print("world")
-```
-```
+````
+
+````
 
 ### Tables
 
@@ -80,7 +82,7 @@ def hello():
 | Header 1 | Header 2 |
 | -------- | -------- |
 | Cell 1   | Cell 2   |
-```
+````
 
 ### Links & References
 
@@ -123,6 +125,7 @@ remark .
 ## Files Ignored
 
 Per `.remarkignore`:
+
 - `AGENTS.md`
 - `.venv/`
 - `build/`
@@ -133,7 +136,7 @@ Per `.remarkignore`:
 - [ ] Ordered lists use `1.` for every item
 - [ ] Unordered lists use `-`
 - [ ] Headings use `#` syntax and increment properly
-- [ ] Code blocks use ``` with language
+- [ ] Code blocks use \`\`\` with language
 - [ ] Tables have aligned pipes and padded cells
 - [ ] Links use `"title"` format
 - [ ] Emphasis uses `*`

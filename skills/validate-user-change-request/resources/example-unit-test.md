@@ -61,5 +61,6 @@ That exact pattern cannot be applied here because `Order` does not expose the sa
 - Therefore the current codebase supports the product-style assignment pattern, but not the same test pattern for orders without changing `Order` production behavior.
 
 If you want, I can either:
+
 1. write the order test using the existing `validate_transition(...)` entrypoint, or
-2. stop and ask for approval before changing `Order` to support assignment-based validation.
+1. stop and ask for approval before changing `Order` to support assignment-based validation.

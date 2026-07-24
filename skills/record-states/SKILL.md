@@ -11,11 +11,11 @@ Provide a consistent way to handle invalid or incomplete record state during pro
 
 This skill applies regardless of where records are stored:
 
-* in memory
-* database
-* cache
-* queue payloads
-* serialized files
+- in memory
+- database
+- cache
+- queue payloads
+- serialized files
 
 ## Core Rule
 
@@ -29,20 +29,20 @@ This skill separates responsibilities between two layers.
 
 The function operating on the record must decide:
 
-* whether the current record state is valid for the operation
-* whether the operation can continue safely
-* whether the state issue is blocking or non-blocking
-* whether any repair is allowed by explicit contract
+- whether the current record state is valid for the operation
+- whether the operation can continue safely
+- whether the state issue is blocking or non-blocking
+- whether any repair is allowed by explicit contract
 
 ### Caller responsibility
 
 The caller of the function must decide what to do after a blocking failure, such as:
 
-* retry later
-* mark terminal failure
-* quarantine
-* escalate
-* trigger repair flow
+- retry later
+- mark terminal failure
+- quarantine
+- escalate
+- trigger repair flow
 
 The callee must not silently decide workflow disposition unless that responsibility is explicitly part of its contract.
 
@@ -92,16 +92,16 @@ Use when the record has an invalid or incomplete state, but that issue does not 
 
 Requirements:
 
-* log the issue clearly
-* continue the operation
-* do not auto-repair unless explicitly allowed
-* do not hide the state issue
+- log the issue clearly
+- continue the operation
+- do not auto-repair unless explicitly allowed
+- do not hide the state issue
 
 Example:
 
-* `created_on` is missing
-* current operation only updates payload data and writes `updated_on`
-* `created_on` is not required for this decision
+- `created_on` is missing
+- current operation only updates payload data and writes `updated_on`
+- `created_on` is not required for this decision
 
 ### Outcome C: Raise blocking state exception
 
@@ -109,15 +109,15 @@ Use when the record is in an invalid state that prevents the function from makin
 
 Requirements:
 
-* raise immediately
-* do not continue partially
-* do not guess or infer missing required values
-* leave retry or terminal handling to the caller
+- raise immediately
+- do not continue partially
+- do not guess or infer missing required values
+- leave retry or terminal handling to the caller
 
 Example:
 
-* `record_type` is required for branching
-* `record_type` is missing or not in the allowed enum
+- `record_type` is required for branching
+- `record_type` is missing or not in the allowed enum
 
 ### Outcome D: Repair and continue
 
@@ -125,14 +125,14 @@ Use only when explicit policy, configuration, or caller contract allows determin
 
 Requirements:
 
-* repair must be explicit, not assumed
-* repair must be deterministic
-* repair must be logged
-* operation may continue only after repair makes the state valid enough
+- repair must be explicit, not assumed
+- repair must be deterministic
+- repair must be logged
+- operation may continue only after repair makes the state valid enough
 
 Example:
 
-* caller explicitly allows backfilling a lifecycle field using a known deterministic rule
+- caller explicitly allows backfilling a lifecycle field using a known deterministic rule
 
 ## Non-Blocking vs Blocking Guidance
 
@@ -140,20 +140,20 @@ Example:
 
 A state issue is non-blocking when all of the following are true:
 
-* the current operation does not require the missing or invalid field
-* continuing does not change branching or correctness
-* continuing does not hide a workflow-level convergence problem
-* the issue can be surfaced through logging
+- the current operation does not require the missing or invalid field
+- continuing does not change branching or correctness
+- continuing does not hide a workflow-level convergence problem
+- the issue can be surfaced through logging
 
 ### Blocking state issue
 
 A state issue is blocking when any of the following are true:
 
-* the field is required to make a decision
-* the field is required to preserve correctness
-* the value is invalid and affects branching or output
-* continuing would produce undefined or misleading behavior
-* skipping would preserve stale retry-selection state and prevent convergence
+- the field is required to make a decision
+- the field is required to preserve correctness
+- the value is invalid and affects branching or output
+- continuing would produce undefined or misleading behavior
+- skipping would preserve stale retry-selection state and prevent convergence
 
 ## Convergence Rule
 
@@ -161,9 +161,9 @@ The function must not silently skip work in a way that leaves the record eligibl
 
 This means:
 
-* do not use `continue` as a local escape hatch without checking workflow impact
-* do not preserve stale selection markers when the operation is being abandoned
-* do not encode a consistency-over-liveness tradeoff silently
+- do not use `continue` as a local escape hatch without checking workflow impact
+- do not preserve stale selection markers when the operation is being abandoned
+- do not encode a consistency-over-liveness tradeoff silently
 
 If the function cannot both preserve correctness and advance the record safely, it must raise an exception and let the caller decide workflow disposition.
 
@@ -173,20 +173,20 @@ Blocking invalid state exceptions should be structured and machine-readable wher
 
 Recommended minimum fields:
 
-* exception type
-* record identifier if available
-* operation name
-* field name or invariant name
-* failure reason
-* observed value if safe to include
-* expected requirement
+- exception type
+- record identifier if available
+- operation name
+- field name or invariant name
+- failure reason
+- observed value if safe to include
+- expected requirement
 
 Example categories:
 
-* missing required field
-* invalid enum value
-* invariant violation
-* malformed record state
+- missing required field
+- invalid enum value
+- invariant violation
+- malformed record state
 
 The goal is that the caller can make a workflow decision without reinterpreting vague error text.
 
@@ -196,11 +196,11 @@ This skill does not define caller-side workflow disposition.
 
 After a blocking exception is raised, the caller may choose actions such as:
 
-* retry
-* fail permanently
-* quarantine
-* alert
-* repair through a separate path
+- retry
+- fail permanently
+- quarantine
+- alert
+- repair through a separate path
 
 Those decisions belong to orchestration logic, not to the callee, unless explicitly delegated.
 
@@ -210,79 +210,79 @@ Those decisions belong to orchestration logic, not to the callee, unless explici
 
 Record state:
 
-* `created_on` missing
+- `created_on` missing
 
 Operation:
 
-* update record payload
-* write `updated_on`
+- update record payload
+- write `updated_on`
 
 Decision:
 
-* `created_on` is not required for this operation
-* operation correctness is preserved without it
+- `created_on` is not required for this operation
+- operation correctness is preserved without it
 
 Result:
 
-* log invalid state
-* continue
-* do not auto-repair
+- log invalid state
+- continue
+- do not auto-repair
 
 ### Example 2: Missing required type field
 
 Record state:
 
-* `record_type` missing
+- `record_type` missing
 
 Operation:
 
-* branch behavior depends on `record_type`
+- branch behavior depends on `record_type`
 
 Decision:
 
-* function cannot choose a correct path
+- function cannot choose a correct path
 
 Result:
 
-* raise blocking state exception
-* caller decides retry, terminal failure, or other disposition
+- raise blocking state exception
+- caller decides retry, terminal failure, or other disposition
 
 ### Example 3: Deterministic repair explicitly allowed
 
 Record state:
 
-* lifecycle field missing
+- lifecycle field missing
 
 Operation:
 
-* caller contract explicitly allows deterministic backfill
+- caller contract explicitly allows deterministic backfill
 
 Decision:
 
-* repair is allowed
-* repair rule is known and stable
+- repair is allowed
+- repair rule is known and stable
 
 Result:
 
-* repair field
-* log repair
-* continue
+- repair field
+- log repair
+- continue
 
 ### Example 4: Local skip would break convergence
 
 Record state:
 
-* required metadata missing during update path
-* skipping would leave retry-selection state unchanged
+- required metadata missing during update path
+- skipping would leave retry-selection state unchanged
 
 Decision:
 
-* local skip is not acceptable because the record would remain eligible for repeated reprocessing
+- local skip is not acceptable because the record would remain eligible for repeated reprocessing
 
 Result:
 
-* do not silently skip
-* either repair if explicitly allowed or raise blocking exception
+- do not silently skip
+- either repair if explicitly allowed or raise blocking exception
 
 ## Review Checklist
 
@@ -299,12 +299,12 @@ Before choosing to continue, skip, or fail, ask:
 
 Use this shorter form when embedding the skill into another specification.
 
-* Do not auto-repair record state unless explicitly allowed.
-* If a state issue is non-blocking, log it and continue.
-* If a state issue is blocking, raise an exception immediately.
-* Do not skip processing in a way that preserves stale retry-selection state.
-* The callee decides whether execution can continue; the caller decides workflow disposition after blocking failure.
-* Blocking state exceptions should classify the failure clearly enough for the caller to act.
+- Do not auto-repair record state unless explicitly allowed.
+- If a state issue is non-blocking, log it and continue.
+- If a state issue is blocking, raise an exception immediately.
+- Do not skip processing in a way that preserves stale retry-selection state.
+- The callee decides whether execution can continue; the caller decides workflow disposition after blocking failure.
+- Blocking state exceptions should classify the failure clearly enough for the caller to act.
 
 ## Summary
 

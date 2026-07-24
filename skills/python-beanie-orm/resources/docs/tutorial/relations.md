@@ -6,17 +6,17 @@ The document can contain links to other documents in their fields.
 
 The following field types are supported:
 
-* `Link[...]`
-* `Optional[Link[...]]`
-* `List[Link[...]]`
-* `Optional[List[Link[...]]]`
+- `Link[...]`
+- `Optional[Link[...]]`
+- `List[Link[...]]`
+- `Optional[List[Link[...]]]`
 
 Also, backward links are supported:
 
-* `BackLink[...]`
-* `Optional[BackLink[...]]`
-* `List[BackLink[...]]`
-* `Optional[List[BackLink[...]]]`
+- `BackLink[...]`
+- `Optional[BackLink[...]]`
+- `List[BackLink[...]]`
+- `Optional[List[BackLink[...]]]`
 
 Direct link to the document:
 
@@ -94,15 +94,15 @@ class House(Document):
 ```
 
 Other link patterns are not supported at this moment. If you need something more specific for your use-case,
-please open an issue on the GitHub page - <https://github.com/roman-right/beanie>
+please open an issue on the GitHub page - [https://github.com/roman-right/beanie](https://github.com/roman-right/beanie)
 
 ## Write
 
 The following write methods support relations:
 
-* `insert(...)`
-* `replace(...)`
-* `save(...)`
+- `insert(...)`
+- `replace(...)`
+- `save(...)`
 
 To apply a write method to the linked documents, you should pass the respective `link_rule` argument
 
@@ -143,9 +143,9 @@ houses = await House.find(
 
 Supported find methods:
 
-* `find`
-* `find_one`
-* `get`
+- `find`
+- `find_one`
+- `get`
 
 Beanie uses the single aggregation query under the hood to fetch all the linked documents.
 This operation is very effective.
@@ -303,4 +303,4 @@ Back links support all the operations that normal links support, but are virtual
 
 ## Limitations
 
-* Find operations with the `fetch_links` parameter can not be used in the chaning with `delete` and `update` methods.
+- Find operations with the `fetch_links` parameter can not be used in the chaning with `delete` and `update` methods.

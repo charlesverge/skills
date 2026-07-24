@@ -53,8 +53,8 @@ beanie migrate --help
 
 Migration class contains instructions - decorated async functions. There are two types of instructions:
 
-* Iterative migration - instruction that iterates over all the documents of the input\_document collection and updates it. Most convenient to use, should be used in 99% cases.
-* Free fall migrations - instruction where user can write any logic. Most flexible, but verbose.
+- Iterative migration - instruction that iterates over all the documents of the input\_document collection and updates it. Most convenient to use, should be used in 99% cases.
+- Free fall migrations - instruction where user can write any logic. Most flexible, but verbose.
 
 ### Iterative migrations
 
