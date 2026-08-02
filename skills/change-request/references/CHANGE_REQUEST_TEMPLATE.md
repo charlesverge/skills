@@ -118,6 +118,17 @@
   - Expected result:
   - Covers:
 
+## Questions
+
+- Q1: `[concise blocking question]`
+  - Context:
+  - Options considered:
+  - Why a single answer is needed:
+
+## Suggested Improvements
+
+- `[suggested improvement]`
+
 ## Assumptions
 
 - `[assumption used to define the change request]`

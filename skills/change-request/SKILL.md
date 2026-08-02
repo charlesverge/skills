@@ -56,6 +56,7 @@ If a material product or architecture choice cannot be resolved from the request
 - When a required package is missing, add separate entries for the dependency declaration and the necessary code import or usage.
 - Require removal only when the user requests it, current behavior conflicts with the requested outcome, or the proposed work would otherwise introduce an unnecessary addition.
 - Do not require changes to request wording, ownership, requirements, or acceptance criteria. Target implementation, tests, dependencies, configuration, migrations, or resources.
+- The use of or, maybe is not allowed, research specific and provide a single answer. If there are multiple options and a single option is not clear, ask a question in the questions section.
 
 ## Context and Verification Rules
 
