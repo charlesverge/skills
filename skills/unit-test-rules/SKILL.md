@@ -1,26 +1,27 @@
 ---
-name: pytest-unit-test-generation
-description: Generate comprehensive unit tests for Python source code with pytest. Covers test structure, fixtures, mocking, parametrization, and coverage patterns. Use when creating or modifying pytest unit tests.
+name: unit-test-rules
+description: Generate unit tests for source code with. Covers test structure, fixtures, mocking, parametrization, and coverage patterns. Use when creating or modifying pytest unit tests.
 ---
 
 # Unit Test Generation Skill
 
-Generate comprehensive unit tests for Python source code with pytest.
+Generate unit tests.
 
 ## When to Use
 
 This skill activates when:
 
+- When a unit test to be modified, created or added
+- When planning for a unit test to be modified, created or added
 - User asks for unit tests for a file or function
 - User asks to create or modify unit tests
 - Code needs test coverage
-- User mentions "test", "coverage", "pytest", "unit test"
+- User mentions "test", "coverage", "pytest", "unit test", "jest", "playright", "mocha", "jasmine", "karma", "unittest", "test case", "test suite"
 - After writing new code that needs testing
 
 ## Supported File Types
 
-- Python modules (.py)
-- Functions and classes
+- Module, Functions and classes
 - Utility functions
 - API routes and handlers
 - Database models and repositories
@@ -55,6 +56,10 @@ This skill activates when:
 - Missing required parameters
 - Type errors
 - Value errors
+
+**Regression tests:**
+
+- Tests for previously reported bugs
 
 ## Test File Template
 
@@ -139,6 +144,138 @@ class TestClassNameEdgeCases:
 1. **Aim for high branch coverage** - Test all code paths
 1. **Use project ORM patterns** - For projects using an Object-Relational Mapping (ORM) library (Beanie, SQLAlchemy, Prisma, Hibernate, GORM, Sequelize, TypeORM, etc.), use ORM document/model classes and queries in tests to match project coding style
 1. **Use pytest temporary files** - Use tmp\_path directly in test arguments for single-test isolation. Use tmp\_path\_factory.mktemp() inside a session-scoped fixture for shared test assets.
+
+### Test design: avoid reproducing production behavior in tests
+
+Tests must not reimplement production workflows, state machines, dispatch logic, retry behavior, lifecycle management, or component coordination inside test doubles.
+
+#### Required approach
+
+- Test one responsibility at a time.
+- Replace only the immediate dependency boundary of the unit under test.
+- Configure the minimum return value, exception, or observable effect required by the scenario.
+- Assert externally observable behavior such as calls, arguments, ordering, state changes, outputs, and persisted results.
+- Keep orchestration tests separate from component implementation tests.
+- Test behavior in the component that owns that behavior.
+
+#### Prohibited patterns
+
+Do not create test helpers that:
+
+- reproduce production branching or decision logic;
+- dispatch behavior based on roles, stages, modes, commands, or operation types;
+- duplicate retry loops, state transitions, workflow sequencing, or lifecycle handling;
+- simulate several production components in one object;
+- create production-like artifacts solely to advance a simulated workflow;
+- maintain mutable scenario state only to imitate successive production steps;
+- act as an alternate implementation of a production service, executor, controller, dispatcher, or orchestrator.
+
+Examples of problematic patterns include:
+
+```python
+class FakeWorkflow:
+  def run(self, stage: str) -> Result:
+    if stage == "prepare":
+      ...
+    elif stage == "execute":
+      ...
+    elif stage == "verify":
+      ...
+```
+
+```python
+def fake_dispatch(command: str) -> Response:
+  if command == "create":
+    ...
+  elif command == "update":
+    ...
+  elif command == "delete":
+    ...
+```
+
+These helpers duplicate production behavior and can drift independently from the code under test.
+
+#### Preferred orchestration-test pattern
+
+For orchestration code, replace delegated operations directly and assert their order and inputs:
+
+```python
+actions = Mock()
+
+prepare = Mock(return_value=PrepareResult(success=True))
+execute = Mock(return_value=ExecuteResult(success=True))
+verify = Mock(return_value=VerifyResult(success=True))
+
+actions.attach_mock(prepare, "prepare")
+actions.attach_mock(execute, "execute")
+actions.attach_mock(verify, "verify")
+
+monkeypatch.setattr(subject, "prepare", prepare)
+monkeypatch.setattr(subject, "execute", execute)
+monkeypatch.setattr(subject, "verify", verify)
+
+subject.run()
+
+assert actions.mock_calls == [
+  call.prepare(),
+  call.execute(),
+  call.verify(),
+]
+```
+
+The test should verify the orchestration contract without reproducing the implementation of the delegated operations.
+
+#### Preferred component-test pattern
+
+Test each delegated component separately:
+
+- orchestration tests verify which operations are called and in what order;
+- component tests verify the behavior of each operation;
+- integration tests verify that real components work together;
+- infrastructure tests verify persistence, network, process, queue, or filesystem boundaries;
+- instrumentation tests verify logging, metrics, tracing, and reporting in the component that emits them.
+
+Do not combine all of these responsibilities into one test unless the test is explicitly an integration or end-to-end test.
+
+#### Stateful test doubles
+
+Stateful test doubles should not be the default.
+
+A stateful double is permitted only when:
+
+- the dependency itself has an inherently stateful contract;
+- state transitions are relevant to the behavior being tested;
+- using the real implementation is impractical;
+- a simple mock, stub, fixed response sequence, or direct method replacement is insufficient;
+- the double does not reproduce the unit under test’s control flow.
+
+Examples that may justify a stateful double include:
+
+- an in-memory repository implementing a documented storage contract;
+- a protocol simulator whose connection state is part of the tested behavior;
+- a queue or clock abstraction whose state is directly observable;
+- a transactional resource used across several operations.
+
+When a stateful double is used, it must:
+
+- have a name that identifies it as a fake, stub, or spy;
+- implement the smallest possible contract;
+- reject unsupported operations;
+- remain deterministic;
+- expose explicit state rather than hidden counters or implicit transitions;
+- be covered by contract tests when it is shared or nontrivial;
+- document why a simpler test boundary was insufficient.
+
+#### Test-boundary rule
+
+Patch at the highest boundary that still preserves the behavior under test.
+
+- If testing orchestration, patch delegated methods.
+- If testing a component, patch its external dependencies.
+- If testing integration, use real components and replace only external infrastructure.
+- If testing end-to-end behavior, avoid replacing internal application components.
+
+The test must not patch below the relevant boundary and then reconstruct the missing production behavior inside the test.
 
 # Unit test setup
 
