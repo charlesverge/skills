@@ -1,4 +1,4 @@
 interface:
   display_name: "Record State Handling"
-  short_description: "Decide how to handle invalid or incomplete record state while preserving workflow convergence"
-  default_prompt: "Use $record-state-handling to decide whether a record state issue should log and continue, raise a blocking exception, or repair only when explicitly allowed, while avoiding stale retry-selection state and preserving convergence."
+  short_description: "Handle invalid record state while preserving convergence"
+  default_prompt: "Use $record-states to decide whether a record state issue should log and continue, raise a blocking exception, or repair only when explicitly allowed, while avoiding stale retry-selection state and preserving convergence."

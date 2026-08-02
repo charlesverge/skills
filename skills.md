@@ -1,5 +1,135 @@
 # Skills Catalog
 
+## ask-a-question
+
+* `id`: `ask-a-question`
+* `path`: `skills/ask-a-question`
+* `category`: `engineering`
+* `name`: `ask-a-question`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-07-20`
+
+### Description
+
+Ask, structure, save, and resolve clarification questions tied to implementation plans and change specifications. Use when a plan or specification contains an ambiguity, conflict, missing behavior, or unresolved implementation policy that must be decided before or during code work, especially for frontend expectations, backend policy decisions, option comparison, recommendations, question-file naming, answer recording, and related-plan updates.
+
+### Skill File
+
+* [skills/ask-a-question/SKILL.md](skills/ask-a-question/SKILL.md)
+
+## change-request
+
+* `id`: `change-request`
+* `path`: `skills/change-request`
+* `category`: `engineering`
+* `name`: `change-request`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-07-20`
+
+### Description
+
+Define a large or cross-cutting software change as a precise, implementation-ready change request grounded in the current codebase. Use when a user wants to scope a substantial feature, refactor, migration, behavior change, or multi-file modification before implementation.
+
+### Skill File
+
+* [skills/change-request/SKILL.md](skills/change-request/SKILL.md)
+
+## plan-validator-classes
+
+* `id`: `plan-validator-classes`
+* `path`: `skills/plan-validator-classes`
+* `category`: `engineering`
+* `name`: `plan-validator-classes`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-07-20`
+
+### Description
+
+Validate draft plans for class-based work before they are saved, finalized, or handed to implementation. Use when checking a plan for one primary class or class-family object model inside an owning module, including original-intent alignment, unasked features, scope creep, module directory boundaries, class hierarchy and inheritance, generic base-class use, subclass/adaptor overrides, class properties,
+class functions, linked function-plan markdown files generated with plan-validator-functions, package metadata, implementation-plan details,
+rule compliance, test-convention compliance, and required unit-test details. A class plan follows the hierarchy that modules contain functions or classes, and classes contain properties and functions.
+
+### Skill File
+
+* [skills/plan-validator-classes/SKILL.md](skills/plan-validator-classes/SKILL.md)
+
+## test-conventions
+
+* `id`: `test-conventions`
+* `path`: `skills/test-conventions`
+* `category`: `engineering`
+* `name`: `test-conventions`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-07-20`
+
+### Description
+
+Govern naming, file placement, directory structure, plan or rule traceability, and file-size limits for automated tests. Use when creating, moving, splitting, organizing, or reviewing any automated test suite, including unit, integration, component, contract, end-to-end, smoke, and regression tests in pytest, Jest, Playwright, or other test frameworks.
+
+### Skill File
+
+* [skills/test-conventions/SKILL.md](skills/test-conventions/SKILL.md)
+
+## markdown-write
+
+* `id`: `markdown-write`
+* `path`: `skills/markdown-write`
+* `category`: `engineering`
+* `name`: `markdown-write`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-06-18`
+
+### Description
+
+Create, edit, and lint Markdown files according to this repository's remark configuration. Use when writing or modifying Markdown, fixing remark lint errors, formatting lists, headings, code blocks, tables, or links, or validating Markdown before commit.
+
+### Skill File
+
+* [skills/markdown-write/SKILL.md](skills/markdown-write/SKILL.md)
+
+## plan-validator-frontend
+
+* `id`: `plan-validator-frontend`
+* `path`: `skills/plan-validator-frontend`
+* `category`: `engineering`
+* `name`: `plan-validator-frontend`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-06-15`
+
+### Description
+
+Validate draft plans for frontend user-facing features (UI components, pages, screens, interactions) before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, prohibited automatic-recovery behavior and language, feature-flag wording, plan structure, concrete feature build details,
+defined UI states (loading, success, error, empty, disabled), accessibility coverage, mockup reconciliation, API-consumption details, rule compliance,
+test-convention compliance, and required interaction/component test details.
+
+### Skill File
+
+* [skills/plan-validator-frontend/SKILL.md](skills/plan-validator-frontend/SKILL.md)
+
+## python-type-rules
+
+* `id`: `python-type-rules`
+* `path`: `skills/python-type-rules`
+* `category`: `engineering`
+* `name`: `python-type-rules`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-05-26`
+
+### Description
+
+Enforce strict Python typing when creating or modifying types for variables, function parameters, function return values, classes, dataclasses, Pydantic models, TypedDicts, protocols, aliases, and structured objects. Use whenever creating, changing, fixing, reviewing, or type-checking Python annotations or object shapes, especially when resolving typing errors without suppressions, alternate execution branches, Any, object, loose unions, casts, or runtime attribute workarounds.
+
+### Skill File
+
+* [skills/python-type-rules/SKILL.md](skills/python-type-rules/SKILL.md)
+
 ## business-validator-rules
 
 * `id`: `business-validator-rules`
@@ -30,7 +160,8 @@ Create and validate structured business-rule documentation. Use when defining or
 
 ### Description
 
-Validate draft plans for function-group work before they are saved, finalized, or handed to implementation. Use when checking a plan for a group of functions with one primary entry point, such as `check_health_status`, for original-intent alignment, unasked features, scope creep, owning module directory boundaries, helper-function scope, package metadata, implementation-plan details, rule compliance, and required unit-test details.
+Validate draft plans for function-group work before they are saved, finalized, or handed to implementation. Use when checking a plan for a group of functions with one primary entry point, such as `check_health_status`, for original-intent alignment, unasked features, scope creep, owning module directory boundaries, helper-function scope, package metadata, implementation-plan details, rule compliance, test-convention compliance, and required unit-test details.
+A functions plan covers a callable entry point plus helpers that can be tested as part of the owning module, backend API, or frontend component.
 
 ### Skill File
 
@@ -48,7 +179,8 @@ Validate draft plans for function-group work before they are saved, finalized, o
 
 ### Description
 
-Validate draft plans for reusable module work before they are saved, finalized, or handed to implementation. Use when checking a module plan for original-intent alignment, unasked features, scope creep, module directory boundaries, package metadata, public exports and import contracts, implementation-plan details, rule compliance, and required unit-test details.
+Validate draft plans for reusable module work before they are saved, finalized, or handed to implementation. Use when checking a module plan for original-intent alignment, unasked features, scope creep, module directory boundaries, package metadata, public exports and import contracts, implementation-plan details, rule compliance, test-convention compliance, and required unit-test details.
+A module plan covers code based on a class, function, or functions that can be unit tested as its own unit and imported by parent projects.
 
 ### Skill File
 
@@ -84,29 +216,29 @@ Use prompt cache optimization patterns for LLM request design. Use when structur
 
 ### Description
 
-Manage Docker container workflows and Docker Compose configuration. Use when creating or modifying Dockerfiles, `docker-compose.yml` files, Compose profiles, container services, build settings, volume mounts, or translating `docker run` usage into Docker Compose-based workflows.
+Manage Docker container workflows and Docker Compose configuration. Use when creating or modifying Dockerfiles, `docker-compose.yml` files, Compose profiles, container services, build settings, volume mounts, or translating `docker run` usage into Docker Compose-based workflows. Enforce single-build reuse, Compose-first operations, Python setup with uv and `pyproject.toml`, Node setup with pnpm, reusable development caches, and separate production compose files that share the same Dockerfile.
 
 ### Skill File
 
 * [skills/docker-containers/SKILL.md](skills/docker-containers/SKILL.md)
 
-## pytest-unit-test-generation
+## unit-test-rules
 
-* `id`: `pytest-unit-test-generation`
-* `path`: `skills/pytest-unit-test-generation`
+* `id`: `unit-test-rules`
+* `path`: `skills/unit-test-rules`
 * `category`: `engineering`
-* `name`: `pytest-unit-test-generation`
+* `name`: `unit-test-rules`
 * `risk`: `safe`
 * `source`: `personal`
 * `date_added`: `2026-04-25`
 
 ### Description
 
-Generate comprehensive unit tests for Python source code with pytest. Covers test structure, fixtures, mocking, parametrization, and coverage patterns.
+Generate unit tests for source code with. Covers test structure, fixtures, mocking, parametrization, and coverage patterns. Use when creating or modifying pytest unit tests.
 
 ### Skill File
 
-* [skills/pytest-unit-test-generation/SKILL.md](skills/pytest-unit-test-generation/SKILL.md)
+* [skills/unit-test-rules/SKILL.md](skills/unit-test-rules/SKILL.md)
 
 ## plan-completion-review
 
@@ -126,23 +258,23 @@ Review a completed plan against the original goal, validate code and tests, and 
 
 * [skills/plan-completion-review/SKILL.md](skills/plan-completion-review/SKILL.md)
 
-## plan-validator
+## plan-validator-backend
 
-* `id`: `plan-validator`
-* `path`: `skills/plan-validator`
+* `id`: `plan-validator-backend`
+* `path`: `skills/plan-validator-backend`
 * `category`: `engineering`
-* `name`: `plan-validator`
+* `name`: `plan-validator-backend`
 * `risk`: `safe`
 * `source`: `personal`
 * `date_added`: `2026-06-13`
 
 ### Description
 
-Validate draft plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, rule compliance, and required unit-test details.
+Validate draft plans for api, backend, job, non user facing plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, prohibited automatic-recovery behavior and language, feature-flag wording, plan structure, concrete implementation-plan details, rule compliance, required test-convention compliance, and unit-test details.
 
 ### Skill File
 
-* [skills/plan-validator/SKILL.md](skills/plan-validator/SKILL.md)
+* [skills/plan-validator-backend/SKILL.md](skills/plan-validator-backend/SKILL.md)
 
 ## health-checks
 
@@ -192,7 +324,7 @@ Use Beanie ODM patterns for MongoDB async operations. Covers document models, qu
 
 ### Description
 
-Create strict, production-like test harnesses with explicit setup, execution, and verification stages, using containerized dependencies for complex or external flows.
+Create strict, production-like Python test harnesses with explicit setup, execution, and verification stages, a standard run.py interface, and containerized dependencies for complex or external flows.
 
 ### Skill File
 
@@ -246,7 +378,7 @@ Enforce acceptable aiohttp usage patterns in Python async code. Use when adding 
 
 ### Description
 
-Enforce function creation and reuse rules extracted from agents.md without line modifications.
+Rules for creating functions, modifying existing ones, including when to create new functions, how to structure them, and how to handle parameters and backward compatibility.
 
 ### Skill File
 
@@ -300,7 +432,7 @@ Apply cleanup-focused refactor rules for phased invalid/orphan deletion logic, s
 
 ### Description
 
-Use this rubric and example set for future needless helper decisions. Use when reviewing or refactoring helper methods to decide whether to keep phase-boundary logic helpers or inline thin pass-through wrappers while preserving behavior, side effects, exception semantics, and logging.
+Use this rubric and example set for future needless helper decisions. Use when creating, reviewing or refactoring helper methods to decide whether to keep phase-boundary logic helpers or inline thin pass-through wrappers while preserving behavior, side effects, exception semantics, and logging.
 
 ### Skill File
 
@@ -318,7 +450,7 @@ Use this rubric and example set for future needless helper decisions. Use when r
 
 ### Description
 
-Enforce a single-read decision update pattern for repository/service methods that read current entity state, compute outcomes from current state plus new input, persist one mutation, and return a `DecisionResult` used by callers without same-entity re-reads.
+Enforce a single-read decision update pattern for repository/service methods that read current entity state, compute outcomes from current state plus new input, persist one mutation, and return a `DecisionResult` used by callers without same-entity re-reads. Use when refactoring or reviewing update flows that currently do write-then-reload, multiple reads for one decision path, or caller-side follow-up fetches for outcomes that should come from apply_event-style methods.
 
 ### Skill File
 
@@ -336,7 +468,7 @@ Enforce a single-read decision update pattern for repository/service methods tha
 
 ### Description
 
-Apply concise naming rules for variables, properties, fields, and functions while preserving existing names unless explicitly requested.
+Apply concise naming rules for variables, properties, fields, and functions while preserving existing names unless explicitly requested. Use when adding new identifiers during code changes or reviews and when enforcing boolean/action function naming patterns.
 
 ### Skill File
 
@@ -354,29 +486,29 @@ Apply concise naming rules for variables, properties, fields, and functions whil
 
 ### Description
 
-Enforce Python and Beanie code patterns that avoid unsafe defaults, inline imports, unnecessary comments/checks, manual model wiring, and non-streaming cursor usage. Use when writing or reviewing repository/service code for consistency and performance.
+Python coding patterns for preferred styles, use when making code changes or refactors to ensure code change is in line with preferred patterns.
 
 ### Skill File
 
 * [skills/code-patterns/SKILL.md](skills/code-patterns/SKILL.md)
 
-## record-state-handling
+## record-states
 
-* `id`: `record-state-handling`
-* `path`: `skills/record-state-handling`
+* `id`: `record-states`
+* `path`: `skills/record-states`
 * `category`: `engineering`
-* `name`: `record-state-handling`
+* `name`: `record-states`
 * `risk`: `safe`
 * `source`: `personal`
 * `date_added`: `2026-03-24`
 
 ### Description
 
-Enforce record-state handling patterns that separate non-blocking invalid state from blocking invalid state, prohibit implicit repair unless explicitly authorized, and require functions to avoid local skip behavior that preserves stale retry-selection state. Use when writing or reviewing record-processing code that validates state, updates records, raises structured state exceptions, and leaves retry or terminal disposition to the caller.
+Provide a consistent way to handle invalid or incomplete record state during processing while preserving workflow convergence and keeping responsibility boundaries clear between the processing function and its caller.
 
 ### Skill File
 
-* [skills/record-state-handling/SKILL.md](skills/record-state-handling/SKILL.md)
+* [skills/record-states/SKILL.md](skills/record-states/SKILL.md)
 
 ## validate-user-change-request
 

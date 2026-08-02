@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test Harness Creation"
+  short_description: "Build strict production-like Python test harnesses"
+  default_prompt: "Use $test-harness-creation to build a production-like Python test harness with explicit setup, health, execution, and verification stages."

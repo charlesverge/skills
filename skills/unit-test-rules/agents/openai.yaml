@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unit Test Rules"
+  short_description: "Create and modify focused automated unit tests"
+  default_prompt: "Use $unit-test-rules to create or modify unit tests for this code."

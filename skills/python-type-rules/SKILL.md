@@ -1,6 +1,6 @@
 ---
 name: python-type-rules
-description: Enforce strict Python typing when creating or modifying types for variables, function parameters, function return values, classes, dataclasses, Pydantic models, TypedDicts, protocols, aliases, and structured objects. Use whenever creating, changing, fixing, reviewing, or type-checking Python annotations or object shapes, especially when resolving typing errors without suppressions, fallbacks, Any, object, loose unions, casts, or runtime attribute workarounds.
+description: Enforce strict Python typing when creating or modifying types for variables, function parameters, function return values, classes, dataclasses, Pydantic models, TypedDicts, protocols, aliases, and structured objects. Use whenever creating, changing, fixing, reviewing, or type-checking Python annotations or object shapes, especially when resolving typing errors without suppressions, alternate execution branches, Any, object, loose unions, casts, or runtime attribute workarounds.
 ---
 
 # When to use this skill

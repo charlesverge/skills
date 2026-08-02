@@ -1,0 +1,4 @@
+interface:
+  display_name: "Markdown Writing Rules"
+  short_description: "Write Markdown that passes repository linting"
+  default_prompt: "Use $markdown-write to create or revise this Markdown so it follows the repository's formatting and lint rules."

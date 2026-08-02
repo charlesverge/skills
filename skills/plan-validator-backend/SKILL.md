@@ -1,6 +1,6 @@
 ---
 name: plan-validator-backend
-description: Validate draft plans for api, backend, job, non user facing plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, fallback-rule violations, banned recovery language, feature-flag wording, plan structure, concrete implementation-plan details, rule compliance, required test-convention compliance, and unit-test details.
+description: Validate draft plans for api, backend, job, non user facing plans before they are saved, finalized, or handed to implementation. Use when checking a plan for original-intent alignment, unasked features, scope creep, prohibited automatic-recovery behavior and language, feature-flag wording, plan structure, concrete implementation-plan details, rule compliance, required test-convention compliance, and unit-test details.
 ---
 
 # API / backend plan Validator for features that are non user facing
@@ -148,7 +148,7 @@ Load and apply the `test-conventions` skill before accepting this section. Hard 
 
 - Tests must cover the happy path, validation and error paths, edge cases, and regression cases.
 - Tests must include both unit tests and integrations using a real database or API when persistence is involved. For real apis specifically ones that have a cost or side effects, use a sandbox or staging environment.
-- If not sandbox is possible, then they must be only triggered with a manual flag. see "Manual unit tests" in skill pytest-unit-test-generation for details on how to implement this.
+- If not sandbox is possible, then they must be only triggered with a manual flag. see "Manual unit tests" in skill unit-test-rules for details on how to implement this.
 - Every row in the plan's `Error codes` table must have a corresponding `Test coverage` entry that asserts that status/code, or an explicit concrete reason it cannot be tested. Error-path tests must not be relocated to `Suggested Improvements`.
 - The `Test coverage` section must describe the tests that should exist for the completed plan. Do not use change-action buckets or change verbs.
 - Hard stop if `## Test coverage` does not contain list of test cases or a message indicating that no test cases are needed for the rare occasion that this plan is about a static file that does not execute.

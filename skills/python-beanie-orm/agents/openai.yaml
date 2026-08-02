@@ -1,0 +1,4 @@
+interface:
+  display_name: "Python Beanie ORM"
+  short_description: "Use Beanie ODM for async MongoDB operations"
+  default_prompt: "Use $python-beanie-orm to implement these asynchronous MongoDB operations with Beanie document and query patterns."

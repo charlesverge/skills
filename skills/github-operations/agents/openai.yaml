@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Operations"
+  short_description: "Manage GitHub branches, commits, pushes, and PRs"
+  default_prompt: "Use $github-operations to inspect this repository, manage its branch and commits, push changes, and open a ready-for-review pull request."

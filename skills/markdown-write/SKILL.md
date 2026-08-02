@@ -1,3 +1,8 @@
+---
+name: markdown-write
+description: Create, edit, and lint Markdown files according to this repository's remark configuration. Use when writing or modifying Markdown, fixing remark lint errors, formatting lists, headings, code blocks, tables, or links, or validating Markdown before commit.
+---
+
 # Markdown Writing Rules
 
 This skill defines the rules for creating, writing, or editing Markdown files in this project to ensure they pass `remark` linting without errors.
