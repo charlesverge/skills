@@ -144,6 +144,7 @@ class TestClassNameEdgeCases:
 1. **Aim for high branch coverage** - Test all code paths
 1. **Use project ORM patterns** - For projects using an Object-Relational Mapping (ORM) library (Beanie, SQLAlchemy, Prisma, Hibernate, GORM, Sequelize, TypeORM, etc.), use ORM document/model classes and queries in tests to match project coding style
 1. **Use pytest temporary files** - Use tmp\_path directly in test arguments for single-test isolation. Use tmp\_path\_factory.mktemp() inside a session-scoped fixture for shared test assets.
+1. **Static fixtures are files**: Static fixtures should be stored in a fixtures directory and should not be generated dynamically in the test. Use `tmp_path` for temporary files that are generated during the test that have dynamic content.
 
 ### Test design: avoid reproducing production behavior in tests
 

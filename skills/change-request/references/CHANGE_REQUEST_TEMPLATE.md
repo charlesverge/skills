@@ -124,6 +124,7 @@
   - Context:
   - Options considered:
   - Why a single answer is needed:
+  - Answer: `[Answer to question or pending]`
 
 ## Suggested Improvements
 

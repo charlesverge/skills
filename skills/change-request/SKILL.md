@@ -34,6 +34,8 @@ If a material product or architecture choice cannot be resolved from the request
 ## Required-Change Rules
 
 - Make each `Required change` one concrete request.
+- Change requests cannot be vague, they must be specific and actionable.
+- Using multiple select is can be considered vague, so avoid it. "For example rename `code_*` variables to `other_*` variable names". In this case this requires extra effort on the coders part which is already known on the plan writers part in a specific details.
 - Select one implementation. Do not use `either`, `one of`, `could`, `maybe`, `option`, `choose`, or `do X or Y` to present alternatives.
 - Split independently required changes into separate entries. Keep mandatory ordered steps together only when they form one indivisible change.
 - Name the exact behavior, call, field, assertion, command, file content, or removal.
@@ -89,3 +91,7 @@ Before finalizing:
 1. Confirm all feature flags use only enabled-path and disabled-path language.
 1. Confirm the goal, scope, current state, verification requirements, and assumptions agree with the required changes.
 1. Confirm the response exactly follows `references/CHANGE_REQUEST_TEMPLATE.md`.
+1. Confirm that specific files, functions, classes and types are named in every entry, and that no entry is vague or speculative or requires a decision from the implementer.
+1. If a decision is required, complete additional research to identify the solution.
+1. If a decision is required use the ask-a-question skill to resolve it.
+1. Execute `plan_validator` validate the plan meets the `references/CHANGE_REQUEST_TEMPLATE.md` format requirements.

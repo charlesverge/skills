@@ -11,6 +11,12 @@ metadata:
 
 When making any code change, check that the change matches the preferred pattern. If not stop and ask for approval.
 
+## Additional code patterns
+
+- [Development setup](resources/DEV_SETUP.md): Read and apply this pattern when
+  creating or changing local application startup, development configuration,
+  package scripts, or Docker Compose dependencies.
+
 ## Preferred patterns
 
 # CODE PATTERNS
