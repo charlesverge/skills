@@ -17,6 +17,7 @@ Write `- None` in an empty `Out of scope` or `Assumptions` section. Every other 
 
 ## Workflow
 
+1. Identify which repo the request applies to, and which files, symbols, and behaviors are affected. A change request only apply to a single repo.
 1. Identify the requested outcome, constraints, acceptance conditions, and explicitly excluded scope.
 1. Read the latest saved code, tests, configuration, migrations, and resource files relevant to the request.
 1. Trace the affected behavior through its callers, state changes, data boundaries, and tests.

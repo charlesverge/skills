@@ -1,5 +1,15 @@
 [
   {
+    "id": "plan-rules",
+    "path": "skills/plan-rules",
+    "category": "engineering",
+    "name": "plan-rules",
+    "description": "Apply plan rules whenever creating any type of plan, including a change request or a plan for a function, class, module, or other work. Use to prevent cross-pollination of functionality and keep unrequested scope expansions in Suggested Improvements.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-08-03"
+  },
+  {
     "id": "github-operations",
     "path": "skills/github-operations",
     "category": "engineering",

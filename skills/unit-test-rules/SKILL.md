@@ -35,6 +35,12 @@ This skill activates when:
 - Note dependencies and imports
 - Identify edge cases (empty, null, boundary)
 
+### Plan for test file location
+
+- Categorize the test and identify a file which meets the test category.
+- Identify destination of test, test file must be less then 400 lines. Do not squash lines by reformatting to meet this requirement.
+- If more then 400 lines is needed created helper functions to divide tests into reusable helper functions.
+
 ### Generate test cases
 
 **Happy path scenarios:**
@@ -145,6 +151,7 @@ class TestClassNameEdgeCases:
 1. **Use project ORM patterns** - For projects using an Object-Relational Mapping (ORM) library (Beanie, SQLAlchemy, Prisma, Hibernate, GORM, Sequelize, TypeORM, etc.), use ORM document/model classes and queries in tests to match project coding style
 1. **Use pytest temporary files** - Use tmp\_path directly in test arguments for single-test isolation. Use tmp\_path\_factory.mktemp() inside a session-scoped fixture for shared test assets.
 1. **Static fixtures are files**: Static fixtures should be stored in a fixtures directory and should not be generated dynamically in the test. Use `tmp_path` for temporary files that are generated during the test that have dynamic content.
+1. **Keep tests simple**: Keep tests simple, focused, and small. Have many tests rather then one large test. Avoid using custom features to mutate tests or create setups in usual ways. For example avoid `pytest_collection_modifyitems` to add fixtures dynamically.
 
 ### Test design: avoid reproducing production behavior in tests
 
@@ -346,7 +353,7 @@ def test_use_case_one(shared_dataset):
 To handle multiple features at once and run all manual tests if no specific feature is passed, you can change the logic to split comma-separated strings into a list.
 Here is how to update your setup to support commands like pytest --run-manual (runs all manual tests) or pytest --run-manual login,checkout (runs only those specific manual tests).
 
-## 📑 1. Update your conftest.py
+### 📑 1. Update your conftest.py
 
 This updated code parses your input into a list of features. It also changes the logic so that regular automated tests are only skipped if you are explicitly focusing on manual tests.
 
@@ -442,3 +449,9 @@ pytest --run-manual
 pytest --run-manual login,claude
 
 (This will run `test_manual_login` and `test_manual_claude_integration`, but will skip everything else). \[1, 2]
+
+## Dynamic tests
+
+Avoid using `pytest_collection_modifyitems` or similar features to dynamically add fixtures or modify tests.
+Tests should be static, predictable and easily traced.
+Dynamic test generation can lead to confusion, hidden dependencies, and maintenance challenges. Instead, use parametrization or fixtures to handle variations in test data or scenarios.

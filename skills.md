@@ -1,5 +1,23 @@
 # Skills Catalog
 
+## plan-rules
+
+* `id`: `plan-rules`
+* `path`: `skills/plan-rules`
+* `category`: `engineering`
+* `name`: `plan-rules`
+* `risk`: `safe`
+* `source`: `personal`
+* `date_added`: `2026-08-03`
+
+### Description
+
+Apply plan rules whenever creating any type of plan, including a change request or a plan for a function, class, module, or other work. Use to prevent cross-pollination of functionality and keep unrequested scope expansions in Suggested Improvements.
+
+### Skill File
+
+* [skills/plan-rules/SKILL.md](skills/plan-rules/SKILL.md)
+
 ## ask-a-question
 
 * `id`: `ask-a-question`
