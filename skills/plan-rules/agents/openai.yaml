@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Rules"
+  short_description: "Keep functionality separate and plan scope explicit"
+  default_prompt: "Use $plan-rules when creating this plan to prevent functional cross-pollination and place unrequested scope expansions in Suggested Improvements."
