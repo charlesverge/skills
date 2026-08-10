@@ -20,7 +20,7 @@ Installation note: `python3 -m pip install "git+https://github.com/charlesverge-
 1. If source code conflicts with the plan, report the implementation mismatch and required code or test changes. Do not convert the mismatch into a plan-file change.
 1. Do not base the review on the source code alone. Compare source code to the plan file, the plan is the source of truth.
 1. Do not perform a completion review on the plan file itself.
-1. Save the plan completion review report in `plans/reviews/{plan dir}/{plan file}`
+1. Save the plan completion review report in `reviews/{plan dir}/{plan file}`
 
 ## Required Output Contract
 

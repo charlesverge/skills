@@ -78,7 +78,7 @@ Require a related plan before creating a question file.
 
 Given a related plan: `plans/{plan-dir}/{plan-file}.md`
 
-Save its question as: `plans/questions/{plan-dir}/{plan-file}_{n}-{short-topic}.md`
+Save its question as: `questions/{plan-dir}/{plan-file}_{n}-{short-topic}.md`
 
 Apply these rules:
 
@@ -93,13 +93,13 @@ Example:
 
 ```markdown
     Related plan: plans/features/favorites-load.md
-    First question: plans/questions/features/favorites-load_1-empty-state.md
-    Second question: plans/questions/features/favorites-load_2-card-selection.md
+    First question: questions/features/favorites-load_1-empty-state.md
+    Second question: questions/features/favorites-load_2-card-selection.md
 ```
 
 ## Authorization and approval
 
-Do not create question files for authorization or approval requests. Request permission through the active interaction or tool mechanism without adding a file under plans/questions/.
+Do not create question files for authorization or approval requests. Request permission through the active interaction or tool mechanism without adding a file under questions/.
 
 Examples include permission to run a command, access credentials, deploy, publish, spend money, or modify an external system.
 
