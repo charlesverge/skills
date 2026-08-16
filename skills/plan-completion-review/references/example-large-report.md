@@ -2,42 +2,35 @@
 
 ## 1. Run tests, linters
 
-### pytest
+### Unit Tests
 
-- None
+**Status:** Skipped
+**Summary:**
 
-### Playwright
+## Integration Tests
 
-- Failure: `npx playwright test e2e/mock_jobs.spec.ts`
-  - Error: 6 failed, 0 passed. All failures stop at `/Users/devuser/dev/personal/recruiter/zoracrew-ui-host/zoracrew-ui/e2e/mock_jobs.spec.ts:163`, waiting for text `Practice` after `/agents?start_calibration=1`.
-  - Evidence: Browser validation for the mock calibration plans is not passing.
-- Failure: `npx playwright test e2e/real_jobs.spec.ts`
-  - Error: 14 failed, 8 passed.
-  - Evidence: Passed browser coverage includes no-results, broaden criteria, completion, reconnect, expand/collapse, retry search, ignore, and posting open. Failed cases include calibration handoff, real-search start, recommendation retry, next-step search UI, apply request, save/favorite flows.
+**Status:** Success
+**Summary:**
+
+### End-to-End Tests
+
+**Status:** Failed
+**Summary:** Browser validation for the mock calibration plans is not passing.
 
 ### Linters
 
-- Failure: `npm run lint -- --file app/agents/page.tsx --file app/(account)/searching/SearchingScreen.tsx --file components/chat/JobCard.tsx`
-  - Error: `package.json` has no `lint` script.
-  - Evidence: `/Users/devuser/dev/personal/recruiter/zoracrew-ui-host/zoracrew-ui/package.json` does not define lint.
+**Status:** Failed
+**Summary:** npm run lint returned errors
 
 ### Type checks
 
-- Success: `npx tsc --noEmit`
-  - Error:
-  - Evidence: Command exited 0.
+**Status:** Success
+**Summary:**
 
-### Build or runtime checks
+### Build
 
-- Success: `npm test -- SearchingScreen.test.tsx`
-  - Error:
-  - Evidence: 47 passed.
-- Success: `npm test -- ChatShell.test.tsx`
-  - Error:
-  - Evidence: 104 passed, with React `act(...)` warnings.
-- Failure: `npm test -- app/agents/page.test.tsx components/chat/JobCard.test.tsx`
-  - Error: 1 failed, 57 passed. `/Users/devuser/dev/personal/recruiter/zoracrew-ui-host/zoracrew-ui/app/agents/page.test.tsx:830` queries button name `Apply`; actual accessible name is `Apply for Principal Product Manager`.
-  - Evidence: `/Users/devuser/dev/personal/recruiter/zoracrew-ui-host/zoracrew-ui/components/chat/JobCard.tsx:210`.
+**Status:** Failed
+**Summary:** Build failed due to linter errors
 
 ## 2. Review code for unexpected side effects
 

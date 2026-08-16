@@ -53,31 +53,32 @@ These entries were taken from the repository `.gitignore` and the UI project's `
 
 ## Tool status
 
-| Tool       | Version                              | Status        | Notes                                   | Alternative if unavailable           |
-| ---------- | ------------------------------------ | ------------- | --------------------------------------- | ------------------------------------ |
-| `jq`       | `jq-1.8.1`                           | Works         | JSON filtering works as expected        | none needed                          |
-| `sed`      | `GNU sed 4.9`                        | Works         | Linux/GNU behavior, not macOS BSD `sed` | none needed                          |
-| `npm`      | `11.13.0`                            | Works         | `npm help` succeeded                    | none needed                          |
-| `pnpm`     | not installed                        | Does not work | command missing                         | `npm`                                |
-| `remark`   | `remark 15.0.1`, `remark-cli 12.0.1` | Works         | `remark --help` succeeded               | none needed                          |
-| `ruff`     | `0.15.15`                            | Works         | `ruff --help` succeeded                 | none needed                          |
-| `node`     | `v24.16.0`                           | Works         | available on PATH                       | none needed                          |
-| `python3`  | `3.13.7`                             | Works         | available on PATH                       | none needed                          |
-| `git`      | `2.51.0`                             | Works         | available on PATH                       | none needed                          |
-| `gh`       | `2.46.0`                             | Works         | available on PATH                       | `git` plus web UI for some tasks     |
-| `rg`       | `15.1.0`                             | Works         | preferred search tool                   | `grep`                               |
-| `grep`     | `3.11`                               | Works         | GNU grep                                | `rg`                                 |
-| `find`     | `4.10.0`                             | Works         | GNU findutils                           | `rg --files` for some file discovery |
-| `awk`      | `mawk 1.3.4 20250131`                | Works         | available on PATH                       | `cut` or `sed` for simple cases      |
-| `xargs`    | `4.10.0`                             | Works         | GNU findutils                           | shell loops                          |
-| `sort`     | `0.2.2`                              | Works         | `uutils coreutils` implementation       | none needed                          |
-| `cut`      | `uutils coreutils 0.2.2`             | Works         | basic field extraction works            | `awk`                                |
-| `head`     | `uutils coreutils 0.2.2`             | Works         | basic output limiting works             | `sed -n '1,10p'`                     |
-| `tail`     | `uutils coreutils 0.2.2`             | Works         | basic output limiting works             | `sed -n '$p'` for simple cases       |
-| `diff`     | `3.10`                               | Works         | GNU diffutils                           | `git --no-pager diff`                |
-| `npx`      | `11.13.0`                            | Works         | available on PATH                       | `npm exec`                           |
-| `patch`    | not installed                        | Does not work | command missing                         | `git apply`                          |
-| `ast-grep` | ast-grep                             | Works         | available on path                       | `sed`                                |
+| Tool         | Version                              | Status        | Notes                                   | Alternative if unavailable           |
+| ------------ | ------------------------------------ | ------------- | --------------------------------------- | ------------------------------------ |
+| `jq`         | `jq-1.8.1`                           | Works         | JSON filtering works as expected        | none needed                          |
+| `sed`        | `GNU sed 4.9`                        | Works         | Linux/GNU behavior, not macOS BSD `sed` | none needed                          |
+| `npm`        | `11.13.0`                            | Works         | `npm help` succeeded                    | none needed                          |
+| `pnpm`       | not installed                        | Does not work | command missing                         | `npm`                                |
+| `remark`     | `remark 15.0.1`, `remark-cli 12.0.1` | Works         | `remark --help` succeeded               | none needed                          |
+| `ruff`       | `0.15.15`                            | Works         | `ruff --help` succeeded                 | none needed                          |
+| `node`       | `v24.16.0`                           | Works         | available on PATH                       | none needed                          |
+| `python3`    | `3.13.7`                             | Works         | available on PATH                       | none needed                          |
+| `git`        | `2.51.0`                             | Works         | available on PATH                       | none needed                          |
+| `gh`         | `2.46.0`                             | Works         | available on PATH                       | `git` plus web UI for some tasks     |
+| `rg`         | `15.1.0`                             | Works         | preferred search tool                   | `grep`                               |
+| `grep`       | `3.11`                               | Works         | GNU grep                                | `rg`                                 |
+| `find`       | `4.10.0`                             | Works         | GNU findutils                           | `rg --files` for some file discovery |
+| `awk`        | `mawk 1.3.4 20250131`                | Works         | available on PATH                       | `cut` or `sed` for simple cases      |
+| `xargs`      | `4.10.0`                             | Works         | GNU findutils                           | shell loops                          |
+| `sort`       | `0.2.2`                              | Works         | `uutils coreutils` implementation       | none needed                          |
+| `cut`        | `uutils coreutils 0.2.2`             | Works         | basic field extraction works            | `awk`                                |
+| `head`       | `uutils coreutils 0.2.2`             | Works         | basic output limiting works             | `sed -n '1,10p'`                     |
+| `tail`       | `uutils coreutils 0.2.2`             | Works         | basic output limiting works             | `sed -n '$p'` for simple cases       |
+| `diff`       | `3.10`                               | Works         | GNU diffutils                           | `git --no-pager diff`                |
+| `npx`        | `11.13.0`                            | Works         | available on PATH                       | `npm exec`                           |
+| `patch`      | not installed                        | Does not work | command missing                         | `git apply`                          |
+| `ast-grep`   | ast-grep                             | Works         | available on path                       | `sed`                                |
+| `shellcheck` | shellcheck                           | Works         | available on path                       | `bash -n`                            |
 
 ## Commonly used CLI tools in this environment
 

@@ -20,6 +20,44 @@ Apply these rules whenever creating a plan:
 1. Goals for plans should cover the overall goal of the plan.
 1. Goals which cover a group or the entire application should have their own plan. Plans which depend on those plans can reference the plans which cover the group or entire application rather then restating the overarching goals for the group in the plan for a specific module, function, class, action, feature.
 
+## Examples of needless edits
+
+Changing a statement to another statement that is the same meaning. In the bellow example adding "Adding on " in every environment" is redundant as the original already expresses that. In this case the edit should of never happened.
+
+Original:
+
+```markdown
+- `checkStartup()` calls the existing `connectMongo()` once, then checks question readiness and city readiness independently.
+```
+
+Changed to:
+
+```markdown
+- `checkStartup()` calls the existing `connectMongo()` once, then checks question readiness and city readiness independently in every environment.
+```
+
+Restructuring of a statement is considered a needless edit and should not be done
+
+Original:
+
+```markdown
+- Production application code reads and writes records in its configured application database.
+```
+
+Changed to:
+
+```markdown
+- When production application code reads or writes records, it uses its configured application database.
+```
+
+## Plan duplicates
+
+1. Review edits and ensure they are not duplicates and they are required. Required classified as related directly to that plan or controlled by that plan.
+1. Plans should not explain features that are part of another plan which would qualify as a duplicate.
+
 ## Finishing checks
 
 1. Before finishing check for unneeded changes, ie comment rewording that adds no value. Changing intentionally generic statements into specific statements when specific statements exist else where in the plans.
+1. Before finishing check for unasked for scope expansions
+1. Before finishing check for needless changes to plans that do not add value or duplicated the information or updated a plan that has no feature changes.
+1. Before finishing check for needless duplication of information in the plan that is already covered in the plan or a referenced plan.

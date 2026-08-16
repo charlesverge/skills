@@ -9,7 +9,12 @@ Validate that an existing plan is complete, the implementation meets the origina
 
 **Plan Validator CLI Guard:** After writing every plan file created by the task and every plan file changed by the task, run `plan_validator <plan-path>`.
 Fix every reported issue. Repeat validation until exit status `0`. Finalize the plan and hand it off only after validation passes.
-Installation note: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
+
+Installation note:
+
+- Only attempt to install if plan\_validator is not already installed.
+- When on ChatGPT container the coding-tools.zip package contains the whl files required to install plan\_validator
+- Other environments: `python3 -m pip install "git+https://github.com/charlesverge-dev-org/coding-tools.git"`.
 
 ## Core Rules
 
@@ -138,13 +143,11 @@ If any required header or subsection heading is missing, renamed, reordered, or 
 
 ### 1. Run tests, linters
 
-- Confirm whether the existing code has test coverage for the completed plan.
-- Recommend running the appropriate test suite and static analysis tools.
+- Determine the current execution environment, if currently executing in a ChatGPT container do not execute tests, retrieve test results from the latest github actions run using the github connector api.
+- If not executing in a ChatGPT container, run the appropriate test, lint, and end to end tests related to the code changes.
 - Omit checks only when they are not relevant to the completed plan.
-- Do not use a separate status for checks that did not execute.
-- If a relevant check is required by the plan, repo rules, changed code path, or review risk but was not executed, report it as `Failure` in the matching subsection and put why it did not execute in `Error`.
-- Note any failures from executed checks that prevent a reliable conclusion.
-- Ensure that all tests pass and linters are clean before proceeding with the review.
+- If a relevant check is required by the plan, repo rules, changed code path, or review risk but was not executed, report it as `Failed` in the matching subsection and make a note of it in the summary.
+- Ensure that all tests, end to end tests, and linters have executed fully before completing the review.
 
 ### 2. Review code for unexpected side effects
 

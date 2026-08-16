@@ -2,35 +2,35 @@
 
 ## 1. Run tests, linters
 
-### pytest
+### Unit Tests
 
-- Success/Failure: `[test file path]` `[test case name]`
-  - Error:
-  - Evidence:
+**Status:** Success/Failed/Skipped
+**Summary:** `Short one sentence summary of the test results or empty if successful or skipped`
 
-### Playwright
+### Integration Tests
 
-- Success/Failure: `[test file path]` `[test case name]`
-  - Error:
-  - Evidence:
+**Status:** Success/Failed/Skipped
+**Summary:** `Short one sentence summary of the test results or empty if successful or skipped`
+
+### End-to-End Tests
+
+**Status:** Success/Failed/Skipped
+**Summary:** `Short one sentence summary of the test results or empty if successful or skipped`
 
 ### Linters
 
-- Success/Failure: `[command]`
-  - Error:
-  - Evidence:
+**Status:** Success/Failed/Skipped
+**Summary:** `Short one sentence summary of the test results or empty if successful or skipped`
 
 ### Type checks
 
-- Success/Failure: `[command]`
-  - Error:
-  - Evidence:
+**Status:** Success/Failed/Skipped
+**Summary:** `Short one sentence summary of the test results or empty if successful or skipped`
 
 ### Build or runtime checks
 
-- Success/Failure: `[command or manual check]`
-  - Error:
-  - Evidence:
+**Status:** Success/Failed/Skipped
+**Summary:** `Short one sentence summary of the test results or empty if successful or skipped`
 
 ## 2. Review code for unexpected side effects
 

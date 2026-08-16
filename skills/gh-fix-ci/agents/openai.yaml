@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Actions CI Logs"
+  short_description: "Inspect failing GitHub Actions checks and logs"
+  default_prompt: "Use $gh-fix-ci to inspect the failing GitHub Actions checks and retrieve their logs with gh."
