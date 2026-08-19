@@ -14,11 +14,13 @@ Apply these rules whenever creating a plan:
 1. Look for solutions that minimize the changes required, keeping changes to a central location or with in a sub set rather then multiple touch points. There is exceptions, for example type changes which often change multiple files.
 1. The fixture should not be autouse across unrelated tests. Narrow it to explicit opt-in where a fixture is required.
 1. If a test assert is to be changed require a specific reason, suspect changes are changing of values, success to failure asserts and other unsupported reasons. This change would be required to be associated with a plan or a change request to justify. If it is not present then use ask-a-question skill to request a decision.
+1. Check plan changes to ensure that no statement is duplicated, if needed reference another plan rather then duplicating what is in an existing plan.
 
 ## Goals
 
 1. Goals for plans should cover the overall goal of the plan.
 1. Goals which cover a group or the entire application should have their own plan. Plans which depend on those plans can reference the plans which cover the group or entire application rather then restating the overarching goals for the group in the plan for a specific module, function, class, action, feature.
+1. Goal rarely need to be updated once created. Most updates to the are to the plan details rather then the goal. If the goal is truly different then consider a new plan and if the current plan should be removed.
 
 ## Examples of needless edits
 
