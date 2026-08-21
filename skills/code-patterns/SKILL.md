@@ -22,6 +22,7 @@ When making any code change, check that the change matches the preferred pattern
 
 ### Component and State Management
 
+- [Modern React Component Creation Without Module-Scope Mutation](resources/modern-react-component-creation.md): Read and apply this pattern when creating or updating React components that accept refs, use `memo` or `forwardRef`, expose related component parts, or currently assign `displayName` after declaration.
 - [Loaded Data Stability Rule](resources/gen-Loaded%20Data%20Stability%20Rule.md): Read and apply this pattern when handling data refetching in components to distinguish between initial loading and subsequent refetches, preserving content while loading.
 - [State Owners Must Emit Their Own Resulting Behavior](resources/gen-State%20Owners%20Must%20Emit%20Their%20Own%20Resulting%20Behavior.md): Read and apply this pattern when a component or service owns a state transition and needs to trigger related behaviors like notifications or analytics.
 - [Browser Storage Is for Persistence, Not Runtime Handoffs](resources/gen-Browser%20Storage%20Is%20for%20Persistence%2C%20Not%20Runtime%20Handoffs.md): Read and apply this pattern when considering whether to use browser storage for data that should only persist across page reloads or navigation.
