@@ -63,10 +63,39 @@
 
 ## Output contract
 
-- **Success envelope:** \[Describe the success response]
-- **Output data contract:** \[Describe the `data` structure]
-- **State changes:** \[Persistence, events, cache updates, or N/A]
-- **Failure behavior:** \[What the caller receives on failure]
+- **Success envelope:**
+  - \[Describe the success response]
+    - ```json
+      {
+        "data": { ... },
+        "status": "success",
+        "message": "..."
+      }
+      ```
+    - \[Additional conditions]
+- **Output data contract:**
+  - \[Describe the `data` structure]
+  - ```json
+    {
+      "field1": "...",
+      "field2": "...",
+      ...
+    }
+    ```
+  - \[Additional conditions]
+- **State changes:**
+  - \[Persistence, events, cache updates, or N/A]
+  - \[Persistence, events, cache updates, or N/A]
+- **Failure behavior:**
+  - \[What the caller receives on failure]
+  - ```json
+    {
+      "error": { ... },
+      "status": "error",
+      "message": "..."
+    }
+    ```
+  - \[Additional conditions]
 
 ### Output data structures
 
