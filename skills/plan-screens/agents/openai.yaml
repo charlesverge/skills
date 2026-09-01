@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Screens"
+  short_description: "Manage 01_SCREENS.md screen registry files"
+  default_prompt: "Use $plan-screens to create or update the nearest `plans/*/01_SCREENS.md` file and align frontend plan `Screen location` references with the registered screen name."

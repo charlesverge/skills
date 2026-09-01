@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workaround Check"
+  short_description: "Reject plans that evade constraints instead of fixing root causes"
+  default_prompt: "Use $workaround-check after generating any modification plan. Evaluate whether the plan satisfies both the literal instruction and its intent, look for red flags such as suppression, aliasing, indirection, arbitrary casting, swallowed errors, or renamed-but-unchanged behavior, and reject the plan if it preserves prohibited behavior instead of solving the root cause. Return a structured verdict with Accept or Reject, the protected constraint, problematic steps, reasoning, and the required structural fix when rejecting."

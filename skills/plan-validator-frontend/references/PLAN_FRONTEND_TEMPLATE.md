@@ -6,7 +6,7 @@
 
 - **Feature name:** \[Feature name]
 - **Feature short code:** \[Feature category or section-Sub category or sub section-action or feature name. For example, "auth-signin-email" or "favorites-company-add"]
-- **Screen location:** \[Page, route, modal, section, tab, or component]
+- **Screen location:** \[Exact screen name from the nearest `plans/*/01_SCREENS.md` entry. If the plan only covers part of that screen, append the specific modal, section, tab, or component.]
 - **Route:** \[route to the screen location]
 - **Priority:** \[High | Medium | Low]
 - **Caller or trigger:** \[Screen or location the user navigates from or preforms to reach this feature or screen]
@@ -17,6 +17,13 @@
 ## Success definition
 
 - What must be seen and happen on the screen for this feature to function successfully.
+  - Condition 1
+  - Condition 2
+  - ...
+- What must be seen and happen on the screen for this feature to function successfully.
+  - Condition 1
+  - Condition 2
+  - ...
 
 ## Use cases
 

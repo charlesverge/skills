@@ -19,6 +19,13 @@
 ## Success definition
 
 - What must happen for the class request to be considered successful.
+  - Condition 1
+  - Condition 2
+  - ...
+- What must happen for the class request to be considered successful.
+  - Condition 1
+  - Condition 2
+  - ...
 
 ## Use cases
 

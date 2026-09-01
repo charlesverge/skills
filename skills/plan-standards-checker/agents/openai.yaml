@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Standards Checker"
+  short_description: "Validate plans against project standards before industry standards"
+  default_prompt: "Use $plan-standards-checker after scope validation and before finalizing a plan or change request. Validate the plan text—not implementation code—against project standards first, then repository-root docs/research and authoritative industry sources if needed, and reject with the required structured output when standards are violated."

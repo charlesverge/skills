@@ -1,0 +1,613 @@
+{
+  "suite": "plan-standards-checker-common-change-requests",
+  "version": 1,
+  "generated_on": "2026-08-25",
+  "skill": "plan-standards-checker",
+  "test_method_id": "manual-skill-review-v1",
+  "cases": [
+    {
+      "id": "PSC-001",
+      "category": "project-standards",
+      "title": "Automatic fallback to legacy auth",
+      "change_request": "Update the login plan so that if the new OIDC path fails, the service automatically falls back to the legacy password flow and retries with the old behavior.",
+      "source_basis": [
+        "repository root AGENTS.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Absolute No Fallback Rule",
+        "standard_source": "repository root AGENTS.md",
+        "why": "The request introduces automatic fallback and retry wording even though the repository bans fallback behavior and fallback language unless the user explicitly asks for it.",
+        "required_plan_change": "Remove automatic fallback and retry behavior and describe only the intended enabled path or an explicitly requested disabled path.",
+        "research_reused_or_new": "Project standard only; no industry research required."
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "repository root AGENTS.md"
+      }
+    },
+    {
+      "id": "PSC-002",
+      "category": "project-standards",
+      "title": "Feature flag with enabled and disabled paths",
+      "change_request": "Add a feature flag for the new account recovery flow with explicit enabled and disabled paths only, and keep the plan free of automatic failover between those paths.",
+      "source_basis": [
+        "repository root AGENTS.md"
+      ],
+      "expected_result": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "violated_standard": "None",
+        "standard_source": "repository root AGENTS.md",
+        "why": "The plan uses enabled and disabled path language without introducing fallback behavior.",
+        "required_plan_change": "None.",
+        "research_reused_or_new": "Project standard only; no industry research required."
+      },
+      "actual_skill_assessment": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "matched_expected": true,
+        "governing_source": "repository root AGENTS.md"
+      }
+    },
+    {
+      "id": "PSC-003",
+      "category": "project-standards",
+      "title": "Unrequested frontend redesign in backend fix",
+      "change_request": "While fixing the backend invoice API bug, also redesign the billing dashboard layout and replace the frontend chart library in the same implementation plan.",
+      "source_basis": [
+        "skills/plan-rules/SKILL.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Do not expand scope unless explicitly requested",
+        "standard_source": "skills/plan-rules/SKILL.md",
+        "why": "The request mixes unrelated frontend redesign work into a backend bug-fix plan even though the extra scope was not requested.",
+        "required_plan_change": "Keep the backend fix in the implementation plan and move the dashboard redesign to Suggested Improvements or a separate plan.",
+        "research_reused_or_new": "Project standard only; no industry research required."
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "skills/plan-rules/SKILL.md"
+      }
+    },
+    {
+      "id": "PSC-004",
+      "category": "project-standards",
+      "title": "Duplicate parent goal statements",
+      "change_request": "Rewrite this plan so it repeats the same platform-wide goal statements already covered by the parent plan instead of referencing that plan.",
+      "source_basis": [
+        "skills/plan-rules/SKILL.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Check plan changes to ensure that no statement is duplicated",
+        "standard_source": "skills/plan-rules/SKILL.md",
+        "why": "The request duplicates existing goal statements rather than referencing the plan that already owns them.",
+        "required_plan_change": "Reference the parent plan for shared goals instead of restating duplicate goal text.",
+        "research_reused_or_new": "Project standard only; no industry research required."
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "skills/plan-rules/SKILL.md"
+      }
+    },
+    {
+      "id": "PSC-005",
+      "category": "project-standards",
+      "title": "Test assert changes without justification",
+      "change_request": "Update the unit tests so the previous success assertions now expect failure responses, but do not include a reason or link the assert changes to a plan or change request.",
+      "source_basis": [
+        "skills/plan-rules/SKILL.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Changing a test assert requires a specific reason",
+        "standard_source": "skills/plan-rules/SKILL.md",
+        "why": "The request changes assertion semantics without explaining why the contract changed or tying the change to a plan or change request.",
+        "required_plan_change": "Provide a specific reason for the assert changes and link them to the governing plan or change request.",
+        "research_reused_or_new": "Project standard only; no industry research required."
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "skills/plan-rules/SKILL.md"
+      }
+    },
+    {
+      "id": "PSC-006",
+      "category": "project-standards",
+      "title": "Authentication stores user preferences",
+      "change_request": "Store each user's theme preference and dashboard filters inside the authentication record so the login service can read and write everything in one place.",
+      "source_basis": [
+        "skills/plan-rules/SKILL.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Do not cross-pollinate functionality",
+        "standard_source": "skills/plan-rules/SKILL.md",
+        "why": "The request mixes authentication responsibilities with user-preference storage, which the project rules explicitly forbid.",
+        "required_plan_change": "Keep authentication data and user-preference data in separate components or stores with separate responsibilities.",
+        "research_reused_or_new": "Project standard only; no industry research required."
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "skills/plan-rules/SKILL.md"
+      }
+    },
+    {
+      "id": "PSC-007",
+      "category": "project-standards",
+      "title": "Optional refactor moved to Suggested Improvements",
+      "change_request": "Keep the invoice API bug fix in the implementation plan and place the optional repository cleanup refactor in Suggested Improvements so the requested work stays narrow.",
+      "source_basis": [
+        "skills/plan-rules/SKILL.md"
+      ],
+      "expected_result": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "violated_standard": "None",
+        "standard_source": "skills/plan-rules/SKILL.md",
+        "why": "The plan keeps the requested work in scope and relocates the optional refactor to Suggested Improvements as required.",
+        "required_plan_change": "None.",
+        "research_reused_or_new": "Project standard only; no industry research required."
+      },
+      "actual_skill_assessment": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "matched_expected": true,
+        "governing_source": "skills/plan-rules/SKILL.md"
+      }
+    },
+    {
+      "id": "PSC-008",
+      "category": "project-standards",
+      "title": "Ambiguity routed to a question",
+      "change_request": "The plan cannot determine whether the API should preserve the old 409 contract or adopt 422 for new validation failures, so it records the unresolved standards question and routes it to ask-a-question before finalization.",
+      "source_basis": [
+        "skills/plan-standards-checker/SKILL.md"
+      ],
+      "expected_result": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "violated_standard": "None",
+        "standard_source": "skills/plan-standards-checker/SKILL.md",
+        "why": "The request handles an unresolved standards conflict explicitly instead of guessing, which matches the skill's ambiguity-handling rule.",
+        "required_plan_change": "None.",
+        "research_reused_or_new": "Project standard only; no industry research required."
+      },
+      "actual_skill_assessment": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "matched_expected": true,
+        "governing_source": "skills/plan-standards-checker/SKILL.md"
+      }
+    },
+    {
+      "id": "PSC-009",
+      "category": "industry-standards",
+      "title": "HTTP 200 for authentication failure",
+      "change_request": "Keep login and missing-token failures on HTTP 200 with an `{\"error\":\"not authorized\"}` body so existing clients do not need to update their status-code handling.",
+      "source_basis": [
+        "docs/research/rest-api-error-handling.md",
+        "docs/research/authentication-and-error-messages.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Accurate HTTP status code semantics for authentication failures",
+        "standard_source": "docs/research/authentication-and-error-messages.md",
+        "why": "The plan hides a real authentication failure behind a success status code, which conflicts with HTTP semantics and makes generic HTTP software behave incorrectly.",
+        "required_plan_change": "Use 401 with the appropriate authentication challenge for missing or invalid credentials, or 403 for insufficient authorization, and define a consistent error body.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/authentication-and-error-messages.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "docs/research/authentication-and-error-messages.md"
+      }
+    },
+    {
+      "id": "PSC-010",
+      "category": "industry-standards",
+      "title": "POST creates resource with 201 and Location",
+      "change_request": "For a new `POST /teams` endpoint, return `201 Created` with a `Location` header for the primary team resource and a response body describing the created resource.",
+      "source_basis": [
+        "docs/research/rest-api-error-handling.md"
+      ],
+      "expected_result": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "violated_standard": "None",
+        "standard_source": "docs/research/rest-api-error-handling.md",
+        "why": "The request follows standard HTTP creation semantics by using 201 and Location for the new resource.",
+        "required_plan_change": "None.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/rest-api-error-handling.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "matched_expected": true,
+        "governing_source": "docs/research/rest-api-error-handling.md"
+      }
+    },
+    {
+      "id": "PSC-011",
+      "category": "industry-standards",
+      "title": "PUT rejects incompatible media type",
+      "change_request": "For `PUT /documents/current`, reject incompatible image uploads with `415 Unsupported Media Type` and explain the accepted representation type for that resource.",
+      "source_basis": [
+        "docs/research/rest-api-error-handling.md"
+      ],
+      "expected_result": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "violated_standard": "None",
+        "standard_source": "docs/research/rest-api-error-handling.md",
+        "why": "The request uses the status code suggested by HTTP semantics when the submitted representation is not acceptable for the target resource.",
+        "required_plan_change": "None.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/rest-api-error-handling.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "matched_expected": true,
+        "governing_source": "docs/research/rest-api-error-handling.md"
+      }
+    },
+    {
+      "id": "PSC-012",
+      "category": "industry-standards",
+      "title": "Validation failures use problem details",
+      "change_request": "When request validation fails, return `422 Unprocessable Content` with `application/problem+json` and an `errors` extension that points to each invalid field.",
+      "source_basis": [
+        "docs/research/rest-api-error-handling.md"
+      ],
+      "expected_result": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "violated_standard": "None",
+        "standard_source": "docs/research/rest-api-error-handling.md",
+        "why": "The request uses a standards-aligned error response format and status code for semantically invalid content.",
+        "required_plan_change": "None.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/rest-api-error-handling.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "matched_expected": true,
+        "governing_source": "docs/research/rest-api-error-handling.md"
+      }
+    },
+    {
+      "id": "PSC-013",
+      "category": "industry-standards",
+      "title": "Problem-details status mismatch",
+      "change_request": "Return HTTP 400 for validation failures but set the problem-details `status` member to 500 because the backend exception originated in server code.",
+      "source_basis": [
+        "docs/research/rest-api-error-handling.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Problem-details status must match the actual HTTP response status",
+        "standard_source": "docs/research/rest-api-error-handling.md",
+        "why": "RFC 9457 treats the `status` member as advisory but requires generators to use the same status code in the actual HTTP response.",
+        "required_plan_change": "Keep the problem-details `status` member aligned with the actual HTTP status code returned to the client.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/rest-api-error-handling.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "docs/research/rest-api-error-handling.md"
+      }
+    },
+    {
+      "id": "PSC-014",
+      "category": "industry-standards",
+      "title": "Expose stack trace in problem detail",
+      "change_request": "Include stack traces, SQL fragments, and framework versions in the problem-details `detail` field to speed up debugging in production.",
+      "source_basis": [
+        "docs/research/rest-api-error-handling.md",
+        "docs/research/authentication-and-error-messages.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Client-safe error details only; no implementation-detail leakage",
+        "standard_source": "docs/research/authentication-and-error-messages.md",
+        "why": "The plan exposes implementation internals directly to clients, which both OWASP and RFC 9457 warn against.",
+        "required_plan_change": "Return a generic client-safe error description and keep stack traces and diagnostics in server-side logs only.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/authentication-and-error-messages.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "docs/research/authentication-and-error-messages.md"
+      }
+    },
+    {
+      "id": "PSC-015",
+      "category": "python-typing",
+      "title": "Explicit annotations and typed structures",
+      "change_request": "Annotate the new Python service functions with explicit parameter and return types, replace ad hoc payload dictionaries with TypedDicts, and keep the typing refactor behavior-neutral.",
+      "source_basis": [
+        "docs/research/python-typing-expectations.md",
+        "skills/python-type-rules/SKILL.md"
+      ],
+      "expected_result": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "violated_standard": "None",
+        "standard_source": "skills/python-type-rules/SKILL.md",
+        "why": "The request strengthens type contracts with explicit annotations and structured types without weakening behavior or using escape hatches.",
+        "required_plan_change": "None.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/python-typing-expectations.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "matched_expected": true,
+        "governing_source": "skills/python-type-rules/SKILL.md"
+      }
+    },
+    {
+      "id": "PSC-016",
+      "category": "python-typing",
+      "title": "Any escape hatches across service boundary",
+      "change_request": "Use `Any` and `dict[str, Any]` across the new service layer so the plan can satisfy typing quickly without defining concrete shapes.",
+      "source_basis": [
+        "skills/python-type-rules/SKILL.md",
+        "docs/research/python-typing-expectations.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Do not use Any or vague object-like typing to bypass strict typing",
+        "standard_source": "skills/python-type-rules/SKILL.md",
+        "why": "The local typing rules explicitly forbid `Any` and vague structural escape hatches when a concrete type can be defined.",
+        "required_plan_change": "Define concrete typed request and response shapes instead of `Any`-based containers.",
+        "research_reused_or_new": "Project typing rule plus reused repo-root research: docs/research/python-typing-expectations.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "skills/python-type-rules/SKILL.md"
+      }
+    },
+    {
+      "id": "PSC-017",
+      "category": "python-typing",
+      "title": "Implicit optional parameter",
+      "change_request": "Add a new helper with the signature `def find_user(email: str = None) -> User:` and rely on the default `None` value instead of spelling out an optional type.",
+      "source_basis": [
+        "docs/research/python-typing-expectations.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Explicit optional typing when None is valid",
+        "standard_source": "docs/research/python-typing-expectations.md",
+        "why": "The plan relies on implicit optional behavior even though modern type-hint guidance expects optionality to be explicit.",
+        "required_plan_change": "Use an explicit optional type such as `str | None` or `Optional[str]` when `None` is part of the contract.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/python-typing-expectations.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "docs/research/python-typing-expectations.md"
+      }
+    },
+    {
+      "id": "PSC-018",
+      "category": "python-typing",
+      "title": "Cast-driven typing workaround",
+      "change_request": "Resolve the typing issues by sprinkling `typing.cast(...)` across call sites rather than correcting helper signatures and typed structures.",
+      "source_basis": [
+        "skills/python-type-rules/SKILL.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Do not use casts to work around typing problems",
+        "standard_source": "skills/python-type-rules/SKILL.md",
+        "why": "The local typing rules explicitly forbid using casts as a shortcut when the underlying types should be fixed directly.",
+        "required_plan_change": "Correct the helper signatures or define the missing typed structures instead of masking the problem with casts.",
+        "research_reused_or_new": "Project standard only; no new industry research required."
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "skills/python-type-rules/SKILL.md"
+      }
+    },
+    {
+      "id": "PSC-019",
+      "category": "python-typing",
+      "title": "Public helper assigned from lambda",
+      "change_request": "Expose a new public utility as `slugify = lambda text: text.lower().replace(' ', '-')` because it is shorter than a normal function.",
+      "source_basis": [
+        "docs/research/python-typing-expectations.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Public functions should use normal function definitions for readability",
+        "standard_source": "docs/research/python-typing-expectations.md",
+        "why": "The plan chooses a lambda assignment for a named public helper, which conflicts with Python style guidance favoring `def` for named functions.",
+        "required_plan_change": "Define the helper with a normal `def slugify(...):` function.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/python-typing-expectations.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "docs/research/python-typing-expectations.md"
+      }
+    },
+    {
+      "id": "PSC-020",
+      "category": "python-typing",
+      "title": "Non-idiomatic None and type comparisons",
+      "change_request": "In the new Python guard logic, compare values to `None` with `==` and use `type(obj) is type(1)` for type checks to keep the implementation simple.",
+      "source_basis": [
+        "docs/research/python-typing-expectations.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Use `is None` and `isinstance()` for Python readability and correctness",
+        "standard_source": "docs/research/python-typing-expectations.md",
+        "why": "The plan proposes comparison and type-check idioms that Python style guidance explicitly discourages.",
+        "required_plan_change": "Use `is` or `is not` for `None` checks and use `isinstance()` for object type checks.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/python-typing-expectations.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "docs/research/python-typing-expectations.md"
+      }
+    },
+    {
+      "id": "PSC-021",
+      "category": "security-auth",
+      "title": "Generic authentication failures",
+      "change_request": "Use one generic error message and one user-facing response shape for invalid username, invalid password, locked account, and password-reset requests.",
+      "source_basis": [
+        "docs/research/authentication-and-error-messages.md"
+      ],
+      "expected_result": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "violated_standard": "None",
+        "standard_source": "docs/research/authentication-and-error-messages.md",
+        "why": "The request reduces account-enumeration signals and aligns with OWASP guidance for generic authentication responses.",
+        "required_plan_change": "None.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/authentication-and-error-messages.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "matched_expected": true,
+        "governing_source": "docs/research/authentication-and-error-messages.md"
+      }
+    },
+    {
+      "id": "PSC-022",
+      "category": "security-auth",
+      "title": "Specific login error messages and status codes",
+      "change_request": "Return 404 when the username does not exist, 403 when the account is disabled, and a different success-looking body when the password is wrong so support can distinguish failures quickly.",
+      "source_basis": [
+        "docs/research/authentication-and-error-messages.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Generic authentication error handling without discrepancy factors",
+        "standard_source": "docs/research/authentication-and-error-messages.md",
+        "why": "The plan deliberately creates discrepancy factors through messages and status-code differences that leak account state.",
+        "required_plan_change": "Use one generic failure message and a consistent response contract that does not reveal whether the username exists or the account is disabled.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/authentication-and-error-messages.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "docs/research/authentication-and-error-messages.md"
+      }
+    },
+    {
+      "id": "PSC-023",
+      "category": "security-auth",
+      "title": "Secure registered-email change flow",
+      "change_request": "For registered email changes, require an active session plus MFA or current-password verification, store the new email as pending, and send confirmation and notification emails before completing the change.",
+      "source_basis": [
+        "docs/research/authentication-and-error-messages.md"
+      ],
+      "expected_result": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "violated_standard": "None",
+        "standard_source": "docs/research/authentication-and-error-messages.md",
+        "why": "The request follows the stronger verification and confirmation pattern recommended for sensitive identity changes.",
+        "required_plan_change": "None.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/authentication-and-error-messages.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Approved",
+        "standards_compliant": true,
+        "matched_expected": true,
+        "governing_source": "docs/research/authentication-and-error-messages.md"
+      }
+    },
+    {
+      "id": "PSC-024",
+      "category": "security-auth",
+      "title": "Sensitive account change without re-authentication",
+      "change_request": "Allow users to change their password or registered email from any active session without current-password verification or re-authentication, as long as the session cookie is still valid.",
+      "source_basis": [
+        "docs/research/authentication-and-error-messages.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Require re-authentication for sensitive features",
+        "standard_source": "docs/research/authentication-and-error-messages.md",
+        "why": "The plan weakens protection for sensitive account actions and leaves the flow vulnerable to session hijacking or unattended-session abuse.",
+        "required_plan_change": "Require current-password verification, MFA, or another explicit re-authentication step before applying the sensitive change.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/authentication-and-error-messages.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "docs/research/authentication-and-error-messages.md"
+      }
+    },
+    {
+      "id": "PSC-025",
+      "category": "security-auth",
+      "title": "Sensitive internal accounts on public login UI",
+      "change_request": "Allow internal service accounts and administrator accounts to sign in through the same public web login UI used by end users for convenience.",
+      "source_basis": [
+        "docs/research/authentication-and-error-messages.md"
+      ],
+      "expected_result": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "violated_standard": "Do not expose sensitive internal accounts through public authentication surfaces",
+        "standard_source": "docs/research/authentication-and-error-messages.md",
+        "why": "The plan expands the public attack surface around privileged and internal accounts in a way that OWASP guidance explicitly warns against.",
+        "required_plan_change": "Keep sensitive internal accounts off the public login surface and use a separate protected administrative or internal authentication path.",
+        "research_reused_or_new": "Reused repo-root research: docs/research/authentication-and-error-messages.md"
+      },
+      "actual_skill_assessment": {
+        "decision": "Rejected",
+        "standards_compliant": false,
+        "matched_expected": true,
+        "governing_source": "docs/research/authentication-and-error-messages.md"
+      }
+    }
+  ]
+}

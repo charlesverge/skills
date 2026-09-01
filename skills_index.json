@@ -1,5 +1,45 @@
 [
   {
+    "id": "plan-screens",
+    "path": "skills/plan-screens",
+    "category": "engineering",
+    "name": "plan-screens",
+    "description": "Create and maintain app screen registry files named `01_SCREENS.md` under `plans/*/`. Use when a frontend plan needs a documented screen reference, when adding a new screen, when updating screen names or mockup links, or when the `Screen location` field must match the nearest screen registry.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-09-01"
+  },
+  {
+    "id": "code-optimizer",
+    "path": "skills/code-optimizer",
+    "category": "engineering",
+    "name": "code-optimizer",
+    "description": "Review code modifications for CPU, database, and memory cost regressions when one or more of those resources are a priority to optimize.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-08-31"
+  },
+  {
+    "id": "plan-standards-checker",
+    "path": "skills/plan-standards-checker",
+    "category": "engineering",
+    "name": "plan-standards-checker",
+    "description": "Checks if a modification plan or change follows project standards. If there are no explicit project standards, checks if it follows industry standards. Rejects the plan and highlights the standard if it fails to comply.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-08-25"
+  },
+  {
+    "id": "workaround-check",
+    "path": "skills/workaround-check",
+    "category": "engineering",
+    "name": "workaround-check",
+    "description": "Check if a generated code modification plan is a workaround. For example, copying a global variable and mutating the contents to evade a linter while secretly mutating the global variable.",
+    "risk": "safe",
+    "source": "personal",
+    "date_added": "2026-08-25"
+  },
+  {
     "id": "plan-rules",
     "path": "skills/plan-rules",
     "category": "engineering",

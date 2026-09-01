@@ -7,6 +7,7 @@ description: Validate draft plans for frontend user-facing features (UI componen
 
 1. This skill is the authoritative validator for frontend user-facing feature plans. Use it to validate that a plan meets the user's original request, follows all rules, and is ready for implementation.
 1. The authoritative template located in `.agents/skills/plan-validator-frontend/references/PLAN_FRONTEND_TEMPLATE.md` is the authoritative required plan format. Use it to check that the plan includes all required sections, and that each section is filled with concrete details rather than placeholders.
+1. The `Screen location` field must match the exact screen name documented in the nearest applicable `plans/*/01_SCREENS.md` file. Use `plan-screens` when the screen registry is missing or outdated.
 1. Do not base the validation of the format on the existing plan content or surrounding plans or code. Do not add, remove, or rewrite a section, heading, or title to match other plans or code. Format conformance is judged
    only against the authoritative template, never against sibling files.
 1. Plan generation is based on the plan content, not the code content. Code is generated from the plan not the other way around, so the plan must be complete and specific on its own.
@@ -19,6 +20,7 @@ description: Validate draft plans for frontend user-facing features (UI componen
 1. Move unrequested features, speculative improvements, broad refactors, and extra compatibility work out of implementation steps unless the user explicitly asked for them into the Suggested Improvements section or Questions.
 1. Run the hard-stop fallback checklist.
 1. Check the plan format and required sections out lined in the template `.agents/skills/plan-validator-frontend/references/PLAN_FRONTEND_TEMPLATE.md`.
+1. Resolve `Screen location` against the nearest applicable `plans/*/01_SCREENS.md` file. If the registry is missing or the screen is undocumented, use `plan-screens` to create or update it before finalizing the feature plan.
 1. Verify the `Implementation plan` section names exact files and covers the components, hooks, stores, styles, types, and resources each file must contain for this feature.
 1. Verify the plan covers exactly one action or rendered state, and that the other related states (loading, error, empty, etc.) are referenced as sibling plans rather than inlined.
 1. Verify the single state this plan implements is fully specified and its accessibility is addressed.
@@ -118,6 +120,7 @@ Use the plan structure in `.agents/skills/plan-validator-frontend/references/PLA
 1. Create a feature short code.
    - **Feature short code:** \[Feature category-subcategory-action or feature name. For example, `auth-signin-email` or `favorites-company-add`]
 1. Fill out every section. If a section does not apply, write `N/A` or `None`.
+1. Set `Screen location` to the exact screen name from the nearest applicable `plans/*/01_SCREENS.md` file. If the plan only covers part of the screen, append the narrower modal, section, tab, or component after the registered screen name.
 1. Save the feature plan as `plans/features/{feature-short-code}.md`.
 1. Keep the plan screen and interaction-first, and scoped to a single action or rendered state. Document the visible elements, user triggers, and the one state this plan owns before internal implementation notes; reference the sibling plans that own the other states (loading, error, empty). Consume APIs by linking to `plans/api/{endpoint}.md`; do not define database writes here.
 1. If the component or screen is generic and reused across multiple screens or purposes, document:
@@ -277,6 +280,7 @@ The plan must fill these template sections with concrete, screen-level detail, n
 
 - **Success definition** — what must be seen and happen on the screen for this single action or state to be considered successful.
 - **Use cases** — describes what the user does to reach this state and the expected on-screen outcome for it.
+- **Screen location** — exact registered screen name from the nearest applicable `plans/*/01_SCREENS.md` entry, plus a narrower modal, section, tab, or component only when the plan targets part of that screen.
 - **Input state before action** and **Output state after action** — concrete required states, not "logged in" or "has access". For example, "user must have at least one company added to see the favorites tab".
 - **UI details** — visible elements (buttons, links, fields, cards, menus, labels) for this state, the state itself, and accessibility notes (keyboard behavior, labels, focus, screen reader). Reference the sibling plans that own the other states (loading, error, empty) instead of defining them here.
 - **Mockups** — the mockup file is referenced and the plan is reconciled against it, with any mismatch or ambiguity called out.
@@ -299,7 +303,8 @@ Before saving or finalizing, verify these confirmations internally. Do not add t
 - feature flags are described only as enabled and disabled paths
 - the original user intent is followed
 - unasked features are placed in `Suggested Improvements` or `Questions`
-- implementation plan lists exact files, components, hooks, stores, variables, styles, and reasons
+- Implementation plan lists exact files, components, hooks, stores, variables, styles, and reasons
+- Implementation plan is written in the format of a statement, description and does not have any change request language like "add", "remove", "change", "update", "refactor", "keep" etc.
 - the plan covers a single action or rendered state, with the other related states referenced as sibling plans (or raised in `Questions`)
 - the one state this plan implements is fully specified with the element that renders it
 - accessibility is addressed (keyboard, focus, labels, screen reader) for the interactive elements in this plan

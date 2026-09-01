@@ -1,14 +1,86 @@
 # Skills Catalog
 
+## plan-screens
+
+- `id`: `plan-screens`
+- `path`: `skills/plan-screens`
+- `category`: `engineering`
+- `name`: `plan-screens`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-09-01`
+
+### Description
+
+Create and maintain app screen registry files named `01_SCREENS.md` under `plans/*/`. Use when a frontend plan needs a documented screen reference, when adding a new screen, when updating screen names or mockup links, or when the `Screen location` field must match the nearest screen registry.
+
+### Skill File
+
+- [skills/plan-screens/SKILL.md](skills/plan-screens/SKILL.md)
+
+## code-optimizer
+
+- `id`: `code-optimizer`
+- `path`: `skills/code-optimizer`
+- `category`: `engineering`
+- `name`: `code-optimizer`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-08-31`
+
+### Description
+
+Review code modifications for CPU, database, and memory cost regressions when one or more of those resources are a priority to optimize.
+
+### Skill File
+
+- [skills/code-optimizer/SKILL.md](skills/code-optimizer/SKILL.md)
+
+## plan-standards-checker
+
+- `id`: `plan-standards-checker`
+- `path`: `skills/plan-standards-checker`
+- `category`: `engineering`
+- `name`: `plan-standards-checker`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-08-25`
+
+### Description
+
+Checks if a modification plan or change follows project standards. If there are no explicit project standards, checks if it follows industry standards. Rejects the plan and highlights the standard if it fails to comply.
+
+### Skill File
+
+- [skills/plan-standards-checker/SKILL.md](skills/plan-standards-checker/SKILL.md)
+
+## workaround-check
+
+- `id`: `workaround-check`
+- `path`: `skills/workaround-check`
+- `category`: `engineering`
+- `name`: `workaround-check`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-08-25`
+
+### Description
+
+Check if a generated code modification plan is a workaround. Applied whenever a modification is made given instructions. It requires first a plan is generated and then the skill checks if the plan is a workaround (e.g. bypassing a linter by mutating a reference). The plan should be rejected if it's a workaround.
+
+### Skill File
+
+- [skills/workaround-check/SKILL.md](skills/workaround-check/SKILL.md)
+
 ## plan-rules
 
-* `id`: `plan-rules`
-* `path`: `skills/plan-rules`
-* `category`: `engineering`
-* `name`: `plan-rules`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-08-03`
+- `id`: `plan-rules`
+- `path`: `skills/plan-rules`
+- `category`: `engineering`
+- `name`: `plan-rules`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-08-03`
 
 ### Description
 
@@ -16,17 +88,17 @@ Apply plan rules whenever creating any type of plan, including a change request 
 
 ### Skill File
 
-* [skills/plan-rules/SKILL.md](skills/plan-rules/SKILL.md)
+- [skills/plan-rules/SKILL.md](skills/plan-rules/SKILL.md)
 
 ## ask-a-question
 
-* `id`: `ask-a-question`
-* `path`: `skills/ask-a-question`
-* `category`: `engineering`
-* `name`: `ask-a-question`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-07-20`
+- `id`: `ask-a-question`
+- `path`: `skills/ask-a-question`
+- `category`: `engineering`
+- `name`: `ask-a-question`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-07-20`
 
 ### Description
 
@@ -34,17 +106,17 @@ Ask, structure, save, and resolve clarification questions tied to implementation
 
 ### Skill File
 
-* [skills/ask-a-question/SKILL.md](skills/ask-a-question/SKILL.md)
+- [skills/ask-a-question/SKILL.md](skills/ask-a-question/SKILL.md)
 
 ## change-request
 
-* `id`: `change-request`
-* `path`: `skills/change-request`
-* `category`: `engineering`
-* `name`: `change-request`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-07-20`
+- `id`: `change-request`
+- `path`: `skills/change-request`
+- `category`: `engineering`
+- `name`: `change-request`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-07-20`
 
 ### Description
 
@@ -52,17 +124,17 @@ Define a large or cross-cutting software change as a precise, implementation-rea
 
 ### Skill File
 
-* [skills/change-request/SKILL.md](skills/change-request/SKILL.md)
+- [skills/change-request/SKILL.md](skills/change-request/SKILL.md)
 
 ## plan-validator-classes
 
-* `id`: `plan-validator-classes`
-* `path`: `skills/plan-validator-classes`
-* `category`: `engineering`
-* `name`: `plan-validator-classes`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-07-20`
+- `id`: `plan-validator-classes`
+- `path`: `skills/plan-validator-classes`
+- `category`: `engineering`
+- `name`: `plan-validator-classes`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-07-20`
 
 ### Description
 
@@ -72,17 +144,17 @@ rule compliance, test-convention compliance, and required unit-test details. A c
 
 ### Skill File
 
-* [skills/plan-validator-classes/SKILL.md](skills/plan-validator-classes/SKILL.md)
+- [skills/plan-validator-classes/SKILL.md](skills/plan-validator-classes/SKILL.md)
 
 ## test-conventions
 
-* `id`: `test-conventions`
-* `path`: `skills/test-conventions`
-* `category`: `engineering`
-* `name`: `test-conventions`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-07-20`
+- `id`: `test-conventions`
+- `path`: `skills/test-conventions`
+- `category`: `engineering`
+- `name`: `test-conventions`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-07-20`
 
 ### Description
 
@@ -90,17 +162,17 @@ Govern naming, file placement, directory structure, plan or rule traceability, a
 
 ### Skill File
 
-* [skills/test-conventions/SKILL.md](skills/test-conventions/SKILL.md)
+- [skills/test-conventions/SKILL.md](skills/test-conventions/SKILL.md)
 
 ## markdown-write
 
-* `id`: `markdown-write`
-* `path`: `skills/markdown-write`
-* `category`: `engineering`
-* `name`: `markdown-write`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-06-18`
+- `id`: `markdown-write`
+- `path`: `skills/markdown-write`
+- `category`: `engineering`
+- `name`: `markdown-write`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-06-18`
 
 ### Description
 
@@ -108,17 +180,17 @@ Create, edit, and lint Markdown files according to this repository's remark conf
 
 ### Skill File
 
-* [skills/markdown-write/SKILL.md](skills/markdown-write/SKILL.md)
+- [skills/markdown-write/SKILL.md](skills/markdown-write/SKILL.md)
 
 ## plan-validator-frontend
 
-* `id`: `plan-validator-frontend`
-* `path`: `skills/plan-validator-frontend`
-* `category`: `engineering`
-* `name`: `plan-validator-frontend`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-06-15`
+- `id`: `plan-validator-frontend`
+- `path`: `skills/plan-validator-frontend`
+- `category`: `engineering`
+- `name`: `plan-validator-frontend`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-06-15`
 
 ### Description
 
@@ -128,17 +200,17 @@ test-convention compliance, and required interaction/component test details.
 
 ### Skill File
 
-* [skills/plan-validator-frontend/SKILL.md](skills/plan-validator-frontend/SKILL.md)
+- [skills/plan-validator-frontend/SKILL.md](skills/plan-validator-frontend/SKILL.md)
 
 ## python-type-rules
 
-* `id`: `python-type-rules`
-* `path`: `skills/python-type-rules`
-* `category`: `engineering`
-* `name`: `python-type-rules`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-05-26`
+- `id`: `python-type-rules`
+- `path`: `skills/python-type-rules`
+- `category`: `engineering`
+- `name`: `python-type-rules`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-05-26`
 
 ### Description
 
@@ -146,17 +218,17 @@ Enforce strict Python typing when creating or modifying types for variables, fun
 
 ### Skill File
 
-* [skills/python-type-rules/SKILL.md](skills/python-type-rules/SKILL.md)
+- [skills/python-type-rules/SKILL.md](skills/python-type-rules/SKILL.md)
 
 ## business-validator-rules
 
-* `id`: `business-validator-rules`
-* `path`: `skills/business-validator-rules`
-* `category`: `engineering`
-* `name`: `business-validator-rules`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-07-20`
+- `id`: `business-validator-rules`
+- `path`: `skills/business-validator-rules`
+- `category`: `engineering`
+- `name`: `business-validator-rules`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-07-20`
 
 ### Description
 
@@ -164,17 +236,17 @@ Create and validate structured business-rule documentation. Use when defining or
 
 ### Skill File
 
-* [skills/business-validator-rules/SKILL.md](skills/business-validator-rules/SKILL.md)
+- [skills/business-validator-rules/SKILL.md](skills/business-validator-rules/SKILL.md)
 
 ## plan-validator-functions
 
-* `id`: `plan-validator-functions`
-* `path`: `skills/plan-validator-functions`
-* `category`: `engineering`
-* `name`: `plan-validator-functions`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-06-30`
+- `id`: `plan-validator-functions`
+- `path`: `skills/plan-validator-functions`
+- `category`: `engineering`
+- `name`: `plan-validator-functions`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-06-30`
 
 ### Description
 
@@ -183,17 +255,17 @@ A functions plan covers a callable entry point plus helpers that can be tested a
 
 ### Skill File
 
-* [skills/plan-validator-functions/SKILL.md](skills/plan-validator-functions/SKILL.md)
+- [skills/plan-validator-functions/SKILL.md](skills/plan-validator-functions/SKILL.md)
 
 ## plan-validator-module
 
-* `id`: `plan-validator-module`
-* `path`: `skills/plan-validator-module`
-* `category`: `engineering`
-* `name`: `plan-validator-module`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-06-30`
+- `id`: `plan-validator-module`
+- `path`: `skills/plan-validator-module`
+- `category`: `engineering`
+- `name`: `plan-validator-module`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-06-30`
 
 ### Description
 
@@ -202,17 +274,17 @@ A module plan covers code based on a class, function, or functions that can be u
 
 ### Skill File
 
-* [skills/plan-validator-module/SKILL.md](skills/plan-validator-module/SKILL.md)
+- [skills/plan-validator-module/SKILL.md](skills/plan-validator-module/SKILL.md)
 
 ## prompt-optimization
 
-* `id`: `prompt-optimization`
-* `path`: `skills/prompt-optimization`
-* `category`: `engineering`
-* `name`: `prompt-optimization`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-06-18`
+- `id`: `prompt-optimization`
+- `path`: `skills/prompt-optimization`
+- `category`: `engineering`
+- `name`: `prompt-optimization`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-06-18`
 
 ### Description
 
@@ -220,17 +292,17 @@ Use prompt cache optimization patterns for LLM request design. Use when structur
 
 ### Skill File
 
-* [skills/prompt-optimization/SKILL.md](skills/prompt-optimization/SKILL.md)
+- [skills/prompt-optimization/SKILL.md](skills/prompt-optimization/SKILL.md)
 
 ## docker-containers
 
-* `id`: `docker-containers`
-* `path`: `skills/docker-containers`
-* `category`: `engineering`
-* `name`: `docker-containers`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-05-25`
+- `id`: `docker-containers`
+- `path`: `skills/docker-containers`
+- `category`: `engineering`
+- `name`: `docker-containers`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-05-25`
 
 ### Description
 
@@ -238,17 +310,17 @@ Manage Docker container workflows and Docker Compose configuration. Use when cre
 
 ### Skill File
 
-* [skills/docker-containers/SKILL.md](skills/docker-containers/SKILL.md)
+- [skills/docker-containers/SKILL.md](skills/docker-containers/SKILL.md)
 
 ## unit-test-rules
 
-* `id`: `unit-test-rules`
-* `path`: `skills/unit-test-rules`
-* `category`: `engineering`
-* `name`: `unit-test-rules`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-04-25`
+- `id`: `unit-test-rules`
+- `path`: `skills/unit-test-rules`
+- `category`: `engineering`
+- `name`: `unit-test-rules`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-04-25`
 
 ### Description
 
@@ -256,17 +328,17 @@ Generate unit tests for source code with. Covers test structure, fixtures, mocki
 
 ### Skill File
 
-* [skills/unit-test-rules/SKILL.md](skills/unit-test-rules/SKILL.md)
+- [skills/unit-test-rules/SKILL.md](skills/unit-test-rules/SKILL.md)
 
 ## plan-completion-review
 
-* `id`: `plan-completion-review`
-* `path`: `skills/plan-completion-review`
-* `category`: `engineering`
-* `name`: `plan-completion-review`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-05-28`
+- `id`: `plan-completion-review`
+- `path`: `skills/plan-completion-review`
+- `category`: `engineering`
+- `name`: `plan-completion-review`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-05-28`
 
 ### Description
 
@@ -274,17 +346,17 @@ Review a completed plan against the original goal, validate code and tests, and 
 
 ### Skill File
 
-* [skills/plan-completion-review/SKILL.md](skills/plan-completion-review/SKILL.md)
+- [skills/plan-completion-review/SKILL.md](skills/plan-completion-review/SKILL.md)
 
 ## plan-validator-backend
 
-* `id`: `plan-validator-backend`
-* `path`: `skills/plan-validator-backend`
-* `category`: `engineering`
-* `name`: `plan-validator-backend`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-06-13`
+- `id`: `plan-validator-backend`
+- `path`: `skills/plan-validator-backend`
+- `category`: `engineering`
+- `name`: `plan-validator-backend`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-06-13`
 
 ### Description
 
@@ -292,17 +364,17 @@ Validate draft plans for api, backend, job, non user facing plans before they ar
 
 ### Skill File
 
-* [skills/plan-validator-backend/SKILL.md](skills/plan-validator-backend/SKILL.md)
+- [skills/plan-validator-backend/SKILL.md](skills/plan-validator-backend/SKILL.md)
 
 ## health-checks
 
-* `id`: `health-checks`
-* `path`: `skills/health-checks`
-* `category`: `engineering`
-* `name`: `health-checks`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-04-22`
+- `id`: `health-checks`
+- `path`: `skills/health-checks`
+- `category`: `engineering`
+- `name`: `health-checks`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-04-22`
 
 ### Description
 
@@ -310,17 +382,17 @@ Create or review health checks for services, containers, container-to-container 
 
 ### Skill File
 
-* [skills/health-checks/SKILL.md](skills/health-checks/SKILL.md)
+- [skills/health-checks/SKILL.md](skills/health-checks/SKILL.md)
 
 ## python-beanie-orm
 
-* `id`: `python-beanie-orm`
-* `path`: `skills/python-beanie-orm`
-* `category`: `engineering`
-* `name`: `python-beanie-orm`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-04-20`
+- `id`: `python-beanie-orm`
+- `path`: `skills/python-beanie-orm`
+- `category`: `engineering`
+- `name`: `python-beanie-orm`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-04-20`
 
 ### Description
 
@@ -328,17 +400,17 @@ Use Beanie ODM patterns for MongoDB async operations. Covers document models, qu
 
 ### Skill File
 
-* [skills/python-beanie-orm/SKILL.md](skills/python-beanie-orm/SKILL.md)
+- [skills/python-beanie-orm/SKILL.md](skills/python-beanie-orm/SKILL.md)
 
 ## test-harness-creation
 
-* `id`: `test-harness-creation`
-* `path`: `skills/test-harness-creation`
-* `category`: `engineering`
-* `name`: `test-harness-creation`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-04-10`
+- `id`: `test-harness-creation`
+- `path`: `skills/test-harness-creation`
+- `category`: `engineering`
+- `name`: `test-harness-creation`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-04-10`
 
 ### Description
 
@@ -346,17 +418,17 @@ Create strict, production-like Python test harnesses with explicit setup, execut
 
 ### Skill File
 
-* [skills/test-harness-creation/SKILL.md](skills/test-harness-creation/SKILL.md)
+- [skills/test-harness-creation/SKILL.md](skills/test-harness-creation/SKILL.md)
 
 ## error-classification-policy
 
-* `id`: `error-classification-policy`
-* `path`: `skills/error-classification-policy`
-* `category`: `engineering`
-* `name`: `error-classification-policy`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-26`
+- `id`: `error-classification-policy`
+- `path`: `skills/error-classification-policy`
+- `category`: `engineering`
+- `name`: `error-classification-policy`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-26`
 
 ### Description
 
@@ -364,17 +436,17 @@ Classify failures into temporary versus permanent using a contract-aware policy 
 
 ### Skill File
 
-* [skills/error-classification-policy/SKILL.md](skills/error-classification-policy/SKILL.md)
+- [skills/error-classification-policy/SKILL.md](skills/error-classification-policy/SKILL.md)
 
 ## aiohttp-usage-rules
 
-* `id`: `aiohttp-usage-rules`
-* `path`: `skills/aiohttp-usage-rules`
-* `category`: `engineering`
-* `name`: `aiohttp-usage-rules`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-26`
+- `id`: `aiohttp-usage-rules`
+- `path`: `skills/aiohttp-usage-rules`
+- `category`: `engineering`
+- `name`: `aiohttp-usage-rules`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-26`
 
 ### Description
 
@@ -382,17 +454,17 @@ Enforce acceptable aiohttp usage patterns in Python async code. Use when adding 
 
 ### Skill File
 
-* [skills/aiohttp-usage-rules/SKILL.md](skills/aiohttp-usage-rules/SKILL.md)
+- [skills/aiohttp-usage-rules/SKILL.md](skills/aiohttp-usage-rules/SKILL.md)
 
 ## function-creation-rules
 
-* `id`: `function-creation-rules`
-* `path`: `skills/function-creation-rules`
-* `category`: `engineering`
-* `name`: `function-creation-rules`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-24`
+- `id`: `function-creation-rules`
+- `path`: `skills/function-creation-rules`
+- `category`: `engineering`
+- `name`: `function-creation-rules`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-24`
 
 ### Description
 
@@ -400,17 +472,17 @@ Rules for creating functions, modifying existing ones, including when to create 
 
 ### Skill File
 
-* [skills/function-creation-rules/SKILL.md](skills/function-creation-rules/SKILL.md)
+- [skills/function-creation-rules/SKILL.md](skills/function-creation-rules/SKILL.md)
 
 ## qdrant-database-operations
 
-* `id`: `qdrant-database-operations`
-* `path`: `skills/qdrant-database-operations`
-* `category`: `engineering`
-* `name`: `qdrant-database-operations`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-24`
+- `id`: `qdrant-database-operations`
+- `path`: `skills/qdrant-database-operations`
+- `category`: `engineering`
+- `name`: `qdrant-database-operations`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-24`
 
 ### Description
 
@@ -418,17 +490,17 @@ Use Qdrant Python client patterns for common collection operations including ins
 
 ### Skill File
 
-* [skills/qdrant-database-operations/SKILL.md](skills/qdrant-database-operations/SKILL.md)
+- [skills/qdrant-database-operations/SKILL.md](skills/qdrant-database-operations/SKILL.md)
 
 ## code-cleanup-rules
 
-* `id`: `code-cleanup-rules`
-* `path`: `skills/code-cleanup-rules`
-* `category`: `engineering`
-* `name`: `code-cleanup-rules`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-20`
+- `id`: `code-cleanup-rules`
+- `path`: `skills/code-cleanup-rules`
+- `category`: `engineering`
+- `name`: `code-cleanup-rules`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-20`
 
 ### Description
 
@@ -436,17 +508,17 @@ Apply cleanup-focused refactor rules for phased invalid/orphan deletion logic, s
 
 ### Skill File
 
-* [skills/code-cleanup-rules/SKILL.md](skills/code-cleanup-rules/SKILL.md)
+- [skills/code-cleanup-rules/SKILL.md](skills/code-cleanup-rules/SKILL.md)
 
 ## needless-helper-decisions
 
-* `id`: `needless-helper-decisions`
-* `path`: `skills/needless-helper-decisions`
-* `category`: `engineering`
-* `name`: `needless-helper-decisions`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-19`
+- `id`: `needless-helper-decisions`
+- `path`: `skills/needless-helper-decisions`
+- `category`: `engineering`
+- `name`: `needless-helper-decisions`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-19`
 
 ### Description
 
@@ -454,35 +526,35 @@ Use this rubric and example set for future needless helper decisions. Use when c
 
 ### Skill File
 
-* [skills/needless-helper-decisions/SKILL.md](skills/needless-helper-decisions/SKILL.md)
+- [skills/needless-helper-decisions/SKILL.md](skills/needless-helper-decisions/SKILL.md)
 
 ## single-read-decision-update
 
-* `id`: `single-read-decision-update`
-* `path`: `skills/single-read-decision-update`
-* `category`: `engineering`
-* `name`: `single-read-decision-update`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-19`
+- `id`: `single-read-decision-update`
+- `path`: `skills/single-read-decision-update`
+- `category`: `engineering`
+- `name`: `single-read-decision-update`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-19`
 
 ### Description
 
-Enforce a single-read decision update pattern for repository/service methods that read current entity state, compute outcomes from current state plus new input, persist one mutation, and return a `DecisionResult` used by callers without same-entity re-reads. Use when refactoring or reviewing update flows that currently do write-then-reload, multiple reads for one decision path, or caller-side follow-up fetches for outcomes that should come from apply_event-style methods.
+Enforce a single-read decision update pattern for repository/service methods that read current entity state, compute outcomes from current state plus new input, persist one mutation, and return a `DecisionResult` used by callers without same-entity re-reads. Use when refactoring or reviewing update flows that currently do write-then-reload, multiple reads for one decision path, or caller-side follow-up fetches for outcomes that should come from apply\_event-style methods.
 
 ### Skill File
 
-* [skills/single-read-decision-update/SKILL.md](skills/single-read-decision-update/SKILL.md)
+- [skills/single-read-decision-update/SKILL.md](skills/single-read-decision-update/SKILL.md)
 
 ## naming-rules
 
-* `id`: `naming-rules`
-* `path`: `skills/naming-rules`
-* `category`: `engineering`
-* `name`: `naming-rules`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-19`
+- `id`: `naming-rules`
+- `path`: `skills/naming-rules`
+- `category`: `engineering`
+- `name`: `naming-rules`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-19`
 
 ### Description
 
@@ -490,17 +562,17 @@ Apply concise naming rules for variables, properties, fields, and functions whil
 
 ### Skill File
 
-* [skills/naming-rules/SKILL.md](skills/naming-rules/SKILL.md)
+- [skills/naming-rules/SKILL.md](skills/naming-rules/SKILL.md)
 
 ## code-patterns
 
-* `id`: `code-patterns`
-* `path`: `skills/code-patterns`
-* `category`: `engineering`
-* `name`: `code-patterns`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-19`
+- `id`: `code-patterns`
+- `path`: `skills/code-patterns`
+- `category`: `engineering`
+- `name`: `code-patterns`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-19`
 
 ### Description
 
@@ -508,17 +580,17 @@ Python coding patterns for preferred styles, use when making code changes or ref
 
 ### Skill File
 
-* [skills/code-patterns/SKILL.md](skills/code-patterns/SKILL.md)
+- [skills/code-patterns/SKILL.md](skills/code-patterns/SKILL.md)
 
 ## record-states
 
-* `id`: `record-states`
-* `path`: `skills/record-states`
-* `category`: `engineering`
-* `name`: `record-states`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-03-24`
+- `id`: `record-states`
+- `path`: `skills/record-states`
+- `category`: `engineering`
+- `name`: `record-states`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-03-24`
 
 ### Description
 
@@ -526,17 +598,17 @@ Provide a consistent way to handle invalid or incomplete record state during pro
 
 ### Skill File
 
-* [skills/record-states/SKILL.md](skills/record-states/SKILL.md)
+- [skills/record-states/SKILL.md](skills/record-states/SKILL.md)
 
 ## validate-user-change-request
 
-* `id`: `validate-user-change-request`
-* `path`: `skills/validate-user-change-request`
-* `category`: `engineering`
-* `name`: `validate-user-change-request`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-04-27`
+- `id`: `validate-user-change-request`
+- `path`: `skills/validate-user-change-request`
+- `category`: `engineering`
+- `name`: `validate-user-change-request`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-04-27`
 
 ### Description
 
@@ -544,17 +616,17 @@ Validate user change requests and provide guidance on whether they can be fulfil
 
 ### Skill File
 
-* [skills/validate-user-change-request/SKILL.md](skills/validate-user-change-request/SKILL.md)
+- [skills/validate-user-change-request/SKILL.md](skills/validate-user-change-request/SKILL.md)
 
 ## github-operations
 
-* `id`: `github-operations`
-* `path`: `skills/github-operations`
-* `category`: `engineering`
-* `name`: `github-operations`
-* `risk`: `safe`
-* `source`: `personal`
-* `date_added`: `2026-07-23`
+- `id`: `github-operations`
+- `path`: `skills/github-operations`
+- `category`: `engineering`
+- `name`: `github-operations`
+- `risk`: `safe`
+- `source`: `personal`
+- `date_added`: `2026-07-23`
 
 ### Description
 
@@ -562,4 +634,4 @@ Use GitHub safely for repository inspection, branch management, commits, pushes,
 
 ### Skill File
 
-* [skills/github-operations/SKILL.md](skills/github-operations/SKILL.md)
+- [skills/github-operations/SKILL.md](skills/github-operations/SKILL.md)

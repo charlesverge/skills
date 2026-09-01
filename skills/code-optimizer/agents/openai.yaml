@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Optimizer"
+  short_description: "Check code changes for CPU, database, and memory regressions"
+  default_prompt: "Use $code-optimizer when CPU, database, or memory efficiency is a priority. Review the proposed or actual code change for resource regressions, compare the modified path to the previous path, identify hot paths, and report CPU, database, and memory impact, trade-offs, verdict, and smallest fix using the skill's required output format."
