@@ -40,9 +40,12 @@ This is rejected because:
 
 ## Pattern to Use
 
-Define a specific exception that captures the diagnostic context at the point where the failure is detected:
+Define a specific exception in the feature's dedicated exception module. The
+exception captures the diagnostic context at the point where the failure is
+detected:
 
 ```python
+# coding_orchestrator/agents/exceptions.py
 from pathlib import Path
 
 from coding_orchestrator_types.builder_types import StopReached
@@ -62,14 +65,16 @@ class DirtyWorkspaceError(StopReached):
 Capture the failing state once and raise the typed exception from the source that owns the clean-workspace check:
 
 ```python
+from .exceptions import DirtyWorkspaceError
+
+
 def check_clean(self) -> None:
   builder = context_runtime_settings()
   status = git_status_porcelain(
     cwd=builder.workspace_dir,
     git_log_path=builder.orchestrator_dir / "logs" / "git.log",
   )
-  if status.returncode != 0:
-    raise RuntimeError(f"Failed to inspect workspace: {status.stderr.rstrip()}")
+  status.check_returncode()
   changes = status.stdout.rstrip()
   if not changes:
     return
@@ -89,3 +94,17 @@ except StopReached as exc:
 Capture failure-specific diagnostic data at the boundary that detects the failure. Represent distinct failure conditions with specific exception types and carry the observed context with the exception.
 
 Downstream handlers may record, translate, or present that captured information. They must not determine exception identity from message text or re-query mutable state to reconstruct information the error source could provide.
+
+## Exception Module Ownership
+
+Exception definitions must live in a language-appropriate, dedicated exception
+or error module rather than the operation, service, or handler that raises them.
+For example, use `exceptions.py` in Python or `errors.ts` in TypeScript. Import
+the concrete exception directly from its owning module; do not re-export it from
+the operation module.
+
+Keep every exception module at or below 400 lines. Before a module would exceed
+400 lines, split its exceptions by stable domain or failure category, with each
+category module also limited to 400 lines. Use names such as
+`workspace_exceptions.py` and `model_exceptions.py`; do not use arbitrary
+numbered files.
