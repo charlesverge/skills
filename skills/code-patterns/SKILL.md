@@ -37,6 +37,11 @@ When making any code change, check that the change matches the preferred pattern
 ### Type Safety
 
 - [Types Must Match the Actual Runtime Value](resources/gen-Types%20Must%20Match%20the%20Actual%20Runtime%20Value.md): Read and apply this pattern when defining types to ensure they accurately reflect the actual runtime values.
+- [Strongly Typed Errors Instead of Stringly Typed Error Handling](resources/gen-Strongly-Typed-Errors-Instead-of-Stringly-Typed-Error-Handling.md): Read and apply this pattern when program flow depends on failure handling, to ensure branching uses stable typed error codes instead of human-readable messages.
+
+### Errors and Diagnostics
+
+- [Downstream Diagnostic Reconstruction](resources/gen-Downstream%20diagnostic%20reconstruction.md): Read and apply this pattern when handling exceptions or failures to ensure diagnostic context is captured at the error source and passed downstream without message-string decisions or repeated state inspection.
 
 ### Testing
 

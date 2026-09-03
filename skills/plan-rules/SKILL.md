@@ -7,6 +7,7 @@ description: Apply plan rules whenever creating any type of plan, including a ch
 
 Apply these rules whenever creating a plan:
 
+1. Read the TERMS.md file and use the terms defined in that file.
 1. Plans are requirement statements and should be written with this in mind. For example, When a feature is removed from an application the feature should removed from the plan and have no reference to it.
 1. If a change request is needed use the change-request skill.
 1. Do not cross-pollinate functionality. Keep separate responsibilities and their data separate. For example, do not use an authentication system to store user preferences; authentication data and user-preference data are separate.
@@ -15,6 +16,10 @@ Apply these rules whenever creating a plan:
 1. The fixture should not be autouse across unrelated tests. Narrow it to explicit opt-in where a fixture is required.
 1. If a test assert is to be changed require a specific reason, suspect changes are changing of values, success to failure asserts and other unsupported reasons. This change would be required to be associated with a plan or a change request to justify. If it is not present then use ask-a-question skill to request a decision.
 1. Check plan changes to ensure that no statement is duplicated, if needed reference another plan rather then duplicating what is in an existing plan.
+1. Use terms defined in the TERMS.md files, do not use variations of those terms when one exists. Goal is to use the same wording when referring to the same thing, concept or action.
+1. No wording churn is allowed unless it is needed to bring plans in line with TERMS.md definitions. Do not make changes which are simply rewording of a statement which does not change the meaning.
+1. Plans should focus on what should things should be and avoid dictating what it should not be. Plans should be affirmative.
+1. Apply description edits at the claim level. When approved functionality changes a stated subject, action, or object, update that exact phrase and retain the remaining wording verbatim.
 
 ## Goals
 
@@ -63,3 +68,4 @@ Changed to:
 1. Before finishing check for unasked for scope expansions
 1. Before finishing check for needless changes to plans that do not add value or duplicated the information or updated a plan that has no feature changes.
 1. Before finishing check for needless duplication of information in the plan that is already covered in the plan or a referenced plan.
+1. Before finishing check for any wording churn that does not change functionality or meaning of the plan. Wording changes to align with TERMS.md is allowed.

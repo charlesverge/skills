@@ -59,7 +59,23 @@
   - `[field_name]`: \[type] — \[purpose]
   - `[field_name]`: \[type] — \[purpose]
 - **Nested objects / arrays:** \[Structure details or N/A]
-- **Examples:** \[Short example payload or N/A]
+- **Examples:**
+  - \[Short example payload or N/A]
+    ```json
+    {
+      "field1": "...",
+      "field2": "...",
+      ...
+    }
+    ```
+  - \[Short example payload or N/A]
+    ```json
+    {
+      "field1": "...",
+      "field2": "...",
+      ...
+    }
+    ```
 
 ## Output contract
 

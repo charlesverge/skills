@@ -1,6 +1,6 @@
 # Model name
 
-- Once sentence describing the model's purpose and what it represents.
+- Once sentence describing the model's generic purpose and what it represents. This description doesn't change unless there is a major change in the models purpose. Modifications to the model should be done in the specific fields the change relates to.
 
 ## Stored record structure
 
