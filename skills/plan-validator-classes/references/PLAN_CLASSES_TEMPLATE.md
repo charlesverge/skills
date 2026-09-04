@@ -119,24 +119,49 @@
 
 ## Class properties
 
-| Name              | Type          | Description of use                  |
-| ----------------- | ------------- | ----------------------------------- |
-| `[property_name]` | \[Exact type] | \[How the class uses this property] |
-| `[property_name]` | \[Exact type] | \[How the class uses this property] |
+### `[property_name]`
+
+- **Type**: \[Exact type]
+- **Description of use**: \[How the class uses this property]
+
+### `[property_name]`
+
+- **Type**: \[Exact type]
+- **Description of use**: \[How the class uses this property]
+
+...repeat for each property. None allowed when there are no class properties.
 
 ## Class functions
 
-| Name              | Type                                                                                                                                                                         | Description of use                  | Function plan markdown file                      |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ------------------------------------------------ |
-| `[function_name]` | \[constructor, public method, private method, class method, static method, computed property accessor, abstract method, template method, override method, or removed method] | \[How the class uses this function] | [`function-plan-name`](path/to/function-plan.md) |
-| `[function_name]` | \[constructor, public method, private method, class method, static method, computed property accessor, abstract method, template method, override method, or removed method] | \[How the class uses this function] | [`function-plan-name`](path/to/function-plan.md) |
+### `[function_name]`
+
+- **Type**: \[constructor, public method, private method, class method, static method, computed property accessor, abstract method, template method, override method, or removed method]
+- **Description of use**: \[How the class uses this function]
+- **Function plan markdown file**: [`function-plan-name`](path/to/function-plan.md)
+
+### `[function_name]`
+
+- **Type**: \[constructor, public method, private method, class method, static method, computed property accessor, abstract method, template method, override method, or removed method]
+- **Description of use**: \[How the class uses this function]
+- **Function plan markdown file**: [`function-plan-name`](path/to/function-plan.md)
+
+...repeat for each function. None allowed when there are no class functions.
 
 ## Error contract
 
-| Error or result | When raised or returned | Caller-visible result | Notes    |
-| --------------- | ----------------------- | --------------------- | -------- |
-| `[ERROR_NAME]`  | \[Condition]            | \[Result]             | \[Notes] |
-| `[ERROR_NAME]`  | \[Condition]            | \[Result]             | \[Notes] |
+### `[ERROR_NAME]`
+
+- **When raised or returned**: \[Condition]
+- **Caller-visible result**: \[Result]
+- **Notes**: \[Notes]
+
+### `[ERROR_NAME]`
+
+- **When raised or returned**: \[Condition]
+- **Caller-visible result**: \[Result]
+- **Notes**: \[Notes]
+
+...repeat for each error. None allowed when there are no error cases.
 
 ## Dependency boundaries
 
@@ -157,42 +182,53 @@
 
 ## Technical references
 
-- **Related modules:** \[Related modules or `None`]
-- **Related APIs or components:** \[Related routes, jobs, components, or `None`]
-- **Dependencies:** \[Libraries, local helpers, services, or `None`]
-- **Related base classes or contracts:** \[Base classes, interfaces, protocols, abstract classes, or `None`]
-- **Linked function plans:** \[Exact list of function-plan markdown files referenced in `Class functions`]
+- **Related APIs:**
+  - \[Related route or None]
+  - \[Related route]
+  - ...
+- **Related plans:**
+  - \[plan or None]
+  - \[plan]
+  - ...
+- **Dependencies:**
+  - \[Other plan, External service, library, queue, or None]
+  - \[Other plan, External service, library, queue]
+  - ...
 
 ## Test coverage
 
-- `tests/{plan_dir}/test_{plan_file}.py` `test_class_constructs_with_required_dependencies` Description - Happy path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_class_rejects_missing_required_dependency` Description - Validation / error path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_class_preserves_optional_default` Description - Edge case
-- `tests/{plan_dir}/test_{plan_file}.py` `test_class_keeps_public_properties` Description - Regression case
+- Description - Shared fixture
+  - `tests/global/fixtures/{fixture file}`
+- Description - Shared fixture
+  - `tests/{plan_dir}/fixtures/{fixture file}`
+- Description - Happy path
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_class_constructs_with_required_dependencies`
+- Description - Validation / error path
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_class_rejects_missing_required_dependency`
+- Description - Edge case
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_class_preserves_optional_default`
+- Description - Regression case
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_class_keeps_public_properties`
 
 ## Verification
 
 - Commands or manual checks to run from the owning module directory.
 - Function-plan validation checks run with `plan-validator-functions` for each linked function-plan markdown file.
 
-## Implementation plan
+## Files
 
-- `{module_dir}/pyproject.toml` or `{module_dir}/package.json`
-  - Existing package metadata used by the owning module.
-  - Python: package name, runtime, dependencies, and test configuration.
-  - Node/TypeScript: package name, `exports`, `main`, `types`, dependencies, and `scripts.test`.
-  - Reason: provides the owning module package and test workflow used by this class.
-- `{module_dir}/src/{package_name}/runner.py` or `{module_dir}/src/runner.ts`
-  - `PrimaryClass` or `RootBaseClass`.
-  - Base class, subclass, interface, protocol, or adaptor relationships named in `Class hierarchy and object model`.
-  - Class properties named in `Class properties`.
-  - Class functions named in `Class functions`.
-  - Required override functions named in `Class hierarchy and object model`.
-  - Linked function plans for each class function.
-  - Reason: contains the primary/root class, object-model relationships, state, and class function declarations for the requested class behavior.
-- `tests/{plan_dir}/test_{plan_file}.py` or `tests/{plan_dir}/{plan_file}.test.ts`
-  - Unit tests named in `Test coverage`.
-  - Reason: verifies construction, property contract, and class-level behavior.
+### `{file location}`
+
+**Short description**: \[Short description of the file's purpose]
+
+- \[function name, class name, variable, etc]
+- \[function name, class name, variable, etc]
+
+...This section can repeat for each file required for the functionally of this plan. The files section does not repeat the test files.
 
 ## Assumptions
 

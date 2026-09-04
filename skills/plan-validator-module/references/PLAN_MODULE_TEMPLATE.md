@@ -75,10 +75,19 @@
 
 ## Error contract
 
-| Error or exception | When raised or returned | Caller-visible result | Notes    |
-| ------------------ | ----------------------- | --------------------- | -------- |
-| `[ERROR_NAME]`     | \[Condition]            | \[Result]             | \[Notes] |
-| `[ERROR_NAME]`     | \[Condition]            | \[Result]             | \[Notes] |
+### `[ERROR_NAME]`
+
+- **When raised or returned**: \[Condition]
+- **Caller-visible result**: \[Result]
+- **Notes**: \[Notes]
+
+### `[ERROR_NAME]`
+
+- **When raised or returned**: \[Condition]
+- **Caller-visible result**: \[Result]
+- **Notes**: \[Notes]
+
+...repeat for each error. None allowed when there are no error cases.
 
 ## Package and test commands
 
@@ -89,37 +98,52 @@
 
 ## Technical references
 
-- **Related modules:** \[Related modules or `None`]
-- **Related parent plans:** \[Parent project plans or `None`]
-- **Dependencies:** \[Libraries, local modules, services, or `None`]
+- **Related APIs:**
+  - \[Related route or None]
+  - \[Related route]
+  - ...
+- **Related plans:**
+  - \[plan or None]
+  - \[plan]
+  - ...
+- **Dependencies:**
+  - \[Other plan, External service, library, queue, or None]
+  - \[Other plan, External service, library, queue]
+  - ...
 
 ## Test coverage
 
-- `tests/{plan_dir}/test_{plan_file}.py` `test_module_returns_expected_result` Description - Happy path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_module_rejects_invalid_input` Description - Validation / error path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_module_handles_boundary_input` Description - Edge case
-- `tests/{plan_dir}/test_{plan_file}.py` `test_module_preserves_public_contract` Description - Regression case
+- Description - Shared fixture
+  - `tests/global/fixtures/{fixture file}`
+- Description - Shared fixture
+  - `tests/{plan_dir}/fixtures/{fixture file}`
+- Description - Happy path
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_module_returns_expected_result`
+- Description - Validation / error path
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_module_rejects_invalid_input`
+- Description - Edge case
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_module_handles_boundary_input`
+- Description - Regression case
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_module_preserves_public_contract`
 
 ## Verification
 
 - Commands or manual checks to run from the module directory.
 
-## Implementation plan
+## Files
 
-- `{module_dir}/pyproject.toml` or `{module_dir}/package.json`
-  - Python: package name, version, runtime, dependencies, and test configuration.
-  - Node/TypeScript: package name, version, `exports`, `main`, `types`, dependencies, and `scripts.test`.
-  - Reason: defines the module package and its module-owned test workflow.
-- `{module_dir}/src/{package_name}/__init__.py` or `{module_dir}/src/index.ts`
-  - Public exports imported by parent projects.
-  - Reason: exposes the module's supported public API.
-- `{module_dir}/src/{package_name}/service.py`
-  - `PrimaryClassOrFunction`
-  - Supporting validation or transformation functions.
-  - Reason: implements the reusable module behavior.
-- `tests/{plan_dir}/test_{plan_file}.py`
-  - Unit tests named in `Test coverage`.
-  - Reason: verifies the module independently from parent projects.
+### `{file location}`
+
+**Short description**: \[Short description of the file's purpose]
+
+- \[function name, class name, variable, etc]
+- \[function name, class name, variable, etc]
+
+...This section can repeat for each file required for the functionally of this plan. The files section does not repeat the test files.
 
 ## Assumptions
 

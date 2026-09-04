@@ -124,10 +124,19 @@
 
 ## Error codes
 
-| Code           | HTTP status | When returned | Notes    |
-| -------------- | ----------- | ------------- | -------- |
-| `[ERROR_CODE]` | `[status]`  | \[Condition]  | \[Notes] |
-| `[ERROR_CODE]` | `[status]`  | \[Condition]  | \[Notes] |
+### `[ERROR_CODE]`
+
+- **HTTP status**: \[status]
+- **When returned**: \[Condition]
+- **Notes**: \[Notes]
+
+### `[ERROR_CODE]`
+
+- **HTTP status**: \[status]
+- **When returned**: \[Condition]
+- **Notes**: \[Notes]
+
+...repeat for each error code. None allowed when there are no error cases.
 
 ## Generic endpoint usage
 
@@ -140,34 +149,52 @@
 
 ## Technical references
 
-- **Related APIs:** \[Related routes or N/A]
-- **Related features:** \[Feature plan links or N/A]
-- **Dependencies:** \[External services, libraries, queues, or N/A]
+- **Related APIs:**
+  - \[Related route or None]
+  - \[Related route]
+  - ...
+- **Related plans:**
+  - \[plan or None]
+  - \[plan]
+  - ...
+- **Dependencies:**
+  - \[Other plan, External service, library, queue, or None]
+  - \[Other plan, External service, library, queue]
+  - ...
 
 ## Test coverage
 
-- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_uses_enabled_path_when_flag_enabled` Ensures the feature uses the enabled path when the feature flag is enabled - Happy path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_rejects_invalid_input` Ensures the feature returns the documented validation error code for invalid input - Validation / error path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_handles_empty_input` Ensures the feature returns the documented empty result for empty input - Edge case
-- `tests/{plan_dir}/test_{plan_file}.py` `test_feature_preserves_existing_contract` Ensures the existing response contract remains unchanged - Regression case
+- Description - Shared fixture
+  - `tests/global/fixtures/{fixture file}`
+- Description - Shared fixture
+  - `tests/{plan_dir}/fixtures/{fixture file}`
+- Description - Happy path
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_feature_uses_enabled_path_when_flag_enabled`
+- Description - Validation / error path
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_feature_rejects_invalid_input`
+- Description - Edge case
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_feature_handles_empty_input`
+- Description - Regression case
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_feature_preserves_existing_contract`
 
 ## Verification
 
 - Commands or manual checks to run.
 
-## Implementation plan
+## Files
 
-- `{project_dir}/src/{api}/{endpoint}.py`
-  - `EndpointHandler`
-  - `handle_request`
-  - Reason: main entry point for the API endpoint that accepts the request, validates it, performs the required action, and returns the response.
-- `{project_dir}/src/{api}/contracts.py`
-  - `FeatureRequest`
-  - `FeatureResponse`
-  - Reason: defines the request and response contracts callers depend on.
-- `{project_dir}/settings.py`
-  - `PLAN_VALIDATION_ENABLED = True`
-  - Reason: configures the enabled path for this API behavior.
+### `{file location}`
+
+**Short description**: \[Short description of the file's purpose]
+
+- \[function name, class name, variable, etc]
+- \[function name, class name, variable, etc]
+
+...This section can repeat for each file required for the functionally of this plan. The files section does not repeat the test files.
 
 ## Assumptions
 

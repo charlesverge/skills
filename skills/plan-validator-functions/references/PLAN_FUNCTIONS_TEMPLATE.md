@@ -33,8 +33,17 @@
 
 ## Scope
 
-- In scope:
-- Out of scope:
+### In scope:
+
+- \[Specific items that are in scope for this feature or screen. For example, "The login screen will have a username and password field, a submit button, and a link to reset the password."]
+- \[Specific items that are in scope for this feature or screen. For example, "The login screen will have a username and password field, a submit button, and a link to reset the password."]
+- \[Specific items that are in scope for this feature or screen. For example, "The login screen will have a username and password field, a submit button, and a link to reset the password."]
+
+### Out of scope:
+
+- \[Specific items that are out of scope for this feature or screen. For example, "The login screen will not handle password recovery."]
+- \[Specific items that are out of scope for this feature or screen. For example, "The login screen will not handle password recovery."]
+- \[Specific items that are out of scope for this feature or screen. For example, "The login screen will not handle password recovery."]
 
 ## Function boundary
 
@@ -52,12 +61,12 @@
 - **Inputs caller must provide:** \[Arguments, injected services, callbacks, configuration, or `None`]
 - **Primary input type:** \[Type name or inline structure]
 - **Input fields:**
-  - `[field_name]`: \[type] - \[purpose]
-  - `[field_name]`: \[type] - \[purpose]
+  - `[field_name]`: \[type | int | str | bool | list | dict | None | ClassName | InlineStructure | ...] - \[purpose]
+  - `[field_name]`: \[type | int | str | bool | list | dict | None | ClassName | InlineStructure | ...] - \[purpose]
 - **Primary output type:** \[Type name or inline structure]
 - **Output fields:**
-  - `[field_name]`: \[type] - \[purpose]
-  - `[field_name]`: \[type] - \[purpose]
+  - `[field_name]`: \[type | int | str | bool | list | dict | None | ClassName | InlineStructure | ...] - \[purpose]
+  - `[field_name]`: \[type | int | str | bool | list | dict | None | ClassName | InlineStructure | ...] - \[purpose]
 - **Side effects:** \[State changes, file writes, emitted events, API calls, or `None`]
 - **Runtime assumptions:** \[Environment variables, file paths, network access, clock behavior, or `None`]
 - **Examples:** \[Short code example or `None`]
@@ -86,17 +95,36 @@
 
 ## Helper functions
 
-| Helper function | Location           | Classification                                                                           | Inputs    | Output    | Purpose    |
-| --------------- | ------------------ | ---------------------------------------------------------------------------------------- | --------- | --------- | ---------- |
-| `[helper_name]` | \[Exact file path] | \[New private helper, Existing reused helper, Modified shared helper, or Removed helper] | \[Inputs] | \[Output] | \[Purpose] |
-| `[helper_name]` | \[Exact file path] | \[New private helper, Existing reused helper, Modified shared helper, or Removed helper] | \[Inputs] | \[Output] | \[Purpose] |
+### `[helper_name]`
+
+- **Purpose**: \[Short description of the helper function's purpose]
+- **Location**: \[Exact file path]
+- **Classification**: \[Private, Shared]
+- **Input fields:**
+  - `[field_name]`: \[type | int | str | bool | list | dict | None | ClassName | InlineStructure | ...] - \[purpose]
+  - `[field_name]`: \[type | int | str | bool | list | dict | None | ClassName | InlineStructure | ...] - \[purpose]
+- **Primary output type:** \[Type name or inline structure]
+- **Output fields:**
+  - `[field_name]`: \[type | int | str | bool | list | dict | None | ClassName | InlineStructure | ...] - \[purpose]
+  - `[field_name]`: \[type | int | str | bool | list | dict | None | ClassName | InlineStructure | ...] - \[purpose]
+
+...repeat for each helper function in the entry point file, and any shared helpers that are modified or newly created for this function group. - None allowed when there is no helper functions. Helper functions are used to break a larger function into smaller unit testable pieces. Private helper is only used by this plan, shared helper is used by multiple plans and should be in a shared location.
 
 ## Error contract
 
-| Error or result | When raised or returned | Caller-visible result | Notes    |
-| --------------- | ----------------------- | --------------------- | -------- |
-| `[ERROR_NAME]`  | \[Condition]            | \[Result]             | \[Notes] |
-| `[ERROR_NAME]`  | \[Condition]            | \[Result]             | \[Notes] |
+### `[ERROR_NAME]`
+
+- **When raised or returned**: \[Condition]
+- **Caller-visible result**: \[Result]
+- **Notes**: \[Notes]
+
+### `[ERROR_NAME]`
+
+- **When raised or returned**: \[Condition]
+- **Caller-visible result**: \[Result]
+- **Notes**: \[Notes]
+
+...repeat for each error. None allowed when there are no error cases.
 
 ## Dependency boundaries
 
@@ -117,36 +145,52 @@
 
 ## Technical references
 
-- **Related modules:** \[Related modules or `None`]
-- **Related APIs or components:** \[Related routes, jobs, components, or `None`]
-- **Dependencies:** \[Libraries, local helpers, services, or `None`]
+- **Related APIs:**
+  - \[Related route or None]
+  - \[Related route]
+  - ...
+- **Related plans:**
+  - \[plan or None]
+  - \[plan]
+  - ...
+- **Dependencies:**
+  - \[Other plan, External service, library, queue, or None]
+  - \[Other plan, External service, library, queue]
+  - ...
 
 ## Test coverage
 
-- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_returns_expected_result` Description - Happy path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_returns_documented_error` Description - Validation / error path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_handles_boundary_input` Description - Edge case
-- `tests/{plan_dir}/test_{plan_file}.py` `test_primary_entry_point_preserves_result_contract` Description - Regression case
+- Description - Shared fixture
+  - `tests/global/fixtures/{fixture file}`
+- Description - Shared fixture
+  - `tests/{plan_dir}/fixtures/{fixture file}`
+- Description - Happy path
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_primary_entry_point_returns_expected_result`
+- Description - Validation / error path
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_primary_entry_point_returns_documented_error`
+- Description - Edge case
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_primary_entry_point_handles_boundary_input`
+- Description - Regression case
+  - `tests/{plan_dir}/test_{plan_file}.py`
+  - `test_primary_entry_point_preserves_result_contract`
 
 ## Verification
 
 - Commands or manual checks to run from the owning module directory.
 
-## Implementation plan
+## Files
 
-- `{module_dir}/pyproject.toml` or `{module_dir}/package.json`
-  - Existing package metadata used by the owning module.
-  - Python: package name, runtime, dependencies, and test configuration.
-  - Node/TypeScript: package name, `exports`, `main`, `types`, dependencies, and `scripts.test`.
-  - Reason: provides the owning module package and test workflow used by this function group.
-- `{module_dir}/src/{package_name}/status.py` or `{module_dir}/src/status.ts`
-  - `primary_entry_point`
-  - New private helper functions.
-  - Existing reused helper imports.
-  - Reason: contains the single entry point and helper orchestration for the function group.
-- `tests/{plan_dir}/test_{plan_file}.py` or `tests/{plan_dir}/{plan_file}.test.ts`
-  - Unit tests named in `Test coverage`.
-  - Reason: verifies the function group through the primary entry point.
+### `{file location}`
+
+**Short description**: \[Short description of the file's purpose]
+
+- \[function name, class name, variable, etc]
+- \[function name, class name, variable, etc]
+
+...This section can repeat for each file required for the functionally of this plan. The files section does not repeat the test files.
 
 ## Assumptions
 

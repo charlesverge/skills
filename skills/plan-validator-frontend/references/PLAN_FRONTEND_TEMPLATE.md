@@ -30,6 +30,8 @@
 - \[Specific use case where it describes what a user does to trigger the feature or screen and what the expected outcome is. For example, "A user with an expired session tries to access a protected resource, the user is redirected to the login screen."]
 - \[Another specific use case]
 
+## Scope
+
 ### In scope:
 
 - \[Specific items that are in scope for this feature or screen. For example, "The login screen will have a username and password field, a submit button, and a link to reset the password."]
@@ -71,10 +73,19 @@
 
 ## Error codes
 
-| Code           | status     | When returned | Notes    |
-| -------------- | ---------- | ------------- | -------- |
-| `[ERROR_CODE]` | `[status]` | \[Condition]  | \[Notes] |
-| `[ERROR_CODE]` | `[status]` | \[Condition]  | \[Notes] |
+### `[ERROR_CODE]`
+
+- **Status**: \[status]
+- **When returned**: \[Condition]
+- **Notes**: \[Notes]
+
+### `[ERROR_CODE]`
+
+- **Status**: \[status]
+- **When returned**: \[Condition]
+- **Notes**: \[Notes]
+
+...repeat for each error code. None allowed when there are no error cases.
 
 ## Generic user interface usage
 
@@ -87,9 +98,18 @@
 
 ## Technical references
 
-- **Related APIs:** \[Related routes or N/A]
-- **Related features:** \[Feature plan links or N/A]
-- **Dependencies:** \[External services, libraries, queues, or N/A]
+- **Related APIs:**
+  - \[Related route or None]
+  - \[Related route]
+  - ...
+- **Related plans:**
+  - \[plan or None]
+  - \[plan]
+  - ...
+- **Dependencies:**
+  - \[Other plan, External service, library, queue, or None]
+  - \[Other plan, External service, library, queue]
+  - ...
 
 ## UI details
 
@@ -109,24 +129,40 @@
 
 ## Test coverage
 
-- `tests/{plan_dir}/{plan_file}.test.tsx` `renders the completed feature state` Description - Happy path
-- `tests/{plan_dir}/{plan_file}.test.tsx` `shows the documented validation message` Description - Validation / error path
-- `tests/{plan_dir}/{plan_file}.test.tsx` `handles an empty response without layout breakage` Description - Edge case
-- `tests/{plan_dir}/{plan_file}.test.tsx` `preserves the existing keyboard interaction` Description - Regression case
-- `tests/{plan_dir}/{plan_file}.spec.ts` `completes the documented user flow` Description - Happy path
+- Description - Shared fixture
+  - `tests/global/fixtures/{fixture file}`
+- Description - Shared fixture
+  - `tests/{plan_dir}/fixtures/{fixture file}`
+- Description - Happy path
+  - `tests/{plan_dir}/{plan_file}.test.tsx`
+  - `renders the completed feature state`
+- Description - Validation / error path
+  - `tests/{plan_dir}/{plan_file}.test.tsx`
+  - `shows the documented validation message`
+- Description - Edge case
+  - `tests/{plan_dir}/{plan_file}.test.tsx`
+  - `handles an empty response without layout breakage`
+- Description - Regression case
+  - `tests/{plan_dir}/{plan_file}.test.tsx`
+  - `preserves the existing keyboard interaction`
+- Description - Happy path
+  - `tests/{plan_dir}/{plan_file}.spec.ts`
+  - `completes the documented user flow`
 
 ## Verification
 
 - Commands or manual checks to run.
 
-## Implementation plan
+## Files
 
-- Each feature which has a visible ui component should have one or more files which render it. For example if a screen is a single button then a single file like {project\_dir}/components/FeatureButton.tsx contains the ui component is needed
-- If the screen is more complete then it should be broken into individual small components like {project\_dir}/components/product/ProductView\.tsx {project\_dir}/components/product/ProductTitle.tsx {project\_dir}/components/product/ProductDescription.tsx which would have rendering and styling for specific elements in the screen.
-- Where routes are defined if for a specific screen and what the route is visible for the user for example: {project\_dir}/routes.tsx - /product/{product\_id}
-- tests `tests/{plan_dir}/{plan_file}.test.tsx`
-- e2e tests `tests/{plan_dir}/{plan_file}.spec.ts`
-- Files which link to the component for example: {project\_dir}/components/product/ProductList.tsx
+### `{file location}`
+
+**Short description**: \[Short description of the file's purpose]
+
+- \[function name, class name, variable, etc]
+- \[function name, class name, variable, etc]
+
+...This section can repeat for each file required for the functionally of this plan. The files section does not repeat the test files.
 
 ## Assumptions
 

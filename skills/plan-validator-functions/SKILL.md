@@ -52,6 +52,7 @@ Before writing, saving, or finalizing a functions plan:
 - Feature flags must not define automatic switching after an error.
 - Hard stop if the plan does not follow `references/PLAN_FUNCTIONS_TEMPLATE.md`.
 - Hard stop if the plan has zero or multiple primary entry point functions.
+- Hard stop if `## Helper functions` does not contain exactly `- None` or one or more complete repeatable ### `[helper\_name]` subsections in the required format.
 - Hard stop if any application `Implementation plan` file is outside the owning module directory or any test file violates `test-conventions`.
 - Hard stop if the owning package metadata file is missing from the plan.
 - Hard stop if tests cannot run from the owning module directory.
@@ -92,7 +93,7 @@ When a rejected item may still be useful later, relocate it to `Suggested Improv
 ### Entry Point and Helper Contract
 
 - Validate the entry point function name, signature, input type, return type, and caller-visible errors are explicit.
-- Validate each helper function is named and classified as `new private helper`, `existing reused helper`, `modified shared helper`, or `removed helper`.
+- Validate each helper function is named and classified as `Private` or `Shared`.
 - Validate helper inputs and outputs are concrete when the helper has branching logic, side effects, or meaningful failure behavior.
 - Validate the dependency order is clear when the entry point coordinates several checks, such as DNS lookup, TCP port check, and HTTP response validation.
 - Validate side effects, timeouts, external interactions, and deterministic test controls are named when the function touches network, file, database, browser, clock, or environment boundaries.
@@ -204,6 +205,7 @@ Before saving or finalizing, verify these confirmations internally. Do not add t
 - unasked features are placed in `Suggested Improvements` or `Questions`
 - exactly one primary entry point function is named
 - helper functions are scoped to the entry point file or justified as existing module-local helpers
+- helper functions use `- None` or complete repeatable helper subsections with `Private` or `Shared` classification and concrete input/output fields
 - implementation plan lists exact module-directory files, entry point, helpers, variables, imports, types, resources, contracts, side effects, package metadata reference, tests, and reasons
 - unit tests are listed with exact file paths, test names, and descriptions, or a concrete reason is given for no tests
 - every test path, filename, plan or rule comment, helper, and file split follows `test-conventions`

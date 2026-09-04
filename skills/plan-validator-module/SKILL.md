@@ -129,57 +129,13 @@ For each test case, list in order:
 
 Do not accept wildcard, glob, placeholder, or guessed paths. A unit-test entry is invalid if the path contains `*`, `**`, `<...>`, `[...]`, `tests/path/`, `some/path/`, or any placeholder instead of the concrete file where the test will be placed.
 
-Valid format:
+## Files Section Requirements
 
-```markdown
-## Test coverage
+The plan must include one `Files` section.
+Each application entry must start with the exact file path inside the module directory.
+Use this section as the place for which plans which outline the functionality for this module.
 
-- `tests/{plan_dir}/test_{plan_file}.py` `test_module_returns_expected_result` Ensures valid input produces the documented output contract - Happy path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_module_rejects_invalid_input` Ensures invalid input produces the documented validation error - Validation / error path
-- `tests/{plan_dir}/test_{plan_file}.py` `test_module_handles_boundary_input` Ensures boundary input produces the documented result - Edge case
-- `tests/{plan_dir}/test_{plan_file}.py` `test_module_preserves_public_contract` Ensures the public result contract keeps the fields parent projects import - Regression case
-```
-
-## Implementation Plan Section Requirements
-
-The plan must include one `Implementation plan` section. Use this section as the canonical place for concrete file-level implementation details.
-
-Each application entry must start with the exact file path inside the module directory. Each test entry must start with its exact convention-derived top-level test path. Cover every relevant class, function, method, variable, exported symbol, package metadata field, resource, input contract, output contract, error contract, side effect, and dependency boundary in the file entry instead of using those as separate top-level subsections.
-
-For each file entry, include:
-
-- The exact application file path inside the module directory or exact test path under the top-level `tests/` directory
-- Exact class, function, method, variable, exported symbol, package metadata field, resource, input contract, output contract, error contract, side effect, or dependency boundary in the completed plan
-- Short description of the item
-- Reason for the file modification
-
-When adding configuration or feature flags, name the exact variable or setting. For example, do not write "add a config flag to settings". Write the concrete target, such as `modules/profile-update/src/profile_update/settings.py::PROFILE_UPDATE_ENABLED`, and explain why it is needed.
-
-Use this format:
-
-```markdown
-## Implementation plan
-
-- `modules/user-profile-update/pyproject.toml`
-  - Project name `user-profile-update`.
-  - Python package metadata, dependencies, and `pytest` configuration.
-  - Reason: defines the Python module package and its module-owned unit test configuration.
-- `modules/user-profile-update/package.json`
-  - Package name `@project/user-profile-update`.
-  - `scripts.test` command for module-owned unit tests.
-  - `exports`, `main`, and `types` fields for parent project imports.
-  - Reason: defines the Node or TypeScript module package and public import surface.
-- `modules/user-profile-update/src/user_profile_update/service.py`
-  - `update_user_profile(current_profile: UserProfile, changes: ProfileChanges) -> UpdatedProfile`.
-  - `InvalidProfileChange` exception for validation failures documented in the error contract.
-  - Reason: implements the reusable profile update behavior imported by parent projects.
-- `tests/{plan_dir}/test_{plan_file}.py`
-  - `test_module_returns_expected_result`.
-  - `test_module_rejects_invalid_input`.
-  - Reason: verifies the module behavior from its public contract.
-```
-
-If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into focused files for public types, implementation, validation, and tests. If the plan still modifies the large file directly, it must explain why that is the best direct path.
+If any target file is already above 500 lines, or the plan would push it above 500 lines, treat that as a design warning. Prefer splitting work into focused plans for public types, public functions, helpers. If the plan requires the file to larger then 500 lines, it must explain why that is the best path.
 
 ## Plan Validator CLI Guard
 
